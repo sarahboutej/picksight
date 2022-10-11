@@ -1,14 +1,14 @@
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Picksight Gallery Home Page</title>
+  <title>{% translate 'Picksight Gallery Home Page' %}</title>
 
   <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
   <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
@@ -19,15 +19,15 @@
   <section
     class="relative lg:min-h-screen lg:py-24 py-32 pb-12 flex items-center justify-center bg-gradient-to-r from-[#ffe1ea] to-[#d8e8f8]">
     <div class="container flex w-9/12">
-      <div class="flex flex-col md:flex-row items-center justify-between xl:space-x-52 lg:space-x-10  space-x-6 space-y-20 md:space-y-0">
+      <div class="flex flex-col md:flex-row items-center justify-between ltr:xl:space-x-52 ltr:lg:space-x-10 ltr:space-x-6 space-y-20 md:space-y-0">
         <div class="md:w-1/2 w-full">
            {% load static %}
           <img src="{% static "images/hero_img.svg" %}" alt="Put alternative text hereme" />
         </div>
-        <div class="md:w-1/2 w-full text-center md:text-left">
-          <div class="flex w-max flex-row md:mx-0 mx-auto space-x-3 pb-3 mb-6 border-b-2 border-b[#72727233]">
+        <div class="md:w-1/2 w-full text-center md:text-left rtl:text-right rtl:xl:mr-52 rtl:lg:mr-10 rtl:mr-6">
+          <div class="flex w-max flex-row md:mx-0 mx-auto ltr:space-x-3 pb-3 mb-6 border-b-2 border-b[#72727233]">
             <img src="{% static '/images/arrow_right.svg' %}" alt="Put alternative text here" role="presentation" loading="lazy">
-            <span class="uppercase text-base text-[#727272] font-bold">{% translate 'Latest proucts' %}</span>
+            <span class="uppercase text-base text-[#727272] font-bold rtl:mr-3">{% translate 'Latest proucts' %}</span>
           </div>
           <h1 class="flex flex-col text-2xl lg:text-5xl md:text-3xl font-bold space-y-4 uppercase">
             <span class="text-[#00A8FE]">{% translate 'See your event like'%}</span>
@@ -36,12 +36,12 @@
           <p class="text-[#727272] lg:text-xl text-lg mt-4">
             {% translate 'Experiencing your event through your guests eyes. There is no need to wait for professional photographers. With no appt but easily through WhatsApp, you will have a complete gallery immediately following your event'%}
           </p>
-          <div class="flex lg:flex-row flex-col mt-10 lg:space-x-4 lg:space-y-0 space-y-4" >
+          <div class="flex lg:flex-row flex-col mt-10 ltr:lg:space-x-4 lg:space-y-0 space-y-4" >
             <a href="#"
               class="py-3 px-4 text-lg text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
               {% translate 'Sign up for free Now!'%}</a>
             <a href="#"
-              class="py-3 px-4 text-lg text-[#00A8FE] text-center bg-transparent rounded-lg border border-[#00A8FE] hover:bg-[#00A8FE] hover:text-white transition duration-300">
+              class="rtl:lg:mr-4 py-3 px-4 text-lg text-[#00A8FE] text-center bg-transparent rounded-lg border border-[#00A8FE] hover:bg-[#00A8FE] hover:text-white transition duration-300">
               {% translate 'Try our 1 Step Demo!'%}</a>
           </div>
         </div>
@@ -77,7 +77,7 @@
         </h3>
         <div class="flex flex-col md:flex-row lg:gap-24 gap-6 items-center lg:items-stretch">
           <div
-            class="relative flex flex-col flex-1 items-center sm:space-y-4  before:bg-[url({% static '/images/shape_0.svg' %})] before:bg-no-repeat 2xl:before:bg-auto xl:before:bg-contain before:bg-contain 2xl:before:left-[55%] before:left-[40%] before:-top-16 before:absolute lg:before:w-full before:h-[100px]">
+            class="relative flex flex-col flex-1 items-center sm:space-y-4  ltr:before:bg-[url({% static '/images/shape_0.svg' %})] before:bg-no-repeat 2xl:before:bg-auto xl:before:bg-contain before:bg-contain 2xl:before:left-[55%] before:left-[40%] before:-top-16 before:absolute lg:before:w-full before:h-[100px]">
             <img src="{% static "images/event.png" %}" alt="Put alternative text here" />
             <h6 class="font-bold text-[#FFB4C6] text-3xl">{% translate 'Event'%}</h6>
             <p class="text-lg text-[#727272] text-center">
@@ -85,7 +85,7 @@
             </p>
           </div>
           <div
-            class="flex flex-col flex-1 items-center space-y-4 md:-mt-32">
+            class="relative flex flex-col flex-1 items-center space-y-4 md:-mt-32 rtl:before:bg-[url({% static '/images/shape_1.svg' %})] before:bg-no-repeat 2xl:before:bg-auto xl:before:bg-contain before:bg-contain before:-right-[100%] before:top-10 before:absolute lg:before:w-full before:h-[100px] rtl:after:bg-[url({% static '/images/shape_0.svg' %})] after:bg-no-repeat 2xl:after:bg-auto xl:after:bg-contain after:bg-contain after:-left-[70%] after:top-10 after:absolute lg:after:w-full after:h-[100px]">
             <img src="{% static "images/system.png" %}" alt="Put alternative text here" />
             <h6 class="font-bold text-[#FFB4C6] text-3xl">{% translate 'Our System'%}</h6>
             <p class="text-lg text-[#727272] text-center">
@@ -93,7 +93,7 @@
             </p>
           </div>
           <div
-            class="relative flex flex-col flex-1 items-center space-y-4 before:bg-[url({% static '/images/shape_1.svg' %})] before:bg-no-repeat 2xl:before:bg-auto xl:before:bg-contain before:bg-contain before:-left-[30%] before:-top-16 before:absolute lg:before:w-full before:h-[100px]">
+            class="relative flex flex-col flex-1 items-center space-y-4 ltr:before:bg-[url({% static '/images/shape_1.svg' %})] before:bg-no-repeat 2xl:before:bg-auto xl:before:bg-contain before:bg-contain before:-left-[30%] before:-top-16 before:absolute lg:before:w-full before:h-[100px]">
             <img src="{% static "images/gallery.png" %}" alt="Put alternative text here" />
             <h6 class="font-bold text-[#FFB4C6] text-3xl">
               {% translate 'Gallery'%}</h6>
@@ -191,7 +191,7 @@
         </h3>
         <div class="flex flex-col lg:flex-row md:gap-52 gap-16 items-center lg:items-stretch">
           <div
-            class="relative flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2 before:bg-[url({% static '/images/shape_2.svg' %})] before:bg-no-repeat before:bg-contain before:left-[90%] before:top-[60%] before:absolute lg:before:w-full before:h-10">
+            class="relative flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2">
             <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Step 1'%}</h6>
             <p class="md:text-2xl text-lg text-[#727272] text-center">
               {% translate 'Upload a CSV/Excel file of contacts'%}
@@ -200,7 +200,7 @@
           </div>
   
           <div
-            class="flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2  before:bg-[url({% static '/images/shape_2.svg' %})] before:bg-no-repeat before:bg-contain before:left-[90%] before:top-[60%] before:absolute lg:before:w-full before:h-10">
+            class="flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2 before:bg-[url({% static '/images/shape_2.svg' %})] before:bg-no-repeat before:bg-contain before:-left-[70%] before:top-[60%] before:absolute lg:before:w-full before:h-10 after:bg-[url({% static '/images/shape_2.svg' %})] after:bg-no-repeat after:bg-contain after:left-[90%] after:top-[60%] after:absolute lg:after:w-full after:h-10">
             <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Step 2'%}</h6>
             <p class="md:text-2xl text-lg text-[#727272] text-center">
               {% translate 'Set a time and Wording for the Thank you message'%}

@@ -4,19 +4,18 @@
   <div class="container w-9/12">
     <div class="flex flex-row items-center justify-between">
       <!-- Website Logo -->
-      <a href="#" class="flex flex-col py-4 px-2">
-        <span class="text-[#FFB4C6] lg:text-3xl text-xl">Picksight</span>
-        <span class="text-[#FFB4C6] lg:text-2xl text-lg">Gallery</span>
+      <a href="#" class="flex flex-col px-2">
+        <img src="{% static "images/logo.png" %}" id="logo" class="w-36" alt="Picksight logo">
       </a>
       <!-- Primary Navbar items -->
-      <div id="hamburger-menu" class="hidden lg:flex flex-col lg:flex-row bg-white rounded-xl lg:bg-inherit absolute lg:relative w-auto top-16 lg:top-0 shadow-lg lg:shadow-none inset-x-4 lg:inset-x-auto items-center lg:space-x-4 space-x-0 pb-4 lg:pb-0">
+      <div id="hamburger-menu" class="hidden lg:flex flex-col lg:flex-row bg-white rounded-xl lg:bg-inherit absolute lg:relative w-auto top-16 lg:top-0 shadow-lg lg:shadow-none inset-x-4 lg:inset-x-auto items-center ltr:lg:space-x-4 space-x-0 pb-4 lg:pb-0">
         <a href="#" class="py-2 px-2 text-[#727272] lg:text-xl text-base border-b-4 border-[#FFB4C6]">
           {% translate 'Home'%}</a>
-        <a href="#" class="py-2 px-2 text-[#727272] lg:text-xl text-base hover:border-b-4 hover:border-[#FFB4C6]">
+        <a href="#" class="py-2 px-2 text-[#727272] lg:text-xl text-base hover:border-b-4 hover:border-[#FFB4C6] rtl:pr-4">
           {% translate 'Products'%}</a>
-        <a href="#" class="py-2 px-2 text-[#727272] lg:text-xl text-base hover:border-b-4 hover:border-[#FFB4C6]">
+        <a href="#" class="py-2 px-2 text-[#727272] lg:text-xl text-base hover:border-b-4 hover:border-[#FFB4C6] rtl:pr-4">
           {% translate 'Event-Portal'%}</a>
-        <a href="#" class="py-2 px-2 text-[#727272] lg:text-xl text-base hover:border-b-4 hover:border-[#FFB4C6]">
+        <a href="#" class="py-2 px-2 text-[#727272] lg:text-xl text-base hover:border-b-4 hover:border-[#FFB4C6] rtl:pr-4">
           {% translate 'Demo'%}</a>
         <div class="flex lg:hidden flex-col lg:flex-row lg:space-x-3 lg:space-y-0 space-y-3 lg:mt-0 mt-6">
           <a href="#"
@@ -28,12 +27,12 @@
         </div>
       </div>
       <!-- navbar button -->
-      <div class="hidden lg:flex space-x-3">
+      <div class="hidden lg:flex ltr:space-x-3">
         <a href="#"
           class="hidden lg:block py-2 px-8 lg:text-lg text-base text-[#00A8FE] bg-transparent rounded-lg border border-[#00A8FE] hover:bg-[#00A8FE] hover:text-white transition duration-300">
           {% translate 'Login'%}</a>
         <a href="#"
-          class="py-2 px-4 text-lg text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+          class="rtl:mr-3 py-2 px-4 text-lg text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
           {% translate 'Sign up for free Now!'%}</a>
       </div>
       <!-- Mobile menu button -->
