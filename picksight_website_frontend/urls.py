@@ -19,5 +19,6 @@ from picksight_app import views
 
 urlpatterns = [
   path('', views.index),
+  path('products/', views.products),
   path('admin/', admin.site.urls),
 ]
