@@ -1,3 +1,11 @@
-<svg width="34" height="30" viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17 1.5V19.5M17 1.5L11 7.5M17 1.5L23 7.5M2 22.5L2.9315 26.2275C3.09373 26.8765 3.46824 27.4527 3.9955 27.8644C4.52276 28.2762 5.17251 28.4999 5.8415 28.5H28.1585C28.8275 28.4999 29.4772 28.2762 30.0045 27.8644C30.5318 27.4527 30.9063 26.8765 31.0685 26.2275L32 22.5" stroke="#FFB4C6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88">
+	<title>Ellipse 10-svg</title>
+	<defs>
+		<image width="68" height="60" id="img1" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzNCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3IDEuNVYxOS41TTE3IDEuNUwxMSA3LjVNMTcgMS41TDIzIDcuNU0yIDIyLjVMMi45MzE1IDI2LjIyNzVDMy4wOTM3MyAyNi44NzY1IDMuNDY4MjQgMjcuNDUyNyAzLjk5NTUgMjcuODY0NEM0LjUyMjc2IDI4LjI3NjIgNS4xNzI1MSAyOC40OTk5IDUuODQxNSAyOC41SDI4LjE1ODVDMjguODI3NSAyOC40OTk5IDI5LjQ3NzIgMjguMjc2MiAzMC4wMDQ1IDI3Ljg2NDRDMzAuNTMxOCAyNy40NTI3IDMwLjkwNjMgMjYuODc2NSAzMS4wNjg1IDI2LjIyNzVMMzIgMjIuNSIgc3Ryb2tlPSIjRkZCNEM2IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K"/>
+	</defs>
+	<style>
+		.s0 { fill: #fff7f8 } 
+	</style>
+	<path id="Layer" class="s0" d="m44 88c-24.3 0-44-19.7-44-44 0-24.3 19.7-44 44-44 24.3 0 44 19.7 44 44 0 24.3-19.7 44-44 44z"/>
+	<use id="plan_5" href="#img1" transform="matrix(.882,0,0,.774,14,20.781)"/>
 </svg>
