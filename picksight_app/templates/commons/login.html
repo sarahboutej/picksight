@@ -32,6 +32,11 @@
                     <div class="text-base font-medium text-[#8A8A8A] text-center">
                       {% translate 'Not registered?'%} <a href="#" class="text-[#FFB4C6] hover:underline">{% translate 'Create account'%}</a>
                     </div>
+                    <button type="button"
+                    class="flex mx-auto ltr:space-x-4 text-[#8A8A8A] bg-white shadow-[0px_0px_6px_rgba(0,0,0,0.19)] focus:outline-none rounded-lg text-lg px-5 py-4 text-center transition transform hover:-translate-y-1">
+                    <img src="{% static "images/google.svg" %}" alt="google logo">
+                    <span class="rtl:mr-4">{% translate 'Sign In With Google'%}</span>
+                  </button>
                 </form>
             </div>
         </div>

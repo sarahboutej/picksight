@@ -1,6 +1,6 @@
 {% load static %}
 {% load i18n %}
-<div id="register-modal" tabindex="-1" aria-hidden="true"
+<div id="register-modal" tabindex="-1"
   class="z-50 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
   <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
     <!-- Modal content -->
@@ -31,7 +31,7 @@
             <label for="email" class="block mb-2 text-base">{% translate 'Phone Number'%}</label>
             <div class="flex">
               <button id="dropdown-button-2" data-dropdown-toggle="dropdown-search-phone"
-                class="rtl:order-last flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+                class="rtl:order-last flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] border border-gray-300 rounded-l-lg focus:outline-none"
                 type="button">
                   <img src="{% static "images/is.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
                   +972
@@ -43,7 +43,7 @@
                 </svg>
               </button>
               <div id="dropdown-search-phone"
-                class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow"
                 data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom"
                 style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 10px);">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button-2">
@@ -53,7 +53,7 @@
                       role="menuitem">
                       <div class="inline-flex items-center">
                         <img src="{% static "images/is.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
-                        +972
+                        +972 (IL)
                       </div>
                     </button>
                   </li>
@@ -63,7 +63,7 @@
                       role="menuitem">
                       <div class="inline-flex items-center">
                         <img src="{% static "images/usa.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
-                        +1
+                        +1 (US)
                       </div>
                     </button>
                   </li>
@@ -96,12 +96,12 @@
             </p>
           </div>
           <button type="submit"
-            class="w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">{% translate 'Sign
-            Up'%} </button>
+            class="w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
+            {% translate 'Sign Up'%} </button>
           <div class="text-lg font-medium text-[#404040] text-center">
-            {% translate 'Do You Have An Account?'%} <a href="#" class="text-[#FFB4C6] hover:underline">{% translate 'Login'%}</a>
+            {% translate 'Do You Have An Account?'%} <a type="button" class="text-[#FFB4C6] hover:underline" data-modal-toggle="register-modal">{% translate 'Login'%}</a>
           </div>
-          <button type="submit"
+          <button type="button"
             class="flex mx-auto ltr:space-x-4 text-[#8A8A8A] bg-white shadow-[0px_0px_6px_rgba(0,0,0,0.19)] focus:outline-none rounded-lg text-lg px-5 py-4 text-center transition transform hover:-translate-y-1">
             <img src="{% static "images/google.svg" %}" alt="google logo">
             <span class="rtl:mr-4">{% translate 'Sign In With Google'%}</span>
