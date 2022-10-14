@@ -10,7 +10,7 @@
 
   <title>{% translate 'Picksight Gallery Home Page' %}</title>
 
-  <link rel="stylesheet" href="{% static 'css/flowbite.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/flowbite.css' %}">
   <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
   <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
 </head>
@@ -18,7 +18,7 @@
 <body class="bg-[#FFF4F7]">
   {% include "commons/header.html" with pageName="home" %}
   <section
-    class="relative lg:min-h-screen lg:py-24 py-32 pb-12 flex items-center justify-center bg-gradient-to-r from-[#ffe1ea] to-[#d8e8f8]">
+    class="relative lg:min-h-screen lg:py-24 py-32 flex items-center justify-center bg-gradient-to-r from-[#ffe1ea] to-[#d8e8f8]">
     <div class="container flex w-9/12">
       <div class="flex flex-col md:flex-row items-center justify-between ltr:xl:space-x-52 ltr:lg:space-x-10 ltr:space-x-6 space-y-20 md:space-y-0">
         <div class="md:w-1/2 w-full">
@@ -241,6 +241,7 @@
     </div>
   </section>
   {% include "commons/footer.html" %}
+  {% include "commons/whatsapp_floating_button.html" %}
 
   <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
 </body>

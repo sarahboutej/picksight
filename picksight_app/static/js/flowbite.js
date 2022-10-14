@@ -1,9 +1,2239 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 689:
+/***/ ((module) => {
+
+module.exports = {
+  prefix: 'fb-'
+};
+
+/***/ }),
+
+/***/ 624:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var svgToDataUri = __webpack_require__(949);
+
+var plugin = __webpack_require__(456);
+
+var defaultTheme = __webpack_require__(701);
+
+var colors = __webpack_require__(863);
+
+var _defaultTheme$fontSiz = _slicedToArray(defaultTheme.fontSize.base, 2),
+    baseFontSize = _defaultTheme$fontSiz[0],
+    baseLineHeight = _defaultTheme$fontSiz[1].lineHeight;
+
+var spacing = defaultTheme.spacing,
+    borderWidth = defaultTheme.borderWidth,
+    borderRadius = defaultTheme.borderRadius;
+module.exports = plugin(function (_ref) {
+  var _addBase;
+
+  var addBase = _ref.addBase,
+      theme = _ref.theme;
+  addBase((_addBase = {}, _defineProperty(_addBase, ["[type='text']", "[type='email']", "[type='url']", "[type='password']", "[type='number']", "[type='date']", "[type='datetime-local']", "[type='month']", "[type='search']", "[type='tel']", "[type='time']", "[type='week']", '[multiple]', 'textarea', 'select'], {
+    appearance: 'none',
+    'background-color': '#fff',
+    'border-color': theme('colors.gray.500', colors.gray[500]),
+    'border-width': borderWidth['DEFAULT'],
+    'border-radius': borderRadius.none,
+    'padding-top': spacing[2],
+    'padding-right': spacing[3],
+    'padding-bottom': spacing[2],
+    'padding-left': spacing[3],
+    'font-size': baseFontSize,
+    'line-height': baseLineHeight,
+    '--tw-shadow': '0 0 #0000',
+    '&:focus': {
+      outline: '2px solid transparent',
+      'outline-offset': '2px',
+      '--tw-ring-inset': 'var(--tw-empty,/*!*/ /*!*/)',
+      '--tw-ring-offset-width': '0px',
+      '--tw-ring-offset-color': '#fff',
+      '--tw-ring-color': theme('colors.blue.600', colors.blue[600]),
+      '--tw-ring-offset-shadow': "var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)",
+      '--tw-ring-shadow': "var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)",
+      'box-shadow': "var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)",
+      'border-color': theme('colors.blue.600', colors.blue[600])
+    }
+  }), _defineProperty(_addBase, ['input::placeholder', 'textarea::placeholder'], {
+    color: theme('colors.gray.500', colors.gray[500]),
+    opacity: '1'
+  }), _defineProperty(_addBase, '::-webkit-datetime-edit-fields-wrapper', {
+    padding: '0'
+  }), _defineProperty(_addBase, '::-webkit-date-and-time-value', {
+    'min-height': '1.5em'
+  }), _defineProperty(_addBase, 'select', {
+    'background-image': "url(\"".concat(svgToDataUri("<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"".concat(theme('colors.gray.500', colors.gray[500]), "\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M6 8l4 4 4-4\"/></svg>")), "\")"),
+    'background-position': "right ".concat(spacing[2], " center"),
+    'background-repeat': "no-repeat",
+    'background-size': "1.5em 1.5em",
+    'padding-right': spacing[10],
+    'print-color-adjust': "exact"
+  }), _defineProperty(_addBase, '[multiple]', {
+    'background-image': 'initial',
+    'background-position': 'initial',
+    'background-repeat': 'unset',
+    'background-size': 'initial',
+    'padding-right': spacing[3],
+    'print-color-adjust': 'unset'
+  }), _defineProperty(_addBase, ["[type='checkbox']", "[type='radio']"], {
+    appearance: 'none',
+    padding: '0',
+    'print-color-adjust': 'exact',
+    display: 'inline-block',
+    'vertical-align': 'middle',
+    'background-origin': 'border-box',
+    'user-select': 'none',
+    'flex-shrink': '0',
+    height: spacing[4],
+    width: spacing[4],
+    color: theme('colors.blue.600', colors.blue[600]),
+    'background-color': '#fff',
+    'border-color': theme('colors.gray.500', colors.gray[500]),
+    'border-width': borderWidth['DEFAULT'],
+    '--tw-shadow': '0 0 #0000'
+  }), _defineProperty(_addBase, "[type='checkbox']", {
+    'border-radius': borderRadius['none']
+  }), _defineProperty(_addBase, "[type='radio']", {
+    'border-radius': '100%'
+  }), _defineProperty(_addBase, ["[type='checkbox']:focus", "[type='radio']:focus"], {
+    outline: '2px solid transparent',
+    'outline-offset': '2px',
+    '--tw-ring-inset': 'var(--tw-empty,/*!*/ /*!*/)',
+    '--tw-ring-offset-width': '2px',
+    '--tw-ring-offset-color': '#fff',
+    '--tw-ring-color': theme('colors.blue.600', colors.blue[600]),
+    '--tw-ring-offset-shadow': "var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)",
+    '--tw-ring-shadow': "var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)",
+    'box-shadow': "var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+  }), _defineProperty(_addBase, ["[type='checkbox']:checked", "[type='radio']:checked", ".dark [type='checkbox']:checked", ".dark [type='radio']:checked"], {
+    'border-color': "transparent",
+    'background-color': "currentColor",
+    'background-size': "100% 100%",
+    'background-position': "center",
+    'background-repeat': "no-repeat"
+  }), _defineProperty(_addBase, "[type='checkbox']:checked", {
+    'background-image': "url(\"".concat(svgToDataUri("<svg viewBox=\"0 0 16 16\" fill=\"white\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z\"/></svg>"), "\")")
+  }), _defineProperty(_addBase, "[type='radio']:checked", {
+    'background-image': "url(\"".concat(svgToDataUri("<svg viewBox=\"0 0 16 16\" fill=\"white\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"8\" cy=\"8\" r=\"3\"/></svg>"), "\")")
+  }), _defineProperty(_addBase, "[type='checkbox']:indeterminate", {
+    'background-image': "url(\"".concat(svgToDataUri("<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 16 16\"><path stroke=\"white\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 8h8\"/></svg>"), "\")"),
+    'border-color': "transparent",
+    'background-color': "currentColor",
+    'background-size': "100% 100%",
+    'background-position': "center",
+    'background-repeat': "no-repeat"
+  }), _defineProperty(_addBase, ["[type='checkbox']:indeterminate:hover", "[type='checkbox']:indeterminate:focus"], {
+    'border-color': 'transparent',
+    'background-color': 'currentColor'
+  }), _defineProperty(_addBase, "[type='file']", {
+    background: 'unset',
+    'border-color': 'inherit',
+    'border-width': '0',
+    'border-radius': '0',
+    padding: '0',
+    'font-size': 'unset',
+    'line-height': 'inherit'
+  }), _defineProperty(_addBase, "[type='file']:focus", _defineProperty({
+    outline: "1px solid ButtonText"
+  }, "outline", "1px auto inherit")), _defineProperty(_addBase, ["input[type=file]::file-selector-button"], {
+    color: 'white',
+    background: theme('colors.gray.800', colors.gray[800]),
+    border: 0,
+    'font-weight': theme('fontWeight.medium'),
+    'font-size': theme('fontSize.sm'),
+    'cursor': 'pointer',
+    'padding-top': spacing[2.5],
+    'padding-bottom': spacing[2.5],
+    'padding-left': spacing[8],
+    'padding-right': spacing[4],
+    'margin-inline-start': '-1rem',
+    'margin-inline-end': '1rem',
+    '&:hover': {
+      background: theme('colors.gray.700', colors.gray[700])
+    }
+  }), _defineProperty(_addBase, [".dark input[type=file]::file-selector-button"], {
+    color: 'white',
+    background: theme('colors.gray.600', colors.gray[600]),
+    '&:hover': {
+      background: theme('colors.gray.500', colors.gray[500])
+    }
+  }), _defineProperty(_addBase, ["input[type=\"range\"]::-webkit-slider-thumb"], {
+    height: spacing[5],
+    width: spacing[5],
+    background: theme('colors.blue.600', colors.blue[600]),
+    'border-radius': borderRadius.full,
+    border: 0,
+    appearance: 'none',
+    '-moz-appearance': 'none',
+    '-webkit-appearance': 'none',
+    cursor: 'pointer'
+  }), _defineProperty(_addBase, ["input[type=\"range\"]:disabled::-webkit-slider-thumb"], {
+    background: theme('colors.gray.400', colors.gray[400])
+  }), _defineProperty(_addBase, [".dark input[type=\"range\"]:disabled::-webkit-slider-thumb"], {
+    background: theme('colors.gray.500', colors.gray[500])
+  }), _defineProperty(_addBase, ["input[type=\"range\"]:focus::-webkit-slider-thumb"], {
+    outline: '2px solid transparent',
+    'outline-offset': '2px',
+    '--tw-ring-offset-shadow': 'var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)',
+    '--tw-ring-shadow': 'var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color)',
+    'box-shadow': 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
+    '--tw-ring-opacity': 1,
+    '--tw-ring-color': 'rgb(164 202 254 / var(--tw-ring-opacity))'
+  }), _defineProperty(_addBase, ["input[type=\"range\"]::-moz-range-thumb"], {
+    height: spacing[5],
+    width: spacing[5],
+    background: theme('colors.blue.600', colors.blue[600]),
+    'border-radius': borderRadius.full,
+    border: 0,
+    appearance: 'none',
+    '-moz-appearance': 'none',
+    '-webkit-appearance': 'none',
+    cursor: 'pointer'
+  }), _defineProperty(_addBase, ["input[type=\"range\"]:disabled::-moz-range-thumb"], {
+    background: theme('colors.gray.400', colors.gray[400])
+  }), _defineProperty(_addBase, [".dark input[type=\"range\"]:disabled::-moz-range-thumb"], {
+    background: theme('colors.gray.500', colors.gray[500])
+  }), _defineProperty(_addBase, ["input[type=\"range\"]::-moz-range-progress"], {
+    background: theme('colors.blue.500', colors.blue[500])
+  }), _defineProperty(_addBase, ["input[type=\"range\"]::-ms-fill-lower"], {
+    background: theme('colors.blue.500', colors.blue[500])
+  }), _defineProperty(_addBase, ["input[type=\"range\"].range-sm::-webkit-slider-thumb"], {
+    height: spacing[4],
+    width: spacing[4]
+  }), _defineProperty(_addBase, ["input[type=\"range\"].range-lg::-webkit-slider-thumb"], {
+    height: spacing[6],
+    width: spacing[6]
+  }), _defineProperty(_addBase, ["input[type=\"range\"].range-sm::-moz-range-thumb"], {
+    height: spacing[4],
+    width: spacing[4]
+  }), _defineProperty(_addBase, ["input[type=\"range\"].range-lg::-moz-range-thumb"], {
+    height: spacing[6],
+    width: spacing[6]
+  }), _defineProperty(_addBase, '.toggle-bg:after', {
+    content: '""',
+    position: 'absolute',
+    top: spacing[0.5],
+    left: spacing[0.5],
+    background: 'white',
+    'border-color': theme('colors.gray.300', colors.gray[300]),
+    'border-width': borderWidth['DEFAULT'],
+    'border-radius': borderRadius.full,
+    'height': theme('height.5'),
+    'width': theme('width.5'),
+    'transition-property': 'background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter',
+    'transition-duration': '.15s',
+    'box-shadow': 'var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color)'
+  }), _defineProperty(_addBase, 'input:checked + .toggle-bg:after', {
+    transform: 'translateX(100%);',
+    'border-color': 'white'
+  }), _defineProperty(_addBase, 'input:checked + .toggle-bg', {
+    background: theme('colors.blue.600', colors.gray[600]),
+    'border-color': theme('colors.blue.600', colors.gray[600])
+  }), _defineProperty(_addBase, ['.tooltip-arrow', '.tooltip-arrow:before'], {
+    position: 'absolute',
+    width: '8px',
+    height: '8px',
+    background: 'inherit'
+  }), _defineProperty(_addBase, '.tooltip-arrow', {
+    visibility: 'hidden'
+  }), _defineProperty(_addBase, '.tooltip-arrow:before', {
+    content: '""',
+    visibility: 'visible',
+    transform: 'rotate(45deg)'
+  }), _defineProperty(_addBase, "[data-tooltip-style^='light'] + .tooltip > .tooltip-arrow:before", {
+    'border-style': 'solid',
+    'border-color': colors.gray[200]
+  }), _defineProperty(_addBase, "[data-tooltip-style^='light'] + .tooltip[data-popper-placement^='top'] > .tooltip-arrow:before", {
+    'border-bottom-width': '1px',
+    'border-right-width': '1px'
+  }), _defineProperty(_addBase, "[data-tooltip-style^='light'] + .tooltip[data-popper-placement^='right'] > .tooltip-arrow:before", {
+    'border-bottom-width': '1px',
+    'border-left-width': '1px'
+  }), _defineProperty(_addBase, "[data-tooltip-style^='light'] + .tooltip[data-popper-placement^='bottom'] > .tooltip-arrow:before", {
+    'border-top-width': '1px',
+    'border-left-width': '1px'
+  }), _defineProperty(_addBase, "[data-tooltip-style^='light'] + .tooltip[data-popper-placement^='left'] > .tooltip-arrow:before", {
+    'border-top-width': '1px',
+    'border-right-width': '1px'
+  }), _defineProperty(_addBase, ".tooltip[data-popper-placement^='top'] > .tooltip-arrow", {
+    bottom: '-4px'
+  }), _defineProperty(_addBase, ".tooltip[data-popper-placement^='bottom'] > .tooltip-arrow", {
+    top: '-4px'
+  }), _defineProperty(_addBase, ".tooltip[data-popper-placement^='left'] > .tooltip-arrow", {
+    right: '-4px'
+  }), _defineProperty(_addBase, ".tooltip[data-popper-placement^='right'] > .tooltip-arrow", {
+    left: '-4px'
+  }), _defineProperty(_addBase, '.tooltip.invisible > .tooltip-arrow:before', {
+    visibility: 'hidden'
+  }), _addBase));
+}, {
+  darkMode: 'class',
+  // or 'media' or 'class',
+  theme: {
+    extend: {
+      height: {
+        'modal': 'calc(100% - 2rem)'
+      },
+      boxShadow: {
+        'sm-light': '0 2px 5px 0px rgba(255, 255, 255, 0.08)'
+      },
+      colors: {
+        transparent: 'transparent',
+        white: "#ffffff",
+        black: "#000000",
+        gray: {
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827'
+        },
+        red: {
+          50: '#FDF2F2',
+          100: '#FDE8E8',
+          200: '#FBD5D5',
+          300: '#F8B4B4',
+          400: '#F98080',
+          500: '#F05252',
+          600: '#E02424',
+          700: '#C81E1E',
+          800: '#9B1C1C',
+          900: '#771D1D'
+        },
+        orange: {
+          50: '#FFF8F1',
+          100: '#FEECDC',
+          200: '#FCD9BD',
+          300: '#FDBA8C',
+          400: '#FF8A4C',
+          500: '#FF5A1F',
+          600: '#D03801',
+          700: '#B43403',
+          800: '#8A2C0D',
+          900: '#771D1D'
+        },
+        yellow: {
+          50: '#FDFDEA',
+          100: '#FDF6B2',
+          200: '#FCE96A',
+          300: '#FACA15',
+          400: '#E3A008',
+          500: '#C27803',
+          600: '#9F580A',
+          700: '#8E4B10',
+          800: '#723B13',
+          900: '#633112'
+        },
+        green: {
+          50: '#F3FAF7',
+          100: '#DEF7EC',
+          200: '#BCF0DA',
+          300: '#84E1BC',
+          400: '#31C48D',
+          500: '#0E9F6E',
+          600: '#057A55',
+          700: '#046C4E',
+          800: '#03543F',
+          900: '#014737'
+        },
+        teal: {
+          50: '#EDFAFA',
+          100: '#D5F5F6',
+          200: '#AFECEF',
+          300: '#7EDCE2',
+          400: '#16BDCA',
+          500: '#0694A2',
+          600: '#047481',
+          700: '#036672',
+          800: '#05505C',
+          900: '#014451'
+        },
+        blue: {
+          50: '#EBF5FF',
+          100: '#E1EFFE',
+          200: '#C3DDFD',
+          300: '#A4CAFE',
+          400: '#76A9FA',
+          500: '#3F83F8',
+          600: '#1C64F2',
+          700: '#1A56DB',
+          800: '#1E429F',
+          900: '#233876'
+        },
+        indigo: {
+          50: '#F0F5FF',
+          100: '#E5EDFF',
+          200: '#CDDBFE',
+          300: '#B4C6FC',
+          400: '#8DA2FB',
+          500: '#6875F5',
+          600: '#5850EC',
+          700: '#5145CD',
+          800: '#42389D',
+          900: '#362F78'
+        },
+        purple: {
+          50: '#F6F5FF',
+          100: '#EDEBFE',
+          200: '#DCD7FE',
+          300: '#CABFFD',
+          400: '#AC94FA',
+          500: '#9061F9',
+          600: '#7E3AF2',
+          700: '#6C2BD9',
+          800: '#5521B5',
+          900: '#4A1D96'
+        },
+        pink: {
+          50: '#FDF2F8',
+          100: '#FCE8F3',
+          200: '#FAD1E8',
+          300: '#F8B4D9',
+          400: '#F17EB8',
+          500: '#E74694',
+          600: '#D61F69',
+          700: '#BF125D',
+          800: '#99154B',
+          900: '#751A3D'
+        }
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 472:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = {
+  content: ["./layouts/**/*.html", "./content/**/*.md", "./content/**/*.html", "./src/**/*.js"],
+  // prefix: 'fb-',
+  safelist: ['w-64', 'w-1/2', 'rounded-l-lg', 'rounded-r-lg', 'bg-gray-200', 'grid-cols-4', 'grid-cols-7', 'h-6', 'leading-6', 'h-9', 'leading-9', 'shadow-lg'],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      // sidebar mobile fix
+      maxWidth: {
+        '2xs': '16rem',
+        '8xl': '90rem'
+      },
+      fontFamily: {
+        'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+        'body': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+        'mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
+      },
+      fontSize: {
+        '2xs': '0.625rem'
+      }
+    }
+  },
+  variants: {
+    extend: {
+      backgroundColor: ['active']
+    }
+  },
+  plugins: [__webpack_require__(624)]
+};
+
+/***/ }),
+
+/***/ 949:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var shorterNames = __webpack_require__(461);
+var REGEX = {
+  whitespace: /\s+/g,
+  urlHexPairs: /%[\dA-F]{2}/g,
+  quotes: /"/g,
+}
+
+function collapseWhitespace(str) {
+  return str.trim().replace(REGEX.whitespace, ' ');
+}
+
+function dataURIPayload(string) {
+  return encodeURIComponent(string)
+    .replace(REGEX.urlHexPairs, specialHexEncode);
+}
+
+// `#` gets converted to `%23`, so quite a few CSS named colors are shorter than
+// their equivalent URL-encoded hex codes.
+function colorCodeToShorterNames(string) {
+  Object.keys(shorterNames).forEach(function(key) {
+    if (shorterNames[key].test(string)) {
+      string = string.replace(shorterNames[key], key);
+    }
+  });
+
+  return string;
+}
+
+function specialHexEncode(match) {
+  switch (match) { // Browsers tolerate these characters, and they're frequent
+    case '%20': return ' ';
+    case '%3D': return '=';
+    case '%3A': return ':';
+    case '%2F': return '/';
+    default: return match.toLowerCase(); // compresses better
+  }
+}
+
+function svgToTinyDataUri(svgString) {
+  if (typeof svgString !== 'string') {
+    throw new TypeError('Expected a string, but received ' + typeof svgString);
+  }
+  // Strip the Byte-Order Mark if the SVG has one
+  if (svgString.charCodeAt(0) === 0xfeff) { svgString = svgString.slice(1) }
+
+  var body = colorCodeToShorterNames(collapseWhitespace(svgString))
+    .replace(REGEX.quotes, "'");
+  return 'data:image/svg+xml,' + dataURIPayload(body);
+}
+
+svgToTinyDataUri.toSrcset = function toSrcset(svgString) {
+  return svgToTinyDataUri(svgString).replace(/ /g, '%20');
+}
+
+module.exports = svgToTinyDataUri;
+
+
+/***/ }),
+
+/***/ 461:
+/***/ ((module) => {
+
+module.exports = {
+  aqua: /#00ffff(ff)?(?!\w)|#0ff(f)?(?!\w)/gi,
+  azure: /#f0ffff(ff)?(?!\w)/gi,
+  beige: /#f5f5dc(ff)?(?!\w)/gi,
+  bisque: /#ffe4c4(ff)?(?!\w)/gi,
+  black: /#000000(ff)?(?!\w)|#000(f)?(?!\w)/gi,
+  blue: /#0000ff(ff)?(?!\w)|#00f(f)?(?!\w)/gi,
+  brown: /#a52a2a(ff)?(?!\w)/gi,
+  coral: /#ff7f50(ff)?(?!\w)/gi,
+  cornsilk: /#fff8dc(ff)?(?!\w)/gi,
+  crimson: /#dc143c(ff)?(?!\w)/gi,
+  cyan: /#00ffff(ff)?(?!\w)|#0ff(f)?(?!\w)/gi,
+  darkblue: /#00008b(ff)?(?!\w)/gi,
+  darkcyan: /#008b8b(ff)?(?!\w)/gi,
+  darkgrey: /#a9a9a9(ff)?(?!\w)/gi,
+  darkred: /#8b0000(ff)?(?!\w)/gi,
+  deeppink: /#ff1493(ff)?(?!\w)/gi,
+  dimgrey: /#696969(ff)?(?!\w)/gi,
+  gold: /#ffd700(ff)?(?!\w)/gi,
+  green: /#008000(ff)?(?!\w)/gi,
+  grey: /#808080(ff)?(?!\w)/gi,
+  honeydew: /#f0fff0(ff)?(?!\w)/gi,
+  hotpink: /#ff69b4(ff)?(?!\w)/gi,
+  indigo: /#4b0082(ff)?(?!\w)/gi,
+  ivory: /#fffff0(ff)?(?!\w)/gi,
+  khaki: /#f0e68c(ff)?(?!\w)/gi,
+  lavender: /#e6e6fa(ff)?(?!\w)/gi,
+  lime: /#00ff00(ff)?(?!\w)|#0f0(f)?(?!\w)/gi,
+  linen: /#faf0e6(ff)?(?!\w)/gi,
+  maroon: /#800000(ff)?(?!\w)/gi,
+  moccasin: /#ffe4b5(ff)?(?!\w)/gi,
+  navy: /#000080(ff)?(?!\w)/gi,
+  oldlace: /#fdf5e6(ff)?(?!\w)/gi,
+  olive: /#808000(ff)?(?!\w)/gi,
+  orange: /#ffa500(ff)?(?!\w)/gi,
+  orchid: /#da70d6(ff)?(?!\w)/gi,
+  peru: /#cd853f(ff)?(?!\w)/gi,
+  pink: /#ffc0cb(ff)?(?!\w)/gi,
+  plum: /#dda0dd(ff)?(?!\w)/gi,
+  purple: /#800080(ff)?(?!\w)/gi,
+  red: /#ff0000(ff)?(?!\w)|#f00(f)?(?!\w)/gi,
+  salmon: /#fa8072(ff)?(?!\w)/gi,
+  seagreen: /#2e8b57(ff)?(?!\w)/gi,
+  seashell: /#fff5ee(ff)?(?!\w)/gi,
+  sienna: /#a0522d(ff)?(?!\w)/gi,
+  silver: /#c0c0c0(ff)?(?!\w)/gi,
+  skyblue: /#87ceeb(ff)?(?!\w)/gi,
+  snow: /#fffafa(ff)?(?!\w)/gi,
+  tan: /#d2b48c(ff)?(?!\w)/gi,
+  teal: /#008080(ff)?(?!\w)/gi,
+  thistle: /#d8bfd8(ff)?(?!\w)/gi,
+  tomato: /#ff6347(ff)?(?!\w)/gi,
+  violet: /#ee82ee(ff)?(?!\w)/gi,
+  wheat: /#f5deb3(ff)?(?!\w)/gi,
+  white: /#ffffff(ff)?(?!\w)|#fff(f)?(?!\w)/gi,
+};
+
+
+/***/ }),
+
+/***/ 122:
+/***/ ((module) => {
+
+var x=String;
+var create=function() {return {isColorSupported:false,reset:x,bold:x,dim:x,italic:x,underline:x,inverse:x,hidden:x,strikethrough:x,black:x,red:x,green:x,yellow:x,blue:x,magenta:x,cyan:x,white:x,gray:x,bgBlack:x,bgRed:x,bgGreen:x,bgYellow:x,bgBlue:x,bgMagenta:x,bgCyan:x,bgWhite:x}};
+module.exports=create();
+module.exports.createColors = create;
+
+
+/***/ }),
+
+/***/ 863:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+let colors = __webpack_require__(866)
+module.exports = (colors.__esModule ? colors : { default: colors }).default
+
+
+/***/ }),
+
+/***/ 701:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+let defaultTheme = __webpack_require__(61)
+module.exports = (defaultTheme.__esModule ? defaultTheme : { default: defaultTheme }).default
+
+
+/***/ }),
+
+/***/ 866:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+exports["default"] = void 0;
+var _log = _interopRequireDefault(__webpack_require__(941));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+function warn({ version , from , to  }) {
+    _log.default.warn(`${from}-color-renamed`, [
+        `As of Tailwind CSS ${version}, \`${from}\` has been renamed to \`${to}\`.`,
+        "Update your configuration file to silence this warning.", 
+    ]);
+}
+var _default = {
+    inherit: "inherit",
+    current: "currentColor",
+    transparent: "transparent",
+    black: "#000",
+    white: "#fff",
+    slate: {
+        50: "#f8fafc",
+        100: "#f1f5f9",
+        200: "#e2e8f0",
+        300: "#cbd5e1",
+        400: "#94a3b8",
+        500: "#64748b",
+        600: "#475569",
+        700: "#334155",
+        800: "#1e293b",
+        900: "#0f172a"
+    },
+    gray: {
+        50: "#f9fafb",
+        100: "#f3f4f6",
+        200: "#e5e7eb",
+        300: "#d1d5db",
+        400: "#9ca3af",
+        500: "#6b7280",
+        600: "#4b5563",
+        700: "#374151",
+        800: "#1f2937",
+        900: "#111827"
+    },
+    zinc: {
+        50: "#fafafa",
+        100: "#f4f4f5",
+        200: "#e4e4e7",
+        300: "#d4d4d8",
+        400: "#a1a1aa",
+        500: "#71717a",
+        600: "#52525b",
+        700: "#3f3f46",
+        800: "#27272a",
+        900: "#18181b"
+    },
+    neutral: {
+        50: "#fafafa",
+        100: "#f5f5f5",
+        200: "#e5e5e5",
+        300: "#d4d4d4",
+        400: "#a3a3a3",
+        500: "#737373",
+        600: "#525252",
+        700: "#404040",
+        800: "#262626",
+        900: "#171717"
+    },
+    stone: {
+        50: "#fafaf9",
+        100: "#f5f5f4",
+        200: "#e7e5e4",
+        300: "#d6d3d1",
+        400: "#a8a29e",
+        500: "#78716c",
+        600: "#57534e",
+        700: "#44403c",
+        800: "#292524",
+        900: "#1c1917"
+    },
+    red: {
+        50: "#fef2f2",
+        100: "#fee2e2",
+        200: "#fecaca",
+        300: "#fca5a5",
+        400: "#f87171",
+        500: "#ef4444",
+        600: "#dc2626",
+        700: "#b91c1c",
+        800: "#991b1b",
+        900: "#7f1d1d"
+    },
+    orange: {
+        50: "#fff7ed",
+        100: "#ffedd5",
+        200: "#fed7aa",
+        300: "#fdba74",
+        400: "#fb923c",
+        500: "#f97316",
+        600: "#ea580c",
+        700: "#c2410c",
+        800: "#9a3412",
+        900: "#7c2d12"
+    },
+    amber: {
+        50: "#fffbeb",
+        100: "#fef3c7",
+        200: "#fde68a",
+        300: "#fcd34d",
+        400: "#fbbf24",
+        500: "#f59e0b",
+        600: "#d97706",
+        700: "#b45309",
+        800: "#92400e",
+        900: "#78350f"
+    },
+    yellow: {
+        50: "#fefce8",
+        100: "#fef9c3",
+        200: "#fef08a",
+        300: "#fde047",
+        400: "#facc15",
+        500: "#eab308",
+        600: "#ca8a04",
+        700: "#a16207",
+        800: "#854d0e",
+        900: "#713f12"
+    },
+    lime: {
+        50: "#f7fee7",
+        100: "#ecfccb",
+        200: "#d9f99d",
+        300: "#bef264",
+        400: "#a3e635",
+        500: "#84cc16",
+        600: "#65a30d",
+        700: "#4d7c0f",
+        800: "#3f6212",
+        900: "#365314"
+    },
+    green: {
+        50: "#f0fdf4",
+        100: "#dcfce7",
+        200: "#bbf7d0",
+        300: "#86efac",
+        400: "#4ade80",
+        500: "#22c55e",
+        600: "#16a34a",
+        700: "#15803d",
+        800: "#166534",
+        900: "#14532d"
+    },
+    emerald: {
+        50: "#ecfdf5",
+        100: "#d1fae5",
+        200: "#a7f3d0",
+        300: "#6ee7b7",
+        400: "#34d399",
+        500: "#10b981",
+        600: "#059669",
+        700: "#047857",
+        800: "#065f46",
+        900: "#064e3b"
+    },
+    teal: {
+        50: "#f0fdfa",
+        100: "#ccfbf1",
+        200: "#99f6e4",
+        300: "#5eead4",
+        400: "#2dd4bf",
+        500: "#14b8a6",
+        600: "#0d9488",
+        700: "#0f766e",
+        800: "#115e59",
+        900: "#134e4a"
+    },
+    cyan: {
+        50: "#ecfeff",
+        100: "#cffafe",
+        200: "#a5f3fc",
+        300: "#67e8f9",
+        400: "#22d3ee",
+        500: "#06b6d4",
+        600: "#0891b2",
+        700: "#0e7490",
+        800: "#155e75",
+        900: "#164e63"
+    },
+    sky: {
+        50: "#f0f9ff",
+        100: "#e0f2fe",
+        200: "#bae6fd",
+        300: "#7dd3fc",
+        400: "#38bdf8",
+        500: "#0ea5e9",
+        600: "#0284c7",
+        700: "#0369a1",
+        800: "#075985",
+        900: "#0c4a6e"
+    },
+    blue: {
+        50: "#eff6ff",
+        100: "#dbeafe",
+        200: "#bfdbfe",
+        300: "#93c5fd",
+        400: "#60a5fa",
+        500: "#3b82f6",
+        600: "#2563eb",
+        700: "#1d4ed8",
+        800: "#1e40af",
+        900: "#1e3a8a"
+    },
+    indigo: {
+        50: "#eef2ff",
+        100: "#e0e7ff",
+        200: "#c7d2fe",
+        300: "#a5b4fc",
+        400: "#818cf8",
+        500: "#6366f1",
+        600: "#4f46e5",
+        700: "#4338ca",
+        800: "#3730a3",
+        900: "#312e81"
+    },
+    violet: {
+        50: "#f5f3ff",
+        100: "#ede9fe",
+        200: "#ddd6fe",
+        300: "#c4b5fd",
+        400: "#a78bfa",
+        500: "#8b5cf6",
+        600: "#7c3aed",
+        700: "#6d28d9",
+        800: "#5b21b6",
+        900: "#4c1d95"
+    },
+    purple: {
+        50: "#faf5ff",
+        100: "#f3e8ff",
+        200: "#e9d5ff",
+        300: "#d8b4fe",
+        400: "#c084fc",
+        500: "#a855f7",
+        600: "#9333ea",
+        700: "#7e22ce",
+        800: "#6b21a8",
+        900: "#581c87"
+    },
+    fuchsia: {
+        50: "#fdf4ff",
+        100: "#fae8ff",
+        200: "#f5d0fe",
+        300: "#f0abfc",
+        400: "#e879f9",
+        500: "#d946ef",
+        600: "#c026d3",
+        700: "#a21caf",
+        800: "#86198f",
+        900: "#701a75"
+    },
+    pink: {
+        50: "#fdf2f8",
+        100: "#fce7f3",
+        200: "#fbcfe8",
+        300: "#f9a8d4",
+        400: "#f472b6",
+        500: "#ec4899",
+        600: "#db2777",
+        700: "#be185d",
+        800: "#9d174d",
+        900: "#831843"
+    },
+    rose: {
+        50: "#fff1f2",
+        100: "#ffe4e6",
+        200: "#fecdd3",
+        300: "#fda4af",
+        400: "#fb7185",
+        500: "#f43f5e",
+        600: "#e11d48",
+        700: "#be123c",
+        800: "#9f1239",
+        900: "#881337"
+    },
+    get lightBlue () {
+        warn({
+            version: "v2.2",
+            from: "lightBlue",
+            to: "sky"
+        });
+        return this.sky;
+    },
+    get warmGray () {
+        warn({
+            version: "v3.0",
+            from: "warmGray",
+            to: "stone"
+        });
+        return this.stone;
+    },
+    get trueGray () {
+        warn({
+            version: "v3.0",
+            from: "trueGray",
+            to: "neutral"
+        });
+        return this.neutral;
+    },
+    get coolGray () {
+        warn({
+            version: "v3.0",
+            from: "coolGray",
+            to: "gray"
+        });
+        return this.gray;
+    },
+    get blueGray () {
+        warn({
+            version: "v3.0",
+            from: "blueGray",
+            to: "slate"
+        });
+        return this.slate;
+    }
+};
+exports["default"] = _default;
+
+
+/***/ }),
+
+/***/ 622:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+exports["default"] = void 0;
+var _createPlugin = _interopRequireDefault(__webpack_require__(313));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+var _default = _createPlugin.default;
+exports["default"] = _default;
+
+
+/***/ }),
+
+/***/ 61:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+exports["default"] = void 0;
+var _cloneDeep = __webpack_require__(227);
+var _defaultConfigStub = _interopRequireDefault(__webpack_require__(504));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+var _default = (0, _cloneDeep).cloneDeep(_defaultConfigStub.default.theme);
+exports["default"] = _default;
+
+
+/***/ }),
+
+/***/ 227:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+exports.cloneDeep = cloneDeep;
+function cloneDeep(value) {
+    if (Array.isArray(value)) {
+        return value.map((child)=>cloneDeep(child));
+    }
+    if (typeof value === "object" && value !== null) {
+        return Object.fromEntries(Object.entries(value).map(([k, v])=>[
+                k,
+                cloneDeep(v)
+            ]));
+    }
+    return value;
+}
+
+
+/***/ }),
+
+/***/ 313:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+exports["default"] = void 0;
+function createPlugin(plugin, config) {
+    return {
+        handler: plugin,
+        config
+    };
+}
+createPlugin.withOptions = function(pluginFunction, configFunction = ()=>({})) {
+    const optionsFunction = function(options) {
+        return {
+            __options: options,
+            handler: pluginFunction(options),
+            config: configFunction(options)
+        };
+    };
+    optionsFunction.__isOptionsFunction = true;
+    // Expose plugin dependencies so that `object-hash` returns a different
+    // value if anything here changes, to ensure a rebuild is triggered.
+    optionsFunction.__pluginFunction = pluginFunction;
+    optionsFunction.__configFunction = configFunction;
+    return optionsFunction;
+};
+var _default = createPlugin;
+exports["default"] = _default;
+
+
+/***/ }),
+
+/***/ 941:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+exports.dim = dim;
+exports["default"] = void 0;
+var _picocolors = _interopRequireDefault(__webpack_require__(122));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+let alreadyShown = new Set();
+function log(type, messages, key) {
+    if (typeof process !== "undefined" && process.env.JEST_WORKER_ID) return;
+    if (key && alreadyShown.has(key)) return;
+    if (key) alreadyShown.add(key);
+    console.warn("");
+    messages.forEach((message)=>console.warn(type, "-", message));
+}
+function dim(input) {
+    return _picocolors.default.dim(input);
+}
+var _default = {
+    info (key, messages) {
+        log(_picocolors.default.bold(_picocolors.default.cyan("info")), ...Array.isArray(key) ? [
+            key
+        ] : [
+            messages,
+            key
+        ]);
+    },
+    warn (key, messages) {
+        log(_picocolors.default.bold(_picocolors.default.yellow("warn")), ...Array.isArray(key) ? [
+            key
+        ] : [
+            messages,
+            key
+        ]);
+    },
+    risk (key, messages) {
+        log(_picocolors.default.bold(_picocolors.default.magenta("risk")), ...Array.isArray(key) ? [
+            key
+        ] : [
+            messages,
+            key
+        ]);
+    }
+};
+exports["default"] = _default;
+
+
+/***/ }),
+
+/***/ 456:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+let createPlugin = __webpack_require__(622)
+module.exports = (createPlugin.__esModule ? createPlugin : { default: createPlugin }).default
+
+
+/***/ }),
+
+/***/ 504:
+/***/ ((module) => {
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [],
+  presets: [],
+  darkMode: 'media', // or 'class'
+  theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
+    colors: ({ colors }) => ({
+      inherit: colors.inherit,
+      current: colors.current,
+      transparent: colors.transparent,
+      black: colors.black,
+      white: colors.white,
+      slate: colors.slate,
+      gray: colors.gray,
+      zinc: colors.zinc,
+      neutral: colors.neutral,
+      stone: colors.stone,
+      red: colors.red,
+      orange: colors.orange,
+      amber: colors.amber,
+      yellow: colors.yellow,
+      lime: colors.lime,
+      green: colors.green,
+      emerald: colors.emerald,
+      teal: colors.teal,
+      cyan: colors.cyan,
+      sky: colors.sky,
+      blue: colors.blue,
+      indigo: colors.indigo,
+      violet: colors.violet,
+      purple: colors.purple,
+      fuchsia: colors.fuchsia,
+      pink: colors.pink,
+      rose: colors.rose,
+    }),
+    columns: {
+      auto: 'auto',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
+      5: '5',
+      6: '6',
+      7: '7',
+      8: '8',
+      9: '9',
+      10: '10',
+      11: '11',
+      12: '12',
+      '3xs': '16rem',
+      '2xs': '18rem',
+      xs: '20rem',
+      sm: '24rem',
+      md: '28rem',
+      lg: '32rem',
+      xl: '36rem',
+      '2xl': '42rem',
+      '3xl': '48rem',
+      '4xl': '56rem',
+      '5xl': '64rem',
+      '6xl': '72rem',
+      '7xl': '80rem',
+    },
+    spacing: {
+      px: '1px',
+      0: '0px',
+      0.5: '0.125rem',
+      1: '0.25rem',
+      1.5: '0.375rem',
+      2: '0.5rem',
+      2.5: '0.625rem',
+      3: '0.75rem',
+      3.5: '0.875rem',
+      4: '1rem',
+      5: '1.25rem',
+      6: '1.5rem',
+      7: '1.75rem',
+      8: '2rem',
+      9: '2.25rem',
+      10: '2.5rem',
+      11: '2.75rem',
+      12: '3rem',
+      14: '3.5rem',
+      16: '4rem',
+      20: '5rem',
+      24: '6rem',
+      28: '7rem',
+      32: '8rem',
+      36: '9rem',
+      40: '10rem',
+      44: '11rem',
+      48: '12rem',
+      52: '13rem',
+      56: '14rem',
+      60: '15rem',
+      64: '16rem',
+      72: '18rem',
+      80: '20rem',
+      96: '24rem',
+    },
+    animation: {
+      none: 'none',
+      spin: 'spin 1s linear infinite',
+      ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
+      pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      bounce: 'bounce 1s infinite',
+    },
+    aspectRatio: {
+      auto: 'auto',
+      square: '1 / 1',
+      video: '16 / 9',
+    },
+    backdropBlur: ({ theme }) => theme('blur'),
+    backdropBrightness: ({ theme }) => theme('brightness'),
+    backdropContrast: ({ theme }) => theme('contrast'),
+    backdropGrayscale: ({ theme }) => theme('grayscale'),
+    backdropHueRotate: ({ theme }) => theme('hueRotate'),
+    backdropInvert: ({ theme }) => theme('invert'),
+    backdropOpacity: ({ theme }) => theme('opacity'),
+    backdropSaturate: ({ theme }) => theme('saturate'),
+    backdropSepia: ({ theme }) => theme('sepia'),
+    backgroundColor: ({ theme }) => theme('colors'),
+    backgroundImage: {
+      none: 'none',
+      'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
+      'gradient-to-tr': 'linear-gradient(to top right, var(--tw-gradient-stops))',
+      'gradient-to-r': 'linear-gradient(to right, var(--tw-gradient-stops))',
+      'gradient-to-br': 'linear-gradient(to bottom right, var(--tw-gradient-stops))',
+      'gradient-to-b': 'linear-gradient(to bottom, var(--tw-gradient-stops))',
+      'gradient-to-bl': 'linear-gradient(to bottom left, var(--tw-gradient-stops))',
+      'gradient-to-l': 'linear-gradient(to left, var(--tw-gradient-stops))',
+      'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))',
+    },
+    backgroundOpacity: ({ theme }) => theme('opacity'),
+    backgroundPosition: {
+      bottom: 'bottom',
+      center: 'center',
+      left: 'left',
+      'left-bottom': 'left bottom',
+      'left-top': 'left top',
+      right: 'right',
+      'right-bottom': 'right bottom',
+      'right-top': 'right top',
+      top: 'top',
+    },
+    backgroundSize: {
+      auto: 'auto',
+      cover: 'cover',
+      contain: 'contain',
+    },
+    blur: {
+      0: '0',
+      none: '0',
+      sm: '4px',
+      DEFAULT: '8px',
+      md: '12px',
+      lg: '16px',
+      xl: '24px',
+      '2xl': '40px',
+      '3xl': '64px',
+    },
+    brightness: {
+      0: '0',
+      50: '.5',
+      75: '.75',
+      90: '.9',
+      95: '.95',
+      100: '1',
+      105: '1.05',
+      110: '1.1',
+      125: '1.25',
+      150: '1.5',
+      200: '2',
+    },
+    borderColor: ({ theme }) => ({
+      ...theme('colors'),
+      DEFAULT: theme('colors.gray.200', 'currentColor'),
+    }),
+    borderOpacity: ({ theme }) => theme('opacity'),
+    borderRadius: {
+      none: '0px',
+      sm: '0.125rem',
+      DEFAULT: '0.25rem',
+      md: '0.375rem',
+      lg: '0.5rem',
+      xl: '0.75rem',
+      '2xl': '1rem',
+      '3xl': '1.5rem',
+      full: '9999px',
+    },
+    borderSpacing: ({ theme }) => ({
+      ...theme('spacing'),
+    }),
+    borderWidth: {
+      DEFAULT: '1px',
+      0: '0px',
+      2: '2px',
+      4: '4px',
+      8: '8px',
+    },
+    boxShadow: {
+      sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+      DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+      md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+      xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+      '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+      inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+      none: 'none',
+    },
+    boxShadowColor: ({ theme }) => theme('colors'),
+    caretColor: ({ theme }) => theme('colors'),
+    accentColor: ({ theme }) => ({
+      ...theme('colors'),
+      auto: 'auto',
+    }),
+    contrast: {
+      0: '0',
+      50: '.5',
+      75: '.75',
+      100: '1',
+      125: '1.25',
+      150: '1.5',
+      200: '2',
+    },
+    container: {},
+    content: {
+      none: 'none',
+    },
+    cursor: {
+      auto: 'auto',
+      default: 'default',
+      pointer: 'pointer',
+      wait: 'wait',
+      text: 'text',
+      move: 'move',
+      help: 'help',
+      'not-allowed': 'not-allowed',
+      none: 'none',
+      'context-menu': 'context-menu',
+      progress: 'progress',
+      cell: 'cell',
+      crosshair: 'crosshair',
+      'vertical-text': 'vertical-text',
+      alias: 'alias',
+      copy: 'copy',
+      'no-drop': 'no-drop',
+      grab: 'grab',
+      grabbing: 'grabbing',
+      'all-scroll': 'all-scroll',
+      'col-resize': 'col-resize',
+      'row-resize': 'row-resize',
+      'n-resize': 'n-resize',
+      'e-resize': 'e-resize',
+      's-resize': 's-resize',
+      'w-resize': 'w-resize',
+      'ne-resize': 'ne-resize',
+      'nw-resize': 'nw-resize',
+      'se-resize': 'se-resize',
+      'sw-resize': 'sw-resize',
+      'ew-resize': 'ew-resize',
+      'ns-resize': 'ns-resize',
+      'nesw-resize': 'nesw-resize',
+      'nwse-resize': 'nwse-resize',
+      'zoom-in': 'zoom-in',
+      'zoom-out': 'zoom-out',
+    },
+    divideColor: ({ theme }) => theme('borderColor'),
+    divideOpacity: ({ theme }) => theme('borderOpacity'),
+    divideWidth: ({ theme }) => theme('borderWidth'),
+    dropShadow: {
+      sm: '0 1px 1px rgb(0 0 0 / 0.05)',
+      DEFAULT: ['0 1px 2px rgb(0 0 0 / 0.1)', '0 1px 1px rgb(0 0 0 / 0.06)'],
+      md: ['0 4px 3px rgb(0 0 0 / 0.07)', '0 2px 2px rgb(0 0 0 / 0.06)'],
+      lg: ['0 10px 8px rgb(0 0 0 / 0.04)', '0 4px 3px rgb(0 0 0 / 0.1)'],
+      xl: ['0 20px 13px rgb(0 0 0 / 0.03)', '0 8px 5px rgb(0 0 0 / 0.08)'],
+      '2xl': '0 25px 25px rgb(0 0 0 / 0.15)',
+      none: '0 0 #0000',
+    },
+    fill: ({ theme }) => theme('colors'),
+    grayscale: {
+      0: '0',
+      DEFAULT: '100%',
+    },
+    hueRotate: {
+      0: '0deg',
+      15: '15deg',
+      30: '30deg',
+      60: '60deg',
+      90: '90deg',
+      180: '180deg',
+    },
+    invert: {
+      0: '0',
+      DEFAULT: '100%',
+    },
+    flex: {
+      1: '1 1 0%',
+      auto: '1 1 auto',
+      initial: '0 1 auto',
+      none: 'none',
+    },
+    flexBasis: ({ theme }) => ({
+      auto: 'auto',
+      ...theme('spacing'),
+      '1/2': '50%',
+      '1/3': '33.333333%',
+      '2/3': '66.666667%',
+      '1/4': '25%',
+      '2/4': '50%',
+      '3/4': '75%',
+      '1/5': '20%',
+      '2/5': '40%',
+      '3/5': '60%',
+      '4/5': '80%',
+      '1/6': '16.666667%',
+      '2/6': '33.333333%',
+      '3/6': '50%',
+      '4/6': '66.666667%',
+      '5/6': '83.333333%',
+      '1/12': '8.333333%',
+      '2/12': '16.666667%',
+      '3/12': '25%',
+      '4/12': '33.333333%',
+      '5/12': '41.666667%',
+      '6/12': '50%',
+      '7/12': '58.333333%',
+      '8/12': '66.666667%',
+      '9/12': '75%',
+      '10/12': '83.333333%',
+      '11/12': '91.666667%',
+      full: '100%',
+    }),
+    flexGrow: {
+      0: '0',
+      DEFAULT: '1',
+    },
+    flexShrink: {
+      0: '0',
+      DEFAULT: '1',
+    },
+    fontFamily: {
+      sans: [
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+      ],
+      serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      mono: [
+        'ui-monospace',
+        'SFMono-Regular',
+        'Menlo',
+        'Monaco',
+        'Consolas',
+        '"Liberation Mono"',
+        '"Courier New"',
+        'monospace',
+      ],
+    },
+    fontSize: {
+      xs: ['0.75rem', { lineHeight: '1rem' }],
+      sm: ['0.875rem', { lineHeight: '1.25rem' }],
+      base: ['1rem', { lineHeight: '1.5rem' }],
+      lg: ['1.125rem', { lineHeight: '1.75rem' }],
+      xl: ['1.25rem', { lineHeight: '1.75rem' }],
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],
+      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+      '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+      '5xl': ['3rem', { lineHeight: '1' }],
+      '6xl': ['3.75rem', { lineHeight: '1' }],
+      '7xl': ['4.5rem', { lineHeight: '1' }],
+      '8xl': ['6rem', { lineHeight: '1' }],
+      '9xl': ['8rem', { lineHeight: '1' }],
+    },
+    fontWeight: {
+      thin: '100',
+      extralight: '200',
+      light: '300',
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+      extrabold: '800',
+      black: '900',
+    },
+    gap: ({ theme }) => theme('spacing'),
+    gradientColorStops: ({ theme }) => theme('colors'),
+    gridAutoColumns: {
+      auto: 'auto',
+      min: 'min-content',
+      max: 'max-content',
+      fr: 'minmax(0, 1fr)',
+    },
+    gridAutoRows: {
+      auto: 'auto',
+      min: 'min-content',
+      max: 'max-content',
+      fr: 'minmax(0, 1fr)',
+    },
+    gridColumn: {
+      auto: 'auto',
+      'span-1': 'span 1 / span 1',
+      'span-2': 'span 2 / span 2',
+      'span-3': 'span 3 / span 3',
+      'span-4': 'span 4 / span 4',
+      'span-5': 'span 5 / span 5',
+      'span-6': 'span 6 / span 6',
+      'span-7': 'span 7 / span 7',
+      'span-8': 'span 8 / span 8',
+      'span-9': 'span 9 / span 9',
+      'span-10': 'span 10 / span 10',
+      'span-11': 'span 11 / span 11',
+      'span-12': 'span 12 / span 12',
+      'span-full': '1 / -1',
+    },
+    gridColumnEnd: {
+      auto: 'auto',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
+      5: '5',
+      6: '6',
+      7: '7',
+      8: '8',
+      9: '9',
+      10: '10',
+      11: '11',
+      12: '12',
+      13: '13',
+    },
+    gridColumnStart: {
+      auto: 'auto',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
+      5: '5',
+      6: '6',
+      7: '7',
+      8: '8',
+      9: '9',
+      10: '10',
+      11: '11',
+      12: '12',
+      13: '13',
+    },
+    gridRow: {
+      auto: 'auto',
+      'span-1': 'span 1 / span 1',
+      'span-2': 'span 2 / span 2',
+      'span-3': 'span 3 / span 3',
+      'span-4': 'span 4 / span 4',
+      'span-5': 'span 5 / span 5',
+      'span-6': 'span 6 / span 6',
+      'span-full': '1 / -1',
+    },
+    gridRowStart: {
+      auto: 'auto',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
+      5: '5',
+      6: '6',
+      7: '7',
+    },
+    gridRowEnd: {
+      auto: 'auto',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
+      5: '5',
+      6: '6',
+      7: '7',
+    },
+    gridTemplateColumns: {
+      none: 'none',
+      1: 'repeat(1, minmax(0, 1fr))',
+      2: 'repeat(2, minmax(0, 1fr))',
+      3: 'repeat(3, minmax(0, 1fr))',
+      4: 'repeat(4, minmax(0, 1fr))',
+      5: 'repeat(5, minmax(0, 1fr))',
+      6: 'repeat(6, minmax(0, 1fr))',
+      7: 'repeat(7, minmax(0, 1fr))',
+      8: 'repeat(8, minmax(0, 1fr))',
+      9: 'repeat(9, minmax(0, 1fr))',
+      10: 'repeat(10, minmax(0, 1fr))',
+      11: 'repeat(11, minmax(0, 1fr))',
+      12: 'repeat(12, minmax(0, 1fr))',
+    },
+    gridTemplateRows: {
+      none: 'none',
+      1: 'repeat(1, minmax(0, 1fr))',
+      2: 'repeat(2, minmax(0, 1fr))',
+      3: 'repeat(3, minmax(0, 1fr))',
+      4: 'repeat(4, minmax(0, 1fr))',
+      5: 'repeat(5, minmax(0, 1fr))',
+      6: 'repeat(6, minmax(0, 1fr))',
+    },
+    height: ({ theme }) => ({
+      auto: 'auto',
+      ...theme('spacing'),
+      '1/2': '50%',
+      '1/3': '33.333333%',
+      '2/3': '66.666667%',
+      '1/4': '25%',
+      '2/4': '50%',
+      '3/4': '75%',
+      '1/5': '20%',
+      '2/5': '40%',
+      '3/5': '60%',
+      '4/5': '80%',
+      '1/6': '16.666667%',
+      '2/6': '33.333333%',
+      '3/6': '50%',
+      '4/6': '66.666667%',
+      '5/6': '83.333333%',
+      full: '100%',
+      screen: '100vh',
+      min: 'min-content',
+      max: 'max-content',
+      fit: 'fit-content',
+    }),
+    inset: ({ theme }) => ({
+      auto: 'auto',
+      ...theme('spacing'),
+      '1/2': '50%',
+      '1/3': '33.333333%',
+      '2/3': '66.666667%',
+      '1/4': '25%',
+      '2/4': '50%',
+      '3/4': '75%',
+      full: '100%',
+    }),
+    keyframes: {
+      spin: {
+        to: {
+          transform: 'rotate(360deg)',
+        },
+      },
+      ping: {
+        '75%, 100%': {
+          transform: 'scale(2)',
+          opacity: '0',
+        },
+      },
+      pulse: {
+        '50%': {
+          opacity: '.5',
+        },
+      },
+      bounce: {
+        '0%, 100%': {
+          transform: 'translateY(-25%)',
+          animationTimingFunction: 'cubic-bezier(0.8,0,1,1)',
+        },
+        '50%': {
+          transform: 'none',
+          animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
+        },
+      },
+    },
+    letterSpacing: {
+      tighter: '-0.05em',
+      tight: '-0.025em',
+      normal: '0em',
+      wide: '0.025em',
+      wider: '0.05em',
+      widest: '0.1em',
+    },
+    lineHeight: {
+      none: '1',
+      tight: '1.25',
+      snug: '1.375',
+      normal: '1.5',
+      relaxed: '1.625',
+      loose: '2',
+      3: '.75rem',
+      4: '1rem',
+      5: '1.25rem',
+      6: '1.5rem',
+      7: '1.75rem',
+      8: '2rem',
+      9: '2.25rem',
+      10: '2.5rem',
+    },
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+    },
+    margin: ({ theme }) => ({
+      auto: 'auto',
+      ...theme('spacing'),
+    }),
+    maxHeight: ({ theme }) => ({
+      ...theme('spacing'),
+      full: '100%',
+      screen: '100vh',
+      min: 'min-content',
+      max: 'max-content',
+      fit: 'fit-content',
+    }),
+    maxWidth: ({ theme, breakpoints }) => ({
+      none: 'none',
+      0: '0rem',
+      xs: '20rem',
+      sm: '24rem',
+      md: '28rem',
+      lg: '32rem',
+      xl: '36rem',
+      '2xl': '42rem',
+      '3xl': '48rem',
+      '4xl': '56rem',
+      '5xl': '64rem',
+      '6xl': '72rem',
+      '7xl': '80rem',
+      full: '100%',
+      min: 'min-content',
+      max: 'max-content',
+      fit: 'fit-content',
+      prose: '65ch',
+      ...breakpoints(theme('screens')),
+    }),
+    minHeight: {
+      0: '0px',
+      full: '100%',
+      screen: '100vh',
+      min: 'min-content',
+      max: 'max-content',
+      fit: 'fit-content',
+    },
+    minWidth: {
+      0: '0px',
+      full: '100%',
+      min: 'min-content',
+      max: 'max-content',
+      fit: 'fit-content',
+    },
+    objectPosition: {
+      bottom: 'bottom',
+      center: 'center',
+      left: 'left',
+      'left-bottom': 'left bottom',
+      'left-top': 'left top',
+      right: 'right',
+      'right-bottom': 'right bottom',
+      'right-top': 'right top',
+      top: 'top',
+    },
+    opacity: {
+      0: '0',
+      5: '0.05',
+      10: '0.1',
+      20: '0.2',
+      25: '0.25',
+      30: '0.3',
+      40: '0.4',
+      50: '0.5',
+      60: '0.6',
+      70: '0.7',
+      75: '0.75',
+      80: '0.8',
+      90: '0.9',
+      95: '0.95',
+      100: '1',
+    },
+    order: {
+      first: '-9999',
+      last: '9999',
+      none: '0',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
+      5: '5',
+      6: '6',
+      7: '7',
+      8: '8',
+      9: '9',
+      10: '10',
+      11: '11',
+      12: '12',
+    },
+    padding: ({ theme }) => theme('spacing'),
+    placeholderColor: ({ theme }) => theme('colors'),
+    placeholderOpacity: ({ theme }) => theme('opacity'),
+    outlineColor: ({ theme }) => theme('colors'),
+    outlineOffset: {
+      0: '0px',
+      1: '1px',
+      2: '2px',
+      4: '4px',
+      8: '8px',
+    },
+    outlineWidth: {
+      0: '0px',
+      1: '1px',
+      2: '2px',
+      4: '4px',
+      8: '8px',
+    },
+    ringColor: ({ theme }) => ({
+      DEFAULT: theme(`colors.blue.500`, '#3b82f6'),
+      ...theme('colors'),
+    }),
+    ringOffsetColor: ({ theme }) => theme('colors'),
+    ringOffsetWidth: {
+      0: '0px',
+      1: '1px',
+      2: '2px',
+      4: '4px',
+      8: '8px',
+    },
+    ringOpacity: ({ theme }) => ({
+      DEFAULT: '0.5',
+      ...theme('opacity'),
+    }),
+    ringWidth: {
+      DEFAULT: '3px',
+      0: '0px',
+      1: '1px',
+      2: '2px',
+      4: '4px',
+      8: '8px',
+    },
+    rotate: {
+      0: '0deg',
+      1: '1deg',
+      2: '2deg',
+      3: '3deg',
+      6: '6deg',
+      12: '12deg',
+      45: '45deg',
+      90: '90deg',
+      180: '180deg',
+    },
+    saturate: {
+      0: '0',
+      50: '.5',
+      100: '1',
+      150: '1.5',
+      200: '2',
+    },
+    scale: {
+      0: '0',
+      50: '.5',
+      75: '.75',
+      90: '.9',
+      95: '.95',
+      100: '1',
+      105: '1.05',
+      110: '1.1',
+      125: '1.25',
+      150: '1.5',
+    },
+    scrollMargin: ({ theme }) => ({
+      ...theme('spacing'),
+    }),
+    scrollPadding: ({ theme }) => theme('spacing'),
+    sepia: {
+      0: '0',
+      DEFAULT: '100%',
+    },
+    skew: {
+      0: '0deg',
+      1: '1deg',
+      2: '2deg',
+      3: '3deg',
+      6: '6deg',
+      12: '12deg',
+    },
+    space: ({ theme }) => ({
+      ...theme('spacing'),
+    }),
+    stroke: ({ theme }) => theme('colors'),
+    strokeWidth: {
+      0: '0',
+      1: '1',
+      2: '2',
+    },
+    textColor: ({ theme }) => theme('colors'),
+    textDecorationColor: ({ theme }) => theme('colors'),
+    textDecorationThickness: {
+      auto: 'auto',
+      'from-font': 'from-font',
+      0: '0px',
+      1: '1px',
+      2: '2px',
+      4: '4px',
+      8: '8px',
+    },
+    textUnderlineOffset: {
+      auto: 'auto',
+      0: '0px',
+      1: '1px',
+      2: '2px',
+      4: '4px',
+      8: '8px',
+    },
+    textIndent: ({ theme }) => ({
+      ...theme('spacing'),
+    }),
+    textOpacity: ({ theme }) => theme('opacity'),
+    transformOrigin: {
+      center: 'center',
+      top: 'top',
+      'top-right': 'top right',
+      right: 'right',
+      'bottom-right': 'bottom right',
+      bottom: 'bottom',
+      'bottom-left': 'bottom left',
+      left: 'left',
+      'top-left': 'top left',
+    },
+    transitionDelay: {
+      75: '75ms',
+      100: '100ms',
+      150: '150ms',
+      200: '200ms',
+      300: '300ms',
+      500: '500ms',
+      700: '700ms',
+      1000: '1000ms',
+    },
+    transitionDuration: {
+      DEFAULT: '150ms',
+      75: '75ms',
+      100: '100ms',
+      150: '150ms',
+      200: '200ms',
+      300: '300ms',
+      500: '500ms',
+      700: '700ms',
+      1000: '1000ms',
+    },
+    transitionProperty: {
+      none: 'none',
+      all: 'all',
+      DEFAULT:
+        'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
+      colors: 'color, background-color, border-color, text-decoration-color, fill, stroke',
+      opacity: 'opacity',
+      shadow: 'box-shadow',
+      transform: 'transform',
+    },
+    transitionTimingFunction: {
+      DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      linear: 'linear',
+      in: 'cubic-bezier(0.4, 0, 1, 1)',
+      out: 'cubic-bezier(0, 0, 0.2, 1)',
+      'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
+    },
+    translate: ({ theme }) => ({
+      ...theme('spacing'),
+      '1/2': '50%',
+      '1/3': '33.333333%',
+      '2/3': '66.666667%',
+      '1/4': '25%',
+      '2/4': '50%',
+      '3/4': '75%',
+      full: '100%',
+    }),
+    width: ({ theme }) => ({
+      auto: 'auto',
+      ...theme('spacing'),
+      '1/2': '50%',
+      '1/3': '33.333333%',
+      '2/3': '66.666667%',
+      '1/4': '25%',
+      '2/4': '50%',
+      '3/4': '75%',
+      '1/5': '20%',
+      '2/5': '40%',
+      '3/5': '60%',
+      '4/5': '80%',
+      '1/6': '16.666667%',
+      '2/6': '33.333333%',
+      '3/6': '50%',
+      '4/6': '66.666667%',
+      '5/6': '83.333333%',
+      '1/12': '8.333333%',
+      '2/12': '16.666667%',
+      '3/12': '25%',
+      '4/12': '33.333333%',
+      '5/12': '41.666667%',
+      '6/12': '50%',
+      '7/12': '58.333333%',
+      '8/12': '66.666667%',
+      '9/12': '75%',
+      '10/12': '83.333333%',
+      '11/12': '91.666667%',
+      full: '100%',
+      screen: '100vw',
+      min: 'min-content',
+      max: 'max-content',
+      fit: 'fit-content',
+    }),
+    willChange: {
+      auto: 'auto',
+      scroll: 'scroll-position',
+      contents: 'contents',
+      transform: 'transform',
+    },
+    zIndex: {
+      auto: 'auto',
+      0: '0',
+      10: '10',
+      20: '20',
+      30: '30',
+      40: '40',
+      50: '50',
+    },
+  },
+  variantOrder: [
+    'first',
+    'last',
+    'odd',
+    'even',
+    'visited',
+    'checked',
+    'empty',
+    'read-only',
+    'group-hover',
+    'group-focus',
+    'focus-within',
+    'hover',
+    'focus',
+    'focus-visible',
+    'active',
+    'disabled',
+  ],
+  plugins: [],
+}
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
 
 // UNUSED EXPORTS: default
 
+// EXTERNAL MODULE: ./flowbite.config.js
+var flowbite_config = __webpack_require__(689);
+var flowbite_config_default = /*#__PURE__*/__webpack_require__.n(flowbite_config);
+// EXTERNAL MODULE: ./tailwind.config.js
+var tailwind_config = __webpack_require__(472);
+var tailwind_config_default = /*#__PURE__*/__webpack_require__.n(tailwind_config);
+;// CONCATENATED MODULE: ./src/core/config.js
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+
+
+var Default = {
+  flowbiteConfig: {
+    prefix: 'fb'
+  },
+  tailwindConfig: {
+    prefix: ''
+  }
+};
+
+var Config = /*#__PURE__*/function () {
+  function Config(fbConfig, twConfig) {
+    _classCallCheck(this, Config);
+
+    this.fbConfig = _objectSpread(_objectSpread({}, Default.flowbiteConfig), fbConfig);
+    this.twConfig = _objectSpread(_objectSpread({}, Default.tailwindConfig), twConfig);
+  }
+
+  _createClass(Config, [{
+    key: "getSelectorsPrefix",
+    value: function getSelectorsPrefix() {
+      return this.fbConfig.prefix;
+    }
+  }, {
+    key: "getClassesPrefix",
+    value: function getClassesPrefix() {
+      return this.twConfig.prefix;
+    }
+  }]);
+
+  return Config;
+}();
+
+/* harmony default export */ const config = (new Config((flowbite_config_default()), (tailwind_config_default())));
+;// CONCATENATED MODULE: ./src/helpers/data-attribute.js
+var getPrefixedAttribute = function getPrefixedAttribute(value) {
+  var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (prefix === null || prefix === '') {
+    return "data-".concat(value);
+  }
+
+  return "data-".concat(prefix).concat(value);
+};
+var getPrefixedDataAttributes = function getPrefixedDataAttributes(values, prefix) {
+  var prefixedValues = {};
+
+  for (var key in values) {
+    prefixedValues[key] = getPrefixedAttribute(values[key], prefix);
+  }
+
+  return prefixedValues;
+};
+;// CONCATENATED MODULE: ./src/helpers/class-name.js
+
+var prefix = config.getClassesPrefix();
+var getPrefixedClassName = function getPrefixedClassName(value) {
+  return value.replaceAll('%p%', prefix);
+};
+var getPrefixedClassNames = function getPrefixedClassNames(values) {
+  var prefixedValues = '';
+  values.split(" ").map(function (v) {
+    prefixedValues += getPrefixedClassName(v) + ' ';
+  });
+  return prefixedValues.trim();
+};
 ;// CONCATENATED MODULE: ./src/components/accordion.js
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -17,22 +2247,25 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function accordion_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function accordion_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? accordion_ownKeys(Object(source), !0).forEach(function (key) { accordion_defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : accordion_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function accordion_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function accordion_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function accordion_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function accordion_createClass(Constructor, protoProps, staticProps) { if (protoProps) accordion_defineProperties(Constructor.prototype, protoProps); if (staticProps) accordion_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-var Default = {
+
+
+
+var accordion_Default = {
   alwaysOpen: false,
-  activeClasses: 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white',
-  inactiveClasses: 'text-gray-500 dark:text-gray-400',
+  activeClasses: getPrefixedClassNames('%p%bg-gray-100 dark:%p%bg-gray-800 %p%text-gray-900 dark:%p%text-white'),
+  inactiveClasses: getPrefixedClassNames('%p%text-gray-500 dark:%p%text-gray-400'),
   onOpen: function onOpen() {},
   onClose: function onClose() {},
   onToggle: function onToggle() {}
@@ -43,15 +2276,15 @@ var Accordion = /*#__PURE__*/function () {
     var items = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    _classCallCheck(this, Accordion);
+    accordion_classCallCheck(this, Accordion);
 
     this._items = items;
-    this._options = _objectSpread(_objectSpread({}, Default), options);
+    this._options = accordion_objectSpread(accordion_objectSpread({}, accordion_Default), options);
 
     this._init();
   }
 
-  _createClass(Accordion, [{
+  accordion_createClass(Accordion, [{
     key: "_init",
     value: function _init() {
       var _this = this;
@@ -94,12 +2327,12 @@ var Accordion = /*#__PURE__*/function () {
 
             (_i$triggerEl$classLis2 = i.triggerEl.classList).add.apply(_i$triggerEl$classLis2, _toConsumableArray(_this2._options.inactiveClasses.split(" ")));
 
-            i.targetEl.classList.add('hidden');
+            i.targetEl.classList.add(getPrefixedClassName('%p%hidden'));
             i.triggerEl.setAttribute('aria-expanded', false);
             i.active = false; // rotate icon if set
 
             if (i.iconEl) {
-              i.iconEl.classList.remove('rotate-180');
+              i.iconEl.classList.remove(getPrefixedClassName('%p%rotate-180'));
             }
           }
         });
@@ -111,11 +2344,11 @@ var Accordion = /*#__PURE__*/function () {
       (_item$triggerEl$class2 = item.triggerEl.classList).remove.apply(_item$triggerEl$class2, _toConsumableArray(this._options.inactiveClasses.split(" ")));
 
       item.triggerEl.setAttribute('aria-expanded', true);
-      item.targetEl.classList.remove('hidden');
+      item.targetEl.classList.remove(getPrefixedClassName('%p%hidden'));
       item.active = true; // rotate icon if set
 
       if (item.iconEl) {
-        item.iconEl.classList.add('rotate-180');
+        item.iconEl.classList.add(getPrefixedClassName('%p%rotate-180'));
       } // callback function
 
 
@@ -146,12 +2379,12 @@ var Accordion = /*#__PURE__*/function () {
 
       (_item$triggerEl$class4 = item.triggerEl.classList).add.apply(_item$triggerEl$class4, _toConsumableArray(this._options.inactiveClasses.split(" ")));
 
-      item.targetEl.classList.add('hidden');
+      item.targetEl.classList.add(getPrefixedClassName('%p%hidden'));
       item.triggerEl.setAttribute('aria-expanded', false);
       item.active = false; // rotate icon if set
 
       if (item.iconEl) {
-        item.iconEl.classList.remove('rotate-180');
+        item.iconEl.classList.remove(getPrefixedClassName('%p%rotate-180'));
       } // callback function
 
 
@@ -164,36 +2397,49 @@ var Accordion = /*#__PURE__*/function () {
 
 window.Accordion = Accordion;
 
-function initAccordion() {
-  document.querySelectorAll('[data-accordion]').forEach(function (accordionEl) {
-    var alwaysOpen = accordionEl.getAttribute('data-accordion');
-    var activeClasses = accordionEl.getAttribute('data-active-classes');
-    var inactiveClasses = accordionEl.getAttribute('data-inactive-classes');
+var initAccordion = function initAccordion(selectors) {
+  document.querySelectorAll("[".concat(selectors.main, "]")).forEach(function (accordionEl) {
+    var alwaysOpen = accordionEl.getAttribute(selectors.main);
+    var activeClasses = accordionEl.getAttribute(selectors.active);
+    var inactiveClasses = accordionEl.getAttribute(selectors.inactive);
     var items = [];
-    accordionEl.querySelectorAll('[data-accordion-target]').forEach(function (el) {
+    accordionEl.querySelectorAll("[".concat(selectors.target, "]")).forEach(function (el) {
       var item = {
-        id: el.getAttribute('data-accordion-target'),
+        id: el.getAttribute(selectors.target),
         triggerEl: el,
-        targetEl: document.querySelector(el.getAttribute('data-accordion-target')),
-        iconEl: el.querySelector('[data-accordion-icon]'),
+        targetEl: document.querySelector(el.getAttribute(selectors.target)),
+        iconEl: el.querySelector("[".concat(selectors.icon, "]")),
         active: el.getAttribute('aria-expanded') === 'true' ? true : false
       };
       items.push(item);
     });
     new Accordion(items, {
       alwaysOpen: alwaysOpen === 'open' ? true : false,
-      activeClasses: activeClasses ? activeClasses : Default.activeClasses,
-      inactiveClasses: inactiveClasses ? inactiveClasses : Default.inactiveClasses
+      activeClasses: activeClasses ? activeClasses : accordion_Default.activeClasses,
+      inactiveClasses: inactiveClasses ? inactiveClasses : accordion_Default.inactiveClasses
     });
   });
-}
+};
+
+var selectors = {
+  main: 'accordion',
+  active: 'active-classes',
+  inactive: 'inactive-classes',
+  target: 'accordion-target',
+  icon: 'accordion-icon'
+};
+var baseSelectors = getPrefixedDataAttributes(selectors, ''); // we need this to make legacy selectors with no prefix work pre v1.5
+
+var prefixSelectors = getPrefixedDataAttributes(selectors, config.getSelectorsPrefix());
 
 if (document.readyState !== 'loading') {
   // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initAccordion();
+  initAccordion(baseSelectors);
+  initAccordion(prefixSelectors);
 } else {
   // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initAccordion);
+  document.addEventListener('DOMContentLoaded', initAccordion(baseSelectors));
+  document.addEventListener('DOMContentLoaded', initAccordion(prefixSelectors));
 }
 
 /* harmony default export */ const accordion = (Accordion);
@@ -209,6 +2455,9 @@ function collapse_classCallCheck(instance, Constructor) { if (!(instance instanc
 function collapse_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function collapse_createClass(Constructor, protoProps, staticProps) { if (protoProps) collapse_defineProperties(Constructor.prototype, protoProps); if (staticProps) collapse_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+
+
 
 var collapse_Default = {
   triggerEl: null,
@@ -242,7 +2491,7 @@ var Collapse = /*#__PURE__*/function () {
           this._visible = this._triggerEl.getAttribute('aria-expanded') === 'true' ? true : false;
         } else {
           // fix until v2 not to break previous single collapses which became dismiss
-          this._visible = this._targetEl.classList.contains('hidden') ? false : true;
+          this._visible = this._targetEl.classList.contains(getPrefixedClassName('%p%hidden')) ? false : true;
         }
 
         this._triggerEl.addEventListener('click', function () {
@@ -253,7 +2502,7 @@ var Collapse = /*#__PURE__*/function () {
   }, {
     key: "collapse",
     value: function collapse() {
-      this._targetEl.classList.add('hidden');
+      this._targetEl.classList.add(getPrefixedClassName('%p%hidden'));
 
       if (this._triggerEl) {
         this._triggerEl.setAttribute('aria-expanded', 'false');
@@ -266,7 +2515,7 @@ var Collapse = /*#__PURE__*/function () {
   }, {
     key: "expand",
     value: function expand() {
-      this._targetEl.classList.remove('hidden');
+      this._targetEl.classList.remove(getPrefixedAttribute('%p%hidden'));
 
       if (this._triggerEl) {
         this._triggerEl.setAttribute('aria-expanded', 'true');
@@ -292,21 +2541,27 @@ var Collapse = /*#__PURE__*/function () {
 
 window.Collapse = Collapse;
 
-function initCollapse() {
-  document.querySelectorAll('[data-collapse-toggle]').forEach(function (triggerEl) {
-    var targetEl = document.getElementById(triggerEl.getAttribute('data-collapse-toggle'));
+var initCollapse = function initCollapse(selector) {
+  document.querySelectorAll("[".concat(selector, "]")).forEach(function (triggerEl) {
+    var targetEl = document.getElementById(triggerEl.getAttribute(selector));
     new Collapse(targetEl, {
       triggerEl: triggerEl
     });
   });
-}
+};
+
+var baseSelector = getPrefixedAttribute('collapse-toggle', ''); // we need this to make legacy selectors with no prefix work pre v1.5
+
+var prefixSelector = getPrefixedAttribute('collapse-toggle', config.getSelectorsPrefix());
 
 if (document.readyState !== 'loading') {
   // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initCollapse();
+  initCollapse(baseSelector);
+  initCollapse(prefixSelector);
 } else {
   // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initCollapse);
+  document.addEventListener('DOMContentLoaded', initCollapse(baseSelector));
+  document.addEventListener('DOMContentLoaded', initCollapse(prefixSelector));
 }
 
 /* harmony default export */ const collapse = (Collapse);
@@ -335,12 +2590,15 @@ function carousel_defineProperties(target, props) { for (var i = 0; i < props.le
 
 function carousel_createClass(Constructor, protoProps, staticProps) { if (protoProps) carousel_defineProperties(Constructor.prototype, protoProps); if (staticProps) carousel_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
+
+
+
 var carousel_Default = {
   defaultPosition: 0,
   indicators: {
     items: [],
-    activeClasses: 'bg-white dark:bg-gray-800',
-    inactiveClasses: 'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800'
+    activeClasses: getPrefixedClassNames('%p%bg-white dark:%p%bg-gray-800'),
+    inactiveClasses: getPrefixedClassNames('%p%bg-white/50 dark:%p%bg-gray-800/50 hover:%p%bg-white dark:hover:%p%bg-gray-800')
   },
   interval: 3000,
   onNext: function onNext() {},
@@ -376,7 +2634,9 @@ var Carousel = /*#__PURE__*/function () {
       var _this = this;
 
       this._items.map(function (item) {
-        item.el.classList.add('absolute', 'inset-0', 'transition-all', 'transform');
+        var _item$el$classList;
+
+        (_item$el$classList = item.el.classList).add.apply(_item$el$classList, carousel_toConsumableArray(getPrefixedClassNames('%p%absolute %p%inset-0 %p%transition-all %p%transform').split(' ')));
       }); // if no active item is set then first position is default
 
 
@@ -473,20 +2733,27 @@ var Carousel = /*#__PURE__*/function () {
   }, {
     key: "_rotate",
     value: function _rotate(rotationItems) {
+      var _rotationItems$left$e, _rotationItems$left$e2, _rotationItems$middle, _rotationItems$middle2, _rotationItems$right$, _rotationItems$right$2;
+
       // reset
       this._items.map(function (item) {
-        item.el.classList.add('hidden');
+        item.el.classList.add(getPrefixedClassName('%p%hidden'));
       }); // left item (previously active)
 
 
-      rotationItems.left.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-20');
-      rotationItems.left.el.classList.add('-translate-x-full', 'z-10'); // currently active item
+      (_rotationItems$left$e = rotationItems.left.el.classList).remove.apply(_rotationItems$left$e, carousel_toConsumableArray(getPrefixedClassNames('-%p%translate-x-full %p%translate-x-full %p%translate-x-0 %p%hidden %p%z-20').split(' ')));
 
-      rotationItems.middle.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-10');
-      rotationItems.middle.el.classList.add('translate-x-0', 'z-20'); // right item (upcoming active)
+      (_rotationItems$left$e2 = rotationItems.left.el.classList).add.apply(_rotationItems$left$e2, carousel_toConsumableArray(getPrefixedClassNames('-%p%translate-x-full %p%z-10').split(' '))); // currently active item
 
-      rotationItems.right.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-20');
-      rotationItems.right.el.classList.add('translate-x-full', 'z-10');
+
+      (_rotationItems$middle = rotationItems.middle.el.classList).remove.apply(_rotationItems$middle, carousel_toConsumableArray(getPrefixedClassNames('-%p%translate-x-full %p%translate-x-full %p%translate-x-0 %p%hidden %p%z-10').split(' ')));
+
+      (_rotationItems$middle2 = rotationItems.middle.el.classList).add.apply(_rotationItems$middle2, carousel_toConsumableArray(getPrefixedClassNames('%p%translate-x-0 %p%z-20').split(' '))); // right item (upcoming active)
+
+
+      (_rotationItems$right$ = rotationItems.right.el.classList).remove.apply(_rotationItems$right$, carousel_toConsumableArray(getPrefixedClassNames('-%p%translate-x-full %p%translate-x-full %p%translate-x-0 %p%hidden %p%z-20').split(' ')));
+
+      (_rotationItems$right$2 = rotationItems.right.el.classList).add.apply(_rotationItems$right$2, carousel_toConsumableArray(getPrefixedClassNames('%p%translate-x-full %p%z-10').split(' ')));
     }
     /**
      * Set an interval to cycle through the carousel items
@@ -558,21 +2825,21 @@ var Carousel = /*#__PURE__*/function () {
 
 window.Carousel = Carousel;
 
-function initCarousel() {
-  document.querySelectorAll('[data-carousel]').forEach(function (carouselEl) {
-    var interval = carouselEl.getAttribute('data-carousel-interval');
-    var slide = carouselEl.getAttribute('data-carousel') === 'slide' ? true : false;
+var initCarousel = function initCarousel(selectors) {
+  document.querySelectorAll("[".concat(selectors.main, "]")).forEach(function (carouselEl) {
+    var interval = carouselEl.getAttribute(selectors.interval);
+    var slide = carouselEl.getAttribute(selectors.main) === 'slide' ? true : false;
     var items = [];
     var defaultPosition = 0;
 
-    if (carouselEl.querySelectorAll('[data-carousel-item]').length) {
-      carousel_toConsumableArray(carouselEl.querySelectorAll('[data-carousel-item]')).map(function (carouselItemEl, position) {
+    if (carouselEl.querySelectorAll("[".concat(selectors.item, "]")).length) {
+      carousel_toConsumableArray(carouselEl.querySelectorAll("[".concat(selectors.item, "]"))).map(function (carouselItemEl, position) {
         items.push({
           position: position,
           el: carouselItemEl
         });
 
-        if (carouselItemEl.getAttribute('data-carousel-item') === 'active') {
+        if (carouselItemEl.getAttribute(selectors.item) === 'active') {
           defaultPosition = position;
         }
       });
@@ -580,10 +2847,10 @@ function initCarousel() {
 
     var indicators = [];
 
-    if (carouselEl.querySelectorAll('[data-carousel-slide-to]').length) {
-      carousel_toConsumableArray(carouselEl.querySelectorAll('[data-carousel-slide-to]')).map(function (indicatorEl) {
+    if (carouselEl.querySelectorAll("[".concat(selectors.slide, "]")).length) {
+      carousel_toConsumableArray(carouselEl.querySelectorAll("[".concat(selectors.slide, "]"))).map(function (indicatorEl) {
         indicators.push({
-          position: indicatorEl.getAttribute('data-carousel-slide-to'),
+          position: indicatorEl.getAttribute(selectors.slide),
           el: indicatorEl
         });
       });
@@ -602,8 +2869,8 @@ function initCarousel() {
     } // check for controls
 
 
-    var carouselNextEl = carouselEl.querySelector('[data-carousel-next]');
-    var carouselPrevEl = carouselEl.querySelector('[data-carousel-prev]');
+    var carouselNextEl = carouselEl.querySelector("[".concat(selectors.next, "]"));
+    var carouselPrevEl = carouselEl.querySelector("[".concat(selectors.prev, "]"));
 
     if (carouselNextEl) {
       carouselNextEl.addEventListener('click', function () {
@@ -617,18 +2884,44 @@ function initCarousel() {
       });
     }
   });
-}
+};
+
+var carousel_selectors = {
+  main: 'carousel',
+  interval: 'carousel-interval',
+  item: 'carousel-item',
+  slide: 'carousel-slide-to',
+  next: 'carousel-next',
+  prev: 'carousel-prev'
+};
+var carousel_baseSelectors = getPrefixedDataAttributes(carousel_selectors, ''); // we need this to make legacy selectors with no prefix work pre v1.5
+
+var carousel_prefixSelectors = getPrefixedDataAttributes(carousel_selectors, config.getSelectorsPrefix());
 
 if (document.readyState !== 'loading') {
   // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initCarousel();
+  initCarousel(carousel_baseSelectors);
+  initCarousel(carousel_prefixSelectors);
 } else {
   // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initCarousel);
+  document.addEventListener('DOMContentLoaded', initCarousel(carousel_baseSelectors));
+  document.addEventListener('DOMContentLoaded', initCarousel(carousel_prefixSelectors));
 }
 
 /* harmony default export */ const carousel = (Carousel);
 ;// CONCATENATED MODULE: ./src/components/dismiss.js
+function dismiss_toConsumableArray(arr) { return dismiss_arrayWithoutHoles(arr) || dismiss_iterableToArray(arr) || dismiss_unsupportedIterableToArray(arr) || dismiss_nonIterableSpread(); }
+
+function dismiss_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function dismiss_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return dismiss_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return dismiss_arrayLikeToArray(o, minLen); }
+
+function dismiss_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function dismiss_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return dismiss_arrayLikeToArray(arr); }
+
+function dismiss_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function dismiss_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function dismiss_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? dismiss_ownKeys(Object(source), !0).forEach(function (key) { dismiss_defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : dismiss_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -641,11 +2934,14 @@ function dismiss_defineProperties(target, props) { for (var i = 0; i < props.len
 
 function dismiss_createClass(Constructor, protoProps, staticProps) { if (protoProps) dismiss_defineProperties(Constructor.prototype, protoProps); if (staticProps) dismiss_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
+
+
+
 var dismiss_Default = {
   triggerEl: null,
-  transition: 'transition-opacity',
+  transition: getPrefixedClassName('%p%transition-opacity'),
   duration: 300,
-  timing: 'ease-out',
+  timing: getPrefixedClassName('%p%ease-out'),
   onHide: function onHide() {}
 };
 
@@ -677,12 +2973,13 @@ var Dismiss = /*#__PURE__*/function () {
   }, {
     key: "hide",
     value: function hide() {
-      var _this2 = this;
+      var _this$_targetEl$class,
+          _this2 = this;
 
-      this._targetEl.classList.add(this._options.transition, "duration-".concat(this._options.duration), this._options.timing, 'opacity-0');
+      (_this$_targetEl$class = this._targetEl.classList).add.apply(_this$_targetEl$class, dismiss_toConsumableArray(getPrefixedClassNames("%p%".concat(this._options.transition, " %p%duration-").concat(this._options.duration, " %p%").concat(this._options.timing, " %p%opacity-0")).split(' ')));
 
       setTimeout(function () {
-        _this2._targetEl.classList.add('hidden');
+        _this2._targetEl.classList.add(getPrefixedClassName('%p%hidden'));
       }, this._options.duration); // callback function
 
       this._options.onHide(this, this._targetEl);
@@ -694,21 +2991,27 @@ var Dismiss = /*#__PURE__*/function () {
 
 window.Dismiss = Dismiss;
 
-function initDismiss() {
-  document.querySelectorAll('[data-dismiss-target]').forEach(function (triggerEl) {
-    var targetEl = document.querySelector(triggerEl.getAttribute('data-dismiss-target'));
+var initDismiss = function initDismiss(selector) {
+  document.querySelectorAll("[".concat(selector, "]")).forEach(function (triggerEl) {
+    var targetEl = document.querySelector(triggerEl.getAttribute(selector));
     new Dismiss(targetEl, {
       triggerEl: triggerEl
     });
   });
-}
+};
+
+var dismiss_baseSelector = getPrefixedAttribute('dismiss-target', ''); // we need this to make legacy selectors with no prefix work pre v1.5
+
+var dismiss_prefixSelector = getPrefixedAttribute('dismiss-target', config.getSelectorsPrefix());
 
 if (document.readyState !== 'loading') {
   // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initDismiss();
+  initDismiss(dismiss_baseSelector);
+  initDismiss(dismiss_prefixSelector);
 } else {
   // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initDismiss);
+  document.addEventListener('DOMContentLoaded', initDismiss(dismiss_baseSelector));
+  document.addEventListener('DOMContentLoaded', initDismiss(dismiss_prefixSelector));
 }
 
 /* harmony default export */ const dismiss = (Dismiss);
@@ -2717,6 +5020,9 @@ function dropdown_defineProperties(target, props) { for (var i = 0; i < props.le
 function dropdown_createClass(Constructor, protoProps, staticProps) { if (protoProps) dropdown_defineProperties(Constructor.prototype, protoProps); if (staticProps) dropdown_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 
+
+
+
 var dropdown_Default = {
   placement: 'bottom',
   triggerType: 'click',
@@ -2791,9 +5097,9 @@ var Dropdown = /*#__PURE__*/function () {
     value: function show() {
       var _this2 = this;
 
-      this._targetEl.classList.remove('hidden');
+      this._targetEl.classList.remove(getPrefixedClassName('%p%hidden'));
 
-      this._targetEl.classList.add('block'); // Enable the event listeners
+      this._targetEl.classList.add(getPrefixedClassName('%p%block')); // Enable the event listeners
 
 
       this._popperInstance.setOptions(function (options) {
@@ -2818,9 +5124,9 @@ var Dropdown = /*#__PURE__*/function () {
   }, {
     key: "hide",
     value: function hide() {
-      this._targetEl.classList.remove('block');
+      this._targetEl.classList.remove(getPrefixedClassName('%p%block'));
 
-      this._targetEl.classList.add('hidden'); // Disable the event listeners
+      this._targetEl.classList.add(getPrefixedClassName('%p%hidden')); // Disable the event listeners
 
 
       this._popperInstance.setOptions(function (options) {
@@ -2843,22 +5149,32 @@ var Dropdown = /*#__PURE__*/function () {
 
 window.Dropdown = Dropdown;
 
-function initDropdown() {
-  document.querySelectorAll('[data-dropdown-toggle]').forEach(function (triggerEl) {
-    var targetEl = document.getElementById(triggerEl.getAttribute('data-dropdown-toggle'));
-    var placement = triggerEl.getAttribute('data-dropdown-placement');
+var initDropdown = function initDropdown(selectors) {
+  document.querySelectorAll("[".concat(selectors.main, "]")).forEach(function (triggerEl) {
+    var targetEl = document.getElementById(triggerEl.getAttribute(selectors.main));
+    var placement = triggerEl.getAttribute(selectors.placement);
     new Dropdown(targetEl, triggerEl, {
       placement: placement ? placement : dropdown_Default.placement
     });
   });
-}
+};
+
+var dropdown_selectors = {
+  main: 'dropdown-toggle',
+  placement: 'dropdown-placement'
+};
+var dropdown_baseSelectors = getPrefixedDataAttributes(dropdown_selectors, ''); // we need this to make legacy selectors with no prefix work pre v1.5
+
+var dropdown_prefixSelectors = getPrefixedDataAttributes(dropdown_selectors, config.getSelectorsPrefix());
 
 if (document.readyState !== 'loading') {
   // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initDropdown();
+  initDropdown(dropdown_baseSelectors);
+  initDropdown(dropdown_prefixSelectors);
 } else {
   // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initDropdown);
+  document.addEventListener('DOMContentLoaded', initDropdown(dropdown_baseSelectors));
+  document.addEventListener('DOMContentLoaded', initDropdown(dropdown_prefixSelectors));
 }
 
 /* harmony default export */ const dropdown = (Dropdown);
@@ -2887,9 +5203,13 @@ function modal_defineProperties(target, props) { for (var i = 0; i < props.lengt
 
 function modal_createClass(Constructor, protoProps, staticProps) { if (protoProps) modal_defineProperties(Constructor.prototype, protoProps); if (staticProps) modal_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
+
+
+
 var modal_Default = {
   placement: 'center',
-  backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
+  backdropClasses: getPrefixedClassNames('%p%bg-gray-900 %p%bg-opacity-50 dark:%p%bg-opacity-80 %p%fixed %p%inset-0 %p%z-40'),
+  backdrop: 'dynamic',
   onHide: function onHide() {},
   onShow: function onShow() {},
   onToggle: function onToggle() {}
@@ -2905,6 +5225,7 @@ var Modal = /*#__PURE__*/function () {
     this._targetEl = targetEl;
     this._options = modal_objectSpread(modal_objectSpread({}, modal_Default), options);
     this._isHidden = true;
+    this._backdropEl = null;
 
     this._init();
   }
@@ -2914,9 +5235,15 @@ var Modal = /*#__PURE__*/function () {
     value: function _init() {
       var _this = this;
 
-      this._getPlacementClasses().map(function (c) {
-        _this._targetEl.classList.add(c);
-      });
+      if (this._targetEl) {
+        this._getPlacementClasses().map(function (c) {
+          _this._targetEl.classList.add(c);
+        });
+
+        this._targetEl.addEventListener('click', function (ev) {
+          _this._handleOutsideClick(ev.target);
+        });
+      }
     }
   }, {
     key: "_createBackdrop",
@@ -2930,6 +5257,7 @@ var Modal = /*#__PURE__*/function () {
         (_backdropEl$classList = backdropEl.classList).add.apply(_backdropEl$classList, modal_toConsumableArray(this._options.backdropClasses.split(" ")));
 
         document.querySelector('body').append(backdropEl);
+        this._backdropEl = backdropEl;
       }
     }
   }, {
@@ -2940,41 +5268,54 @@ var Modal = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "_handleOutsideClick",
+    value: function _handleOutsideClick(target) {
+      console.log(target);
+      console.log(this._options.backdrop);
+      console.log(this._targetEl.id);
+
+      if (this._options.backdrop === 'dynamic') {
+        if (target === this._targetEl || target === this._backdropEl) {
+          this.hide();
+        }
+      }
+    }
+  }, {
     key: "_getPlacementClasses",
     value: function _getPlacementClasses() {
       switch (this._options.placement) {
         // top
         case 'top-left':
-          return ['justify-start', 'items-start'];
+          return [getPrefixedClassName('%p%justify-start'), getPrefixedClassName('%p%items-start')];
 
         case 'top-center':
-          return ['justify-center', 'items-start'];
+          return [getPrefixedClassName('%p%justify-center'), getPrefixedClassName('%p%items-start')];
 
         case 'top-right':
-          return ['justify-end', 'items-start'];
+          return [getPrefixedClassName('%p%justify-end'), getPrefixedClassName('%p%items-start')];
         // center
 
         case 'center-left':
-          return ['justify-start', 'items-center'];
+          return [getPrefixedClassName('%p%justify-start'), getPrefixedClassName('%p%items-center')];
 
         case 'center':
-          return ['justify-center', 'items-center'];
+          return [getPrefixedClassName('%p%justify-center'), getPrefixedClassName('%p%items-center')];
 
         case 'center-right':
-          return ['justify-end', 'items-center'];
+          return [getPrefixedClassName('%p%justify-end'), getPrefixedClassName('%p%items-center')];
         // bottom
 
         case 'bottom-left':
-          return ['justify-start', 'items-end'];
+          return [getPrefixedClassName('%p%justify-start'), getPrefixedClassName('%p%items-end')];
 
         case 'bottom-center':
-          return ['justify-center', 'items-end'];
+          return [getPrefixedClassName('%p%justify-center'), getPrefixedClassName('%p%items-end')];
 
         case 'bottom-right':
-          return ['justify-end', 'items-end'];
+          return [getPrefixedClassName('%p%justify-end'), getPrefixedClassName('%p%items-end')];
 
         default:
-          return ['justify-center', 'items-center'];
+          return [getPrefixedClassName('%p%justify-center'), getPrefixedClassName('%p%items-center')];
       }
     }
   }, {
@@ -2992,9 +5333,9 @@ var Modal = /*#__PURE__*/function () {
   }, {
     key: "show",
     value: function show() {
-      this._targetEl.classList.add('flex');
+      this._targetEl.classList.add(getPrefixedClassName('%p%flex'));
 
-      this._targetEl.classList.remove('hidden');
+      this._targetEl.classList.remove(getPrefixedClassName('%p%hidden'));
 
       this._targetEl.setAttribute('aria-modal', 'true');
 
@@ -3004,16 +5345,18 @@ var Modal = /*#__PURE__*/function () {
 
       this._createBackdrop();
 
-      this._isHidden = false; // callback function
+      this._isHidden = false; // prevent body scroll
+
+      document.body.classList.add(getPrefixedClassName('%p%overflow-hidden')); // callback function
 
       this._options.onShow(this);
     }
   }, {
     key: "hide",
     value: function hide() {
-      this._targetEl.classList.add('hidden');
+      this._targetEl.classList.add(getPrefixedClassName('%p%hidden'));
 
-      this._targetEl.classList.remove('flex');
+      this._targetEl.classList.remove(getPrefixedClassName('%p%flex'));
 
       this._targetEl.setAttribute('aria-hidden', 'true');
 
@@ -3023,7 +5366,9 @@ var Modal = /*#__PURE__*/function () {
 
       this._destroyBackdropEl();
 
-      this._isHidden = true; // callback function
+      this._isHidden = true; // re-apply body scroll
+
+      document.body.classList.remove(getPrefixedClassName('%p%overflow-hidden')); // callback function
 
       this._options.onHide(this);
     }
@@ -3046,12 +5391,13 @@ var getModalInstance = function getModalInstance(id, instances) {
   return false;
 };
 
-function initModal() {
+var initModal = function initModal(selectors) {
   var modalInstances = [];
-  document.querySelectorAll('[data-modal-toggle]').forEach(function (el) {
-    var modalId = el.getAttribute('data-modal-toggle');
+  document.querySelectorAll("[".concat(selectors.main, "]")).forEach(function (el) {
+    var modalId = el.getAttribute(selectors.main);
     var modalEl = document.getElementById(modalId);
-    var placement = modalEl.getAttribute('data-modal-placement');
+    var placement = modalEl.getAttribute(selectors.placement);
+    var backdrop = modalEl.getAttribute(selectors.backdrop);
 
     if (modalEl) {
       if (!modalEl.hasAttribute('aria-hidden') && !modalEl.hasAttribute('aria-modal')) {
@@ -3066,15 +5412,17 @@ function initModal() {
       modal = modal.object;
     } else {
       modal = new Modal(modalEl, {
-        placement: placement ? placement : modal_Default.placement
+        placement: placement ? placement : modal_Default.placement,
+        backdrop: backdrop ? backdrop : modal_Default.backdrop
       });
+      console.log(modal);
       modalInstances.push({
         id: modalId,
         object: modal
       });
     }
 
-    if (modalEl.hasAttribute('data-modal-show') && modalEl.getAttribute('data-modal-show') === 'true') {
+    if (modalEl.hasAttribute(selectors.show) && modalEl.getAttribute(selectors.show) === 'true') {
       modal.show();
     }
 
@@ -3082,353 +5430,29 @@ function initModal() {
       modal.toggle();
     });
   });
-}
+};
+
+var modal_selectors = {
+  main: 'modal-toggle',
+  placement: 'modal-placement',
+  show: 'modal-show',
+  backdrop: 'modal-backdrop'
+};
+var modal_baseSelectors = getPrefixedDataAttributes(modal_selectors, ''); // we need this to make legacy selectors with no prefix work pre v1.5
+
+var modal_prefixSelectors = getPrefixedDataAttributes(modal_selectors, config.getSelectorsPrefix());
 
 if (document.readyState !== 'loading') {
   // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initModal();
+  initModal(modal_baseSelectors);
+  initModal(modal_prefixSelectors);
 } else {
   // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initModal);
+  document.addEventListener('DOMContentLoaded', initModal(modal_baseSelectors));
+  document.addEventListener('DOMContentLoaded', initModal(modal_prefixSelectors));
 }
 
 /* harmony default export */ const modal = (Modal);
-;// CONCATENATED MODULE: ./src/components/drawer.js
-function drawer_toConsumableArray(arr) { return drawer_arrayWithoutHoles(arr) || drawer_iterableToArray(arr) || drawer_unsupportedIterableToArray(arr) || drawer_nonIterableSpread(); }
-
-function drawer_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function drawer_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return drawer_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return drawer_arrayLikeToArray(o, minLen); }
-
-function drawer_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function drawer_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return drawer_arrayLikeToArray(arr); }
-
-function drawer_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function drawer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function drawer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? drawer_ownKeys(Object(source), !0).forEach(function (key) { drawer_defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : drawer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function drawer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function drawer_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function drawer_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function drawer_createClass(Constructor, protoProps, staticProps) { if (protoProps) drawer_defineProperties(Constructor.prototype, protoProps); if (staticProps) drawer_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-var drawer_Default = {
-  placement: 'left',
-  bodyScrolling: false,
-  backdrop: true,
-  edge: false,
-  edgeOffset: 'bottom-[60px]',
-  backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30',
-  onShow: function onShow() {},
-  onHide: function onHide() {},
-  onToggle: function onToggle() {}
-};
-
-var Drawer = /*#__PURE__*/function () {
-  function Drawer() {
-    var targetEl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var options = arguments.length > 1 ? arguments[1] : undefined;
-
-    drawer_classCallCheck(this, Drawer);
-
-    this._targetEl = targetEl;
-    this._options = drawer_objectSpread(drawer_objectSpread({}, drawer_Default), options);
-    this._visible = false;
-
-    this._init();
-  }
-
-  drawer_createClass(Drawer, [{
-    key: "_init",
-    value: function _init() {
-      var _this = this;
-
-      // set initial accessibility attributes
-      if (this._targetEl) {
-        this._targetEl.setAttribute('aria-hidden', 'true');
-
-        this._targetEl.classList.add('transition-transform');
-      } // set base placement classes
-
-
-      this._getPlacementClasses(this._options.placement).base.map(function (c) {
-        _this._targetEl.classList.add(c);
-      }); // hide by default
-
-
-      this.hide();
-    }
-  }, {
-    key: "isVisible",
-    value: function isVisible() {
-      return this._visible;
-    }
-  }, {
-    key: "hide",
-    value: function hide() {
-      var _this2 = this;
-
-      // based on the edge option show placement classes
-      if (this._options.edge) {
-        this._getPlacementClasses(this._options.placement + '-edge').active.map(function (c) {
-          _this2._targetEl.classList.remove(c);
-        });
-
-        this._getPlacementClasses(this._options.placement + '-edge').inactive.map(function (c) {
-          _this2._targetEl.classList.add(c);
-        });
-      } else {
-        this._getPlacementClasses(this._options.placement).active.map(function (c) {
-          _this2._targetEl.classList.remove(c);
-        });
-
-        this._getPlacementClasses(this._options.placement).inactive.map(function (c) {
-          _this2._targetEl.classList.add(c);
-        });
-      } // set accessibility attributes
-
-
-      this._targetEl.setAttribute('aria-hidden', 'true');
-
-      this._targetEl.removeAttribute('aria-modal');
-
-      this._targetEl.removeAttribute('role'); // enable body scroll
-
-
-      if (!this._options.bodyScrolling) {
-        document.body.classList.remove('overflow-hidden');
-      } // destroy backdrop
-
-
-      if (this._options.backdrop) {
-        this._destroyBackdropEl();
-      }
-
-      this._visible = false; // callback function
-
-      this._options.onHide(this);
-    }
-  }, {
-    key: "show",
-    value: function show() {
-      var _this3 = this;
-
-      if (this._options.edge) {
-        this._getPlacementClasses(this._options.placement + '-edge').active.map(function (c) {
-          _this3._targetEl.classList.add(c);
-        });
-
-        this._getPlacementClasses(this._options.placement + '-edge').inactive.map(function (c) {
-          _this3._targetEl.classList.remove(c);
-        });
-      } else {
-        this._getPlacementClasses(this._options.placement).active.map(function (c) {
-          _this3._targetEl.classList.add(c);
-        });
-
-        this._getPlacementClasses(this._options.placement).inactive.map(function (c) {
-          _this3._targetEl.classList.remove(c);
-        });
-      } // set accessibility attributes
-
-
-      this._targetEl.setAttribute('aria-modal', 'true');
-
-      this._targetEl.setAttribute('role', 'dialog');
-
-      this._targetEl.removeAttribute('aria-hidden'); // disable body scroll
-
-
-      if (!this._options.bodyScrolling) {
-        document.body.classList.add('overflow-hidden');
-      } // show backdrop
-
-
-      if (this._options.backdrop) {
-        this._createBackdrop();
-      }
-
-      this._visible = true; // callback function
-
-      this._options.onShow(this);
-    }
-  }, {
-    key: "toggle",
-    value: function toggle() {
-      if (this.isVisible()) {
-        this.hide();
-      } else {
-        this.show();
-      }
-    }
-  }, {
-    key: "_createBackdrop",
-    value: function _createBackdrop() {
-      var _this4 = this;
-
-      if (!this._visible) {
-        var _backdropEl$classList;
-
-        var backdropEl = document.createElement('div');
-        backdropEl.setAttribute('drawer-backdrop', '');
-
-        (_backdropEl$classList = backdropEl.classList).add.apply(_backdropEl$classList, drawer_toConsumableArray(this._options.backdropClasses.split(" ")));
-
-        document.querySelector('body').append(backdropEl);
-        backdropEl.addEventListener('click', function () {
-          _this4.hide();
-        });
-      }
-    }
-  }, {
-    key: "_destroyBackdropEl",
-    value: function _destroyBackdropEl() {
-      if (this._visible) {
-        document.querySelector('[drawer-backdrop]').remove();
-      }
-    }
-  }, {
-    key: "_getPlacementClasses",
-    value: function _getPlacementClasses(placement) {
-      switch (placement) {
-        case 'top':
-          return {
-            base: ['top-0', 'left-0', 'right-0'],
-            active: ['transform-none'],
-            inactive: ['-translate-y-full']
-          };
-
-        case 'right':
-          return {
-            base: ['right-0', 'top-0'],
-            active: ['transform-none'],
-            inactive: ['translate-x-full']
-          };
-
-        case 'bottom':
-          return {
-            base: ['bottom-0', 'left-0', 'right-0'],
-            active: ['transform-none'],
-            inactive: ['translate-y-full']
-          };
-
-        case 'left':
-          return {
-            base: ['left-0', 'top-0'],
-            active: ['transform-none'],
-            inactive: ['-translate-x-full']
-          };
-
-        case 'bottom-edge':
-          return {
-            base: ['left-0', 'top-0'],
-            active: ['transform-none'],
-            inactive: ['translate-y-full', this._options.edgeOffset]
-          };
-
-        default:
-          return {
-            base: ['left-0', 'top-0'],
-            active: ['transform-none'],
-            inactive: ['-translate-x-full']
-          };
-      }
-    }
-  }]);
-
-  return Drawer;
-}();
-
-window.Drawer = Drawer;
-
-var getDrawerInstance = function getDrawerInstance(id, instances) {
-  if (instances.some(function (drawerInstance) {
-    return drawerInstance.id === id;
-  })) {
-    return instances.find(function (drawerInstance) {
-      return drawerInstance.id === id;
-    });
-  }
-
-  return false;
-};
-
-function initDrawer() {
-  var drawerInstances = [];
-  document.querySelectorAll('[data-drawer-target]').forEach(function (triggerEl) {
-    // mandatory
-    var targetEl = document.getElementById(triggerEl.getAttribute('data-drawer-target'));
-    var drawerId = targetEl.id; // optional
-
-    var placement = triggerEl.getAttribute('data-drawer-placement');
-    var bodyScrolling = triggerEl.getAttribute('data-drawer-body-scrolling');
-    var backdrop = triggerEl.getAttribute('data-drawer-backdrop');
-    var edge = triggerEl.getAttribute('data-drawer-edge');
-    var edgeOffset = triggerEl.getAttribute('data-drawer-edge-offset');
-    var drawer = null;
-
-    if (getDrawerInstance(drawerId, drawerInstances)) {
-      drawer = getDrawerInstance(drawerId, drawerInstances);
-      drawer = drawer.object;
-    } else {
-      drawer = new Drawer(targetEl, {
-        placement: placement ? placement : drawer_Default.placement,
-        bodyScrolling: bodyScrolling ? bodyScrolling === 'true' ? true : false : drawer_Default.bodyScrolling,
-        backdrop: backdrop ? backdrop === 'true' ? true : false : drawer_Default.backdrop,
-        edge: edge ? edge === 'true' ? true : false : drawer_Default.edge,
-        edgeOffset: edgeOffset ? edgeOffset : drawer_Default.edgeOffset
-      });
-      drawerInstances.push({
-        id: drawerId,
-        object: drawer
-      });
-    }
-  });
-  document.querySelectorAll('[data-drawer-toggle]').forEach(function (triggerEl) {
-    var targetEl = document.getElementById(triggerEl.getAttribute('data-drawer-toggle'));
-    var drawerId = targetEl.id;
-    var drawer = getDrawerInstance(drawerId, drawerInstances);
-    triggerEl.addEventListener('click', function () {
-      if (drawer.object.isVisible()) {
-        drawer.object.hide();
-      } else {
-        drawer.object.show();
-      }
-    });
-  });
-  document.querySelectorAll('[data-drawer-dismiss]').forEach(function (triggerEl) {
-    var targetEl = document.getElementById(triggerEl.getAttribute('data-drawer-dismiss'));
-    var drawerId = targetEl.id;
-    var drawer = getDrawerInstance(drawerId, drawerInstances);
-    triggerEl.addEventListener('click', function () {
-      drawer.object.hide();
-    });
-  });
-  document.querySelectorAll('[data-drawer-show]').forEach(function (triggerEl) {
-    var targetEl = document.getElementById(triggerEl.getAttribute('data-drawer-show'));
-    var drawerId = targetEl.id;
-    var drawer = getDrawerInstance(drawerId, drawerInstances);
-    triggerEl.addEventListener('click', function () {
-      drawer.object.show();
-    });
-  });
-}
-
-if (document.readyState !== 'loading') {
-  // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initDrawer();
-} else {
-  // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initDrawer);
-}
-
-/* harmony default export */ const drawer = (Drawer);
 ;// CONCATENATED MODULE: ./src/components/tabs.js
 function tabs_toConsumableArray(arr) { return tabs_arrayWithoutHoles(arr) || tabs_iterableToArray(arr) || tabs_unsupportedIterableToArray(arr) || tabs_nonIterableSpread(); }
 
@@ -3454,10 +5478,13 @@ function tabs_defineProperties(target, props) { for (var i = 0; i < props.length
 
 function tabs_createClass(Constructor, protoProps, staticProps) { if (protoProps) tabs_defineProperties(Constructor.prototype, protoProps); if (staticProps) tabs_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
+
+
+
 var tabs_Default = {
   defaultTabId: null,
-  activeClasses: 'text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500',
-  inactiveClasses: 'dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300',
+  activeClasses: getPrefixedClassNames('%p%text-blue-600 hover:%p%text-blue-600 dark:%p%text-blue-500 dark:hover:%p%text-blue-500 %p%border-blue-600 dark:%p%border-blue-500'),
+  inactiveClasses: getPrefixedClassNames('dark:%p%border-transparent %p%text-gray-500 hover:%p%text-gray-600 dark:%p%text-gray-400 %p%border-gray-100 hover:%p%border-gray-300 dark:%p%border-gray-700 dark:hover:%p%text-gray-300'),
   onShow: function onShow() {}
 };
 
@@ -3536,7 +5563,7 @@ var Tabs = /*#__PURE__*/function () {
 
           (_t$triggerEl$classLis2 = t.triggerEl.classList).add.apply(_t$triggerEl$classLis2, tabs_toConsumableArray(_this2._options.inactiveClasses.split(" ")));
 
-          t.targetEl.classList.add('hidden');
+          t.targetEl.classList.add(getPrefixedClassName('%p%hidden'));
           t.triggerEl.setAttribute('aria-selected', false);
         }
       }); // show active tab
@@ -3547,7 +5574,7 @@ var Tabs = /*#__PURE__*/function () {
       (_tab$triggerEl$classL2 = tab.triggerEl.classList).remove.apply(_tab$triggerEl$classL2, tabs_toConsumableArray(this._options.inactiveClasses.split(" ")));
 
       tab.triggerEl.setAttribute('aria-selected', true);
-      tab.targetEl.classList.remove('hidden');
+      tab.targetEl.classList.remove(getPrefixedClassName('%p%hidden'));
 
       this._setActiveTab(tab); // callback function
 
@@ -3561,16 +5588,16 @@ var Tabs = /*#__PURE__*/function () {
 
 window.Tabs = Tabs;
 
-function initTabs() {
-  document.querySelectorAll('[data-tabs-toggle]').forEach(function (triggerEl) {
+var initTabs = function initTabs(selectors) {
+  document.querySelectorAll("[".concat(selectors.main, "]")).forEach(function (triggerEl) {
     var tabElements = [];
     var defaultTabId = null;
     triggerEl.querySelectorAll('[role="tab"]').forEach(function (el) {
       var isActive = el.getAttribute('aria-selected') === 'true';
       var tab = {
-        id: el.getAttribute('data-tabs-target'),
+        id: el.getAttribute(selectors.target),
         triggerEl: el,
-        targetEl: document.querySelector(el.getAttribute('data-tabs-target'))
+        targetEl: document.querySelector(el.getAttribute(selectors.target))
       };
       tabElements.push(tab);
 
@@ -3582,14 +5609,24 @@ function initTabs() {
       defaultTabId: defaultTabId
     });
   });
-}
+};
+
+var tabs_selectors = {
+  main: 'tabs-toggle',
+  target: 'tabs-target'
+};
+var tabs_baseSelectors = getPrefixedDataAttributes(tabs_selectors, ''); // we need this to make legacy selectors with no prefix work pre v1.5
+
+var tabs_prefixSelectors = getPrefixedDataAttributes(tabs_selectors, config.getSelectorsPrefix());
 
 if (document.readyState !== 'loading') {
   // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initTabs();
+  initTabs(tabs_baseSelectors);
+  initTabs(tabs_prefixSelectors);
 } else {
   // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initTabs);
+  document.addEventListener('DOMContentLoaded', initTabs(tabs_baseSelectors));
+  document.addEventListener('DOMContentLoaded', initTabs(tabs_prefixSelectors));
 }
 
 /* harmony default export */ const tabs = (Tabs);
@@ -3617,6 +5654,9 @@ function tooltip_classCallCheck(instance, Constructor) { if (!(instance instance
 function tooltip_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function tooltip_createClass(Constructor, protoProps, staticProps) { if (protoProps) tooltip_defineProperties(Constructor.prototype, protoProps); if (staticProps) tooltip_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+
+
 
 
 var tooltip_Default = {
@@ -3701,9 +5741,11 @@ var Tooltip = /*#__PURE__*/function () {
   }, {
     key: "show",
     value: function show() {
-      this._targetEl.classList.remove('opacity-0', 'invisible');
+      var _this$_targetEl$class, _this$_targetEl$class2;
 
-      this._targetEl.classList.add('opacity-100', 'visible'); // Enable the event listeners
+      (_this$_targetEl$class = this._targetEl.classList).remove.apply(_this$_targetEl$class, tooltip_toConsumableArray(getPrefixedClassNames('%p%opacity-0 %p%invisible').split(' ')));
+
+      (_this$_targetEl$class2 = this._targetEl.classList).add.apply(_this$_targetEl$class2, tooltip_toConsumableArray(getPrefixedClassNames('%p%opacity-100 %p%visible').split(' '))); // Enable the event listeners
 
 
       this._popperInstance.setOptions(function (options) {
@@ -3724,9 +5766,11 @@ var Tooltip = /*#__PURE__*/function () {
   }, {
     key: "hide",
     value: function hide() {
-      this._targetEl.classList.remove('opacity-100', 'visible');
+      var _this$_targetEl$class3, _this$_targetEl$class4;
 
-      this._targetEl.classList.add('opacity-0', 'invisible'); // Disable the event listeners
+      (_this$_targetEl$class3 = this._targetEl.classList).remove.apply(_this$_targetEl$class3, tooltip_toConsumableArray(getPrefixedClassNames('%p%opacity-100 %p%visible').split(' ')));
+
+      (_this$_targetEl$class4 = this._targetEl.classList).add.apply(_this$_targetEl$class4, tooltip_toConsumableArray(getPrefixedClassNames('%p%opacity-0 %p%invisible').split(' '))); // Disable the event listeners
 
 
       this._popperInstance.setOptions(function (options) {
@@ -3748,223 +5792,41 @@ var Tooltip = /*#__PURE__*/function () {
 
 window.Tooltip = Tooltip;
 
-function initTooltip() {
-  document.querySelectorAll('[data-tooltip-target]').forEach(function (triggerEl) {
-    var targetEl = document.getElementById(triggerEl.getAttribute('data-tooltip-target'));
-    var triggerType = triggerEl.getAttribute('data-tooltip-trigger');
-    var placement = triggerEl.getAttribute('data-tooltip-placement');
+var initTooltip = function initTooltip(selectors) {
+  document.querySelectorAll("[".concat(selectors.main, "]")).forEach(function (triggerEl) {
+    var targetEl = document.getElementById(triggerEl.getAttribute(selectors.main));
+    var triggerType = triggerEl.getAttribute(selectors.trigger);
+    var placement = triggerEl.getAttribute(selectors.placement);
     new Tooltip(targetEl, triggerEl, {
       placement: placement ? placement : tooltip_Default.placement,
       triggerType: triggerType ? triggerType : tooltip_Default.triggerType
     });
   });
-}
+};
+
+var tooltip_selectors = {
+  main: 'tooltip-target',
+  trigger: 'tooltip-trigger',
+  placement: 'tooltip-placement'
+};
+var tooltip_baseSelectors = getPrefixedDataAttributes(tooltip_selectors, ''); // we need this to make legacy selectors with no prefix work pre v1.5
+
+var tooltip_prefixSelectors = getPrefixedDataAttributes(tooltip_selectors, config.getSelectorsPrefix());
 
 if (document.readyState !== 'loading') {
   // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initTooltip();
+  initTooltip(tooltip_baseSelectors);
+  initTooltip(tooltip_prefixSelectors);
 } else {
   // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initTooltip);
+  document.addEventListener('DOMContentLoaded', initTooltip(tooltip_baseSelectors));
+  document.addEventListener('DOMContentLoaded', initTooltip(tooltip_prefixSelectors));
 }
 
 /* harmony default export */ const tooltip = (Tooltip);
-;// CONCATENATED MODULE: ./src/components/popover.js
-function popover_toConsumableArray(arr) { return popover_arrayWithoutHoles(arr) || popover_iterableToArray(arr) || popover_unsupportedIterableToArray(arr) || popover_nonIterableSpread(); }
-
-function popover_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function popover_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return popover_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return popover_arrayLikeToArray(o, minLen); }
-
-function popover_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function popover_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return popover_arrayLikeToArray(arr); }
-
-function popover_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function popover_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function popover_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? popover_ownKeys(Object(source), !0).forEach(function (key) { popover_defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : popover_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function popover_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function popover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function popover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function popover_createClass(Constructor, protoProps, staticProps) { if (protoProps) popover_defineProperties(Constructor.prototype, protoProps); if (staticProps) popover_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-
-var popover_Default = {
-  placement: 'top',
-  offset: 10,
-  triggerType: 'hover',
-  onShow: function onShow() {},
-  onHide: function onHide() {}
-};
-
-var Popover = /*#__PURE__*/function () {
-  function Popover() {
-    var targetEl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var triggerEl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-    popover_classCallCheck(this, Popover);
-
-    this._targetEl = targetEl;
-    this._triggerEl = triggerEl;
-    this._options = popover_objectSpread(popover_objectSpread({}, popover_Default), options);
-    this._popperInstance = this._createPopperInstace();
-
-    this._init();
-  }
-
-  popover_createClass(Popover, [{
-    key: "_init",
-    value: function _init() {
-      var _this = this;
-
-      if (this._triggerEl) {
-        var triggerEvents = this._getTriggerEvents();
-
-        triggerEvents.showEvents.forEach(function (ev) {
-          _this._triggerEl.addEventListener(ev, function () {
-            _this.show();
-          });
-
-          _this._targetEl.addEventListener(ev, function () {
-            _this.show();
-          });
-        });
-        triggerEvents.hideEvents.forEach(function (ev) {
-          _this._triggerEl.addEventListener(ev, function () {
-            setTimeout(function () {
-              if (!_this._targetEl.matches(':hover')) {
-                _this.hide();
-              }
-            }, 100);
-          });
-
-          _this._targetEl.addEventListener(ev, function () {
-            setTimeout(function () {
-              if (!_this._triggerEl.matches(':hover')) {
-                _this.hide();
-              }
-            }, 100);
-          });
-        });
-      }
-    }
-  }, {
-    key: "_createPopperInstace",
-    value: function _createPopperInstace() {
-      return popper_createPopper(this._triggerEl, this._targetEl, {
-        placement: this._options.placement,
-        modifiers: [{
-          name: 'offset',
-          options: {
-            offset: [0, this._options.offset]
-          }
-        }]
-      });
-    }
-  }, {
-    key: "_getTriggerEvents",
-    value: function _getTriggerEvents() {
-      switch (this._options.triggerType) {
-        case 'hover':
-          return {
-            showEvents: ['mouseenter', 'focus'],
-            hideEvents: ['mouseleave', 'blur']
-          };
-
-        case 'click':
-          return {
-            showEvents: ['click', 'focus'],
-            hideEvents: ['focusout', 'blur']
-          };
-
-        default:
-          return {
-            showEvents: ['mouseenter', 'focus'],
-            hideEvents: ['mouseleave', 'blur']
-          };
-      }
-    }
-  }, {
-    key: "show",
-    value: function show() {
-      this._targetEl.classList.remove('opacity-0', 'invisible');
-
-      this._targetEl.classList.add('opacity-100', 'visible'); // Enable the event listeners
-
-
-      this._popperInstance.setOptions(function (options) {
-        return popover_objectSpread(popover_objectSpread({}, options), {}, {
-          modifiers: [].concat(popover_toConsumableArray(options.modifiers), [{
-            name: 'eventListeners',
-            enabled: true
-          }])
-        });
-      }); // Update its position
-
-
-      this._popperInstance.update(); // callback function
-
-
-      this._options.onShow(this);
-    }
-  }, {
-    key: "hide",
-    value: function hide() {
-      this._targetEl.classList.remove('opacity-100', 'visible');
-
-      this._targetEl.classList.add('opacity-0', 'invisible'); // Disable the event listeners
-
-
-      this._popperInstance.setOptions(function (options) {
-        return popover_objectSpread(popover_objectSpread({}, options), {}, {
-          modifiers: [].concat(popover_toConsumableArray(options.modifiers), [{
-            name: 'eventListeners',
-            enabled: false
-          }])
-        });
-      }); // callback function
-
-
-      this._options.onHide(this);
-    }
-  }]);
-
-  return Popover;
-}();
-
-window.Popover = Popover;
-
-function initPopover() {
-  document.querySelectorAll('[data-popover-target]').forEach(function (triggerEl) {
-    var targetEl = document.getElementById(triggerEl.getAttribute('data-popover-target'));
-    var triggerType = triggerEl.getAttribute('data-popover-trigger');
-    var placement = triggerEl.getAttribute('data-popover-placement');
-    var offset = triggerEl.getAttribute('data-popover-offset');
-    new Popover(targetEl, triggerEl, {
-      placement: placement ? placement : popover_Default.placement,
-      offset: offset ? parseInt(offset) : popover_Default.offset,
-      triggerType: triggerType ? triggerType : popover_Default.triggerType
-    });
-  });
-}
-
-if (document.readyState !== 'loading') {
-  // DOMContentLoaded event were already fired. Perform explicit initialization now
-  initPopover();
-} else {
-  // DOMContentLoaded event not yet fired, attach initialization process to it
-  document.addEventListener('DOMContentLoaded', initPopover);
-}
-
-/* harmony default export */ const popover = (Popover);
 ;// CONCATENATED MODULE: ./src/flowbite.js
+ // config
+
  // core components
 
 
@@ -3975,20 +5837,19 @@ if (document.readyState !== 'loading') {
 
 
 
-
-
 /* harmony default export */ const flowbite = ({
+  Config: config,
   Accordion: accordion,
   Collapse: collapse,
   Carousel: carousel,
   Dismiss: dismiss,
   Dropdown: dropdown,
   Modal: modal,
-  Drawer: drawer,
   Tabs: tabs,
-  Tooltip: tooltip,
-  Popover: popover
+  Tooltip: tooltip
 });
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=flowbite.js.map

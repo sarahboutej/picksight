@@ -20,3 +20,7 @@ scrollNavBar = () => {
   }
 
 }
+
+function closeModal(modalBtnName) {
+  document.getElementById(modalBtnName).click();
+}

@@ -6,6 +6,7 @@
     <!-- Modal content -->
     <div class="relative bg-white rounded-lg shadow">
       <button type="button"
+        id="registerCloseBtn"
         class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
         data-modal-toggle="register-modal">
         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -34,7 +35,7 @@
                 class="rtl:order-last flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] border border-gray-300 rounded-l-lg focus:outline-none"
                 type="button">
                   <img src="{% static "images/is.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
-                  +972
+                  +972 (IL)
                  <svg aria-hidden="true" class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
@@ -98,11 +99,11 @@
           <button type="submit"
             class="w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
             {% translate 'Sign Up'%} </button>
-          <div class="text-lg font-medium text-[#404040] text-center">
-            {% translate 'Do You Have An Account?'%} <a type="button" class="text-[#FFB4C6] hover:underline" data-modal-toggle="register-modal">{% translate 'Login'%}</a>
+          <div class="flex justify-center ltr:space-x-1 text-lg font-medium text-[#404040] text-center">
+            <span>{% translate 'Do You Have An Account?'%}</span> <button type="button" class="rtl:mr-3 text-[#FFB4C6] hover:underline" onclick="closeModal('registerCloseBtn')" data-modal-toggle="authentication-modal">{% translate 'Login'%}</button>
           </div>
           <button type="button"
-            class="flex mx-auto ltr:space-x-4 text-[#8A8A8A] bg-white shadow-[0px_0px_6px_rgba(0,0,0,0.19)] focus:outline-none rounded-lg text-lg px-5 py-4 text-center transition transform hover:-translate-y-1">
+            class="flex mx-auto ltr:space-x-1 text-[#8A8A8A] bg-white shadow-[0px_0px_6px_rgba(0,0,0,0.19)] focus:outline-none rounded-lg text-lg px-5 py-4 text-center transition transform hover:-translate-y-1">
             <img src="{% static "images/google.svg" %}" alt="google logo">
             <span class="rtl:mr-4">{% translate 'Sign In With Google'%}</span>
           </button>
