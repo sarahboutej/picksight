@@ -1,0 +1,281 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{% translate 'Picksight Gallery Products Page' %}</title>
+
+  <link rel="stylesheet" href="{% static 'css/flowbite.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+  <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
+</head>
+
+<body class="bg-[#FFF4F7]">
+  {% include "commons/header.html" with pageName="products" %}
+  <section
+    class="relative lg:pt-48 pt-36 pb-36 flex items-center justify-center">
+    <div class="container w-9/12">
+      <div class=" lg:space-y-20 space-y-10">
+        <h3 class="text-3xl lg:text-5xl font-bold text-center md:pb-16 pb-2 pt-16 sm:pt-0 uppercase">
+          <span class="text-[#00A8FE]">{% translate 'Our'%}</span>
+          <span class="text-[#FFB4C6]">{% translate 'Pricing'%}</span>
+        </h3>
+        <div class="grid grid-lines xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 lg:grid-rows-1 grid-rows-2 lg:gap-6 gap-4">
+          <div class="flex flex-col items-center bg-white rounded-lg p-6 transition transform hover:-translate-y-2">
+            <h6 class="flex flex-row font-bold md:text-3xl text-2xl pb-6 pt-4">
+              <span class="text-[#FFB4C6]">{% translate 'Small-'%}</span>
+              <span>{% translate '$29'%}</span>
+            </h6>
+            <ul class="list-disc list-outside md:text-2xl text-xl text-[#727272] pb-10 space-y-4">
+              <li>
+                {% translate 'Upto 40 Contacts'%}
+              </li>
+            </ul>
+            <a href="#"
+              class="py-3 px-6 text-lg text-white font-semibold mt-auto text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+              {% translate 'Create Your Event!'%}</a>
+          </div>
+          <div class="flex flex-col items-center bg-white rounded-lg p-6 transition transform hover:-translate-y-2">
+            <h6 class="flex flex-row font-bold md:text-3xl text-2xl pb-6 pt-4">
+              <span class="text-[#FFB4C6]">{% translate 'Medium-'%}</span>
+              <span>{% translate '$55'%}</span>
+            </h6>
+            <ul class="list-disc list-outside md:text-2xl text-xl text-[#727272] pb-10 space-y-4">
+              <li>
+                {% translate 'Upto 90 Contacts'%}
+              </li>
+            </ul>
+            <a href="#"
+              class="py-3 px-6 text-lg text-white font-semibold mt-auto text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+              {% translate 'Create Your Event!'%}
+            </a>
+          </div>
+          <div class="flex flex-col items-center bg-white rounded-lg p-6 xl:-mt-10 xl:-mb-10 transition transform hover:-translate-y-2">
+            <span class="p-2 -mr-12 uppercase w-full ltr:text-right font-bold text-white bg-[url({% static '/images/populate.svg' %})] bg-no-repeat bg-contain bg-right">Populate</span>
+            <h6 class="flex flex-row font-bold md:text-3xl text-2xl pb-6 pt-4">
+              <span class="text-[#FFB4C6]">{% translate 'Large-'%}</span>
+              <span>{% translate '$99'%}</span>
+            </h6>
+            <ul class="list-disc list-outside md:text-2xl text-xl text-[#727272] pb-10 space-y-4">
+              <li>
+                {% translate 'Upto 90 Contacts'%}
+              </li>
+              <li>
+                {% translate 'Login System'%}
+              </li>
+            </ul>
+            <a href="#"
+              class="py-3 px-6 text-lg text-center text-white font-semibold mt-auto bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+              {% translate 'Create Your Event!'%}</a>
+          </div>
+          <div class="flex flex-col items-center bg-white rounded-lg p-6 transition transform hover:-translate-y-2">
+            <h6 class="flex flex-row font-bold md:text-3xl text-2xl pb-6 pt-4">
+              <span class="text-[#FFB4C6]">{% translate 'Grand-'%}</span>
+              <span>{% translate '$199'%}</span>
+            </h6>
+            <ul class="list-disc list-outside md:text-2xl text-xl text-[#727272] pb-10 space-y-4">
+              <li>
+                {% translate 'Upto 90 Contacts'%}
+              </li>
+              <li>
+                {% translate 'Login System'%}
+              </li>
+              <li>
+                {% translate 'Personalized Text'%}
+              </li>
+            </ul>
+            <a href="#"
+              class="py-3 px-6 text-lg text-white font-semibold mt-auto text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+              {% translate 'Create Your Event!'%}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- All plans includes section -->
+    <section class="flex items-center justify-center lg:pb-28 pb-10">
+      <div class="container flex w-9/12">
+        <div class="lg:space-y-20 space-y-10">
+          <h3 class="text-3xl lg:text-5xl font-bold text-center md:pb-16 pb-2 pt-16 sm:pt-0 uppercase">
+            <span class="text-[#00A8FE]">{% translate 'All'%}</span>
+            <span class="text-[#FFB4C6]">{% translate 'Plans Includes'%}</span>
+          </h3>
+          <div class="grid grid-lines lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:grid-rows-2 grid-rows-3 lg:gap-14 gap-6">
+            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+              <img src="{% static "images/plan_1.svg" %}" alt="Put alternative text here" />
+              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">
+                {% translate 'Private and Secured Gallery'%}
+              </p>
+            </div>
+            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+              <img src="{% static "images/plan_2.svg" %}" alt="Put alternative text here" />
+              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">
+                {% translate 'Thank you messages from templates'%}
+              </p>
+            </div>
+            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+              <img src="{% static "images/plan_3.svg" %}" alt="Put alternative text here" />
+              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Thank you image'%}</p>
+            </div>
+            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+              <img src="{% static "images/plan_4.svg" %}" alt="Put alternative text here" />
+              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">
+                {% translate 'Download all photos & Videos at once'%}
+              </p>
+            </div>
+            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+              <img src="{% static "images/plan_5.svg" %}" alt="Put alternative text here" />
+              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Shareable gallery with friends and family'%}</p>
+            </div>
+            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+              <img src="{% static "images/plan_6.svg" %}"  alt="Put alternative text here" />
+              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Event portal'%} </p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row justify-center lg:gap-14 gap-6">
+            <div class="w-full lg:w-1/3 md:w-1/2 flex items-center bg-white cursor-pointer transition transform hover:-translate-y-2 rounded-lg px-8 py-6 ltr:space-x-4">
+              <div class="flex flex-col space-y-6  ltr:mr-10 rtl:ml-10">
+                <p class="md:text-2xl text-xl text-[#727272] rtl:ml-4">{% translate 'Personalized Gallery theme'%}</p>
+                <span class="font-bold text-3xl">$100</span>
+              </div>
+              <img src="{% static "images/plan_7.svg" %}" alt="Put alternative text here" />
+            </div>
+            <div class="w-full lg:w-1/3 md:w-1/2 flex items-center bg-white cursor-pointer transition transform hover:-translate-y-2 rounded-lg px-8 py-6 ltr:space-x-4">
+              <div class="flex flex-col space-y-6 ltr:mr-10 rtl:ml-10">
+                <p class="md:text-2xl text-xl text-[#727272] rtl:ml-4">{% translate 'Personalized Thank you text'%}</p>
+                <span class="font-bold text-3xl">$50</span>
+              </div>
+              <img src="{% static "images/plan_8.svg" %}" alt="Put alternative text here" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- Our services setup steps -->
+
+  <section class="flex items-center justify-center lg:mb-32 mb-10">
+    <div class="container w-9/1">
+      <div class=" md:space-y-16 space-y-10">
+        <h3 class="text-3xl md:text-5xl font-bold text-center lg:pb-36 pb-12 uppercase">
+          <span class="text-[#00A8FE]">{% translate 'Set up with 2'%}</span>
+          <span class="text-[#FFB4C6]"> {% translate 'easy Steps'%}</span>
+        </h3>
+        <div class="flex flex-col lg:flex-row md:gap-52 gap-16 items-center lg:items-stretch">
+          <div
+            class="relative flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2">
+            <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Step 1'%}</h6>
+            <p class="md:text-2xl text-lg text-[#727272] text-center">
+              {% translate 'Upload a CSV/Excel file of contacts'%}
+            </p>
+            <img src="{% static "images/csv.svg" %}" alt="Put alternative text here" />
+          </div>
+  
+          <div
+            class="flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2 before:bg-[url({% static '/images/shape_2.svg' %})] before:bg-no-repeat before:bg-contain before:-left-[70%] before:top-[60%] before:absolute lg:before:w-full before:h-10 after:bg-[url({% static '/images/shape_2.svg' %})] after:bg-no-repeat after:bg-contain after:left-[90%] after:top-[60%] after:absolute lg:after:w-full after:h-10">
+            <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Step 2'%}</h6>
+            <p class="md:text-2xl text-lg text-[#727272] text-center">
+              {% translate 'Set a time and Wording for the Thank you message'%}
+            </p>
+            <img src="{% static "images/clock.svg" %}" alt="Put alternative text here" />
+          </div>
+  
+          <div
+            class="flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2">
+            <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Thanks'%}</h6>
+            <p class="md:text-2xl text-lg text-[#727272] text-center">
+              {% translate 'Enjoy a Automatic updating gallery'%}
+            </p>
+            <img src="{% static "images/smiley.svg" %}" alt="Put alternative text here" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+  class="relative lg:py-24 py-32 pb-12 flex items-center justify-center">
+  <div class="container flex w-9/12">
+    <div class="flex flex-col md:flex-row items-center justify-between ltr:xl:space-x-10 ltr:lg:space-x-10 ltr:space-x-6 space-y-20 md:space-y-0">
+      <div class="md:w-1/3 w-full text-center md:text-left rtl:text-right rtl:xl:ml-10 rtl:lg:ml-10 rtl:ml-6">
+        <h2 class="flex flex-col text-2xl lg:text-4xl md:text-3xl font-bold space-y-4 uppercase">
+          <span class="text-[#00A8FE]">{% translate 'don’t pay until'%}</span>
+          <span class="text-[#FFB4C6]">{% translate 'you use'%}</span>
+        </h2>
+        <p class="text-[#727272] lg:text-xl text-lg mt-4">
+          {% translate 'A charge will only be applied if the thank you messages are sent.'%}
+        </p>
+        <div class="flex lg:flex-row flex-col mt-10 ltr:lg:space-x-4 lg:space-y-0 space-y-4" >
+          <a href="#"
+            class="py-3 px-4 text-lg text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+            {% translate 'Create your Event'%}</a>
+        </div>
+      </div>
+      <div class="md:w-2/3 w-full">
+        {% load static %}
+       <img src="{% static "images/groups.svg" %}" alt="Put alternative text hereme" />
+     </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative lg:py-24 py-32 pb-12 flex items-center justify-center">
+  <div class="container w-9/12">
+    <div class="md:space-y-16 space-y-10">
+      <div class="flex items-center justify-center ltr:space-x-4">
+        <h2 class="relative flex flex-col text-2xl lg:text-5xl md:text-3xl font-bold space-y-4 uppercase">
+          <span class="text-[#00A8FE]">{% translate 'Frequently Ask'%}</span>
+          <span class="text-[#FFB4C6]">{% translate 'Questions'%}</span>
+        </h2>
+        <span class="rtl:ml-4 bg-[url(/static/images/title_shape.svg)] w-28 h-[100px] bg-no-repeat bg-center rtl:order-first"></span>
+      </div>
+    <div id="accordion-collapse" data-accordion="collapse" data-active-classes="bg-[#FFB4C6] text-white">
+      <div id="accordion-collapse-heading-1" class="border rounded-xl mb-4 border-[#57575733] bg-white">
+        <button type="button" class="flex items-center justify-between w-full p-5 font-bold text-xl rounded-t-xl text-left text-white" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+          <span>{% translate 'How much capital do I need to start?' %}</span>
+          <svg data-accordion-icon="" class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <div id="accordion-collapse-body-1" class="bg-white rounded-b-xl" aria-labelledby="accordion-collapse-heading-1">
+          <div class="p-5 font-light">
+            <p class="mb-2 text-[#727272] text-lg">{% translate 'It is recommended that you invest over 1,000 dollars to be profitable. However, you can start with virtually any amount, you just need to be patient because it will take longer. '%}</p>
+          </div>
+        </div>
+      </div>
+      <div id="accordion-collapse-heading-2" class="border rounded-xl mb-4 border-[#57575733] bg-white">
+        <button type="button" class="flex items-center justify-between w-full p-5 font-bold text-xl rounded-t-xl text-left text-white" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
+          <span>{% translate 'How much capital do I need to start?' %}</span>
+          <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <div id="accordion-collapse-body-2" class="hidden bg-white rounded-b-xl" aria-labelledby="accordion-collapse-heading-2">
+          <div class="p-5 font-light">
+            <p class="mb-2 text-[#727272] text-lg">{% translate 'It is recommended that you invest over 1,000 dollars to be profitable. However, you can start with virtually any amount, you just need to be patient because it will take longer. '%}</p>
+          </div>
+        </div>
+      </div>
+      <div id="accordion-collapse-heading-3" class="border rounded-xl mb-4 border-[#57575733] bg-white">
+        <button type="button" class="flex items-center justify-between w-full p-5 font-bold text-xl rounded-t-xl text-left text-white" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">
+          <span>{% translate 'How much capital do I need to start?' %}</span>
+          <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <div id="accordion-collapse-body-3" class="hidden bg-white rounded-b-xl " aria-labelledby="accordion-collapse-heading-3">
+          <div class="p-5 font-light">
+            <p class="mb-2 text-[#727272] text-lg">{% translate 'It is recommended that you invest over 1,000 dollars to be profitable. However, you can start with virtually any amount, you just need to be patient because it will take longer. '%}</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+  {% include "commons/footer.html" %}
+  {% include "commons/whatsapp_floating_button.html" %}
+  <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
+</body>
+</html>

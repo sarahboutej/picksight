@@ -1,0 +1,54 @@
+{% load static %}
+{% load i18n %}
+ <!-- footer section -->
+  <footer class="flex flex-col items-center bg-white pt-20 pb-14">
+    <div class="container w-9/12">
+      <div class="flex flex-col md:flex-row justify-between md:space-y-0 space-y-6">
+        <div class="flex flex-col md:items-start items-center space-y-6 lg:w-1/3 w-full">
+          <a href="#">
+            <img src="{% static "images/logo.png" %}" id="logo" class="w-36" alt="Picksight logo footer">
+          </a>
+          <p class="text-[#727272] text-2xl ltr:md:text-left rtl:md:text-right text-center">{% translate 'it takes less than 2 minutes to create an event. sign-up and give.'%}</p>
+          <div class="flex flex-row ltr:space-x-4">
+            <a href="https://www.facebook.com" target="_blank">
+              <img src="{% static "images/fb.svg" %}"
+                class="bg-[#FFB4C6] w-10 h-10 rounded-full p-2 hover:bg-[#00A8FE] transition duration-300" alt="Put alternative text here"
+                role="presentation" loading="lazy">
+                
+            </a>
+            <a href="https://www.facebook.com" target="_blank"  class="rtl:mr-3">
+              <img src="{% static "images/instagram.svg" %}"
+                class="bg-[#FFB4C6] w-10 h-10 rounded-full p-2 hover:bg-[#00A8FE] transition duration-300" alt="Put alternative text here"
+                role="presentation" loading="lazy">
+                
+            </a>
+            <a href="#" target="_blank"  class="rtl:mr-3">
+              <img src="{% static "images/whatsapp.svg" %}"
+                class="bg-[#FFB4C6] w-10 h-10 rounded-full p-2 hover:bg-[#00A8FE] transition duration-300" alt="Put alternative text here"
+                role="presentation" loading="lazy">
+            </a>
+          </div>
+        </div>
+        <div class="flex flex-col space-y-6">
+          <h3 class="text-[#727272] text-3xl font-bold ltr:md:text-left rtl:md:text-right text-center">{% translate 'COMPANY' %}</h3>
+          <div class="flex flex-col space-y-3">
+            <a class="flex w-max flex-row md:mx-0 mx-auto ltr:space-x-3" href="#">
+              <img src="{% static '/images/arrow_right_pink.svg' %}" alt="Put alternative text here" role="presentation" loading="lazy">
+              <span class="text-xl text-[#727272] hover:text-[#FFB4C6] rtl:mr-3">{% translate 'Contact Us' %}</span>
+            </a>
+            <a class="flex w-max flex-row md:mx-0 mx-auto ltr:space-x-3" href="#">
+              <img src="{% static '/images/arrow_right_pink.svg' %}" alt="Put alternative text here" role="presentation" loading="lazy">
+              <span class="text-xl text-[#727272] hover:text-[#FFB4C6] rtl:mr-3">{% translate 'Privacy policy' %}</span>
+            </a>
+            <a class="flex w-max flex-row md:mx-0 mx-auto ltr:space-x-3" href="#">
+              <img src="{% static '/images/arrow_right_pink.svg' %}" alt="Put alternative text here" role="presentation" loading="lazy">
+              <span class="text-xl text-[#727272] hover:text-[#FFB4C6] rtl:mr-3">{% translate 'Terms of services' %}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="text-center text-lg text-[#727272] pt-24">{% translate '© 2022 Picksight' %}</p>
+    </div>
+  </footer>

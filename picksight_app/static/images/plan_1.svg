@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88">
+	<title>Ellipse 10-svg</title>
+	<defs>
+		<image width="96" height="96" id="img1" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI0IDQ0Ljk5MzZDMjQgNDQuOTkzNiA0MS45OTcyIDM4Ljk5NDUgNDEuOTk3MiAyMy45OTY4IiBzdHJva2U9IiNGRkI0QzYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik00MS45OTcyIDIzLjk5NjdWNS45OTk1M0M0MS45OTcyIDUuOTk5NTMgMzUuOTk4MSAzIDI0IDMiIHN0cm9rZT0iI0ZGQjRDNiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTIzLjk5OTkgNDQuOTkzNkMyMy45OTk5IDQ0Ljk5MzYgNi4wMDI2OSAzOC45OTQ1IDYuMDAyNjkgMjMuOTk2OCIgc3Ryb2tlPSIjRkZCNEM2IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNNi4wMDI2OSAyMy45OTY3VjUuOTk5NTNDNi4wMDI2OSA1Ljk5OTUzIDEyLjAwMTggMyAyMy45OTk5IDMiIHN0cm9rZT0iI0ZGQjRDNiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTM1Ljk5OCAxMS45OTg1QzIzLjk5OTggMjAuOTk3MSAyMS4wMDAzIDMyLjk5NTMgMjEuMDAwMyAzMi45OTUzQzIxLjAwMDMgMzIuOTk1MyAxOC4wMDA4IDI5LjQxNSAxNS4wMDEyIDI2Ljk5NjIiIHN0cm9rZT0iI0ZGQjRDNiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="/>
+	</defs>
+	<style>
+		.s0 { fill: #fff7f8 } 
+	</style>
+	<path id="Layer" class="s0" d="m44 88c-24.3 0-44-19.7-44-44 0-24.3 19.7-44 44-44 24.3 0 44 19.7 44 44 0 24.3-19.7 44-44 44z"/>
+	<use id="gala_secure" href="#img1" transform="matrix(.558,0,0,.555,17.2,19.381)"/>
+</svg>

@@ -1,0 +1,118 @@
+{% load static %}
+{% load i18n %}
+<div id="register-modal" tabindex="-1"
+  class="z-50 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+  <div class="relative p-4 w-full xl:max-w-3xl lg:max-w-xl md:max-w-lg  h-full md:h-auto">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow">
+      <button type="button"
+        id="registerCloseBtn"
+        class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+        data-modal-toggle="register-modal">
+        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <div class="py-6 px-6 lg:px-8">
+        <a href="#" class="flex flex-col items-center px-2">
+          <img src="{% static "images/logo.png" %}" id="logo" class="w-28 py-2" alt="Picksight logo">
+        </a>
+        <form class="space-y-6" action="#">
+          <div>
+            <label for="email" class="block mb-2 text-base">{% translate 'Name'%}</label>
+            <input type="Text" name="username" id="username"
+              class="border border-[#ADADAD] text-[#8A8A8A] text-base rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-4"
+              placeholder="What's your name?" required>
+          </div>
+          <div>
+            <label for="country_phone" class="block mb-2 text-base">{% translate 'Phone Number'%}</label>
+            <div class="flex">
+              <button id="dropdown-button-2" data-dropdown-toggle="dropdown-search-phone"
+                class="rtl:order-last flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] border border-gray-300 rounded-l-lg focus:outline-none"
+                type="button">
+                  <img src="{% static "images/is.png" %}" id="selectedImg" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                  <span class="w-16" id="selectedCode">+972 (IL)</span>
+                 <svg aria-hidden="true" class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <div id="dropdown-search-phone"
+                class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow"
+                data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom"
+                style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 10px);">
+                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button-2">
+                  <li>
+                    <button type="button"
+                      onclick="getElement(this)"
+                      class="inline-flex py-2 px-4 w-full text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">
+                      <div class="inline-flex items-center">
+                        <img class="child2" src="{% static "images/is.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                        <span class="child1">+972 (IL)</span>
+                      </div>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button"
+                    onclick="getElement(this)"
+                      class="inline-flex py-2 px-4 w-full text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">
+                      <div class="inline-flex items-center">
+                        <img class="child2" src="{% static "images/usa.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                        <span class="child1">+1 (US)</span>
+                      </div>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div class="relative w-full">
+                <input type="search" id="phone-search"
+                  class="block p-4 w-full z-20 text-sm text-[#8A8A8A] rounded-r-lg border-l-[#ADADAD] border-l-2 border border-[#ADADAD] focus:ring-[#FFB4C6] focus:border-[#FFB4C6]"
+                  placeholder="Phone Number" required>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block mb-2 text-base">{% translate 'Email Address'%}</label>
+            <input type="email" name="email" id="email"
+              class=" border border-[#ADADAD] text-[#8A8A8A] text-base rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-4 "
+              placeholder="name@company.com" required>
+          </div>
+          <div>
+            <label for="password" class="block mb-2 text-base">{% translate 'New Password'%}</label>
+            <input type="password" name="password" id="password" placeholder="••••••••"
+              class="border border-[#ADADAD] text-[#8A8A8A] text-base rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-4"
+              required>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-base font-bold text-[#404040]">
+              {% translate 'By registering you accept the'%} <a href="#" class="text-[#FFB4C6] hover:underline">{% translate 'terms and condtions'%}</a>
+              {% translate 'terms and condtions, and the'%} <a href="#" class="text-[#FFB4C6] hover:underline">{% translate 'privacy policy'%}</a>
+            </p>
+          </div>
+          <button type="submit"
+            class="w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
+            {% translate 'Sign Up'%} </button>
+          <div class="flex justify-center ltr:space-x-1 text-lg font-medium text-[#404040] text-center">
+            <span>{% translate 'Do You Have An Account?'%}</span> <button type="button" class="rtl:mr-3 text-[#FFB4C6] hover:underline" onclick="closeModal('registerCloseBtn')" data-modal-toggle="authentication-modal">{% translate 'Login'%}</button>
+          </div>
+          <button type="button"
+            class="flex mx-auto ltr:space-x-1 text-[#8A8A8A] bg-white shadow-[0px_0px_6px_rgba(0,0,0,0.19)] focus:outline-none rounded-lg text-lg px-5 py-4 text-center transition transform hover:-translate-y-1">
+            <img src="{% static "images/google.svg" %}" alt="google logo">
+            <span class="rtl:mr-4">{% translate 'Sign In With Google'%}</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+</script>

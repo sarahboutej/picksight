@@ -1,0 +1,248 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{% translate 'Picksight Gallery Home Page' %}</title>
+
+  <link rel="stylesheet" href="{% static 'css/flowbite.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+  <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
+</head>
+
+<body class="bg-[#FFF4F7]">
+  {% include "commons/header.html" with pageName="home" %}
+  <section
+    class="relative lg:min-h-screen lg:py-24 py-32 flex items-center justify-center bg-gradient-to-r from-[#ffe1ea] to-[#d8e8f8]">
+    <div class="container flex w-9/12">
+      <div class="flex flex-col md:flex-row items-center justify-between ltr:xl:space-x-52 ltr:lg:space-x-10 ltr:space-x-6 space-y-20 md:space-y-0">
+        <div class="md:w-1/2 w-full">
+           {% load static %}
+          <img src="{% static "images/hero_img.svg" %}" alt="Put alternative text hereme" />
+        </div>
+        <div class="md:w-1/2 w-full text-center md:text-left rtl:text-right rtl:xl:mr-52 rtl:lg:mr-10 rtl:mr-6">
+          <div class="flex w-max flex-row md:mx-0 mx-auto ltr:space-x-3 pb-3 mb-6 border-b-2 border-b[#72727233]">
+            <img src="{% static '/images/arrow_right.svg' %}" alt="Put alternative text here" role="presentation" loading="lazy">
+            <span class="uppercase text-base text-[#727272] font-bold rtl:mr-3">{% translate 'Latest proucts' %}</span>
+          </div>
+          <h1 class="flex flex-col text-2xl lg:text-5xl md:text-3xl font-bold space-y-4 uppercase">
+            <span class="text-[#00A8FE]">{% translate 'See your event like'%}</span>
+            <span class="text-[#FFB4C6]">{% translate 'never before'%}</span>
+          </h1>
+          <p class="text-[#727272] lg:text-xl text-lg mt-4">
+            {% translate 'Experiencing your event through your guests eyes. There is no need to wait for professional photographers. With no appt but easily through WhatsApp, you will have a complete gallery immediately following your event'%}
+          </p>
+          <div class="flex lg:flex-row flex-col mt-10 ltr:lg:space-x-4 lg:space-y-0 space-y-4" >
+            <a href="#"
+              class="py-3 px-4 text-lg text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+              {% translate 'Sign up for free Now!'%}</a>
+            <a href="#"
+              class="rtl:lg:mr-4 py-3 px-4 text-lg text-[#00A8FE] text-center bg-transparent rounded-lg border border-[#00A8FE] hover:bg-[#00A8FE] hover:text-white transition duration-300">
+              {% translate 'Try our 1 Step Demo!'%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="flex items-center justify-center space-y-7">
+    <div class="relative container flex w-9/12  md:min-h-[320px] lg:min-h-[450px]">
+      <div
+        class="md:absolute inset-x-auto md:-top-16 -top-24 flex flex-col md:flex-row items-center md:items-stretch justify-center lg:gap-24 gap-6">
+        <div class="flex flex-col items-center w-full text-center space-y-4 bg-white rounded-lg lg:py-11 py-4 lg:px-9 px-4 transition transform hover:-translate-y-2">
+          <p class="text-[#727272] lg:text-lg text-base">{% translate 'The Only Genuine Gallery That Conveys The Experience'%}</p>
+          <img src="{% static "images/gallery_img_1.svg" %}" alt="Put alternative text hereme" />
+        </div>
+        <div class="flex flex-col items-center w-full text-center space-y-4 bg-white rounded-lg lg:py-11 py-4 lg:px-9 px-4 transition transform hover:-translate-y-2">
+          <p class="text-[#727272] lg:text-lg text-base">{% translate 'No Need To Wait to See you photos'%}</p>
+          <img src="{% static "images/gallery_img_2.svg" %}" alt="Put alternative text here" />
+        </div>
+        <div class="flex flex-col items-center w-full text-center space-y-4 bg-white rounded-lg lg:py-11 py-4 lg:px-9 px-4 transition transform hover:-translate-y-2">
+          <p class="text-[#727272] lg:text-lg text-base">{% translate 'No Dedicated App or Barcode.Easily use immediately through WhatsApp/Text'%}</p>
+          <img src="{% static "images/gallery_img_3.svg" %}" alt="Put alternative text here" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- How it works section -->
+  <section class="flex items-center justify-center lg:mb-32 mb-10">
+    <div class="container flex w-9/12">
+      <div class=" md:space-y-28 space-y-10">
+        <h3 class="text-3xl lg:text-5xl font-bold text-center lg:pb-28 md:pb-16 pb-2 pt-10 uppercase">
+          <span class="text-[#00A8FE]">{% translate 'How It'%}</span>
+          <span class="text-[#FFB4C6]">{% translate 'works?'%}</span>
+        </h3>
+        <div class="flex flex-col md:flex-row lg:gap-24 gap-6 items-center lg:items-stretch">
+          <div
+            class="relative flex flex-col flex-1 items-center sm:space-y-4  ltr:before:bg-[url({% static '/images/shape_0.svg' %})] before:bg-no-repeat 2xl:before:bg-auto xl:before:bg-contain before:bg-contain 2xl:before:left-[55%] before:left-[40%] before:-top-16 before:absolute lg:before:w-full before:h-[100px]">
+            <img src="{% static "images/event.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] text-3xl">{% translate 'Event'%}</h6>
+            <p class="text-lg text-[#727272] text-center">
+              {% translate 'Have an Amazing Event.'%}
+            </p>
+          </div>
+          <div
+            class="relative flex flex-col flex-1 items-center space-y-4 md:-mt-32 rtl:before:bg-[url({% static '/images/shape_1.svg' %})] before:bg-no-repeat 2xl:before:bg-auto xl:before:bg-contain before:bg-contain before:-right-[100%] before:top-10 before:absolute lg:before:w-full before:h-[100px] rtl:after:bg-[url({% static '/images/shape_0.svg' %})] after:bg-no-repeat 2xl:after:bg-auto xl:after:bg-contain after:bg-contain after:-left-[70%] after:top-10 after:absolute lg:after:w-full after:h-[100px]">
+            <img src="{% static "images/system.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] text-3xl">{% translate 'Our System'%}</h6>
+            <p class="text-lg text-[#727272] text-center">
+              {% translate 'Our system collects the media from your guests by simply sending them a Whatsapp thank-you message, asking them to send photos and videos'%}
+            </p>
+          </div>
+          <div
+            class="relative flex flex-col flex-1 items-center space-y-4 ltr:before:bg-[url({% static '/images/shape_1.svg' %})] before:bg-no-repeat 2xl:before:bg-auto xl:before:bg-contain before:bg-contain before:-left-[30%] before:-top-16 before:absolute lg:before:w-full before:h-[100px]">
+            <img src="{% static "images/gallery.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] text-3xl">
+              {% translate 'Gallery'%}</h6>
+            <p class="text-lg text-[#727272] text-center">
+              {% translate 'Have an awesome gallery of your event'%} 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our services section -->
+  <section class="flex items-center justify-center lg:pb-28 pb-10">
+    <div class="container flex w-9/12">
+      <div class=" lg:space-y-20 space-y-10">
+        <h3 class="text-3xl lg:text-5xl font-bold text-center md:pb-16 pb-2 pt-16 sm:pt-0 uppercase">
+          <span class="text-[#00A8FE]">{% translate 'Our'%}</span>
+          <span class="text-[#FFB4C6]">{% translate 'Services'%}</span>
+        </h3>
+        <div class="grid grid-lines lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:grid-rows-2 grid-rows-3 lg:gap-14 gap-6">
+          <div class="flex flex-col items-center bg-white rounded-lg px-14 pb-6 cursor-pointer">
+            <img src="{% static "images/service_1.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] md:text-3xl text-2xl  pb-4">{% translate 'Wedding'%}</h6>
+            <p class="md:text-2xl text-xl text-[#727272] text-center pb-6">
+              {% translate 'Forget the disposable camera. This is the new way to collect photos from your guests.'%}
+            </p>
+            <a href=""
+              class="py-3 px-6 text-lg text-white font-semibold mt-auto text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+              {% translate 'Set up your Wedding gallery now'%}</a>
+          </div>
+          <div class="flex flex-col items-center bg-white rounded-lg px-14 pb-6 cursor-pointer">
+            <img src="{% static "images/service_2.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] md:text-3xl text-2xl pb-4">{% translate 'Birthday'%}</h6>
+            <p class="md:text-2xl text-xl text-[#727272] text-center pb-6">
+              {% translate 'Create timeless memories with a dedicated gallery'%}
+            </p>
+            <a href=""
+              class="py-3 px-6 text-lg text-white font-semibold mt-auto text-center bg-[#00A8FE] rounded-lg border border-[#00A8FE] hover:bg-transparent hover:text-[#00A8FE] transition duration-300">
+              {% translate 'Set up your Birthday gallery now'%}
+            </a>
+          </div>
+          <div class="flex flex-col items-center bg-white rounded-lg px-14 pb-6 cursor-pointer">
+            <img src="{% static "images/service_3.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] md:text-3xl text-2xl text-center pb-4">{% translate 'Business Event'%}</h6>
+            <p class="md:text-2xl text-xl text-[#727272] text-center pb-6">{% translate 'Have a live galery of your event to remember the network.'%}
+            </p>
+            <a href=""
+              class="py-3 px-6 text-lg text-center text-white font-semibold mt-auto bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+              {% translate 'Set up your Bussines Event gallery now'%}</a>
+          </div>
+          <div class="flex flex-col items-center bg-white rounded-lg px-14 pb-6">
+            <img src="{% static "images/service_4.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] md:text-3xl text-2xl  pb-4">{% translate 'Concert'%}</h6>
+            <p class="md:text-2xl text-xl text-[#727272] text-center pb-6">
+              {% translate 'See how your audience partied and had fun in your concert.'%}
+              
+            </p>
+            <a href="#"
+              class="py-3 px-6 text-lg text-white font-semibold mt-auto text-center bg-[#00A8FE] rounded-lg border border-[#00A8FE] hover:bg-transparent hover:text-[#00A8FE] transition duration-300">
+              {% translate 'Set up your Concert gallery now'%}
+            </a>
+          </div>
+          <div class="flex flex-col items-center bg-white rounded-lg px-14 pb-6">
+            <img src="{% static "images/service_5.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] md:text-3xl text-2xl pb-4">{% translate 'Trip'%}</h6>
+            <p class="md:text-2xl text-xl text-[#727272] text-center pb-6">{% translate 'Gather all photos in one place from all travelers.'%}</p>
+            <a href="#"
+              class="py-3 px-6 text-lg text-white font-semibold mt-auto text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+              {% translate 'Set up your Trip gallery now'%}</a>
+          </div>
+          <div class="flex flex-col items-center bg-white rounded-lg px-14 pb-6">
+            <img src="{% static "images/service_3.png" %}" alt="Put alternative text here" />
+            <h6 class="font-bold text-[#FFB4C6] md:text-3xl text-2xl  pb-4">{% translate 'Party'%}</h6>
+            <p class="md:text-2xl text-xl text-[#727272] text-center pb-6">{% translate 'Gather all photos in one place from all.'%} 
+            </p>
+            <a href="#"
+              class="py-3 px-6 text-lg text-center text-white font-semibold mt-auto bg-[#00A8FE] rounded-lg border border-[#00A8FE] hover:bg-transparent hover:text-[#00A8FE] transition duration-300">
+              {% translate 'Set up your Party Event gallery now'%}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our services setup steps -->
+
+  <section class="flex items-center justify-center lg:mb-32 mb-10">
+    <div class="container w-9/1">
+      <div class=" md:space-y-16 space-y-10">
+        <h3 class="text-3xl md:text-5xl font-bold text-center lg:pb-36 pb-12 uppercase">
+          <span class="text-[#00A8FE]">{% translate 'Set up with 2'%}</span>
+          <span class="text-[#FFB4C6]"> {% translate 'easy Steps'%}</span>
+        </h3>
+        <div class="flex flex-col lg:flex-row md:gap-52 gap-16 items-center lg:items-stretch">
+          <div
+            class="relative flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2">
+            <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Step 1'%}</h6>
+            <p class="md:text-2xl text-lg text-[#727272] text-center">
+              {% translate 'Upload a CSV/Excel file of contacts'%}
+            </p>
+            <img src="{% static "images/csv.svg" %}" alt="Put alternative text here" />
+          </div>
+  
+          <div
+            class="flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2 before:bg-[url({% static '/images/shape_2.svg' %})] before:bg-no-repeat before:bg-contain before:-left-[70%] before:top-[60%] before:absolute lg:before:w-full before:h-10 after:bg-[url({% static '/images/shape_2.svg' %})] after:bg-no-repeat after:bg-contain after:left-[90%] after:top-[60%] after:absolute lg:after:w-full after:h-10">
+            <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Step 2'%}</h6>
+            <p class="md:text-2xl text-lg text-[#727272] text-center">
+              {% translate 'Set a time and Wording for the Thank you message'%}
+            </p>
+            <img src="{% static "images/clock.svg" %}" alt="Put alternative text here" />
+          </div>
+  
+          <div
+            class="flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2">
+            <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Thanks'%}</h6>
+            <p class="md:text-2xl text-lg text-[#727272] text-center">
+              {% translate 'Enjoy a Automatic updating gallery'%}
+            </p>
+            <img src="{% static "images/smiley.svg" %}" alt="Put alternative text here" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Still scrolling section -->
+
+  <section class="flex items-center justify-center lg:pb-28 pb-10">
+    <div class="container flex w-9/1 space-y-18">
+      <div class="flex flex-col items-center space-y-6">
+        <h3 class="text-3xl md:text-5xl font-bold text-center uppercase">
+          <span class="text-[#00A8FE]">{% translate 'Still Scrolling?'%}</span>
+          <span class="text-[#FFB4C6]">{% translate 'Stop'%}</span>
+        </h3>
+        <p class="md:text-2xl text-xl text-[#727272] text-center lg:w-2/3 w-full">
+          {% translate 'it takes less than 2 minutes to create an event. sign-up and give us a spin! questions? we’re always available on the chat bubble on the bottom right.'%} 
+        </p>
+        <a href="#"
+          class="py-3 px-6 text-lg text-white font-semibold mt-auto text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">
+          {% translate 'Create your Event'%}</a>
+      </div>
+    </div>
+  </section>
+  {% include "commons/footer.html" %}
+  {% include "commons/whatsapp_floating_button.html" %}
+
+  <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
+</body>
+</html>
