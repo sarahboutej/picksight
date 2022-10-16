@@ -1,0 +1,101 @@
+{% load static %}
+{% load i18n %}
+<div class="flex flex-col space-y-16">
+  <h3 class="text-2xl lg:text-4xl font-bold text-center pb-2 uppercase">
+    <span class="text-[#00A8FE]">{% translate 'Two Steps' %}</span>
+    <span class="text-[#FFB4C6]">{% translate 'Demo' %}</span>
+  </h3>
+  <div class="relative">
+    <div class="flex flex-col space-y-4 items-center bg-white p-2 xl:p-4">
+      <div class="-mt-12 z-30">
+        <img src="{% static "images/check.svg" %}" alt="Put you alt text here">
+      </div>
+      <div class="flex flex-col space-y-3 items-center">
+        <h5 class="flex flex-row text-center ltr:space-x-3 text-[#727272] text-xl font-bold">
+          <span>{% translate 'Step 1 - ' %} {% translate 'Phone validation' %} </span>
+        </h5>
+        <div class="flex flex-col items-center">
+          <p class="text-[#727272] text-lg text-center">{% translate 'Just for this demo, we need to verify your phone.' %}</p>
+          <p class="flex text-[#727272] text-lg ltr:space-x-1">
+            <span>{% translate 'Scan this' %}</span>
+            <strong class="rtl:mr-1">{% translate 'QR code' %}</strong>
+          </p>
+        </div>
+        <div class="flex flex-col items-center" id="qrcode"></div>
+        <p class="text-[#727272] text-lg text-center flex ltr:space-x-1">
+          <span>{% translate 'Or' %} </span>
+          <button onclick="validateStep1()" class="hover:text-[#00A8FE] font-bold rtl:mr-1">{% translate 'Click Here' %}</button>
+        </p>
+        <div class="flex flex-row items-center bg-[#79BA7E] px-4 py-2 rounded-lg ltr:space-x-4 transition transform hover:-translate-y-1 hover:shadow-xl pointer">
+          <button onclick="validateStep1()" class="text-white">{% translate 'Send the verification message'%}</button>
+          <img src="{% static "images/whatsapp-white.svg" %}" class="rtl:mr-4 w-8 h-8" alt="Put you alt text here">
+        </div>
+      </div>
+    </div>
+    <div id="step1" class="hidden flex-col absolute top-0 w-full h-full z-20 bg-[#ffffffd6] p-6">
+      <div class="flex flex-col h-full items-center justify-center text-[#00A8FE] text-3xl xl:text-5xl font-bold leading-normal">
+        <span>+972-345-6789</span>
+        <span>was verified!</span>
+      </div>
+    </div>
+  </div> 
+  <div class="relative">
+    <div class="flex flex-col space-y-4 items-center bg-white p-2 xl:p-4">
+      <div class="-mt-12 z-30">
+        <img src="{% static "images/check.svg" %}" alt="Put you alt text here">
+      </div>
+      <div class="flex flex-col space-y-3 items-center">
+        <h5 class="flex text-center lg:flex-row ltr:space-x-3 text-[#727272] lg:text-xl text-lg font-bold">
+          <span>{% translate 'Step 2 - ' %} {% translate 'Send the message' %}</span>
+        </h5>
+        <div class="flex flex-col items-center">
+          <p class="flex flex-wrap justify-center text-center text-[#727272] text-lg ltr:space-x-1">
+            {% translate 'Choose a message from the list and click' %} <strong>{% translate 'Send' %}</strong>
+            <!-- <button class="rtl:mr-1 hover:text-[#00A8FE] font-bold">{% translate 'Send' %}</button> -->
+          </p>
+        </div>
+        <div class="flex flex-col w-full space-y-10">
+          <div class="w-full">
+            <select id="underline_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b border-[#FFB4C6] appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option selected="">{% translate 'Select Message to be sent' %}</option>
+                <option value="US">{% translate 'Message one' %}</option>
+                <option value="CA">{% translate 'Message two' %}</option>
+                <option value="FR">{% translate 'Message three' %}Message three</option>
+                <option value="DE">{% translate 'Message four' %}Message four</option>
+            </select>
+          </div>
+          <button onclick="validateStep2()" class="flex flex-row items-center justify-center bg-[#FFB4C6] px-4 py-2 rounded-lg ltr:space-x-4 transition transform hover:-translate-y-1 hover:shadow-xl pointer text-white">
+            {% translate 'Send the message'%}
+          </button>
+        </div>
+      </div>
+    </div>
+      <div id="step2" class="hidden absolute top-0 w-full h-96 z-20 p-6 pt-24 bg-[#ffffffd6]">
+        <div class="flex flex-col h-full items-center justify-center font-bold leading-normal space-y-6">
+          <span class="text-[#00A8FE] text-4xl">{% translate 'Message sent!'%}</span>
+          <p class="text-[#FFB4C6] text-2xl text-center">{% translate 'You can now send some photos, videos, voice or text and it will appear here after a few seconds'%}</p>
+          <img src="{% static "images/big_arrow_right.svg" %}" id="moved-arrow" class="w-24 wow animate__animated animate__fadeInLeft animate__infinite" data-wow-duration="2s" alt="Put you alt text here">
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+  function validateStep2() {
+    const step2 = document.getElementById('step2');
+    const arrow = document.getElementById('moved-arrow');
+    const refresh = document.getElementById('refresh-wheel');
+    setTimeout(() => {
+      arrow.removeAttribute('style');
+      step2.classList.remove('hidden');
+      step2.classList.add('flex'); 
+    }, 1000);
+  };
+
+  function validateStep1() {
+    const step1 = document.getElementById('step1');
+    setTimeout(() => {
+      step1.classList.remove('hidden');
+      step1.classList.add('flex'); 
+    }, 1000);
+  };
+</script>

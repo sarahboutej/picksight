@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="rtl">
 
 <head>
   <!-- Required meta tags -->
@@ -174,7 +174,7 @@
             <p class="md:text-2xl text-lg text-[#727272] text-center">
               {% translate 'Upload a CSV/Excel file of contacts'%}
             </p>
-            <img src="{% static "images/csv.svg" %}" alt="Put alternative text here" />
+            <img src="{% static "images/csv.svg" %}" class="md:w-auto w-20" alt="Put alternative text here" />
           </div>
   
           <div
@@ -183,7 +183,7 @@
             <p class="md:text-2xl text-lg text-[#727272] text-center">
               {% translate 'Set a time and Wording for the Thank you message'%}
             </p>
-            <img src="{% static "images/clock.svg" %}" alt="Put alternative text here" />
+            <img src="{% static "images/clock.svg" %}" class="md:w-auto w-20" alt="Put alternative text here" />
           </div>
   
           <div
@@ -192,7 +192,7 @@
             <p class="md:text-2xl text-lg text-[#727272] text-center">
               {% translate 'Enjoy a Automatic updating gallery'%}
             </p>
-            <img src="{% static "images/smiley.svg" %}" alt="Put alternative text here" />
+            <img src="{% static "images/smiley.svg" %}" class="md:w-auto w-20" alt="Put alternative text here" />
           </div>
         </div>
       </div>

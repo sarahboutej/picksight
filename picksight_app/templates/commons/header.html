@@ -4,7 +4,7 @@
   <div class="container w-9/12">
     <div class="flex flex-row items-center justify-between">
       <!-- Website Logo -->
-      <a href="#" class="flex flex-col px-2">
+      <a href="/" class="flex flex-col px-2">
         <img src="{% static "images/logo.png" %}" id="logo" class="w-28 py-2" alt="Picksight logo">
       </a>
       <!-- Primary Navbar items -->
@@ -15,7 +15,7 @@
           {% translate 'Products'%}</a>
         <a href="#" class="py-2 px-2 text-[#727272]  text-base hover:border-b-4 hover:border-[#FFB4C6] rtl:mr-5  {% if pageName == 'event' %}border-b-4 border-[#FFB4C6]{% endif %}">
           {% translate 'Event-Portal'%}</a>
-        <a href="#" class="py-2 px-2 text-[#727272]  text-base hover:border-b-4 hover:border-[#FFB4C6] rtl:mr-5  {% if pageName == 'demo' %}border-b-4 border-[#FFB4C6]{% endif %}">
+        <a href="/demo" class="py-2 px-2 text-[#727272]  text-base hover:border-b-4 hover:border-[#FFB4C6] rtl:mr-5  {% if pageName == 'demo' %}border-b-4 border-[#FFB4C6]{% endif %}">
           {% translate 'Demo'%}</a>
         <div class="flex xl:hidden flex-col xl:flex-row xl:space-x-3 xl:space-y-0 space-y-3 xl:mt-0 mt-6">
           <button
