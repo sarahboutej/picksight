@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load l10n %}
 {% if  visitor == 'true' %}
  <div class="w-ful relative brick" target="_blank">
     <img alt="{{ galleryImage.sender }}: {{ galleryImage.message }}" class="object-cover w-full group-hover:scale-110 transition duration-300 ease-in-out rounded-xl" src="{% static galleryImage %}" />
