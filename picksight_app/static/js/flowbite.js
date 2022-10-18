@@ -5075,8 +5075,9 @@ var Dropdown = /*#__PURE__*/function () {
     key: "_handleClickOutside",
     value: function _handleClickOutside(ev, targetEl) {
       var clickedEl = ev.target;
+      console.warn('clickedEl',clickedEl !== targetEl,'---',!targetEl.contains(clickedEl) ,'--- ' ,!this._triggerEl.contains(clickedEl));
 
-      if (clickedEl !== targetEl && !targetEl.contains(clickedEl) && !this._triggerEl.contains(clickedEl) && this._visible) {
+      if (clickedEl !== targetEl && !this._triggerEl.contains(clickedEl) && this._visible) {
         this.hide();
       }
 

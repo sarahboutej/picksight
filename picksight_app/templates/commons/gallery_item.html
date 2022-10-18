@@ -1,19 +1,20 @@
 {% load static %}
 {% load i18n %}
-<div class="w-ful relative">
-  {% if  isExternal == 'true' %}
-    <img alt="" class="object-cover w-full group-hover:scale-110 transition duration-300 ease-in-out rounded-xl" src="{% static galleryImage %}" />
+{% if  visitor == 'true' %}
+ <div class="w-ful relative brick" target="_blank">
+    <img alt="{{ galleryImage.sender }}: {{ galleryImage.message }}" class="object-cover w-full group-hover:scale-110 transition duration-300 ease-in-out rounded-xl" src="{% static galleryImage %}" />
   {% else %}
-  <div class="overflow-hidden  bg-red-400 cursor-pointer rounded-xl relative group" type="button" data-modal-toggle="carousel-modal">
+  <a href="{% static galleryImage.image %}" class="w-ful relative brick" data-pswp-width="{{ galleryImage.width }}" data-pswp-height="{{ galleryImage.height }}"  target="_blank">
+  <div class="overflow-hidden  bg-red-400 cursor-pointer rounded-xl relative group" type="button">
     <div class="rounded-xl z-40 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black to-transparent bg-gradient-to-t inset-x-0 -bottom-2 pt-30 text-white flex items-end">
       <div>
         <div class="transform-gpu  p-4 space-y-3 text-xl group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 pb-10 transform transition duration-300 ease-in-out">
-          <div class="font-bold">{% translate 'Matan'%}</div>
-            <div class="text-base">{% translate 'Great wedding ever!!!'%} </div>
+          <div class="font-bold">{{ galleryImage.sender }}</div>
+            <div class="text-base">{{ galleryImage.message }} </div>
           </div>
       </div>
     </div>
-    <img alt="" class="object-cover w-full group-hover:scale-110 transition duration-300 ease-in-out" src="{% static galleryImage %}" />
+    <img alt="{{ galleryImage.sender }}: {{ galleryImage.message }}" class="object-cover w-full group-hover:scale-110 transition duration-300 ease-in-out" src="{% static galleryImage.image %}" />
    </div>
    {% endif %}
   {% if  galleryOwner == 'owner' %}
@@ -38,6 +39,8 @@
     {% endif %}
   </div>
   {% endif %}
+  {% if  visitor == 'true' %}
 </div> 
-
-{% include "./carousel_modal.html" with gallery=gallery2 %}
+{% else %}
+</a> 
+{% endif %}
