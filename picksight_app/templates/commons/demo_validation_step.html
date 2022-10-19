@@ -35,7 +35,7 @@
     </div>
     <div id="step1" class="hidden flex-col absolute top-0 w-full h-full z-20 bg-[#ffffffe8] p-6">
       <div class="flex flex-col h-full items-center justify-center text-[#00A8FE] text-xl md:text-3xl xl:text-5xl font-bold leading-normal">
-        <span class="text-center">+972-345-6789</span>
+        <span id="phone-number" class="text-center"></span>
         <span class="text-center">was verified!</span>
       </div>
     </div>
@@ -57,15 +57,15 @@
         </div>
         <div class="flex flex-col w-full space-y-10">
           <div class="w-full">
-            <select id="underline_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b border-[#FFB4C6] appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                <option selected="">{% translate 'Select Message to be sent' %}</option>
-                <option value="US">{% translate 'Message one' %}</option>
-                <option value="CA">{% translate 'Message two' %}</option>
-                <option value="FR">{% translate 'Message three' %}Message three</option>
-                <option value="DE">{% translate 'Message four' %}Message four</option>
+            <select id="message_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b border-[#FFB4C6] appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option selected value="default">{% translate 'Select Message to be sent' %}</option>
+                <option value="messageOne">{% translate 'Message one' %}</option>
+                <option value="messageTwo">{% translate 'Message two' %}</option>
+                <option value="messageThree">{% translate 'Message three' %}Message three</option>
+                <option value="messageFour">{% translate 'Message four' %}Message four</option>
             </select>
           </div>
-          <button onclick="validateStep2()" class="flex flex-row items-center justify-center bg-[#FFB4C6] px-4 py-2 rounded-lg ltr:space-x-4 transition transform hover:-translate-y-1 hover:shadow-xl pointer text-white">
+          <button onclick="validateMessageStep()" class="flex flex-row items-center justify-center bg-[#FFB4C6] px-4 py-2 rounded-lg ltr:space-x-4 transition transform hover:-translate-y-1 hover:shadow-xl pointer text-white">
             {% translate 'Send the message'%}
           </button>
         </div>
@@ -80,59 +80,5 @@
         </div>
       </div>
   </div>
-  <!-- <button id="ajaxButton" type="button">Make a request</button> -->
 </div>
-<script>
-  function validateStep2() {
-    const step2 = document.getElementById('step2');
-    const arrowL = document.getElementById('moved-arrow-left');
-    const arrowR = document.getElementById('moved-arrow-right');
-    const refresh = document.getElementById('refresh-wheel');
-    setTimeout(() => {
-      arrowL.removeAttribute('style');
-      arrowR.removeAttribute('style');
-      step2.classList.remove('hidden');
-      step2.classList.add('flex'); 
-    }, 1000);
-  };
-
-  function validateStep1() {
-    const step1 = document.getElementById('step1');
-    setTimeout(() => {
-      step1.classList.remove('hidden');
-      step1.classList.add('flex'); 
-    }, 1000);
-  };
-</script>
-
-<script>
-  (() => {
-    let httpRequest;
-    document
-      .getElementById("ajaxButton")
-      .addEventListener("click", makeRequest);
-
-    function makeRequest() {
-      httpRequest = new XMLHttpRequest();
-
-      if (!httpRequest) {
-        return false;
-      }
-      httpRequest.onreadystatechange = alertContents;
-      httpRequest.open("GET", '../static/generated.json');
-      httpRequest.send();
-    }
-
-    function alertContents() {
-      if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        if (httpRequest.status === 200) {
-          var x = JSON.stringify(httpRequest.responseText);
-        } else {
-          console.warn("There was a problem with the request.");
-        }
-      }
-    }
-  })();
-  
-</script>
 
