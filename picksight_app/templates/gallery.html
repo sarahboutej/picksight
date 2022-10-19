@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load l10n %}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="{% translate 'ltr' %}">
 
 <head>
   <!-- Required meta tags -->
@@ -18,11 +18,11 @@
 </head>
 
 <body class="bg-[#FFF4F7]">
-  {% include "commons/dashboard_header.html" with pageName="gallery" type="owner" %}
+  {% include "commons/dashboard_header.html" with pageName="gallery" type=type %}
 
 <section class="flex items-center justify-center pt-24 pb-36">
   <div class="container w-9/12">
-    {% include "commons/gallery_private.html" with type="owner" gallery=gallery %}
+    {% include "commons/gallery_items.html" with type=type gallery=gallery %}
   </div>
 </section>
 

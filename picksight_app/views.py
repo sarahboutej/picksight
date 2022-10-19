@@ -34,7 +34,7 @@ def gallery(request):
       {'image': 'images/wedding-11.jpg', 'width': '3000', 'height': '2003', 'sender': 'Matan', 'message': 'Great Wedding Ever!', 'isFavorite': 'false'},
       {'image': 'images/wedding-2.jpg', 'width': '2000', 'height': '1033', 'sender': 'Matan', 'message': 'Lorem Ipsum dolor si amet!!!', 'isFavorite': 'false'},
     ]
-  context = {'gallery1': gallery1}
+  context = {'gallery1': gallery1, 'type' : 'owner'}
   return render(request, "gallery.html", context)
 
 def sharedGallery(request):
@@ -52,8 +52,8 @@ def sharedGallery(request):
       {'image': 'images/wedding-11.jpg', 'width': '3000', 'height': '2003', 'sender': 'Matan', 'message': 'Great Wedding Ever!', 'isFavorite': 'false'},
       {'image': 'images/wedding-2.jpg', 'width': '2000', 'height': '1033', 'sender': 'Matan', 'message': 'Lorem Ipsum dolor si amet!!!', 'isFavorite': 'false'},
     ]
-  context = {'gallery1': gallery1}
-  return render(request, "shared_gallery.html", context)
+  context = {'gallery1': gallery1, 'type' : 'shared'}
+  return render(request, "gallery.html", context)
 
 
 
