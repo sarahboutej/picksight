@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load l10n %}
 
-  <a href="{% static galleryImage.image %}" class="flex items-center w-full relative brick bg-[#EEEEEE]" data-pswp-width="{{ galleryImage.width }}" data-pswp-height="{{ galleryImage.height }}"  target="_blank">
+  <a href="{% static galleryImage.image %}" class="flex items-center w-full relative brick bg-[#EEEEEE] rounded-xl" data-pswp-width="{{ galleryImage.width }}" data-pswp-height="{{ galleryImage.height }}"  target="_blank">
     {% if  visitor == 'true' %}
     <img data-src="{% static galleryImage.image %}" data-alt=" :{{ galleryImage.message }}" class="lazy object-cover w-full group-hover:scale-110 transition duration-300 ease-in-out rounded-xl bg-[#EEEEEE]" />
     {% else %}

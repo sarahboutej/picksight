@@ -15,8 +15,6 @@ img, video {
   margin-bottom: 30px;
   display: inline-block; /* Fix the misalignment of items */
   vertical-align: top; /* Keep the item on the very top */
-  min-height: 200px;
-  width: 100%;
 }
 
 /* Masonry image effects */
@@ -75,6 +73,11 @@ img, video {
   .masonry {
     column-count: 2;
   }
+
+  .masonry .brick {
+    min-height: 200px;
+    width: 100%;
+  }
 }
 
 /* Masonry on big screens */
@@ -118,6 +121,17 @@ img, video {
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* Animations to fade the snackbar in and out */
