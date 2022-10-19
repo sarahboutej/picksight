@@ -23,5 +23,5 @@ urlpatterns = [
   path('demo/', views.demo),
   path('gallery/', views.gallery),
   path('shared_gallery/', views.sharedGallery),
-  path('admin/', admin.site.urls),
+  path('admin/', admin.site.urls)
 ]
