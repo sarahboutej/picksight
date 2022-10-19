@@ -30,14 +30,14 @@ lightbox.on('uiRegister', function() {
           if (hiddenCaption) {
             captionHTML = hiddenCaption.innerHTML;
           } else {
-            var captionText = currSlideElement.querySelector('img').getAttribute('alt');
+            var captionText = currSlideElement.querySelector('img').getAttribute('data-alt');
             messageWrapper = document.createElement('p');
             const words = captionText.split(':');
             messageWrapper.classList.add('flex', 'justify-between', 'items-center', 'p-3', 'rounded-lg', 'bg-[#0000009c]', 'ltr:space-x-4');
             var messageSender = document.createElement('span');
             messageSender.classList.add('font-bold', 'text-xl', 'text-white');
             var messageText = document.createElement('span');
-            messageText.classList.add('text-base', 'text-white', 'rtl:mr-4');
+            messageText.classList.add('text-base', 'text-white', 'rtl:mr-4', 'flex-1');
 
             messageSender.innerText = words[0];
             messageText.innerText = words[1];

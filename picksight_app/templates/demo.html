@@ -38,6 +38,7 @@
 <script src="{% static '/js/wow.min.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/qrcode.min.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/services.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/lazy-loading.js' %}" type="text/javascript"></script>
 <script>
   new WOW().init();
 </script>
@@ -50,25 +51,6 @@
     colorLight : "#ffffff",
     correctLevel : QRCode.CorrectLevel.H
   });
-</script>
-
-<script>
-  function getGallery() {
-  $.ajax({
-    url: 'http://127.0.0.1:8000/static/data/gallery.json', 
-    type:"GET",
-    success: function(data) {
-      this.gallery = data;
-    },
-    complete: function() {
-      setTimeout(getGallery, 5000);
-    }
-  });
-};
-$( document ).ready(function() {
-    getGallery();
-});
-
 </script>
 </body>
 </html>
