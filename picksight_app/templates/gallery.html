@@ -18,6 +18,7 @@
 </head>
 
 <body class="bg-[#FFF4F7]">
+  {{ id }}
   {% include "commons/dashboard_header.html" with pageName="gallery" type=type %}
 
 <section class="flex items-center justify-center pt-24 pb-36">
@@ -26,8 +27,11 @@
   </div>
 </section>
 
+<div id="snackbar" class="text-lime-600 z-50"></div>
+
 <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/wow.min.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/lazy-loading.js' %}" type="text/javascript"></script>
 <script>
   new WOW().init();
 </script>

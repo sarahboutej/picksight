@@ -22,5 +22,10 @@ def sharedGallery(request):
   context = {'gallery1': response, 'type' : 'shared'}
   return render(request, "gallery.html", context)
 
+def delete(request, id):
+  response = requests.get('http://127.0.0.1:8000/static/data/gallery.json').json()
+  context = {'gallery1': response, 'type' : 'owner', 'id': id}
+  return render(request, "gallery.html", context)
+
 
 
