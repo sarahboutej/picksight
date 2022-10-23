@@ -15,6 +15,7 @@
     </button>
     {% endif %}
   </div>
+  <input type="hidden" id="myVar" name="variable" value="{{ gallery1 }}">
   <div id="gallery-images" class=" pswp-gallery masonry">
     {% for item in gallery1 %}
       {% include "commons/gallery_item.html" with galleryImage=item isFavorite=item.isFavorite galleryOwner=type %}
@@ -51,5 +52,11 @@ link.click(function(){
     $("#snackbar").removeClass( "show" );
   }, 3000);
 });
+
+$( document ).ready(function() {
+  var a = $("#myVar").val();
+  console.warn('tessssst ',a)
+});
+document.re
 </script>
 

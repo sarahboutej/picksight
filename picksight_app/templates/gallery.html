@@ -21,7 +21,7 @@
   {{ id }}
   {% include "commons/dashboard_header.html" with pageName="gallery" type=type %}
 
-<section class="flex items-center justify-center pt-24 pb-36">
+<section class="flex min-h-screen justify-center pt-24 pb-36">
   <div class="container w-9/12">
     {% include "commons/gallery_items.html" with type=type gallery=gallery %}
   </div>
@@ -34,6 +34,9 @@
 <script src="{% static '/js/lazy-loading.js' %}" type="text/javascript"></script>
 <script>
   new WOW().init();
+  document.addEventListener('delete-item', function(event) {
+      console.warn('hello',event.details);
+  })
 </script>
 </body>
 </html>

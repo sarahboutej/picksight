@@ -73,6 +73,17 @@ lightbox.on('uiRegister', function() {
       });
     }
   });
+/*   lightbox.pswp.ui.registerElement({
+    name: 'delete-button',
+    ariaLabel: 'Toggle zoom',
+    order: 7,
+    isButton: true,
+    html: '',
+    onInit:(el, pswp) => {
+      el.innerHTML = "<h2 class='font-bold'><img src='./images/delete.png' ></h2>";
+      el.classList.add('text-white');
+    },
+  }); */
 });
 
 

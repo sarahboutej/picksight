@@ -9,8 +9,9 @@ function validateMessageStep() {
         message: message,
       },
       success:function(response) {
-        $("#arrowL").removeAttr("style");
-        $("#arrowR").removeAttr("style");
+        $("#moved-arrow-left").removeAttr("style");
+        $("#moved-arrow-right").removeAttr("style");
+        $("#moved-arrow-down").removeAttr("style");
         $("#step2").addClass( "flex" );
         $("#step2").removeClass( "hidden" );
       },
@@ -23,25 +24,57 @@ function validateMessageStep() {
   }
 };
 
-function validateStep1() {
+function validateStep1(isValidated) {
   $.ajax({
     url: 'http://127.0.0.1:8000/static/data/validation.json', 
     type:"GET",
     success: function(data) {
-      $("#step1").addClass( "flex" );
-      $("#step1").removeClass( "hidden" );
-      $("#phone-number").text( data.phone );
+      if(isValidated) {
+        $("#step1").addClass( "flex" );
+        $("#step1").removeClass( "hidden" );
+        $("#phone-number").text( data.phone );
+      }
     },
-    error: function() {
-      setTimeout(worker, 5000);
-    }
+    error:function(){
+      console.warn("Error when sending message to the server");
+    },
   });
 };
 
-function showSnackBar(){
+function showSnackBar() {
   $("#snackbar").text( "Please select a message!" );
   $("#snackbar").addClass( "show" );
   setTimeout(function(){ 
     $("#snackbar").removeClass( "show" );
   }, 3000);
-}
+};
+
+var verificationTimeInterval;
+
+function sendVerificationMessageRequest(isValidated){
+  $.ajax({
+    url: 'http://127.0.0.1:8000/static/data/validation.json', 
+    type:"GET",
+    success: function(data){
+      if(isValidated) {
+        setTimeout(() => {
+          $("#step1").addClass( "flex" );
+          $("#step1").removeClass( "hidden" );
+          $("#phone-number").text( data.phone );
+          $("#step2Blured").removeClass( "flex" );
+          $("#step2Blured").addClass( "hidden" );
+        },2000);
+      } 
+    },
+  });
+ }
+ 
+ $(document).ready(function(){
+  verificationTimeInterval =  setInterval(sendVerificationMessageRequest,2000);
+ });
+
+ function requestValidationStep1() {
+  sendVerificationMessageRequest(true);
+  clearInterval(verificationTimeInterval);
+}; 
+
