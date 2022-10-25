@@ -28,7 +28,7 @@
         <div class="w-full lg:w-5/12 p-3 xl:p-8">
           {% include "commons/demo_validation_step.html" with step1="false" step2="false"  %}
         </div>
-        <div class="w-full lg:w-7/12 bg-white p-6 max-h-screen overflow-y-scroll scrollbar-hide">
+        <div id="demo-right-side" class="w-full lg:w-7/12 bg-white p-6 overflow-y-scroll scrollbar-hide">
           {% include "commons/demo_gallery.html" with gallery=gallery %}
         </div>
       </div>
@@ -52,6 +52,14 @@
     colorLight : "#ffffff",
     correctLevel : QRCode.CorrectLevel.H
   });
+
+  $(document).ready(function(){
+    verificationTimeInterval =  setInterval(sendVerificationMessageRequest,2000);
+    var demoLeftHeight = $("#demo-left-side").height() + 50;
+    $("#demo-right-side").height(demoLeftHeight);
+    console.warn('height=', demoLeftHeight,demoRightHeight);
+  });
+
 </script>
 </body>
 </html>
