@@ -80,10 +80,10 @@ lightbox.on('uiRegister', function() {
     isButton: true,
     html: '',
     onInit:(el, pswp) => {
-      el.innerHTML = "<h2 class='font-bold'><img src='./images/delete.png' ></h2>";
+      el.innerHTML = "<h2 class='font-bold' data-modal-toggle='delete-modal'>test</h2>";
       el.classList.add('text-white');
     },
-  }); */
+  }); */ 
 });
 
 
