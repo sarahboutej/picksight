@@ -74,4 +74,18 @@ link.click(function(){
     $("#snackbar").removeClass( "show" );
   }, 3000);
 });
+
+function RefreshGallery(){
+  $.ajax({
+    url: 'http://127.0.0.1:8000/static/data/gallery.json', 
+    type:"GET",
+    success: function(data){
+        setTimeout(() => {
+          console.log('Refresh Gallery!');
+        },2000);
+    },
+  });
+ }
+setInterval(RefreshGallery,2000);
+
 </script>

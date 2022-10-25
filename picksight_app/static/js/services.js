@@ -1,50 +1,7 @@
 var itemToDelete = "";
 var itemToBookmark = "";
 var itemToRemove = "";
-var verificationTimeInterval;
 
-function validateMessageStep() {
-  var selectedVal = $('#message_select').find(":selected").val();
-  var message = $('#message_select').find(":selected").text();
-  if (selectedVal != 'default') {
-    $.ajax({
-      url:"http://127.0.0.1:8000/static/data/validation.json",
-      type:"POST",
-      data:{
-        message: message,
-      },
-      success:function(response) {
-        $("#moved-arrow-left").removeAttr("style");
-        $("#moved-arrow-right").removeAttr("style");
-        $("#moved-arrow-down").removeAttr("style");
-        $("#step2").addClass( "flex" );
-        $("#step2").removeClass( "hidden" );
-      },
-      error:function(){
-        console.warn("Error when sending message to the server");
-      },
-    });
-  } else {
-    showSnackBar("Please select a message!");
-  }
-};
-
-function validateStep1(isValidated) {
-  $.ajax({
-    url: 'http://127.0.0.1:8000/static/data/validation.json', 
-    type:"GET",
-    success: function(data) {
-      if(isValidated) {
-        $("#step1").addClass( "flex" );
-        $("#step1").removeClass( "hidden" );
-        $("#phone-number").text( data.phone );
-      }
-    },
-    error:function(){
-      console.warn("Error when sending message to the server");
-    },
-  });
-};
 
 function showSnackBar(text) {
   $("#snackbar").text( text );
@@ -53,29 +10,6 @@ function showSnackBar(text) {
     $("#snackbar").removeClass( "show" );
   }, 2000);
 };
-
-function sendVerificationMessageRequest(isValidated){
-  $.ajax({
-    url: 'http://127.0.0.1:8000/static/data/validation.json', 
-    type:"GET",
-    success: function(data){
-      if(isValidated) {
-        setTimeout(() => {
-          $("#step1").addClass( "flex" );
-          $("#step1").removeClass( "hidden" );
-          $("#phone-number").text( data.phone );
-          $("#step2Blured").removeClass( "flex" );
-          $("#step2Blured").addClass( "hidden" );
-        },2000);
-      } 
-    },
-  });
- }
-
- function requestValidationStep1() {
-  sendVerificationMessageRequest(true);
-  clearInterval(verificationTimeInterval);
-}; 
 
 function triggerBookmarkAction() {
   if (itemToBookmark.hasClass("fill")) {
@@ -120,7 +54,6 @@ $(".bookmark-button").click(function(){
  });
  
  $(document).ready(function(){
-  verificationTimeInterval =  setInterval(sendVerificationMessageRequest,2000);
   setTimeout(() => {
     $('.photo-option').removeClass( "hidden" ).addClass( "flex" );
   }, 1000); 
