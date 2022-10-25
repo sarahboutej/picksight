@@ -5859,3 +5859,9 @@ input:checked + .toggle-bg {
     margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
   }
 }
+
+@media (max-width: 530px) {
+  .animate-text  {
+    font-size: 1rem!important;
+  }
+}

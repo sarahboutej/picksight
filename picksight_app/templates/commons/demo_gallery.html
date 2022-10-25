@@ -1,0 +1,16 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+<link rel="stylesheet" href="{% static 'css/photoswipe.css' %}">
+<div>
+  <h3 class="text-center md:text-3xl text-2xl text-[#FFB4C6] md:mb-8 mb-4 pt-6">{% translate 'The Demo Gallery' %}</h3>
+  <div id="demo-right-side" class="flex flex-col p-6 bg-white space-y-10 overflow-y-scroll scrollbar-hide">
+    <div id="gallery-images" class="pswp-gallery masonry masonry-col-2">
+      {% for item in gallery1 %}
+      {% include "commons/gallery_item.html" with galleryImage=item visitor="true" %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script type="module" src="{% static '/js/photoswipe.js' %}"></script>

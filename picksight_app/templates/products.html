@@ -1,7 +1,8 @@
 {% load static %}
 {% load i18n %}
+{% load l10n %}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="{% translate 'ltr' %}">
 
 <head>
   <!-- Required meta tags -->
@@ -10,7 +11,7 @@
 
   <title>{% translate 'Picksight Gallery Products Page' %}</title>
 
-  <link rel="stylesheet" href="{% static 'css/flowbite.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/flowbite.css' %}">
   <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
   <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
 </head>
@@ -107,52 +108,52 @@
             <span class="text-[#00A8FE]">{% translate 'All'%}</span>
             <span class="text-[#FFB4C6]">{% translate 'Plans Includes'%}</span>
           </h3>
-          <div class="grid grid-lines lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:grid-rows-2 grid-rows-3 lg:gap-14 gap-6">
-            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+          <div class="grid grid-lines lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:grid-rows-2 grid-rows-3 xl:gap-14 gap-6">
+            <div class="flex items-center bg-white rounded-lg xl:px-8 px-4 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
               <img src="{% static "images/plan_1.svg" %}" alt="Put alternative text here" />
-              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">
+              <p class="xl:text-2xl text-xl text-[#727272] rtl:mr-4">
                 {% translate 'Private and Secured Gallery'%}
               </p>
             </div>
-            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+            <div class="flex items-center bg-white rounded-lg xl:px-8 px-4 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
               <img src="{% static "images/plan_2.svg" %}" alt="Put alternative text here" />
-              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">
+              <p class="xl:text-2xl text-xl text-[#727272] rtl:mr-4">
                 {% translate 'Thank you messages from templates'%}
               </p>
             </div>
-            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+            <div class="flex items-center bg-white rounded-lg xl:px-8 px-4 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
               <img src="{% static "images/plan_3.svg" %}" alt="Put alternative text here" />
-              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Thank you image'%}</p>
+              <p class="xl:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Thank you image'%}</p>
             </div>
-            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+            <div class="flex items-center bg-white rounded-lg xl:px-8 px-4 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
               <img src="{% static "images/plan_4.svg" %}" alt="Put alternative text here" />
-              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">
+              <p class="xl:text-2xl text-xl text-[#727272] rtl:mr-4">
                 {% translate 'Download all photos & Videos at once'%}
               </p>
             </div>
-            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+            <div class="flex items-center bg-white rounded-lg xl:px-8 px-4 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
               <img src="{% static "images/plan_5.svg" %}" alt="Put alternative text here" />
-              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Shareable gallery with friends and family'%}</p>
+              <p class="xl:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Shareable gallery with friends and family'%}</p>
             </div>
-            <div class="flex items-center bg-white rounded-lg px-8 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
+            <div class="flex items-center bg-white rounded-lg xl:px-8 px-4 py-10 cursor-pointer transition transform hover:-translate-y-2 ltr:space-x-4">
               <img src="{% static "images/plan_6.svg" %}"  alt="Put alternative text here" />
-              <p class="md:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Event portal'%} </p>
+              <p class="xl:text-2xl text-xl text-[#727272] rtl:mr-4">{% translate 'Event portal'%} </p>
             </div>
           </div>
           <div class="flex flex-col md:flex-row justify-center lg:gap-14 gap-6">
-            <div class="w-full lg:w-1/3 md:w-1/2 flex items-center bg-white cursor-pointer transition transform hover:-translate-y-2 rounded-lg px-8 py-6 ltr:space-x-4">
-              <div class="flex flex-col space-y-6  ltr:mr-10 rtl:ml-10">
-                <p class="md:text-2xl text-xl text-[#727272] rtl:ml-4">{% translate 'Personalized Gallery theme'%}</p>
+            <div class="w-full lg:w-1/3 md:w-1/2 flex items-center bg-white cursor-pointer transition transform hover:-translate-y-2 rounded-lg xl:px-8 px-4 py-6 lg:ltr:space-x-4">
+              <div class="flex flex-col space-y-6 xl:ltr:mr-10 xl:ltr:mr-6 ml-0  lg:ml-0 ltr:ml-4 lg:rtl:ml-10">
+                <p class="xl:text-2xl text-xl text-[#727272] rtl:ml-4">{% translate 'Personalized Gallery theme'%}</p>
                 <span class="font-bold text-3xl">$100</span>
               </div>
-              <img src="{% static "images/plan_7.svg" %}" alt="Put alternative text here" />
+              <img src="{% static "images/plan_7.svg" %}" class="lg:order-last order-first lg:rtl:ml-0 rtl:ml-4" alt="Put alternative text here" />
             </div>
-            <div class="w-full lg:w-1/3 md:w-1/2 flex items-center bg-white cursor-pointer transition transform hover:-translate-y-2 rounded-lg px-8 py-6 ltr:space-x-4">
-              <div class="flex flex-col space-y-6 ltr:mr-10 rtl:ml-10">
-                <p class="md:text-2xl text-xl text-[#727272] rtl:ml-4">{% translate 'Personalized Thank you text'%}</p>
+            <div class="w-full lg:w-1/3 md:w-1/2 flex items-center bg-white cursor-pointer transition transform hover:-translate-y-2 rounded-lg xl:px-8 px-4 py-6 lg:ltr:space-x-4">
+              <div class="flex flex-col space-y-6 xl:ltr:mr-10 xl:ltr:mr-6 lg:ml-0 ltr:ml-4 lg:rtl:ml-10 ">
+                <p class="xl:text-2xl text-xl text-[#727272] rtl:ml-4">{% translate 'Personalized Thank you text'%}</p>
                 <span class="font-bold text-3xl">$50</span>
               </div>
-              <img src="{% static "images/plan_8.svg" %}" alt="Put alternative text here" />
+              <img src="{% static "images/plan_8.svg" %}"  class="lg:order-last order-first lg:rtl:ml-0 rtl:ml-4 " alt="Put alternative text here" />
             </div>
           </div>
         </div>
@@ -161,29 +162,29 @@
   <!-- Our services setup steps -->
 
   <section class="flex items-center justify-center lg:mb-32 mb-10">
-    <div class="container w-9/1">
+    <div class="container w-9/12">
       <div class=" md:space-y-16 space-y-10">
-        <h3 class="text-3xl md:text-5xl font-bold text-center lg:pb-36 pb-12 uppercase">
+        <h3 class="text-3xl lg:text-5xl font-bold text-center lg:pb-36 pb-12 lg:pt-8 pt-16 uppercase">
           <span class="text-[#00A8FE]">{% translate 'Set up with 2'%}</span>
           <span class="text-[#FFB4C6]"> {% translate 'easy Steps'%}</span>
         </h3>
-        <div class="flex flex-col lg:flex-row md:gap-52 gap-16 items-center lg:items-stretch">
+        <div class="flex flex-col lg:flex-row xl:gap-52 gap-16 items-center lg:items-stretch">
           <div
             class="relative flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2">
             <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Step 1'%}</h6>
             <p class="md:text-2xl text-lg text-[#727272] text-center">
               {% translate 'Upload a CSV/Excel file of contacts'%}
             </p>
-            <img src="{% static "images/csv.svg" %}" alt="Put alternative text here" />
+            <img src="{% static "images/csv.svg" %}" class="xl:w-36 lg:w-30 w-20" alt="Put alternative text here" />
           </div>
   
           <div
-            class="flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2 before:bg-[url({% static '/images/shape_2.svg' %})] before:bg-no-repeat before:bg-contain before:-left-[70%] before:top-[60%] before:absolute lg:before:w-full before:h-10 after:bg-[url({% static '/images/shape_2.svg' %})] after:bg-no-repeat after:bg-contain after:left-[90%] after:top-[60%] after:absolute lg:after:w-full after:h-10">
+            class="flex flex-col flex-1 items-center space-y-6 cursor-pointer transition transform hover:-translate-y-2 before:bg-[url({% static '/images/shape_2.svg' %})] before:bg-no-repeat before:bg-contain xl:before:-left-[85%] before:-left-[90%] before:top-[60%] before:absolute xl:before:w-full before:h-10 after:bg-[url({% static '/images/shape_2.svg' %})] after:bg-no-repeat after:bg-contain after:left-[90%] after:top-[60%] after:absolute xl:after:w-full after:h-10">
             <h6 class="font-bold text-[#727272] md:text-3xl text-xl">{% translate 'Step 2'%}</h6>
             <p class="md:text-2xl text-lg text-[#727272] text-center">
               {% translate 'Set a time and Wording for the Thank you message'%}
             </p>
-            <img src="{% static "images/clock.svg" %}" alt="Put alternative text here" />
+            <img src="{% static "images/clock.svg" %}" class="xl:w-36 lg:w-30 w-20" alt="Put alternative text here" />
           </div>
   
           <div
@@ -192,7 +193,7 @@
             <p class="md:text-2xl text-lg text-[#727272] text-center">
               {% translate 'Enjoy a Automatic updating gallery'%}
             </p>
-            <img src="{% static "images/smiley.svg" %}" alt="Put alternative text here" />
+            <img src="{% static "images/smiley.svg" %}" class="xl:w-36 lg:w-30 w-20" alt="Put alternative text here" />
           </div>
         </div>
       </div>

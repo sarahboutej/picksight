@@ -1,0 +1,63 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+<nav id="navbar" class="flex justify-center bg-white w-full z-50">
+  <div class="container w-9/12">
+    <div class="flex flex-row items-center justify-between">
+      <!-- Website Logo -->
+      <a href="#" class="flex flex-col px-2">
+        <img src="{% static "images/logo.png" %}" id="logo" class="w-28 py-2" alt="Picksight logo">
+      </a>
+      <!-- Primary Navbar items -->
+      <div id="hamburger-menu" class="z-50 hidden xl:flex flex-col {% if type == 'shared' %}flex-1 justify-center{% endif %} xl:flex-row bg-white rounded-xl xl:bg-inherit absolute xl:relative w-auto top-16 xl:top-0 shadow-lg xl:shadow-none inset-x-4 xl:inset-x-auto items-center ltr:xl:space-x-5 ltr:space-x-0 pb-4 xl:pb-0">
+        {% if type == 'owner' %}
+        <a href="/events" class="py-2 px-2 text-[#727272]  text-base hover:border-b-4 hover:border-[#FFB4C6] {% if pageName == 'events' %}border-b-4 border-[#FFB4C6]{% endif %}">
+          {% translate 'All Events'%}</a>
+        <a href="/add-event" class="py-2 px-2 text-[#727272]  text-base hover:border-b-4 hover:border-[#FFB4C6] rtl:mr-5 {% if pageName == 'addEvent' %}border-b-4 border-[#FFB4C6]{% endif %}">
+          {% translate 'Add New Event'%}</a>
+        {% endif %}
+        <a href="#" class="py-2 px-2 text-[#727272] text-base hover:border-b-4 hover:border-[#FFB4C6] rtl:mr-5  {% if pageName == 'gallery' %}border-b-4 border-[#FFB4C6] text-[#FFB4C6]{% endif %}">
+          {% translate 'Matan & Amy Gallery'%}</a>
+        {% if type == 'owner' %}
+        <div class="flex xl:hidden flex-col xl:flex-row xl:space-x-3 xl:space-y-0 space-y-3 xl:mt-0 mt-6">
+          <div class="flex items-center ltr:space-x-3" >
+            <img src="{% static "images/mood-good.svg" %}" alt="Log out">
+            <span class="rtl:mr-3">{% translate 'Have Good Day , Daphna '%}</span>
+          </div>
+          <button class="flex ltr:space-x-3 items-center rtl:mr-8 hover:text-[#FFB4C6]">
+            <img src="{% static "images/log-out-circle.svg" %}" alt="Log out">
+            <a href="/" class="rtl:mr-3">{% translate 'Log Out'%}</a>
+          </button>
+        </div>
+        {% endif %}
+      </div>
+      <!-- navbar button -->
+      {% if type == 'owner' %}
+      <div class="hidden xl:flex items-center ltr:space-x-8">
+        <div class="flex items-center ltr:space-x-3" >
+          <img src="{% static "images/mood-good.svg" %}" alt="Log out">
+          <span class="rtl:mr-3">{% translate 'Have Good Day , Daphna '%}</span>
+        </div>
+        <button class="flex ltr:space-x-3 items-center rtl:mr-8 hover:text-[#FFB4C6]">
+          <img src="{% static "images/log-out-circle.svg" %}" alt="Log out">
+          <a href="/" class="rtl:mr-3">{% translate 'Log Out'%}</a>
+        </button>
+      </div>
+      {% endif %}
+      <!-- Mobile menu button -->
+      <div class="xl:hidden flex items-center space-x-4">
+        <button id="hamburger-btn" class="outline-none mobile-menu-button" onclick="navToggle();">
+          <svg class="w-6 h-6 text-default" fill="none"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</nav>
+{% include "./register.html" %}
+{% include "./login.html" %}
+<script src="{% static '/js/mobile_menu.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/nav_scroll.js' %}" type="text/javascript"></script>

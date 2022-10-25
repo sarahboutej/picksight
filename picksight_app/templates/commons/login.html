@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load l10n %}
 <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="z-50 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
     <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
         <!-- Modal content -->
@@ -20,15 +21,15 @@
                         <input type="password" name="password" id="password" placeholder="••••••••" class="border border-[#ADADAD] text-[#8A8A8A] text-base rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-4" required>
                     </div>
                     <div class="flex justify-between">
-                        <div class="flex items-start">
+                        <div class="flex items-start ltr:space-x-2">
                             <div class="flex items-center h-5">
                                 <input id="remember" type="checkbox" value="" class="w-4 h-4 bg-gray-50 rounded border border-[#FFB4C6] focus:ring-3 focus:ring-[#FFB4C6]" required>
                             </div>
-                            <label for="remember" class="ml-2 text-base font-medium text-[#8A8A8A]">{% translate 'Remember me'%}</label>
+                            <label for="remember" class="rtl:mr-2 text-base font-medium text-[#8A8A8A]">{% translate 'Remember me'%}</label>
                         </div>
                         <a href="#" class="text-base text-[#FFB4C6] hover:underline">{% translate 'Lost Password?'%}</a>
                     </div>
-                    <button type="submit" class="w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">Login</button>
+                    <button type="submit" class="w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform" onclick="window.location.href='/gallery'">Login</button>
                     <div class="flex justify-center ltr:space-x-1 text-base font-medium text-[#8A8A8A] text-center">
                       <span>{% translate 'Not registered?'%}</span> 
                       <button class="rtl:mr-1 text-[#FFB4C6] hover:underline" onclick="closeModal('loginCloseBtn')" data-modal-toggle="register-modal">{% translate 'Create account'%}</button>

@@ -28,4 +28,5 @@ function closeModal(modalBtnName) {
 function getElement(elemnt) {
   document.getElementById('selectedImg').src = elemnt.querySelector('.child2').src;
   document.getElementById('selectedCode').textContent = elemnt.querySelector('.child1').innerText;
+  //document.getElementById('dropdown-search-phone').classList.add('hidden');
 };
