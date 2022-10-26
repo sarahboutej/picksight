@@ -32,3 +32,7 @@ def events(request):
     response = requests.get(request.build_absolute_uri('/static/data/events.json')).json()
     context = {'events': response, 'type': 'owner'}
     return render(request, "events.html", context)
+
+def addEvent(request):
+    context = {'type': 'owner'}
+    return render(request, "add_event.html", context)
