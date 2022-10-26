@@ -1,0 +1,43 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+<!DOCTYPE html>
+<html lang="en" dir="{% translate 'ltr' %}">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{% translate 'Picksight events Page' %}</title>
+
+  <link rel="stylesheet" href="{% static 'css/flowbite.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+  <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
+
+</head>
+
+<body class="bg-[#FFF4F7]">
+  {% include "commons/dashboard_header.html" with pageName="events" type=type %}
+
+<section class="flex min-h-screen justify-center pt-24 pb-36">
+  <div class="container w-9/12">
+    <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:gap-10 lg:gap-8 md:gap-6 gap-4">
+      {% for item in events %}
+        {% include "commons/event_item.html" with event=item %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div id="snackbar" class="text-lime-600 z-50"></div>
+
+<script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/wow.min.js' %}" type="text/javascript"></script>
+<script>
+  new WOW().init();
+</script>
+</body>
+</html>

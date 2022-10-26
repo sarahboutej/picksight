@@ -24,5 +24,5 @@ urlpatterns = [
   path('gallery/', views.gallery),
   path('shared_gallery/', views.sharedGallery),
   path('admin/', admin.site.urls),
-  path('delete/<int:id>/', views.delete),
+  path('events', views.events),
 ]

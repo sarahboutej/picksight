@@ -28,8 +28,7 @@ def sharedGallery(request):
     context = {'gallery1': response, 'type': 'shared'}
     return render(request, "gallery.html", context)
 
-
-def delete(request, id):
-    response = requests.get(request.build_absolute_uri('/static/data/gallery.json')).json()
-    context = {'gallery1': response, 'type': 'owner', 'id': id}
-    return render(request, "gallery.html", context)
+def events(request):
+    response = requests.get(request.build_absolute_uri('/static/data/events.json')).json()
+    context = {'events': response, 'type': 'owner'}
+    return render(request, "events.html", context)
