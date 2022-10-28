@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{% static 'css/flowbite.css' %}">
   <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+  <link rel="stylesheet" href="{% static 'css/skelton.css' %}">
   <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
   <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
 
@@ -88,7 +89,83 @@
         </div>
         <div class="flex-1 bg-white p-8 rounded-xl"></div>
       </div>
-      <div class="bg-white p-8 rounded-xl"></div>
+      <div class="bg-white p-8 rounded-xl">
+        <div class="overflow-x-auto relative sm:rounded-lg">
+          <div class="flex xl:flex-row flex-col justify-between xl:items-center xl:space-y-0 space-y-6 pb-8 bg-white">
+            <div class="flex md:flex-row flex-col items-center md:space-x-3 md:space-y-0 space-y-4">
+              <h5 class="lg:text-base text-sm font-medium">{% translate 'Guests List'%}</h5>
+              <div class="flex flex-1 items-center">
+                <label for="table-search" class="sr-only">Search</label>
+                <div class="relative">
+                    <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
+                        <svg class="w-5 h-5 text-[#FFB4C6]" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <input type="text" id="table-search-users" class="block p-2 pr-10 2xl:w-80 lg:w-60 md:w-48 w-full text-sm text-gray-900 rounded-lg border border-[#FFB4C6] focus:ring-[#FFB4C6] focus:border-[#FFB4C6]" placeholder="Search for guests">
+                </div>
+              </div>
+              <div class="ltr:space-x-3">
+                <button class="flex-1 py-2 lg:px-6 px-3 text-sm text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Add single guest'%}</button>
+                <button type="submit" class="rtl:mr-3 text-white bg-[#FF6D90] hover:bg-[#FFB4C6] focus:ring-4 focus:outline-none focus:ring-[#FF6D90] font-medium rounded-lg text-sm lg:px-6 px-3 py-2">{% translate 'Save'%}</button>   
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-center ltr:space-x-3">
+                <button class="py-2 px-6 text-sm text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Upload CSV/Excel'%}</button>
+                <button class="rtl:mr-3 bg-transparent text-sm border border border-[#FFB4C6] text-[#FFB4C6] rounded-lg py-2 px-6">{% translate 'Delete All'%}</button>   
+              </div>
+            </div>
+          </div>
+          <table class="w-full text-sm text-left text-gray-500">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                  <tr>
+                      <th scope="col" class="p-4">
+                          <div class="flex items-center">
+                              <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90">
+                              <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                          </div>
+                      </th>
+                      <th scope="col" class="py-3 px-6 capitalize">
+                          Name
+                      </th>
+                      <th scope="col" class="py-3 px-6 capitalize">
+                          Number
+                      </th>
+                      <th scope="col" class="py-3 px-6 capitalize">
+                          Status
+                      </th>
+                      <th scope="col" class="py-3 px-6 capitalize">
+                          Action
+                      </th>
+                  </tr>
+              </thead>
+              <tbody class="table-container">
+                <template id="row-template" >
+                  <tr class="bg-white border-b dark:bg-gray-800 hover:bg-gray-50">
+                    <td class="p-4 w-4">
+                        <div class="flex items-center">
+                            <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90] dark:focus:ring-[#FF6D90] focus:ring-2">
+                            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                        </div>
+                    </td>
+                    <td id="guest-name" class="py-4 px-6">
+                      <p class="skeleton skeleton-text"></p>
+                    </td>
+                    <td id="guest-phone" class="py-4 px-6">
+                      <p class="skeleton skeleton-text"></p>
+                    </td>
+                    <td id="guest-status" class="py-4 px-6">
+                      <p class="skeleton skeleton-text"></p>
+                    </td>
+                    <td id="guest_action" class="py-4 px-6 flex space-x-3">
+                      <span class="skeleton skeleton-footer"></span>
+                      <span class="skeleton skeleton-footer"></span>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -100,12 +177,41 @@
 <script src="{% static '/js/wow.min.js' %}" type="text/javascript"></script>
 <script>
   new WOW().init();
-  const datepickerEvent = document.getElementById('datepickerEvent');
-  new Datepicker(datepickerEvent, {}); 
 
-  const datepickerMessage = document.getElementById('datepickerMessageDate');
-  new Datepicker(datepickerMessage, {}); 
-</script>
+   //Clone the card template
+      const container = document.querySelector(".table-container");
+      const cardTemplate = document.getElementById("row-template");
+      for (let i = 0; i < 3; i++) {
+        container.append(cardTemplate.content.cloneNode(true));
+      } 
+      setTimeout(function() {
+        fetch("http://127.0.0.1:8000/static/data/guests.json", {
+          method: "GET",
+          headers: {"access-Control-Allow-Origin": "*"}
+        })
+        .then((response) => response.json())
+        .then((posts) => {
+          container.innerHTML = "";
+          posts.forEach((post) => {
+            const div = cardTemplate.content.cloneNode(true);
+            div.getElementById("guest-name").textContent = post.guests_name;
+            div.getElementById("guest-phone").textContent = post.phone_number;
+            div.getElementById("guest-status").textContent = post.status_message;
+            div.getElementById("guest-status").classList.add(post.status);
+            div.getElementById("guest_action").innerHTML = 
+            ` <a href="/add-event"><img src="/static/images/edit_guests.svg" /></a>
+            <a href="#"><img src="/static/images/delete_guests.svg" /></a>`;
+            container.append(div);
+          });
+        });
+      },3000)
+      const datepickerEvent = document.getElementById('datepickerEvent');
+      new Datepicker(datepickerEvent, {}); 
+      const datepickerMessage = document.getElementById('datepickerMessageDate');
+      new Datepicker(datepickerMessage, {});
+  </script>
 
 </body>
 </html>
+
+

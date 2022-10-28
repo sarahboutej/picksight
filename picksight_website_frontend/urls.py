@@ -25,5 +25,5 @@ urlpatterns = [
   path('shared_gallery/', views.sharedGallery),
   path('admin/', admin.site.urls),
   path('events/', views.events),
-  path('add-event/', views.addEvent),
+  path('add-event/', views.addEvent)
 ]
