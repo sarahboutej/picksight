@@ -31,7 +31,7 @@
           <form action="" class="flex flex-col space-y-6">
             <div class="flex items-end ltr:space-x-6">
               <div class="flex-1">
-                <input type="text" id="default-input" class="border border-[#DDDDDD] text-gray-900 text-lg rounded-lg border-0 focus:ring-0 focus:border-none block w-full p-2.5 pl-0" placeholder="Event Name" autofocus>
+                <input type="text" id="event-title" class="border border-[#DDDDDD] text-gray-900 text-lg rounded-lg border-0 focus:ring-0 focus:border-none block w-full p-2.5 pl-0" placeholder="Event Name" autofocus>
               </div>
               <div>
                 <button type="submit" class="rtl:mr-6 text-white bg-[#FF6D90] hover:bg-[#FFB4C6] focus:ring-4 focus:outline-none focus:ring-[#FF6D90] font-medium rounded-lg text-sm px-8 py-2.5">{% translate 'Save'%}</button>   
@@ -40,7 +40,7 @@
              <div class="grid gap-6 md:grid-cols-2">
               <div>
                   <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Event’s Owners'%}</label>
-                  <input type="text" id="first_name" class="border border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5" placeholder="John" required>
+                  <input type="text" id="event-owner" class="border border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5" placeholder="John" required>
               </div>
               <div>
                   <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Event Date'%}</label>
@@ -62,13 +62,11 @@
               </div>
             </div>
             <div>
-              <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Message Language'%}</label>
-              <select id="countries" class="border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5">
-                <option selected>Choose a country</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
+              <label for="language" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Message Language'%}</label>
+              <select value="en" id="laguage" class="border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5">
+                <option selected>{% translate 'Select Language'%}</option>
+                <option value="en">{% translate 'English'%}</option>
+                <option value="hb">{% translate 'Hebrew'%}</option>
               </select>
             </div>
             <div>
@@ -87,7 +85,17 @@
           </div> 
           </form>
         </div>
-        <div class="flex-1 bg-white p-8 rounded-xl"></div>
+        <div class="flex-1 flex flex-col space-y-6 bg-white p-8 rounded-xl">
+          <p class="block text-sm font-medium text-gray-900">{% translate 'Preview'%}</p>
+          <div class="flex flex-col items-center justify-center h-full rounded-xl bg-[url({% static '/images/messgae_bg.jpg' %})] bg-no-repeat bg-cover">
+            <div class="flex flex-col space-y-9 w-2/3 bg-white p-6 rounded-xl">
+              <img src="{% static "images/wedding-4.jpg" %}" class="rounded-xl" id="event-image">
+              <p id="event-message-text">
+                {% translate 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged'%}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="bg-white p-8 rounded-xl">
         <div class="overflow-x-auto relative sm:rounded-lg">
@@ -147,7 +155,7 @@
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                         </div>
                     </td>
-                    <td id="guest-name" class="py-4 px-6">
+                    <td id="guest-name" class="py-4 px-6 flex items-center ltr:space-x-2">
                       <p class="skeleton skeleton-text"></p>
                     </td>
                     <td id="guest-phone" class="py-4 px-6">
@@ -174,42 +182,36 @@
 
 <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/datepicker.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/add_event.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/wow.min.js' %}" type="text/javascript"></script>
 <script>
   new WOW().init();
 
-   //Clone the card template
-      const container = document.querySelector(".table-container");
-      const cardTemplate = document.getElementById("row-template");
-      for (let i = 0; i < 3; i++) {
-        container.append(cardTemplate.content.cloneNode(true));
-      } 
-      setTimeout(function() {
-        fetch("http://127.0.0.1:8000/static/data/guests.json", {
-          method: "GET",
-          headers: {"access-Control-Allow-Origin": "*"}
-        })
-        .then((response) => response.json())
-        .then((posts) => {
-          container.innerHTML = "";
-          posts.forEach((post) => {
-            const div = cardTemplate.content.cloneNode(true);
-            div.getElementById("guest-name").textContent = post.guests_name;
-            div.getElementById("guest-phone").textContent = post.phone_number;
-            div.getElementById("guest-status").textContent = post.status_message;
-            div.getElementById("guest-status").classList.add(post.status);
-            div.getElementById("guest_action").innerHTML = 
-            ` <a href="/add-event"><img src="/static/images/edit_guests.svg" /></a>
-            <a href="#"><img src="/static/images/delete_guests.svg" /></a>`;
-            container.append(div);
-          });
-        });
-      },3000)
-      const datepickerEvent = document.getElementById('datepickerEvent');
-      new Datepicker(datepickerEvent, {}); 
-      const datepickerMessage = document.getElementById('datepickerMessageDate');
-      new Datepicker(datepickerMessage, {});
-  </script>
+  const id = "{{id}}";
+  /*************************/
+  console.warn(id !== "", id);
+  if(id !== "") {
+    async function fetchEventsJSON() {
+    const response = await fetch("http://127.0.0.1:8000/static/data/events.json");
+    const events = await response.json();
+    return events;
+    }
+    fetchEventsJSON().then(events => {
+      events.forEach((event) => {
+        if(event.id === id) {
+          document.getElementById("event-title").value = event.event_name;
+          document.getElementById("event-owner").value = event.owner;
+          document.getElementById("datepickerEvent").value = event.event_date;
+          document.getElementById("datepickerMessageDate").value = event.sent_date;
+          document.getElementById("message").value = event.message;
+          
+          
+        }
+      });
+    });
+  }
+
+</script>
 
 </body>
 </html>

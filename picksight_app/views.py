@@ -35,3 +35,7 @@ def events(request):
 def addEvent(request):
     context = {'type': 'owner'}
     return render(request, "add_event.html", context)
+
+def editEvent(request,id):
+    context = {'type': 'owner', 'id':id}
+    return render(request, "add_event.html", context)
