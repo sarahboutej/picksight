@@ -15,8 +15,10 @@
   <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
   <link rel="stylesheet" href="{% static 'css/skelton.css' %}">
+  <link rel="stylesheet" href="{% static 'css/masonry.css' %}">
   <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
   <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
+  <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
 
 </head>
 
@@ -112,7 +114,7 @@
                 </div>
               </div>
               <div class="ltr:space-x-3">
-                <button class="flex-1 py-2 lg:px-6 px-3 text-sm text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Add single guest'%}</button>
+                <button id="add-single-guest" class="flex-1 py-2 lg:px-6 px-3 text-sm text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Add single guest'%}</button>
                 <button type="submit" class="rtl:mr-3 text-white bg-[#FF6D90] hover:bg-[#FFB4C6] focus:ring-4 focus:outline-none focus:ring-[#FF6D90] font-medium rounded-lg text-sm lg:px-6 px-3 py-2">{% translate 'Save'%}</button>   
               </div>
             </div>
@@ -148,7 +150,7 @@
               </thead>
               <tbody class="table-container">
                 <template id="row-template" >
-                  <tr class="bg-white border-b dark:bg-gray-800 hover:bg-gray-50">
+                  <tr id="table-row" class="bg-white border-b dark:bg-gray-800 hover:bg-gray-50">
                     <td class="p-4 w-4">
                         <div class="flex items-center">
                             <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90] dark:focus:ring-[#FF6D90] focus:ring-2">
@@ -178,18 +180,142 @@
   </div>
 </section>
 
+<div id="add-guests" tabindex="-1"
+  class="z-50 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+  <div class="relative p-4 w-full xl:max-w-3xl lg:max-w-xl md:max-w-md max-w-sm  h-full md:h-auto">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow">
+      <button type="button"
+        id="guest-close-btn"
+        class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <div class="py-6 px-6 lg:px-8">
+        <p class="flex flex-col items-center uppercase font-bold text-[#FFB4C6] text-5xl mb-8">
+          {% translate 'Add Guest'%}
+        </p>
+        <form class="space-y-6" action="#">
+          <div>
+            <label for="email" class="block mb-2 text-base">{% translate 'Guest’s Name'%}</label>
+            <input type="Text" name="username" id="input-guest-name"
+              class="border border-[#ADADAD] text-[#8A8A8A] text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-4"
+              placeholder="Enter Guest’s name" required>
+          </div>
+          <div>
+            <label for="country_phone" class="block mb-2 text-base">{% translate 'Phone Number'%}</label>
+            <div class="flex">
+              <button id="dropdown-phone" data-dropdown-toggle="guest-phone"
+                class="rtl:order-last flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] border border-gray-300 rounded-l-lg focus:outline-none"
+                type="button">
+                  <img src="{% static "images/is.png" %}" id="selectedGuestImg" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                  <span class="w-16">
+                    <span class="w-16" id="selectedGuestCode">+972</span>
+                    <span id="selectedGuestCountry"> (IL)</span>
+                  </span>
+                 <svg aria-hidden="true" class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <div id="guest-phone"
+                class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow"
+                data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom"
+                style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 10px);">
+                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-phone">
+                  <li>
+                    <button type="button"
+                      onclick="getElement(this)"
+                      class="inline-flex py-2 px-4 w-full text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">
+                      <div class="inline-flex items-center">
+                        <img class="child2" src="{% static "images/is.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                        <span class="child1">+972</span>
+                        <span class="child3">(IL)</span>
+                      </div>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button"
+                    onclick="getElement(this)"
+                      class="inline-flex py-2 px-4 w-full text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">
+                      <div class="inline-flex items-center">
+                        <img class="child2" src="{% static "images/usa.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                        <span class="child1">+1</span>
+                        <span class="child3">(US)</span>
+                      </div>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div class="relative w-full">
+                <input type="tel" id="guest-phone-input"
+                  class="block p-4 w-full z-20 text-sm text-[#8A8A8A] rounded-r-lg border-l-[#ADADAD] border-l-2 border border-[#ADADAD] focus:ring-[#FFB4C6] focus:border-[#FFB4C6]"
+                  placeholder="Phone Number" required>
+              </div>
+            </div>
+          </div>
+          <button
+            id="add-guest-btn"
+            type="button"
+            class="uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
+            {% translate 'Add'%} </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="delete-guest" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+  <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" onclick="window.deleteModal.hide()">
+              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              <span class="sr-only">Close modal</span>
+          </button>
+          <div class="p-6 text-center">
+              <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">{% translate 'Are you sure you want to delete this guest?' %}</h3>
+              <button onclick="window.deleteModal.hide()" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                {% translate 'Yes, I m sure' %} 
+              </button>
+              <button onclick="window.deleteModal.hide()" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{% translate 'No, cancel' %} </button>
+          </div>
+      </div>
+  </div>
+</div>
+
 <div id="snackbar" class="text-lime-600 z-50"></div>
 
 <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/datepicker.js' %}" type="text/javascript"></script>
-<script src="{% static '/js/add_event.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/wow.min.js' %}" type="text/javascript"></script>
 <script>
   new WOW().init();
 
+  $(document).ready(function () {
+    window.deleteModal = new Modal(document.getElementById('delete-guest'), {});
+  });
+
+
   const id = "{{id}}";
-  /*************************/
-  console.warn(id !== "", id);
+
+  const container = document.querySelector(".table-container");
+  const cardTemplate = document.getElementById("row-template");
+  const targetEl = document.getElementById('add-guests');
+  const deletModal = document.getElementById('delete-guest');
+  const addModal = new Modal(targetEl);
+  //const deleteModal = new Modal(deletModal);
+
+  /***********Edit Event Information**************/
   if(id !== "") {
     async function fetchEventsJSON() {
     const response = await fetch("http://127.0.0.1:8000/static/data/events.json");
@@ -199,17 +325,123 @@
     fetchEventsJSON().then(events => {
       events.forEach((event) => {
         if(event.id === id) {
-          document.getElementById("event-title").value = event.event_name;
-          document.getElementById("event-owner").value = event.owner;
-          document.getElementById("datepickerEvent").value = event.event_date;
-          document.getElementById("datepickerMessageDate").value = event.sent_date;
-          document.getElementById("message").value = event.message;
-          
-          
+          $("#event-title").val(event.event_name);
+          $("#event-owner").val(event.owner);
+          $("#datepickerEvent").val(event.event_date);
+          $("#datepickerMessageDate").val(event.sent_date);
+          $("#message").val(event.message);
         }
       });
     });
   }
+
+  /********************************Guests list **************************/
+
+for (let i = 0; i < 3; i++) {
+  container.append(cardTemplate.content.cloneNode(true));
+}
+setTimeout(function () {
+  fetch("http://127.0.0.1:8000/static/data/guests.json", {
+    method: "GET",
+    headers: { "access-Control-Allow-Origin": "*" }
+  })
+    .then((response) => response.json())
+    .then((guests) => {
+      container.innerHTML = "";
+      guests.forEach((guest) => {
+        const div = cardTemplate.content.cloneNode(true);
+        createTableRow(div, container, guest);
+      });
+    });
+}, 1000)
+
+function getElement (elemnt) {
+  document.getElementById('selectedGuestImg').src = elemnt.querySelector('.child2').src;
+  document.getElementById('selectedGuestCode').textContent = elemnt.querySelector('.child1').innerText ;
+  $('selectedGuestCountry').text(elemnt.querySelector('.child3').innerText);
+};
+
+$("#add-guest-btn").click(function () {
+  const guest = {
+    "id": "05", "guests_name": "", "phone_number": "", "status": "ok", "status_message": "Sent at 3/5/2022 at 14:00"
+  };
+
+  const date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let hour = date.getHours();
+  let minute = date.getMinutes();
+  let currentDate = `{% blocktrans %}Sent {% endblocktrans %} ${day}/${month}/${year} at ${hour}:${minute}`;
+
+  var guest_name = $("#input-guest-name").val();
+  var guest_phone = $("#guest-phone-input").val();
+
+  if(guest_name && $.isNumeric(guest_phone))  {
+    guest.guests_name = guest_name;
+    guest.phone_number = $('#selectedGuestCode').text()+guest_phone;
+    guest.status_message = currentDate;
+    const newRow = cardTemplate.content.cloneNode(true);
+    createTableRow(newRow, container, guest);
+    clearModal();
+    showSnackBar('New guest successfully added!')
+  } else {
+    clearModal();
+    showSnackBar('Oops. Something went wrong when adding new guest!')
+  }
+});
+
+$("#add-single-guest").click(function () {
+  addModal.show();
+});
+
+$("#guest-close-btn").click(function () {
+  clearModal();
+});
+
+
+
+function createTableRow (el, parent, item) {
+  if (item.status === "error") {
+    el.getElementById("guest-name").innerHTML = `<img class="w-4 h-4" src="/static/images/warning.svg" /> <span class="rtl:mr-2">` + item.guests_name + `</span>`;
+  } else {
+    el.getElementById("guest-name").textContent = item.guests_name;
+  }
+  el.getElementById("guest-phone").textContent = item.phone_number;
+  el.getElementById("guest-status").textContent = item.status_message;
+  el.getElementById("guest-status").classList.add(item.status);
+  el.getElementById("guest_action").innerHTML =
+    ` <button id=edit-guest-`+item.id+` class="edit-btn"><img src="/static/images/edit_guests.svg" /></button>
+    <button id=delete-modal-`+item.id+` class="delete-btn" ><img src="/static/images/delete_guests.svg" /></button>`;
+  parent.append(el);
+  $(".delete-btn").click(function () {
+    window.deleteModal.show();
+  });
+  $(".edit-btn").click(function () {
+    addModal.show();
+  });
+}
+
+function showSnackBar(text, status) {
+  $("#snackbar").text( text );
+  $("#snackbar").addClass( "show" );
+  setTimeout(function(){ 
+    $("#snackbar").removeClass( "show" );
+  }, 2000);
+};
+
+function clearModal(text, status) {
+  addModal.hide();
+  $("#input-guest-name").val("");
+  $("#guest-phone-input").val("");
+
+};
+
+const datepickerEvent = document.getElementById('datepickerEvent');
+new Datepicker(datepickerEvent, {});
+const datepickerMessage = document.getElementById('datepickerMessageDate');
+new Datepicker(datepickerMessage, {});
 
 </script>
 

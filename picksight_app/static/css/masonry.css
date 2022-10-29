@@ -140,7 +140,7 @@ img, video {
   padding: 16px;
   position: fixed; 
   z-index: 999; 
-  left: 50%;
+  left: 10%;
   bottom: 30px; 
 }
 

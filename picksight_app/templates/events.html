@@ -113,14 +113,16 @@
             div.getElementById("event-header").append(eventSent);
           }
           div.getElementById("message-details").textContent = `{% blocktrans %}Message Details {% endblocktrans %}`;
-          div.getElementById("message-btn").classList.add('bg-[#FFB4C6]', 'border', 'border-[#FFB4C6]', 'hover:bg-transparent', 'hover:text-[#FFB4C6]','transition', 'duration-300');
+          div.getElementById("message-btn").classList.add('border', 'hover:bg-transparent','transition', 'duration-300');
           div.getElementById("image-btn").classList.add('bg-transparent', 'border', 'border-2', 'border-[#FFB4C6]','px-1');
           div.getElementById("image-btn").classList.remove('flex-1');
           if(event.status === "pending") {
+            div.getElementById("message-btn").classList.add('bg-[#FFB4C6]', 'border-[#FFB4C6]', 'hover:text-[#FFB4C6]');
             div.getElementById("message-btn").textContent = `{% blocktrans %}Go to Gallery {% endblocktrans %}`
             div.getElementById("image-btn").innerHTML = ` <img src="/static/images/edit.svg" />`;
             div.getElementById("image-btn").href = `/edit-event/`+event.id;
           } else {
+            div.getElementById("message-btn").classList.add('bg-[#F26B6D]', 'border-[#F26B6D]', 'hover:text-[#F26B6D]');
             div.getElementById("message-btn").textContent = `{% blocktrans %}Dashboard {% endblocktrans %}`
             div.getElementById("image-btn").innerHTML = ` <img src="/static/images/photos.svg" />`;
           }
