@@ -120,7 +120,7 @@
             </div>
             <div>
               <div class="flex justify-center ltr:space-x-3">
-                <button class="py-2 px-6 text-sm text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Upload CSV/Excel'%}</button>
+                <button id="add-multiple-guests" class="py-2 px-6 text-sm text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Upload CSV/Excel'%}</button>
                 <button class="rtl:mr-3 bg-transparent text-sm border border border-[#FFB4C6] text-[#FFB4C6] rounded-lg py-2 px-6">{% translate 'Delete All'%}</button>   
               </div>
             </div>
@@ -293,11 +293,14 @@
   </div>
 </div>
 
+{% include "./commons/select_guests_list.html" %}
 <div id="snackbar" class="text-lime-600 z-50"></div>
 
 <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/datepicker.js' %}" type="text/javascript"></script>
 <script src="{% static '/js/wow.min.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/xlsx.full.min.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/papaparse.min.js' %}" type="text/javascript"></script>
 <script>
   new WOW().init();
 
@@ -313,6 +316,9 @@
   const targetEl = document.getElementById('add-guests');
   const deletModal = document.getElementById('delete-guest');
   const addModal = new Modal(targetEl);
+
+  const uploadGuests = document.getElementById('add-guests-list');
+  const uploadModal = new Modal(uploadGuests);
   //const deleteModal = new Modal(deletModal);
 
   /***********Edit Event Information**************/
@@ -396,6 +402,10 @@ $("#add-single-guest").click(function () {
   addModal.show();
 });
 
+$("#add-multiple-guests").click(function () {
+  uploadModal.show();
+});
+
 $("#guest-close-btn").click(function () {
   clearModal();
 });
@@ -435,7 +445,6 @@ function clearModal(text, status) {
   addModal.hide();
   $("#input-guest-name").val("");
   $("#guest-phone-input").val("");
-
 };
 
 const datepickerEvent = document.getElementById('datepickerEvent');

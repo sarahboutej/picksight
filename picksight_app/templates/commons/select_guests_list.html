@@ -1,0 +1,335 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+<div id="add-guests-list" tabindex="-1"
+  class="z-50 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+  <div id="modal-wrapper" class="relative p-4 w-full xl:max-w-3xl lg:max-w-xl md:max-w-md max-w-sm  h-full md:h-auto">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow">
+      <button type="button"
+        id="guests-close-btn"
+        class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <div class="py-6 px-6 lg:px-8">
+        <p class="flex flex-col items-center uppercase font-bold text-[#FFB4C6] text-5xl mb-8">
+          {% translate 'Add Guests'%}
+        </p>
+        <form id="upload-form"  class="space-y-8" action="#">
+          <div class="flex flex-col w-full">
+              <div class="upload-files flex flex-col justify-center items-center w-full rounded-lg border-2 border-[#CFD8DC] border-dashed cursor-pointer">
+                <div class="body flex flex-col justify-center items-center py-8 space-y-6 w-full" id="drop">
+                  <img id="upload-img" src="{% static "images/upload.svg" %}">
+                <p class="pointer-none text-sm rtl:mr-4 text-[#8A8A8A]">{% translate 'Drag and drop a CSV or Excel file Or CLICK to choose from file'%}</p>
+                    <input type="file" type="file" accept=".xlsx, .xls, .csv" class="hidden"  />
+                </div>
+                <footer>
+                <div class="list-files">
+                  <!--   template   -->
+                </div>
+                </footer>
+              </div>
+        </div> 
+        <div class="flex ltr:space-x-4">
+          <button
+            id="triggerFile"
+            type="button"
+            class="importar uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
+            {% translate 'Choose File'%} </button>
+            <button
+            id="uploadFile"
+            type="button"
+            class="rtl:mr-4 uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
+            {% translate 'Upload'%} </button>
+        </div>
+        </form>
+        <div>
+          <div id="table-data">
+            <table id="csv-guests-table" class="w-full text-sm text-left text-gray-5000"></table>
+          </div>
+          <div id="table-btn" class="hidden space-x-3">
+            <button
+            id="lastNameSelect"
+            type="button"
+            class="importar uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
+            {% translate 'Continue to select Last name'%} </button>
+            <button
+            id="phoneNumberSelect"
+            type="button"
+            class="rtl:mr-4 uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
+            {% translate 'Continue to select Phone number'%} </button>
+            <button
+            id="finishButton"
+            type="button"
+            class="hidden rtl:mr-4 uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
+            {% translate 'Finish'%} </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  //DOM
+
+  var getSelectedColumn;
+  const sl = document.querySelector.bind(document);
+  //APP
+  let App = {};
+  App.init = function () {
+
+    let files = "";
+    //Init
+    function handleFileSelect(files) {
+      let template = ""
+      if(files && files.name) {
+        template = `<div class="file flex justify-center flex-col file--0">
+        <div class="name"><span>${files.name}</span></div>
+        <div class="flex w-full items-center justify-center"><div class="progress w-2/3 ltr:mr-4 rtl:ml-4 bg-gradient-to-r from-[#e91e639c] to-[#d8e8f8] active"></div>
+        <div class="done">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 1000 1000">
+        <g><path id="path" d="M500,10C229.4,10,10,229.4,10,500c0,270.6,219.4,490,490,490c270.6,0,490-219.4,490-490C990,229.4,770.6,10,500,10z M500,967.7C241.7,967.7,32.3,758.3,32.3,500C32.3,241.7,241.7,32.3,500,32.3c258.3,0,467.7,209.4,467.7,467.7C967.7,758.3,758.3,967.7,500,967.7z M748.4,325L448,623.1L301.6,477.9c-4.4-4.3-11.4-4.3-15.8,0c-4.4,4.3-4.4,11.3,0,15.6l151.2,150c0.5,1.3,1.4,2.6,2.5,3.7c4.4,4.3,11.4,4.3,15.8,0l308.9-306.5c4.4-4.3,4.4-11.3,0-15.6C759.8,320.7,752.7,320.7,748.4,325z"</g>
+        </svg>
+        </div>
+        </div></div>`;
+      }
+
+      sl("#drop").classList.add("hidden");
+      sl("footer").classList.add("hasFiles");
+      sl(".importar").classList.add("active");
+
+      setTimeout(() => {
+        sl(".list-files").innerHTML = template;
+      }, 200);
+  
+      if(template!=="") {
+          setTimeout(() => {
+          sl(".file--0").querySelector(".progress").classList.remove("active");
+          sl(".file--0").querySelector(".done").classList.add("anim");
+        }, 2000);
+      }
+    }
+
+    function update(data, headerColumns) {
+      const tableCsv = $('#csv-guests-table');
+      tableCsv.html('');
+
+    }
+    
+    function convertFileToHtmlTable() {
+      sl("#upload-form").classList.add("hidden");
+      sl("#table-btn").classList.remove("hidden");
+      sl("#table-btn").classList.add("flex");
+      sl("#modal-wrapper").classList.remove("xl:max-w-3xl");
+      sl("#modal-wrapper").classList.add("xl:max-w-7xl");
+      const dataTable = $("#table_output");
+      if(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(files.type)) {
+        var reader = new FileReader();
+        reader.readAsArrayBuffer(files);
+        reader.onload = function(event){
+        var data = new Uint8Array(reader.result);
+        var work_book = XLSX.read(data, {type:'array'});
+        var sheet_name = work_book.SheetNames;
+        var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
+        if(sheet_data.length > 0)
+        {
+          var table_output = '<table id="guests-table" class="w-full text-sm text-left text-gray-5000">';
+          for (var row = 0; row < sheet_data.length; row++) {
+            table_output += '<tr class="border-b border-gray-200">';
+            for(var cell = 0; cell < sheet_data[row].length; cell++) {
+              if(row == 0) {
+                table_output += '<th class="py-4 px-6 cursor-pointer table-head-value" data-cell="' +cell+'">'+sheet_data[row][cell]+'</th>';
+              } else {
+                table_output += '<td class="py-4 px-6" data-cell="'+cell+'" data-name="' +sheet_data[0][cell]+'">'+sheet_data[row][cell]+'</td>';
+              }
+            }
+            table_output += '</tr>';
+          }
+          table_output += '</table>';
+          $('#table-data').html(table_output);
+        }
+      } 
+    }
+
+    if(files.type === "text/csv") {
+        Papa.parse(files, {
+        delimiter: ",",
+        skipEmptyLines: true,
+        complete: (results) => {
+          update(results.data.slice(1), results.data[0]);
+        }
+      });
+      }
+
+
+        const element = document.querySelectorAll('.table-head-value');
+        var selectedElement;
+
+        var guestsArray = [];
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let hour = date.getHours();
+        let minute = date.getMinutes();
+        let lastName= false;
+        let guestPhone= false;
+        let currentDate = `{% blocktrans %}Sent {% endblocktrans %} ${day}/${month}/${year} at ${hour}:${minute}`;
+        if (element.length !== 0) {
+          for (var i=0; i<element.length; i++) {
+            element[i].addEventListener('click', function () {
+              selectedElement = this.getAttribute('data-cell');
+              $('#guests-table tr').each(function(){
+                  $(this).find('td, th').each(function(){
+                    if($(this).hasClass( "bg-[#FF6D90]" )) {
+                      $(this).removeClass( "bg-[#FF6D90]" );
+                    }
+                  })
+              })
+              $('#guests-table tr').each(function(){
+                  $(this).find(`[data-cell='${selectedElement}']`).each(function(){
+                    $(this).addClass( "bg-[#FF6D90]" );
+                  })
+              })
+              if(lastName === true) {
+                $("#lastNameSelect").addClass('hidden');
+              }
+              if(guestPhone === true) {
+                $("#phoneNumberSelect").addClass('hidden');
+                $("#finishButton").removeClass('hidden').addClass('flex');
+              }
+            });
+          }
+        }
+
+        $("#lastNameSelect").click(function() {
+          $('#guests-table tr').each(function(){
+            $(this).find('td, th').each(function(){
+              if($(this).hasClass( "bg-[#FF6D90]" )) {
+                $(this).removeClass( "bg-[#FF6D90]" );
+                $(this).addClass( "bg-[#545454]" );
+              }
+            }) 
+          });
+          lastName = true;
+        });
+
+        $("#phoneNumberSelect").click(function() {
+          $('#guests-table tr').each(function(){
+            $(this).find('td, th').each(function(){
+              if($(this).hasClass( "bg-[#FF6D90]" )) {
+                $(this).removeClass( "bg-[#FF6D90]" );
+                $(this).addClass( "bg-[#545454]" );
+              }
+            }) 
+          });
+          guestPhone = true;
+        });
+
+        $("#finishButton").click(function() {
+          $('#guests-table tr').each(function(){
+            let guestObject = {
+              "id": Math.floor(Math.random() * 100) + 1,
+              "guests_name": "",
+              "phone_number": "",
+              "status": "ok",
+              "status_message": currentDate
+            }
+            $(this).find('td').each(function(){
+              if($(this).hasClass( "bg-[#FF6D90]" )) {
+                guestObject.phone_number = $(this).text();
+              }
+              if($(this).hasClass( "bg-[#545454]" )) {
+                guestObject.guests_name += ' '+ $(this).text();
+              }
+            }) 
+            guestsArray.push(guestObject);
+          });
+          clearModal();
+          guestsArray.forEach((guest) => {
+            if(guest.guests_name && guest.phone_number.length) {
+              const div = cardTemplate.content.cloneNode(true);
+              createTableRow(div, container, guest);
+            }
+          });
+        });
+      
+    }
+
+    window.addEventListener('modal-closed', function() {
+      clearModal();
+    })
+
+    function clearModal(text, status) {
+      uploadModal.hide();
+      $("#upload-form").removeClass("hidden");
+      $("#table-btn").removeClass("flex");
+      $("#table-btn").addClass("hidden");
+      $("#modal-wrapper").removeClass("xl:max-w-7xl");
+      $("#modal-wrapper").addClass("xl:max-w-3xl");
+      $("#table-data").addClass("hidden");
+      $("footer").removeClass("hasFiles");
+      $("#drop").removeClass("hidden");
+      $(".importar").removeClass("active");
+      $("input[type=file]").val('');
+      tableRoot.html("");
+    }
+
+    $('#guests-close-btn').click(function() {
+      clearModal();
+    });
+  
+    sl("#triggerFile").addEventListener("click", evt => {
+      evt.preventDefault();
+      sl("input[type=file]").click();
+    });
+  
+    // drop events
+    sl("#drop").ondragleave = evt => {
+      sl("#drop").classList.remove("active");
+      evt.preventDefault();
+    };
+    sl("#drop").ondragover = sl("#drop").ondragenter = evt => {
+      sl("#drop").classList.add("active");
+      event.preventDefault();
+    }; 
+
+    sl("#drop").ondrop = evt => {
+      files = evt.dataTransfer.files[0];
+      console.warn('files',files);
+      handleFileSelect(evt.dataTransfer.files[0]);
+      sl("#drop").classList.add("hidden");
+      sl("footer").classList.add("hasFiles");
+      sl("#drop").classList.remove("active");
+      evt.preventDefault();
+    }; 
+  
+
+    sl(".importar").addEventListener("click", () => {
+      sl(".list-files").innerHTML = "";
+      sl("footer").classList.remove("hasFiles");
+      sl(".importar").classList.remove("active");
+      setTimeout(() => {
+        sl("#drop").classList.remove("hidden");
+      }, 500);
+    });
+  
+    // input change
+    sl("input[type=file]").addEventListener("change", function(event) {
+      files = event.target.files[0];
+      handleFileSelect(event.target.files[0]);
+    });
+
+    $("#uploadFile").click(function(evt) {
+      convertFileToHtmlTable();
+    });
+  }();
+  </script>

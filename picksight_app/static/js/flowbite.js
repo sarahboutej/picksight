@@ -5271,13 +5271,10 @@ var Modal = /*#__PURE__*/function () {
   }, {
     key: "_handleOutsideClick",
     value: function _handleOutsideClick(target) {
-      console.log(target);
-      console.log(this._options.backdrop);
-      console.log(this._targetEl.id);
-
       if (this._options.backdrop === 'dynamic') {
         if (target === this._targetEl || target === this._backdropEl) {
-          this.hide();
+          //console.warn('test');
+          window.dispatchEvent(new CustomEvent('modal-closed'));
         }
       }
     }
