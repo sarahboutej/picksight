@@ -50,9 +50,7 @@
         </div>
         </form>
         <div>
-          <div id="table-data">
-            <table id="csv-guests-table" class="w-full text-sm text-left text-gray-5000"></table>
-          </div>
+          <div id="table-data"></div>
           <div id="table-btn" class="hidden space-x-3">
             <button
             id="lastNameSelect"
@@ -89,7 +87,7 @@
     //Init
     function handleFileSelect(files) {
       let template = ""
-      if(files && files.name) {
+      if (files && files.name) {
         template = `<div class="file flex justify-center flex-col file--0">
         <div class="name"><span>${files.name}</span></div>
         <div class="flex w-full items-center justify-center"><div class="progress w-2/3 ltr:mr-4 rtl:ml-4 bg-gradient-to-r from-[#e91e639c] to-[#d8e8f8] active"></div>
@@ -108,9 +106,9 @@
       setTimeout(() => {
         sl(".list-files").innerHTML = template;
       }, 200);
-  
-      if(template!=="") {
-          setTimeout(() => {
+
+      if (template !== "") {
+        setTimeout(() => {
           sl(".file--0").querySelector(".progress").classList.remove("active");
           sl(".file--0").querySelector(".done").classList.add("anim");
         }, 2000);
@@ -122,151 +120,262 @@
       tableCsv.html('');
 
     }
-    
-    function convertFileToHtmlTable() {
+
+    function convertExcelFileToHtmlTable() {
       sl("#upload-form").classList.add("hidden");
       sl("#table-btn").classList.remove("hidden");
       sl("#table-btn").classList.add("flex");
       sl("#modal-wrapper").classList.remove("xl:max-w-3xl");
       sl("#modal-wrapper").classList.add("xl:max-w-7xl");
       const dataTable = $("#table_output");
-      if(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(files.type)) {
-        var reader = new FileReader();
-        reader.readAsArrayBuffer(files);
-        reader.onload = function(event){
+      var reader = new FileReader();
+      reader.readAsArrayBuffer(files);
+      reader.onload = function (event) {
         var data = new Uint8Array(reader.result);
-        var work_book = XLSX.read(data, {type:'array'});
+        var work_book = XLSX.read(data, { type: 'array' });
         var sheet_name = work_book.SheetNames;
-        var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
-        if(sheet_data.length > 0)
-        {
+        var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], { header: 1 });
+        if (sheet_data.length > 0) {
           var table_output = '<table id="guests-table" class="w-full text-sm text-left text-gray-5000">';
           for (var row = 0; row < sheet_data.length; row++) {
             table_output += '<tr class="border-b border-gray-200">';
-            for(var cell = 0; cell < sheet_data[row].length; cell++) {
-              if(row == 0) {
-                table_output += '<th class="py-4 px-6 cursor-pointer table-head-value" data-cell="' +cell+'">'+sheet_data[row][cell]+'</th>';
+            for (var cell = 0; cell < sheet_data[row].length; cell++) {
+              if (row == 0) {
+                table_output += '<th class="py-4 px-6 cursor-pointer table-head-value" data-cell="' + cell + '">' + sheet_data[row][cell] + '</th>';
               } else {
-                table_output += '<td class="py-4 px-6" data-cell="'+cell+'" data-name="' +sheet_data[0][cell]+'">'+sheet_data[row][cell]+'</td>';
+                table_output += '<td class="py-4 px-6" data-cell="' + cell + '" data-name="' + sheet_data[0][cell] + '">' + sheet_data[row][cell] + '</td>';
               }
             }
             table_output += '</tr>';
           }
           table_output += '</table>';
           $('#table-data').html(table_output);
+          const element = document.querySelectorAll('.table-head-value');
+          var selectedElement;
+
+          var guestsArray = [];
+          const date = new Date();
+
+          let day = date.getDate();
+          let month = date.getMonth() + 1;
+          let year = date.getFullYear();
+          let hour = date.getHours();
+          let minute = date.getMinutes();
+          let lastName = false;
+          let guestPhone = false;
+          let currentDate = `{% blocktrans %}Sent {% endblocktrans %} ${day}/${month}/${year} at ${hour}:${minute}`;
+          if (element.length !== 0) {
+            for (var i = 0; i < element.length; i++) {
+              element[i].addEventListener('click', function () {
+                selectedElement = this.getAttribute('data-cell');
+                $('#guests-table tr').each(function () {
+                  $(this).find('td, th').each(function () {
+                    if ($(this).hasClass("bg-[#FF6D90]")) {
+                      $(this).removeClass("bg-[#FF6D90]");
+                    }
+                  })
+                })
+                $('#guests-table tr').each(function () {
+                  $(this).find(`[data-cell='${selectedElement}']`).each(function () {
+                    $(this).addClass("bg-[#FF6D90]");
+                  })
+                })
+                if (lastName === true) {
+                  $("#lastNameSelect").addClass('hidden');
+                }
+                if (guestPhone === true) {
+                  $("#phoneNumberSelect").addClass('hidden');
+                  $("#finishButton").removeClass('hidden').addClass('flex');
+                }
+              });
+            }
+          }
+          $("#lastNameSelect").click(function () {
+        $('#guests-table tr').each(function () {
+          $(this).find('td, th').each(function () {
+            if ($(this).hasClass("bg-[#FF6D90]")) {
+              $(this).removeClass("bg-[#FF6D90]");
+              $(this).addClass("bg-[#545454]");
+            }
+          })
+        });
+        lastName = true;
+      });
+
+      $("#phoneNumberSelect").click(function () {
+        $('#guests-table tr').each(function () {
+          $(this).find('td, th').each(function () {
+            if ($(this).hasClass("bg-[#FF6D90]")) {
+              $(this).removeClass("bg-[#FF6D90]");
+              $(this).addClass("bg-[#545454]");
+            }
+          })
+        });
+        guestPhone = true;
+      });
+
+      $("#finishButton").click(function () {
+        $('#guests-table tr').each(function () {
+          let guestObject = {
+            "id": Math.floor(Math.random() * 100) + 1,
+            "guests_name": "",
+            "phone_number": "",
+            "status": "ok",
+            "status_message": currentDate
+          }
+          $(this).find('td').each(function () {
+            if ($(this).hasClass("bg-[#FF6D90]")) {
+              guestObject.phone_number = $(this).text();
+            }
+            if ($(this).hasClass("bg-[#545454]")) {
+              guestObject.guests_name += ' ' + $(this).text();
+            }
+          })
+          guestsArray.push(guestObject);
+        });
+        clearModal();
+        guestsArray.forEach((guest) => {
+          if (guest.guests_name && guest.phone_number.length) {
+            const div = cardTemplate.content.cloneNode(true);
+            createTableRow(div, container, guest);
+          }
+        });
+      });
         }
-      } 
+      }
     }
 
-    if(files.type === "text/csv") {
-        Papa.parse(files, {
+    function convertCSVFileToHtmlTable() {
+      Papa.parse(files, {
         delimiter: ",",
         skipEmptyLines: true,
         complete: (results) => {
-          update(results.data.slice(1), results.data[0]);
-        }
-      });
-      }
+          $("#upload-form").addClass("hidden");
+          $("#table-btn").removeClass("hidden");
+          $("#table-btn").addClass("flex");
+          $("#modal-wrapper").removeClass("xl:max-w-3xl");
+          $("#modal-wrapper").addClass("xl:max-w-7xl");
+          const dataTable = $("#table_output");
+          if (results.data.slice(1).length > 0) {
+            const headData = results.data[0];
+            const tableRows = results.data.slice(1);
+            var table_output = '<table id="guests-table" class="w-full text-sm text-left text-gray-5000">';
+              table_output += '<tr class="border-b border-gray-200">';
+              for (var rowHead = 0; rowHead < headData.length; rowHead++) {
+                table_output += '<th class="py-4 px-6 cursor-pointer table-head-value" data-cell="' + rowHead + '">' + headData[rowHead] + '</th>';
+              }
+              table_output += '</tr>';
 
+              for (var row = 0; row < tableRows.length; row++) {
+                table_output += '<tr class="border-b border-gray-200">';
+                  for (var cell = 0; cell < tableRows[row].length; cell++) {
+                    table_output += '<td class="py-4 px-6" data-cell="' + cell + '" data-name="' + headData[cell] + '">' + tableRows[row][cell] + '</td>';
+                  }
+                table_output += '</tr>';
+              }
+              table_output += '</table>';
 
-        const element = document.querySelectorAll('.table-head-value');
-        var selectedElement;
+              $('#table-data').html(table_output);
 
-        var guestsArray = [];
-        const date = new Date();
+              /**********************************************/
 
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        let hour = date.getHours();
-        let minute = date.getMinutes();
-        let lastName= false;
-        let guestPhone= false;
-        let currentDate = `{% blocktrans %}Sent {% endblocktrans %} ${day}/${month}/${year} at ${hour}:${minute}`;
-        if (element.length !== 0) {
-          for (var i=0; i<element.length; i++) {
-            element[i].addEventListener('click', function () {
-              selectedElement = this.getAttribute('data-cell');
-              $('#guests-table tr').each(function(){
-                  $(this).find('td, th').each(function(){
-                    if($(this).hasClass( "bg-[#FF6D90]" )) {
-                      $(this).removeClass( "bg-[#FF6D90]" );
+              const element = document.querySelectorAll('.table-head-value');
+          var selectedElement;
+
+          var guestsArray = [];
+          const date = new Date();
+
+          let day = date.getDate();
+          let month = date.getMonth() + 1;
+          let year = date.getFullYear();
+          let hour = date.getHours();
+          let minute = date.getMinutes();
+          let lastName = false;
+          let guestPhone = false;
+          let currentDate = `{% blocktrans %}Sent {% endblocktrans %} ${day}/${month}/${year} at ${hour}:${minute}`;
+          if (element.length !== 0) {
+            for (var i = 0; i < element.length; i++) {
+              element[i].addEventListener('click', function () {
+                selectedElement = this.getAttribute('data-cell');
+                $('#guests-table tr').each(function () {
+                  $(this).find('td, th').each(function () {
+                    if ($(this).hasClass("bg-[#FF6D90]")) {
+                      $(this).removeClass("bg-[#FF6D90]");
                     }
                   })
-              })
-              $('#guests-table tr').each(function(){
-                  $(this).find(`[data-cell='${selectedElement}']`).each(function(){
-                    $(this).addClass( "bg-[#FF6D90]" );
+                })
+                $('#guests-table tr').each(function () {
+                  $(this).find(`[data-cell='${selectedElement}']`).each(function () {
+                    $(this).addClass("bg-[#FF6D90]");
                   })
-              })
-              if(lastName === true) {
-                $("#lastNameSelect").addClass('hidden');
-              }
-              if(guestPhone === true) {
-                $("#phoneNumberSelect").addClass('hidden');
-                $("#finishButton").removeClass('hidden').addClass('flex');
-              }
-            });
+                })
+                if (lastName === true) {
+                  $("#lastNameSelect").addClass('hidden');
+                }
+                if (guestPhone === true) {
+                  $("#phoneNumberSelect").addClass('hidden');
+                  $("#finishButton").removeClass('hidden').addClass('flex');
+                }
+              });
+            }
+          }
+          $("#lastNameSelect").click(function () {
+        $('#guests-table tr').each(function () {
+          $(this).find('td, th').each(function () {
+            if ($(this).hasClass("bg-[#FF6D90]")) {
+              $(this).removeClass("bg-[#FF6D90]");
+              $(this).addClass("bg-[#545454]");
+            }
+          })
+        });
+        lastName = true;
+      });
+
+      $("#phoneNumberSelect").click(function () {
+        $('#guests-table tr').each(function () {
+          $(this).find('td, th').each(function () {
+            if ($(this).hasClass("bg-[#FF6D90]")) {
+              $(this).removeClass("bg-[#FF6D90]");
+              $(this).addClass("bg-[#545454]");
+            }
+          })
+        });
+        guestPhone = true;
+      });
+
+      $("#finishButton").click(function () {
+        $('#guests-table tr').each(function () {
+          let guestObject = {
+            "id": Math.floor(Math.random() * 100) + 1,
+            "guests_name": "",
+            "phone_number": "",
+            "status": "ok",
+            "status_message": currentDate
+          }
+          $(this).find('td').each(function () {
+            if ($(this).hasClass("bg-[#FF6D90]")) {
+              guestObject.phone_number = $(this).text();
+            }
+            if ($(this).hasClass("bg-[#545454]")) {
+              guestObject.guests_name += ' ' + $(this).text();
+            }
+          })
+          guestsArray.push(guestObject);
+        });
+        clearModal();
+        guestsArray.forEach((guest) => {
+          if (guest.guests_name && guest.phone_number.length) {
+            const div = cardTemplate.content.cloneNode(true);
+            createTableRow(div, container, guest);
+          }
+        });
+      });
+      
+              /**********************************************/
           }
         }
-
-        $("#lastNameSelect").click(function() {
-          $('#guests-table tr').each(function(){
-            $(this).find('td, th').each(function(){
-              if($(this).hasClass( "bg-[#FF6D90]" )) {
-                $(this).removeClass( "bg-[#FF6D90]" );
-                $(this).addClass( "bg-[#545454]" );
-              }
-            }) 
-          });
-          lastName = true;
-        });
-
-        $("#phoneNumberSelect").click(function() {
-          $('#guests-table tr').each(function(){
-            $(this).find('td, th').each(function(){
-              if($(this).hasClass( "bg-[#FF6D90]" )) {
-                $(this).removeClass( "bg-[#FF6D90]" );
-                $(this).addClass( "bg-[#545454]" );
-              }
-            }) 
-          });
-          guestPhone = true;
-        });
-
-        $("#finishButton").click(function() {
-          $('#guests-table tr').each(function(){
-            let guestObject = {
-              "id": Math.floor(Math.random() * 100) + 1,
-              "guests_name": "",
-              "phone_number": "",
-              "status": "ok",
-              "status_message": currentDate
-            }
-            $(this).find('td').each(function(){
-              if($(this).hasClass( "bg-[#FF6D90]" )) {
-                guestObject.phone_number = $(this).text();
-              }
-              if($(this).hasClass( "bg-[#545454]" )) {
-                guestObject.guests_name += ' '+ $(this).text();
-              }
-            }) 
-            guestsArray.push(guestObject);
-          });
-          clearModal();
-          guestsArray.forEach((guest) => {
-            if(guest.guests_name && guest.phone_number.length) {
-              const div = cardTemplate.content.cloneNode(true);
-              createTableRow(div, container, guest);
-            }
-          });
-        });
-      
+      });
     }
-
-    window.addEventListener('modal-closed', function() {
-      clearModal();
-    })
 
     function clearModal(text, status) {
       uploadModal.hide();
@@ -275,23 +384,25 @@
       $("#table-btn").addClass("hidden");
       $("#modal-wrapper").removeClass("xl:max-w-7xl");
       $("#modal-wrapper").addClass("xl:max-w-3xl");
-      $("#table-data").addClass("hidden");
       $("footer").removeClass("hasFiles");
       $("#drop").removeClass("hidden");
       $(".importar").removeClass("active");
       $("input[type=file]").val('');
-      tableRoot.html("");
+      $('#table-data').html('');
     }
 
-    $('#guests-close-btn').click(function() {
+    window.addEventListener('modal-closed', function () {
+      clearModal();
+    })
+    $('#guests-close-btn').click(function () {
       clearModal();
     });
-  
+
     sl("#triggerFile").addEventListener("click", evt => {
       evt.preventDefault();
       sl("input[type=file]").click();
     });
-  
+
     // drop events
     sl("#drop").ondragleave = evt => {
       sl("#drop").classList.remove("active");
@@ -300,18 +411,18 @@
     sl("#drop").ondragover = sl("#drop").ondragenter = evt => {
       sl("#drop").classList.add("active");
       event.preventDefault();
-    }; 
+    };
 
     sl("#drop").ondrop = evt => {
       files = evt.dataTransfer.files[0];
-      console.warn('files',files);
+      console.warn('files', files);
       handleFileSelect(evt.dataTransfer.files[0]);
       sl("#drop").classList.add("hidden");
       sl("footer").classList.add("hasFiles");
       sl("#drop").classList.remove("active");
       evt.preventDefault();
-    }; 
-  
+    };
+
 
     sl(".importar").addEventListener("click", () => {
       sl(".list-files").innerHTML = "";
@@ -321,15 +432,21 @@
         sl("#drop").classList.remove("hidden");
       }, 500);
     });
-  
+
     // input change
-    sl("input[type=file]").addEventListener("change", function(event) {
+    sl("input[type=file]").addEventListener("change", function (event) {
       files = event.target.files[0];
       handleFileSelect(event.target.files[0]);
     });
 
-    $("#uploadFile").click(function(evt) {
-      convertFileToHtmlTable();
+    $("#uploadFile").click(function (evt) {
+      if(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(files.type))
+        {
+          convertExcelFileToHtmlTable();
+        }
+      if(files.type === "text/csv") {
+        convertCSVFileToHtmlTable();
+      }
     });
   }();
-  </script>
+</script>
