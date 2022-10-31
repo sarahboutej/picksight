@@ -151,7 +151,7 @@
               <tbody class="table-container">
                 <template id="row-template" >
                   <tr class="bg-white border-b dark:bg-gray-800 hover:bg-gray-50">
-                    <td class="p-4 w-4">
+                    <td id="check-box-td" class="p-4 w-4">
                         <div class="flex items-center">
                             <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90] dark:focus:ring-[#FF6D90] focus:ring-2">
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
@@ -275,6 +275,7 @@
 </div>
 
 <div id="delete-guest" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+  <input type="text" class="hidden" id="id-guest-to-delete">
   <div class="relative p-4 w-full max-w-md h-full md:h-auto">
       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
           <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" onclick="window.deleteModal.hide()">
@@ -359,8 +360,8 @@ setTimeout(function () {
       container.innerHTML = "";
       guestsList = guests;
       guests.forEach((guest) => {
-        const div = cardTemplate.content.cloneNode(true);
-        createTableRow(div, container, guest);
+        let tableRow = cardTemplate.content.cloneNode(true);
+        createTableRow(tableRow, container, guest);
       });
     });
 }, 1000)
@@ -425,6 +426,8 @@ $("#guest-close-btn").click(function () {
 
 
 function createTableRow (el, parent, item) {
+  const tableRow = el.getElementById("check-box-td").parentElement;
+  tableRow.setAttribute('id', item.id);
   if (item.status === "error") {
     el.getElementById("guest-name").innerHTML = `<img class="w-4 h-4" src="/static/images/warning.svg" /> <span class="rtl:mr-2">` + item.guests_name + `</span>`;
   } else {
@@ -441,16 +444,15 @@ function createTableRow (el, parent, item) {
 
   $('.delete-btn').click(function() {
     guest_id_to_delete = this.getAttribute('id');
+    $('#id-guest-to-delete').val(this.getAttribute('id'));
     window.deleteModal.show();
   });
 
   $('#delete-guest-btn').click(function() {
-    guestsList = guestsList.filter(function (guest) {
-      return guest_id_to_delete != guest.id;
-    });
-    window.dispatchEvent(new CustomEvent('delete-guest'));
+    const id = '#'+$('#id-guest-to-delete').val();
+    $(id).addClass('hidden');
     window.deleteModal.hide();
-  })
+  });
 
  const editBtn = document.querySelectorAll('.edit-btn');
   if (editBtn.length !== 0) {
