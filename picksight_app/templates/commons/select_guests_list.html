@@ -90,10 +90,9 @@
 
 <script>
 
- //DOM
  var getSelectedColumn;
  const sl = document.querySelector.bind(document);
- //APP
+
  let App = {};
  App.init = function() {
 
@@ -229,7 +228,7 @@
      const date = new Date();
      let lastName = false;
      let guestPhone = false;
-     let currentDate = `{% blocktrans %}Sent {% endblocktrans %} ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`;
+     let currentDate = `Sent ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`;
      if (element.length !== 0) {
        for (var i = 0; i < element.length; i++) {
          element[i].addEventListener('click', function() {

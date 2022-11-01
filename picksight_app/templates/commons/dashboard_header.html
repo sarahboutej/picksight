@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load l10n %}
-<nav id="navbar_gallery" class="flex justify-center bg-white w-full z-50">
+<nav id="navbar_gallery" class="flex justify-center bg-white w-full z-40">
   <div class="container w-9/12">
     <div class="flex flex-row items-center justify-between">
       <!-- Website Logo -->
@@ -9,7 +9,7 @@
         <img src="{% static "images/logo.png" %}" id="logo" class="w-28 py-2" alt="Picksight logo">
       </a>
       <!-- Primary Navbar items -->
-      <div id="hamburger-menu" class="z-50 hidden xl:flex flex-col {% if type == 'shared' %}flex-1 justify-center{% endif %} xl:flex-row bg-white rounded-xl xl:bg-inherit absolute xl:relative w-auto top-16 xl:top-0 shadow-lg xl:shadow-none inset-x-4 xl:inset-x-auto items-center ltr:xl:space-x-5 ltr:space-x-0 pb-4 xl:pb-0">
+      <div id="hamburger-menu" class="z-40 hidden xl:flex flex-col {% if type == 'shared' %}flex-1 justify-center{% endif %} xl:flex-row bg-white rounded-xl xl:bg-inherit absolute xl:relative w-auto top-16 xl:top-0 shadow-lg xl:shadow-none inset-x-4 xl:inset-x-auto items-center ltr:xl:space-x-5 ltr:space-x-0 pb-4 xl:pb-0">
         {% if type == 'owner' %}
         <a href="/events" class="py-2 px-2 text-[#727272]  text-base hover:border-b-4 hover:border-[#FFB4C6] {% if pageName == 'events' %}border-b-4 border-[#FFB4C6]{% endif %}">
           {% translate 'All Events'%}</a>

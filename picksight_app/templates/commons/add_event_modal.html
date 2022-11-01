@@ -1,0 +1,173 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+<div id="add-event-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+  <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow ">
+          <!-- Modal header -->
+          <div class="flex justify-between items-center p-5 rounded-t">
+              <h3 id="payment-modal-title" class="text-xl font-bold text-[#FD3766]">
+                {% translate 'All saved!'%}
+              </h3>
+              <button id="add-event-close-btn" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                  <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  <span class="sr-only">Close modal</span>
+              </button>
+          </div>
+          <!-- Modal body -->
+          <div id="modal-default-content" class="p-6 pt-0 space-y-6">
+            <div class="space-y-3">
+              <p class="text-sm leading-relaxed text-[#858585]">
+                {% translate 'Make the payment now to ensure your messages will be sent!'%}
+              </p>
+              <button
+              id="payment-btn"
+              type="button"
+              class="rtl:mr-4 w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg px-5 py-3 text-center transition transform">
+              {% translate 'Buy Now'%} </button>
+            </div>
+            <div class="space-y-3">
+              <p class="text-sm leading-relaxed text-[#858585]">
+                {% translate 'You can always make changes until the shceduled sending time'%}
+              </p>
+              <button
+              id="changes-btn"
+              type="button"
+              class="rtl:mr-4 w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg px-5 py-3 text-center transition transform">
+              {% translate 'Ok'%} </button>
+            </div>
+          </div>
+
+          <div id="modal-payment-content" class="p-6 pt-0 space-y-6 hidden">
+            <span id="modal-subtitle" class="text-sm text-[#8a8a8a]">
+              {% translate 'Just one last step and your gallery is good to go!'%}
+            </span>
+            <div class="space-y-3">
+              <p class="text-base font-bold leading-relaxed text-gray-700">
+                {% translate 'You will Get!'%}
+              </p>
+              <ul class="space-y-1 max-w-md list-inside text-gray-500">
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mr-1.5 text-[#FF5A82] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    {% translate 'Up to 500 guests'%}
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mr-1.5 text-[#FF5A82] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    {% translate '1-year live gallery'%}
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-1.5 text-[#FF5A82] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                  {% translate 'Dashboard'%}
+                </li>
+              </ul>
+            </div>
+            <form> 
+              <div class="relative">
+                  <input type="search" id="coupon-text" class="block p-4 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-[#F47E80] focus:border-[#F47E80]" placeholder="{% translate 'Have a coupon? Enter it now!'%}" required>
+                  <button id="coupon-submit" type="button" class="text-white absolute right-2.5 bottom-2.5 bg-[#FFB4C6] hover:bg-[#F47E80] focus:ring-0 focus:outline-none focus:ring-0 font-medium rounded-lg text-sm px-4 py-2 ">{% translate 'Apply'%}</button>
+              </div>
+              <p id="error-coupon-text" class="text-red-600 flex justify-center items-center my-3"></p>
+          </form>
+            <div class="space-y-3">
+              <button
+              id="changes-btn"
+              type="button"
+              class="rtl:mr-4 w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg px-5 py-3 text-center transition transform">
+              <span>{% translate 'Pay'%} </span>
+              <span id="package-price">99</span>
+              <span>$</span>
+              <span><span>{% translate 'Now!'%} </span></span>
+            </button>
+            </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+<script>
+
+/************************** Modal Manipulation*****************************/
+
+$(document).ready(function () {
+    window.addPayementModal = new Modal(document.getElementById('add-event-modal'), {});
+ });
+
+function clearPayementModal() {
+  window.addPayementModal.hide();
+  $('#modal-default-content').removeClass('hidden');
+  $('#modal-payment-content').addClass('hidden');
+  $('#error-coupon-text').html('');
+  $('#coupon-text').val('');
+  $('#error-coupon-text').addClass('justify-center').removeClass('justify-between');
+}
+
+$('#save-event-btn').click(function() {
+  window.addPayementModal.show();
+})
+
+$('#changes-btn ,#add-event-close-btn').click(function() {
+  clearPayementModal();
+})
+
+$('#payment-btn').click(function() {
+  $('#payment-modal-title').text('{% blocktrans %}Almost ready! {% endblocktrans %}');
+  $('#modal-default-content').addClass('hidden');
+  $('#modal-payment-content').removeClass('hidden');
+})
+
+window.addEventListener('modal-closed', function() {
+  clearPayementModal();
+})
+
+/************************** Validate Coupon Step*****************************/
+
+function validateCoupon(couponText) {
+  $.ajax({
+    url: 'http://127.0.0.1:8000/static/data/coupon-validation.json', 
+    type:"GET",
+    success: function(data) {
+      if(data) {
+        if(data.coupon !== couponText) {
+          $('#error-coupon-text').html('');
+          $('#error-coupon-text').text('{% blocktrans %} The coupon you entered is invalid! {% endblocktrans %}');
+        } else {
+          $('#error-coupon-text').html('');
+          $('#error-coupon-text').removeClass('justify-center').addClass('justify-between');
+          $('#coupon-text').val('{% blocktrans %} Coupon {% endblocktrans %}'+ data.coupon + '{% blocktrans %} applied! {% endblocktrans %}' );
+          $('#error-coupon-text').html(`
+            <span class="text-sm text-[#8a8a8a]">{% blocktrans %} Your discount: $`+data.coupon_value+ ` {% endblocktrans %}</span> 
+            <span id="remove-coupon" class="text-sm text-[#8a8a8a] cursor-pointer">{% blocktrans %} Remove {% endblocktrans %}</span> 
+          `);
+          const old_price = parseFloat($('#package-price').text(), 10);
+          const new_price = ((parseFloat($('#package-price').text(), 10)) - (parseFloat(data.coupon_value)));
+          $('#package-price').text(new_price);
+          $('#remove-coupon').click(function() {
+            $('#package-price').text(old_price);
+            $('#coupon-text').val('');
+            $('#error-coupon-text').html('');
+            $('#error-coupon-text').addClass('justify-center').removeClass('justify-between');
+          });
+        }
+      }
+    },
+    error:function(){
+      console.warn("Error when sending message to the server");
+    },
+  });
+};
+
+$('#coupon-submit').click(function() {
+  const coupon = $('#coupon-text').val();
+  if(coupon !== '') {
+    $('#error-coupon-text').html('<img src="/static/images/refresh.svg" class="w-16" />');
+    setTimeout(() => {
+      validateCoupon(coupon);
+    },2000);
+  } else {
+    showSnackBar('Please enter your coupon!');
+  }
+})
+
+</script>

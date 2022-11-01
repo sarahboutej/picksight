@@ -36,7 +36,7 @@
                 <input type="text" id="event-title" class="border border-[#DDDDDD] text-gray-900 text-lg rounded-lg border-0 focus:ring-0 focus:border-none block w-full p-2.5 pl-0" placeholder="Event Name" autofocus>
               </div>
               <div>
-                <button type="submit" class="rtl:mr-6 text-white bg-[#FF6D90] hover:bg-[#FFB4C6] focus:ring-4 focus:outline-none focus:ring-[#FF6D90] font-medium rounded-lg text-sm px-8 py-2.5">{% translate 'Save'%}</button>   
+                <button id="save-event-btn" type="button" class="rtl:mr-6 text-white bg-[#FF6D90] hover:bg-[#FFB4C6] focus:ring-4 focus:outline-none focus:ring-[#FF6D90] font-medium rounded-lg text-sm px-8 py-2.5">{% translate 'Save'%}</button>   
               </div>
             </div>
              <div class="grid gap-6 md:grid-cols-2">
@@ -115,7 +115,7 @@
               </div>
               <div class="ltr:space-x-3">
                 <button id="add-single-guest" class="flex-1 py-2 lg:px-6 px-3 text-sm text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Add single guest'%}</button>
-                <button type="submit" class="rtl:mr-3 text-white bg-[#FF6D90] hover:bg-[#FFB4C6] focus:ring-4 focus:outline-none focus:ring-[#FF6D90] font-medium rounded-lg text-sm lg:px-6 px-3 py-2">{% translate 'Save'%}</button>   
+                <button type="button" class="rtl:mr-3 text-white bg-[#FF6D90] hover:bg-[#FFB4C6] focus:ring-4 focus:outline-none focus:ring-[#FF6D90] font-medium rounded-lg text-sm lg:px-6 px-3 py-2">{% translate 'Save'%}</button>   
               </div>
             </div>
             <div>
@@ -294,6 +294,7 @@
   </div>
 </div>
 
+{% include "./commons/add_event_modal.html" %}
 {% include "./commons/select_guests_list.html" %}
 <div id="snackbar" class="text-lime-600 z-50"></div>
 
@@ -323,6 +324,7 @@
 
   const uploadGuests = document.getElementById('add-guests-list');
   const uploadModal = new Modal(uploadGuests);
+
   //const deleteModal = new Modal(deletModal);
 
   /***********Edit Event Information**************/
@@ -398,13 +400,7 @@ $("#add-guest-btn").click(function () {
   var guest_phone = $("#guest-phone-input").val();
 
   if(guest_name && $.isNumeric(guest_phone))  {
-    guest.guests_name = guest_name;
-    guest.phone_number = $('#selectedGuestCode').text()+guest_phone;
-    guest.status_message = currentDate;
-    const newRow = cardTemplate.content.cloneNode(true);
-    createTableRow(newRow, container, guest);
-    clearModal();
-    showSnackBar('New guest successfully added!')
+    guest.guests_name = guest_name; 
   } else {
     clearModal();
     showSnackBar('Oops. Something went wrong when adding new guest!')
