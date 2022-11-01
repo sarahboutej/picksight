@@ -45,10 +45,10 @@
       <div class="flex ltr:space-x-3">
         {% if  event.status == 'pending' %}
           <a href="/gallery" class="flex-1 py-3 px-2 text-base text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Go to Gallery'%}</a>
-          <a href="/add-event" class="rtl:mr-3 bg-transparent border border-2 border-[#FFB4C6] rounded-lg px-1"><img src="{% static "images/edit.svg" %}" alt="put your alt text here"></a>
+          <a href="/add-event" class="rtl:mr-3 bg-transparent border border-2 border-[#FFB4C6] rounded-lg px-1"><img src="{% static 'images/edit.svg' %}" alt="put your alt text here"></a>
           {% else %}
           <button class="flex-1 py-3 px-2 text-base text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Dashboard'%}</button>
-          <button class="rtl:mr-3 bg-transparent border border-2 border-[#FFB4C6] rounded-lg px-1"><img src="{% static "images/photos.svg" %}" alt="put your alt text here"></button>
+          <button class="rtl:mr-3 bg-transparent border border-2 border-[#FFB4C6] rounded-lg px-1"><img src="{% static 'images/photos.svg' %}" alt="put your alt text here"></button>
         {% endif %}
     </div>
   </div>

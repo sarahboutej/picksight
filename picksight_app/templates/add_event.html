@@ -41,11 +41,11 @@
             </div>
              <div class="grid gap-6 md:grid-cols-2">
               <div>
-                  <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Event’s Owners'%}</label>
+                  <label for="event-owner" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Event’s Owners'%}</label>
                   <input type="text" id="event-owner" class="border border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5" placeholder="John" required>
               </div>
               <div>
-                  <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Event Date'%}</label>
+                  <label for="datepickerEvent" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Event Date'%}</label>
                   <div class="relative">
                     <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
                       <svg aria-hidden="true" class="w-5 h-5 text-[#FFB4C6]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
@@ -54,8 +54,8 @@
                   </div>
               </div>
             </div>
-            <div class="">
-              <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Set Time and Date For Message'%}</label>
+            <div>
+              <label for="datepickerMessageDate" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Set Time and Date For Message'%}</label>
               <div class="relative">
                 <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
                   <svg aria-hidden="true" class="w-5 h-5 text-[#FFB4C6]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
@@ -65,7 +65,7 @@
             </div>
             <div>
               <label for="language" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Message Language'%}</label>
-              <select value="en" id="laguage" class="border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5">
+              <select value="en" id="language" class="border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5">
                 <option selected>{% translate 'Select Language'%}</option>
                 <option value="en">{% translate 'English'%}</option>
                 <option value="hb">{% translate 'Hebrew'%}</option>
@@ -91,7 +91,7 @@
           <p class="block text-sm font-medium text-gray-900">{% translate 'Preview'%}</p>
           <div class="flex flex-col items-center justify-center h-full rounded-xl bg-[url({% static '/images/messgae_bg.jpg' %})] bg-no-repeat bg-cover">
             <div class="flex flex-col space-y-9 w-2/3 bg-white p-6 rounded-xl">
-              <img src="{% static "images/wedding-4.jpg" %}" class="rounded-xl" id="event-image">
+              <img src="{% static 'images/wedding-4.jpg' %}" class="rounded-xl" id="event-image">
               <p id="event-message-text">
                 {% translate 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged'%}
               </p>
@@ -105,7 +105,7 @@
             <div class="flex md:flex-row flex-col items-center md:space-x-3 md:space-y-0 space-y-4">
               <h5 class="lg:text-base text-sm font-medium">{% translate 'Guests List'%}</h5>
               <div class="flex flex-1 items-center">
-                <label for="table-search" class="sr-only">Search</label>
+                <label for="table-search-users" class="sr-only">Search</label>
                 <div class="relative">
                     <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
                         <svg class="w-5 h-5 text-[#FFB4C6]" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
@@ -202,18 +202,18 @@
         </p>
         <form class="space-y-6" action="#">
           <div>
-            <label for="email" class="block mb-2 text-base">{% translate 'Guest’s Name'%}</label>
+            <label for="input-guest-name" class="block mb-2 text-base">{% translate 'Guest’s Name'%}</label>
             <input type="Text" name="username" id="input-guest-name"
               class="border border-[#ADADAD] text-[#8A8A8A] text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-4"
               placeholder="Enter Guest’s name" required>
           </div>
           <div>
-            <label for="country_phone" class="block mb-2 text-base">{% translate 'Phone Number'%}</label>
+            <label for="dropdown-country_phone" class="block mb-2 text-base">{% translate 'Phone Number'%}</label>
             <div class="flex">
-              <button id="dropdown-phone" data-dropdown-toggle="guest-phone"
+              <button id="dropdown-country_phone" data-dropdown-toggle="guest-phone"
                 class="rtl:order-last flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] border border-gray-300 rounded-l-lg focus:outline-none"
                 type="button">
-                  <img src="{% static "images/is.png" %}" id="selectedGuestImg" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                  <img src="{% static 'images/is.png' %}" id="selectedGuestImg" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
                   <span class="w-16">
                     <span class="w-16" id="selectedGuestCode">+972</span>
                     <span id="selectedGuestCountry"> (IL)</span>
@@ -232,11 +232,11 @@
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-phone">
                   <li>
                     <button type="button"
-                      onclick="getElement(this)"
+                      onclick="getCountryPhoneCode(this)"
                       class="inline-flex py-2 px-4 w-full text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem">
                       <div class="inline-flex items-center">
-                        <img class="child2" src="{% static "images/is.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                        <img class="child2" src="{% static 'images/is.png' %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
                         <span class="child1">+972</span>
                         <span class="child3">(IL)</span>
                       </div>
@@ -244,11 +244,11 @@
                   </li>
                   <li>
                     <button type="button"
-                    onclick="getElement(this)"
+                    onclick="getCountryPhoneCode(this)"
                       class="inline-flex py-2 px-4 w-full text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem">
                       <div class="inline-flex items-center">
-                        <img class="child2" src="{% static "images/usa.png" %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
+                        <img class="child2" src="{% static 'images/usa.png' %}" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
                         <span class="child1">+1</span>
                         <span class="child3">(US)</span>
                       </div>
@@ -295,6 +295,7 @@
 </div>
 
 {% include "./commons/add_event_modal.html" %}
+{% include "./commons/payment_modal.html" %}
 {% include "./commons/select_guests_list.html" %}
 <div id="snackbar" class="text-lime-600 z-50"></div>
 
@@ -319,13 +320,10 @@
   const container = document.querySelector(".table-container");
   const cardTemplate = document.getElementById("row-template");
   const targetEl = document.getElementById('add-guests');
-  const deletModal = document.getElementById('delete-guest');
   const addModal = new Modal(targetEl);
 
   const uploadGuests = document.getElementById('add-guests-list');
   const uploadModal = new Modal(uploadGuests);
-
-  //const deleteModal = new Modal(deletModal);
 
   /***********Edit Event Information**************/
   if(id !== "") {
@@ -376,7 +374,7 @@ window.addEventListener('delete-guest', function() {
     });
 })
 
-function getElement (elemnt) {
+function getCountryPhoneCode(elemnt) {
   document.getElementById('selectedGuestImg').src = elemnt.querySelector('.child2').src;
   document.getElementById('selectedGuestCode').textContent = elemnt.querySelector('.child1').innerText ;
   $('selectedGuestCountry').text(elemnt.querySelector('.child3').innerText);
@@ -425,7 +423,7 @@ function createTableRow (el, parent, item) {
   const tableRow = el.getElementById("check-box-td").parentElement;
   tableRow.setAttribute('id', item.id);
   if (item.status === "error") {
-    el.getElementById("guest-name").innerHTML = `<img class="w-4 h-4" src="/static/images/warning.svg" /> <span class="rtl:mr-2">` + item.guests_name + `</span>`;
+    el.getElementById("guest-name").innerHTML = `<img class="w-4 h-4" src="{% static 'images/warning.svg' %}" /> <span class="rtl:mr-2">` + item.guests_name + `</span>`;
   } else {
     el.getElementById("guest-name").textContent = item.guests_name;
   }
@@ -433,8 +431,8 @@ function createTableRow (el, parent, item) {
   el.getElementById("guest-status").textContent = item.status_message;
   el.getElementById("guest-status").classList.add(item.status);
   el.getElementById("guest_action").innerHTML =
-    ` <button id=`+item.id+` class="edit-btn"><img src="/static/images/edit_guests.svg" /></button>
-    <button id=`+item.id+` class="delete-btn" ><img src="/static/images/delete_guests.svg" /></button>`;
+    ` <button id=`+item.id+` class="edit-btn"><img src="{% static 'images/edit_guests.svg' %}" /></button>
+    <button id=`+item.id+` class="delete-btn" ><img src="{% static 'images/delete_guests.svg' %}" /></button>`;
   parent.append(el);
   var guest_id_to_delete="";
 
@@ -452,11 +450,11 @@ function createTableRow (el, parent, item) {
 
  const editBtn = document.querySelectorAll('.edit-btn');
   if (editBtn.length !== 0) {
-    for (var i = 0; i < editBtn.length; i++) {
+    for (let i = 0; i < editBtn.length; i++) {
        editBtn[i].addEventListener('click', function() {
         const guest_id = this.getAttribute('id');
         guestsList.forEach((guest) => {
-          if (guest_id == guest.id) {
+          if (guest_id === guest.id) {
             $('#input-guest-name').val(guest.guests_name);
             $('#guest-phone-input').val(guest.phone_number);
           }

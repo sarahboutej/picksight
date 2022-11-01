@@ -71,7 +71,7 @@
           </form>
             <div class="space-y-3">
               <button
-              id="changes-btn"
+              id="payment-process-btn"
               type="button"
               class="rtl:mr-4 w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg px-5 py-3 text-center transition transform">
               <span>{% translate 'Pay'%} </span>
@@ -89,6 +89,7 @@
 <script>
 
 /************************** Modal Manipulation*****************************/
+var verificationTimeInterval;
 
 $(document).ready(function () {
     window.addPayementModal = new Modal(document.getElementById('add-event-modal'), {});
@@ -101,15 +102,40 @@ function clearPayementModal() {
   $('#error-coupon-text').html('');
   $('#coupon-text').val('');
   $('#error-coupon-text').addClass('justify-center').removeClass('justify-between');
+  $('#event-title').val('');
+  $('#event-owner').val('');
+  $('#datepickerEvent').val('');
+  $('#datepickerMessageDate').val('');
+  $('#message').val('');
 }
 
 $('#save-event-btn').click(function() {
-  window.addPayementModal.show();
+  const event_title = $('#event-title').val();
+  const event_owner = $('#event-owner').val();
+  const event_date = $('#datepickerEvent').val();
+  const event_message_date = $('#datepickerMessageDate').val();
+  const event_message = $('#message').val();
+
+  console.warn(event_title, '-',event_date, '-',event_message_date, '-',event_message);
+
+  if(event_title.trim() !== "" && event_owner.trim() !== "" && event_date.trim() !== "" && event_message_date.trim() !=="" !=="" && !event_message.trim()  !=="") {
+    window.addPayementModal.show();
+  } else {
+    showSnackBar('Please enter all event required information!');
+  }
 })
 
 $('#changes-btn ,#add-event-close-btn').click(function() {
   clearPayementModal();
 })
+
+$('#payment-process-btn').click(function() {
+  window.addPayementModal.hide();
+  window.payementModal.show();
+  verificationTimeInterval =  setInterval(payementProcessRequest(true),2000);
+})
+
+
 
 $('#payment-btn').click(function() {
   $('#payment-modal-title').text('{% blocktrans %}Almost ready! {% endblocktrans %}');
@@ -161,7 +187,7 @@ function validateCoupon(couponText) {
 $('#coupon-submit').click(function() {
   const coupon = $('#coupon-text').val();
   if(coupon !== '') {
-    $('#error-coupon-text').html('<img src="/static/images/refresh.svg" class="w-16" />');
+    $('#error-coupon-text').html(`<img src="{% static 'images/refresh.svg' %}" class="w-16" />`);
     setTimeout(() => {
       validateCoupon(coupon);
     },2000);
@@ -169,5 +195,9 @@ $('#coupon-submit').click(function() {
     showSnackBar('Please enter your coupon!');
   }
 })
+
+/************************** Payment Step *****************************/
+
+
 
 </script>
