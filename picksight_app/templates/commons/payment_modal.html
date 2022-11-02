@@ -87,18 +87,18 @@ function clearPayementProssessModal() {
   $('#payment-succes-container').addClass('hidden');
   $('#payment-error-container').addClass('hidden');
   $('#payment-date').text();
-  $('#event-title').val('');
+/*   $('#event-title').val('');
   $('#event-owner').val('');
   $('#datepickerEvent').val('');
   $('#datepickerMessageDate').val('');
-  $('#message').val('');
+  $('#message').val(''); */
 }
 
 window.addEventListener('modal-closed', function() {
   clearPayementProssessModal();
 })
 
-$('#payment-btn-ok, #payment-modal-header, #payment-close-btn', '#try-again-btn').click(function() {
+$('#payment-btn-ok, #payment-modal-header, #payment-close-btn, #try-again-btn').click(function() {
   clearPayementProssessModal();
 })
 

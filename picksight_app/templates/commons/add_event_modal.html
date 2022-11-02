@@ -102,26 +102,47 @@ function clearPayementModal() {
   $('#error-coupon-text').html('');
   $('#coupon-text').val('');
   $('#error-coupon-text').addClass('justify-center').removeClass('justify-between');
-  $('#event-title').val('');
-  $('#event-owner').val('');
-  $('#datepickerEvent').val('');
-  $('#datepickerMessageDate').val('');
-  $('#message').val('');
+  $('#event-title, #event-owner, #datepickerEvent, #datepickerMessageDate, #message, #event-time').val('');
+  $('#event-title, #event-owner, #datepickerEvent, #datepickerMessageDate, #message, #event-time').removeClass('border-red-600');
+  $('#coupon-text').removeClass('border-red-600');
 }
 
 $('#save-event-btn').click(function() {
   const event_title = $('#event-title').val();
   const event_owner = $('#event-owner').val();
   const event_date = $('#datepickerEvent').val();
+  const event_message_time = $('#event-time').val();
   const event_message_date = $('#datepickerMessageDate').val();
   const event_message = $('#message').val();
 
+  const event_language =$( "#language option:selected" ).val();
+
   console.warn(event_title, '-',event_date, '-',event_message_date, '-',event_message);
 
-  if(event_title.trim() !== "" && event_owner.trim() !== "" && event_date.trim() !== "" && event_message_date.trim() !=="" !=="" && !event_message.trim()  !=="") {
+  if(event_title.trim() !== "" && event_owner.trim() !== "" && event_date.trim() !== "" && event_message_date.trim() !=="" && event_language !== "" && event_message_time !== "" && !event_message.trim()  !=="") {
     window.addPayementModal.show();
   } else {
-    showSnackBar('Please enter all event required information!');
+    if(event_title.trim() === "") {
+      $('#event-title').addClass('border-b border-red-600')
+    }
+    if(event_owner.trim() === "") {
+      $('#event-owner').addClass('border-red-600')
+    }
+    if(event_date.trim() === "") {
+      $('#datepickerEvent').addClass('border-red-600')
+    }
+    if(event_message_date.trim() === "") {
+      $('#datepickerMessageDate').addClass('border-red-600')
+    }
+    if(event_message.trim() === "") {
+      $('#message').addClass('border-red-600')
+    }
+    if(event_message_time.trim() === "") {
+      $('#event-time').addClass('border-red-600')
+    }
+    if(event_language.trim() === "") {
+      $('#language').addClass('border-red-600')
+    }
   }
 })
 
@@ -188,12 +209,15 @@ $('#coupon-submit').click(function() {
   const coupon = $('#coupon-text').val();
   if(coupon !== '') {
     $('#error-coupon-text').html(`<img src="{% static 'images/refresh.svg' %}" class="w-16" />`);
-    
+    $('#coupon-submit, #payment-process-btn, #coupon-text').prop('disabled', true);
+    $('#coupon-text').addClass('bg-gray-200');
     setTimeout(() => {
+      $('#coupon-submit, #payment-process-btn, #coupon-text').prop('disabled', false);
+      $('#coupon-text').removeClass('bg-gray-200');
       validateCoupon(coupon);
     },2000);
   } else {
-    showSnackBar('Please enter your coupon!');
+    $('#coupon-text').addClass('border-red-600');
   }
 })
 
