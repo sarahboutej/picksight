@@ -188,6 +188,7 @@ $('#coupon-submit').click(function() {
   const coupon = $('#coupon-text').val();
   if(coupon !== '') {
     $('#error-coupon-text').html(`<img src="{% static 'images/refresh.svg' %}" class="w-16" />`);
+    
     setTimeout(() => {
       validateCoupon(coupon);
     },2000);
