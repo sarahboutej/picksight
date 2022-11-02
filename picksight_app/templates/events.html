@@ -36,7 +36,7 @@
                 <h3 id="event-title" class="font-bold text-[#FFB4C6] text-xl mb-2 truncate">
                   <p class="skeleton skeleton-text"></p>
                 </h3>
-                <div id="event-date" class="text-[#727272] font-medium text-xs mb-3">
+                <div id="event-date" class="text-[#727272] font-medium text-xs mb-3 flex ltr:space-x-1">
                   <p class="skeleton skeleton-text"></p>
                 </div>
                 <div id="pending-event"></div>
@@ -98,13 +98,18 @@
       .then((response) => response.json())
       .then((events) => {
         eventContainer.innerHTML = "";
+          const addEventMobile = document.createElement('a');
+          addEventMobile.classList.add('md:hidden','flex','flex-col','space-y-3', 'items-center', 'justify-center', 'p-6', 'border-2', 'border-dashed', 'rounded-xl', 'border-[#CFD8DC]');
+          addEventMobile.setAttribute("href", "/add-event");
+          addEventMobile.innerHTML = `<img src="/static/images/add-event.svg" /> <span class="text-[#727272] text-sm">{% translate 'Create new event' %}</span>`;
+          eventContainer.append(addEventMobile);
         events.forEach((event) => {
           const div = eventCardTemplate.content.cloneNode(true);
           div.getElementById("event-img").innerHTML = ` <img src="/static/`+event.avatar+`" />`;
           div.getElementById("event-title").textContent = event.event_name ;
-          div.getElementById("event-date").textContent = `{% blocktrans %}Event Date: {% endblocktrans %}`+event.event_date ;
+          div.getElementById("event-date").innerHTML = `<span>{% translate 'Event Date:' %}</span><span class="rtl:mr-1">`+event.event_date+`</span>` ;
           const eventSent = document.createElement('span');
-          eventSent.classList.add('absolute', 'bg-[url(/static/images/sent-bg.svg)]','bg-no-repeat','bg-contain','bg-center', 'w-[117px]', 'h-[97px]', '-top-[24px]','-left-[40px]')
+          eventSent.classList.add('absolute', 'bg-[url(/static/images/sent-bg.svg)]','bg-no-repeat','bg-contain','bg-center', 'w-[117px]', 'h-[97px]', '-top-[24px]','ltr:-left-[40px]','rtl:-left-[25px]')
           if(event.status === "pending") {
             div.getElementById("pending-event").innerHTML = `<p class="bg-[#FFEEEE] text-[#F26B6D] text-sm font-medium px-4 py-1 rounded-full inline">
              {% blocktrans %}Pending {% endblocktrans %}
@@ -144,9 +149,10 @@
  
          eventContainer.append(div);
         });
-       const addEvent = document.createElement('div');
-       addEvent.classList.add('flex', 'items-center', 'justify-center', 'p-6', 'border-2', 'border-dashed', 'rounded-xl', 'border-[#CFD8DC]');
-       addEvent.innerHTML = `<a href="/add-event"><img src="/static/images/add-event.svg" /></a>`;
+       const addEvent = document.createElement('a');
+       addEvent.classList.add('md:flex','hidden','flex-col','space-y-3', 'items-center', 'justify-center', 'p-6', 'border-2', 'border-dashed', 'rounded-xl', 'border-[#CFD8DC]');
+       addEvent.setAttribute("href", "/add-event");
+       addEvent.innerHTML = `<img src="/static/images/add-event.svg" /> <span class="text-[#727272] text-sm">{% translate 'Create new event' %}</span>`;
        eventContainer.append(addEvent);
       });
     },1000)
