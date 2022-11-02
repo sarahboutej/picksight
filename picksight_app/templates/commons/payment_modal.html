@@ -55,8 +55,9 @@
                 <button
                   id="contact-us-btn"
                   type="button"
-                  class="w-full text-white bg-[#79BA7E] hover:bg-[#79BA7E95] focus:outline-none font-medium rounded-lg px-5 py-3 text-center transition transform">
-                  {% translate 'Contact Us'%}
+                  class="flex items-center justify-center ltr:space-x-3 w-full text-white bg-[#79BA7E] hover:bg-[#79BA7E95] focus:outline-none font-medium rounded-lg px-5 py-3 text-center transition transform">
+                  <span>{% translate 'Contact Us'%}</span>
+                  <img src="{% static "images/whatsapp-white.svg" %}" class="rtl:mr-3 w-8 h-8" alt="Put you alt text here">
                 </button>
               </div>
             </div>
@@ -97,7 +98,7 @@ window.addEventListener('modal-closed', function() {
   clearPayementProssessModal();
 })
 
-$('#payment-btn-ok, #payment-modal-header, #payment-close-btn').click(function() {
+$('#payment-btn-ok, #payment-modal-header, #payment-close-btn', '#try-again-btn').click(function() {
   clearPayementProssessModal();
 })
 
