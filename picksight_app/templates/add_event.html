@@ -28,7 +28,7 @@
 <section class="flex min-h-screen justify-center pt-24 pb-36">
   <div class="container w-9/12">
     <div class="space-y-8">
-      <div class="flex space-x-8">
+      <div class="flex lg:flex-row flex-col lg:space-x-8 space-x-0 lg:space-y-0 space-y-8">
         <div class="flex-1 bg-white p-8 rounded-xl">
           <form action="" class="flex flex-col space-y-6">
             <div class="flex items-end ltr:space-x-6">
@@ -89,7 +89,7 @@
         </div>
         <div class="flex-1 flex flex-col space-y-6 bg-white p-8 rounded-xl">
           <p class="block text-sm font-medium text-gray-900">{% translate 'Preview'%}</p>
-          <div class="flex flex-col items-center justify-center h-full rounded-xl bg-[url({% static '/images/messgae_bg.jpg' %})] bg-no-repeat bg-cover">
+          <div class="flex flex-col lg:py-0 py-6 items-center justify-center h-full rounded-xl bg-[url({% static '/images/messgae_bg.jpg' %})] bg-no-repeat bg-cover">
             <div class="flex flex-col space-y-9 w-2/3 bg-white p-6 rounded-xl">
               <img src="{% static 'images/wedding-4.jpg' %}" class="rounded-xl" id="event-image">
               <p id="event-message-text">
@@ -128,22 +128,22 @@
           <table id="guests-table-container" class="w-full text-sm text-left text-gray-500">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                   <tr>
-                      <th scope="col" class="p-4">
+                      <th scope="col" class="py-3 px-2">
                           <div class="flex items-center">
                               <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90">
                               <label for="checkbox-all-search" class="sr-only">checkbox</label>
                           </div>
                       </th>
-                      <th scope="col" class="py-3 px-6 capitalize">
+                      <th scope="col" class="py-3 px-2 capitalize">
                           Name
                       </th>
-                      <th scope="col" class="py-3 px-6 capitalize">
+                      <th scope="col" class="py-3 px-2 capitalize">
                           Number
                       </th>
-                      <th scope="col" class="py-3 px-6 capitalize">
+                      <th scope="col" class="py-3 px-2 capitalize">
                           Status
                       </th>
-                      <th scope="col" class="py-3 px-6 capitalize">
+                      <th scope="col" class="py-3 px-2 capitalize">
                           Action
                       </th>
                   </tr>
@@ -151,22 +151,22 @@
               <tbody class="table-container">
                 <template id="row-template" >
                   <tr class="bg-white border-b dark:bg-gray-800 hover:bg-gray-50">
-                    <td id="check-box-td" class="p-4 w-4">
+                    <td id="check-box-td" class="py-3 px-2 w-4">
                         <div class="flex items-center">
                             <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90] dark:focus:ring-[#FF6D90] focus:ring-2">
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                         </div>
                     </td>
-                    <td id="guest-name" class="py-4 px-6 flex items-center ltr:space-x-2">
+                    <td id="guest-name" class="py-3 px-2 flex items-center ltr:space-x-2">
                       <p class="skeleton skeleton-text"></p>
                     </td>
-                    <td id="guest-phone" class="py-4 px-6">
+                    <td id="guest-phone" class="py-3 px-2">
                       <p class="skeleton skeleton-text"></p>
                     </td>
-                    <td id="guest-status" class="py-4 px-6">
+                    <td id="guest-status" class="py-3 px-2">
                       <p class="skeleton skeleton-text"></p>
                     </td>
-                    <td id="guest_action" class="py-4 px-6 flex space-x-3">
+                    <td id="guest_action" class="py-3 px-2 flex space-x-3">
                       <span class="skeleton skeleton-footer"></span>
                       <span class="skeleton skeleton-footer"></span>
                     </td>
