@@ -32,7 +32,7 @@
                 <div class="body flex flex-col justify-center items-center py-8 space-y-6 w-full" id="drop">
                   <button id="triggerFile"><img src="{% static 'images/upload.svg' %}"></button>
                 <p class="pointer-none text-sm rtl:mr-4 text-[#8A8A8A]">{% translate 'Drag and drop a CSV or Excel file Or CLICK to choose from file'%}</p>
-                    <input type="file" type="file" accept=".xlsx, .xls, .csv" class="hidden"  />
+                    <input type="file" id="uploadTable" accept=".xlsx, .xls, .csv" class="hidden"  />
                 </div>
                 <footer>
                 <div class="list-files">
@@ -112,7 +112,7 @@
      }
 
      $("#drop").addClass("hidden");
-     $("footer").addClass("hasFiles");
+     $(".upload-files footer").addClass("hasFiles");
      $(".importar").addClass("active");
 
      setTimeout(() => {
@@ -123,7 +123,7 @@
        setTimeout(() => {
          sl(".file--0").querySelector(".progress").classList.remove("active");
          sl(".file--0").querySelector(".done").classList.add("anim");
-       }, 2000);
+       }, 1000);
      }
    }
 
@@ -320,6 +320,7 @@
          guestsArray.push(guestObject);
          guestsList.push(guestObject);
        });
+
        clearModal();
        guestsArray.forEach((guest) => {
          if (guest.guests_name && guest.phone_number.length) {
@@ -327,6 +328,42 @@
            createTableRow(div, container, guest);
          }
        });
+        setTimeout(() => {
+          $('#guests-table-container').createTablePagination({
+            rowPerPage: 10,
+            paginationColor: '#FFB4C6',
+            fontColor: '#8A8A8A',
+            paginationStyle: 'borderless',
+            transitionDuration: 800
+          });
+        },2000);
+
+       setTimeout(() => {
+          var selectAll = $('#checkbox-all-search'); 
+          var $table = $('#guests-table-container');
+          var tdCheckbox = $table.find('.table-row-checkbox');
+          var tdCheckboxChecked = $table.find('tbody tr input[type=checkbox]:checked').length;
+
+          selectAll.on('click', function () {
+            tdCheckbox.prop("checked", this.checked);
+            if(this.checked) {
+              $('#delete-selected').prop('disabled', false);
+            }
+            if(!this.checked && tdCheckboxChecked === 0) {
+              $('#delete-selected').prop('disabled', true);
+            }
+          });
+
+          tdCheckbox.on('change', function(e){
+            tdCheckboxChecked = $table.find('tbody tr input[type=checkbox]:checked').length;
+            selectAll.prop('checked', (tdCheckboxChecked === tdCheckbox.length));
+            if(tdCheckboxChecked > 0) {
+              $('#delete-selected').prop('disabled', false);
+            } else {
+              $('#delete-selected').prop('disabled', true);
+            }
+          })
+        },2000);
      });
    }
 
@@ -343,7 +380,7 @@
      $("#phoneNumberSelect").removeClass('hidden');
      $("#lastNameSelect").removeClass('hidden');
      $("#finishButton").addClass('hidden');
-     $("input[type=file]").val('');
+     $("#uploadTable").val('');
      $('#table-data').html('');
      $("#header-message").addClass("hidden");
      $("#footer-message").addClass("hidden");
@@ -365,7 +402,7 @@
 
    sl("#triggerFile").addEventListener("click", evt => {
      evt.preventDefault();
-     sl("input[type=file]").click();
+     sl("#uploadTable").click();
    });
 
    sl("#drop").ondragleave = evt => {
@@ -381,7 +418,7 @@
      files = evt.dataTransfer.files[0];
      handleFileSelect(evt.dataTransfer.files[0]);
      sl("#drop").classList.add("hidden");
-     sl("footer").classList.add("hasFiles");
+     sl(".upload-files footer").classList.add("hasFiles");
      sl("#drop").classList.remove("active");
      evt.preventDefault();
    };
@@ -389,7 +426,7 @@
 
    sl(".importar").addEventListener("click", () => {
      sl(".list-files").innerHTML = "";
-     sl("footer").classList.remove("hasFiles");
+     sl(".upload-files footer").classList.remove("hasFiles");
      sl(".importar").classList.remove("active");
      setTimeout(() => {
        sl("#drop").classList.remove("hidden");
@@ -397,7 +434,7 @@
    });
 
    // input change
-   sl("input[type=file]").addEventListener("change", function(event) {
+   sl("#uploadTable").addEventListener("change", function(event) {
      files = event.target.files[0];
      handleFileSelect(event.target.files[0]);
    });

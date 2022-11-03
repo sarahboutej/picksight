@@ -193,6 +193,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   background: url('/static/images/time.png') no-repeat center;
 }
 
+.pagintaion-container-guests-table-container {
+  overflow: hidden;
+}
+
 @-webkit-keyframes file {
   50% {
     box-shadow: -8px 8px 0 -3px #fff, -8px 8px 0 lightgray, -8px 8px 0 -3px #fff, -8px 8px 0 lightgray;

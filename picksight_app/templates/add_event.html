@@ -33,7 +33,7 @@
           <form action="" class="flex flex-col space-y-6">
             <div class="flex items-end ltr:space-x-6">
               <div class="flex-1">
-                <input type="text" id="event-title" class="border border-[#DDDDDD] text-gray-900 text-lg border-0 focus:ring-0 focus:border-none block w-full p-2.5 pl-0" placeholder="Event Name" autofocus>
+                <input required type="text" id="event-title" class="border border-[#DDDDDD] text-gray-900 text-lg border-0 focus:ring-0 focus:border-none block w-full p-2.5 pl-0" placeholder="Event Name" autofocus>
               </div>
               <div>
                 <button id="save-event-btn" type="button" class="rtl:mr-6 text-white bg-[#FF6D90] hover:bg-[#FFB4C6] focus:ring-4 focus:outline-none focus:ring-[#FF6D90] font-medium rounded-lg text-sm px-8 py-2.5">{% translate 'Save'%}</button>   
@@ -42,7 +42,7 @@
              <div class="grid gap-6 md:grid-cols-2">
               <div>
                   <label for="event-owner" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Event’s Owners'%}</label>
-                  <input type="text" id="event-owner" class="border border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5" placeholder="John" required>
+                  <input required type="text" id="event-owner" class="border border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5" placeholder="John" required>
               </div>
               <div>
                   <label for="datepickerEvent" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Event Date'%}</label>
@@ -50,7 +50,7 @@
                     <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
                       <svg aria-hidden="true" class="w-5 h-5 text-[#FFB4C6]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <input datepicker datepicker-autohide id="datepickerEvent" type="text" class="border border-[#DDDDDD] text-gray-900 sm:text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full pr-10 p-2.5" placeholder="Select date">
+                    <input required datepicker datepicker-autohide id="datepickerEvent" type="text" class="border border-[#DDDDDD] text-gray-900 sm:text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full pr-10 p-2.5" placeholder="Select date">
                   </div>
               </div>
             </div>
@@ -61,16 +61,16 @@
                   <div class="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
                     <svg aria-hidden="true" class="w-5 h-5 text-[#FFB4C6]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                   </div>
-                  <input datepicker datepicker-autohide id="datepickerMessageDate" type="text" class="border border-[#DDDDDD] text-gray-900 sm:text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full pr-10 p-2.5" placeholder="Select date">
+                  <input required datepicker datepicker-autohide id="datepickerMessageDate" type="text" class="border border-[#DDDDDD] text-gray-900 sm:text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full pr-10 p-2.5" placeholder="Select date">
                 </div>
                 <div class="relative">
-                  <input type="time" id="event-time" class="border border-[#DDDDDD] text-gray-900 sm:text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] p-2.5">
+                  <input required type="time" id="event-time" class="border border-[#DDDDDD] text-gray-900 sm:text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] p-2.5">
                 </div>
               </div>
             </div>
             <div>
               <label for="language" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Message Language'%}</label>
-              <select id="language" class="border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5">
+              <select required id="language" class="border-[#DDDDDD] text-gray-900 text-sm rounded-lg focus:ring-[#FFB4C6] focus:border-[#FFB4C6] block w-full p-2.5">
                 <option selected>{% translate 'Select Language'%}</option>
                 <option value="en">{% translate 'English'%}</option>
                 <option value="hb">{% translate 'Hebrew'%}</option>
@@ -78,7 +78,7 @@
             </div>
             <div>
               <label for="message" class="block mb-2 text-sm font-medium text-gray-900">{% translate 'Message'%}</label>
-              <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-[#DDDDDD] focus:ring-[#FFB4C6] focus:border-[#FFB4C6]" placeholder="Your message..."></textarea>
+              <textarea required id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-[#DDDDDD] focus:ring-[#FFB4C6] focus:border-[#FFB4C6]" placeholder="Your message..."></textarea>
             </div>
             <div class="flex flex-col w-full">
  
@@ -165,7 +165,7 @@
               <tbody class="table-container">
                 <template id="row-template" >
                   <tr class="bg-white border-b hover:bg-gray-50">
-                    <td id="check-box-td" class="py-3 px-2 w-4">
+                    <td id="check-box-td" class="py-3 px-2 pt-5 w-4">
                         <div class="flex items-center">
                             <input id="checkbox-table-search-1" type="checkbox" class="table-row-checkbox w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90] focus:ring-2">
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
@@ -223,9 +223,9 @@
               placeholder="Enter Guest’s name" required>
           </div>
           <div>
-            <label for="dropdown-country_phone" class="block mb-2 text-base">{% translate 'Phone Number'%}</label>
+            <label for="dropdown_country_phone" class="block mb-2 text-base">{% translate 'Phone Number'%}</label>
             <div class="flex">
-              <button id="dropdown-country_phone" data-dropdown-toggle="guest-phone-code"
+              <button id="dropdown_country_phone" data-dropdown-toggle="guest-phone-code"
                 class="rtl:order-last flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] border border-gray-300 rounded-l-lg focus:outline-none"
                 type="button">
                   <img src="{% static 'images/is.png' %}" id="selectedGuestImg" class="w-6 h-6 ltr:mr-3 rtl:ml-3" alt="">
@@ -240,7 +240,7 @@
                     clip-rule="evenodd"></path>
                 </svg>
               </button>
-              <div id="guest-phone-code
+              <div id="guest-phone-code"
                 class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow"
                 data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom"
                 style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 10px);">
@@ -425,6 +425,7 @@
   var guestsList = [];
 
   let selectMultiple = false;
+  let isEmptyTable = false;
 
   $(document).ready(function () {
     window.deleteModal = new Modal(document.getElementById('delete-guest'), {});
@@ -466,7 +467,7 @@
     });
   }
 
-/******************************** Guests list **************************/
+/*************************** Guests list **************************/
 
 for (let i = 0; i < 3; i++) {
   container.append(cardTemplate.content.cloneNode(true));
@@ -498,7 +499,7 @@ window.addEventListener('delete-guest', function() {
 function getCountryPhoneCode(elemnt) {
   document.getElementById('selectedGuestImg').src = elemnt.querySelector('.child2').src;
   document.getElementById('selectedGuestCode').textContent = elemnt.querySelector('.child1').innerText ;
-  $('selectedGuestCountry').text(elemnt.querySelector('.child3').innerText);
+  document.getElementById('selectedGuestCountry').textContent = elemnt.querySelector('.child3').innerText ;
 };
 
 $("#add-guest-btn").click(function () {
@@ -538,6 +539,14 @@ $("#guest-close-btn").click(function () {
   clearModal();
 });
 
+$("#guest-close-btn").click(function () {
+  clearModal();
+});
+
+window.addEventListener('modal-closed', function() {
+  clearModal();
+})
+
 $('#delete-selected').click(function() {
   window.deleteModal.show();
   selectMultiple = true;
@@ -551,9 +560,43 @@ $('#delete-guest-btn').click(function() {
       $('#table-global-wrapper').removeClass('after:w-full');
       $('.refresh-guests-table').addClass('hidden');
       $('#checkbox-all-search').prop("checked", false);
+
   },2000);
+
+  setTimeout(() => {
+  $('#guests-table-container tbody tr').each(function() {
+    if ($(this).is(':empty') === false) {
+        isEmptyTable = false;
+        return false;
+    } else {
+        isEmptyTable = true;
+    }
+  });
+  if(isEmptyTable) {
+    $('.guest-list-info').removeClass('hidden');
+  }
+  $('#guests-table-container').createTablePagination({
+    rowPerPage: 10,
+    paginationColor: '#FFB4C6',
+    fontColor: '#8A8A8A',
+    paginationStyle: 'borderless',
+    transitionDuration: 800
+  });
+  },2050);
   window.deleteModal.hide();
 });
+
+setTimeout(() => {
+  $('#guests-table-container').createTablePagination({
+    rowPerPage: 10,
+    paginationColor: '#FFB4C6',
+    fontColor: '#8A8A8A',
+    paginationStyle: 'borderless',
+    transitionDuration: 800
+  });
+},2000);
+
+/********************** Select all options guests table *************************/
 
 setTimeout(() => {
   var selectAll = $('#checkbox-all-search'); 
@@ -582,12 +625,31 @@ setTimeout(() => {
   })
 },2000);
 
+/**********************Search Table ***********************/
+
+var timer, delay = 200;
+  $("#table-search-users").on("input", function () {
+    var guestName = $(this).val().toLowerCase();
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      $("#guests-table-container tbody tr").each(function () {
+        var value = $(this).attr('data-guest-name').toLowerCase();
+        if (!value.includes(guestName) && guestName.trim() !== '') {
+          $(this).addClass('hidden');
+        } else {
+          $(this).removeClass('hidden');
+        }
+      });
+    }, delay);
+  });
+
 
 /*******************************************************************/
 
 function createTableRow (el, parent, item) {
   const tableRow = el.getElementById("check-box-td").parentElement;
   tableRow.setAttribute('id', item.id);
+  tableRow.setAttribute('data-guest-name', item.guests_name);
   const inputCheckbox = tableRow.querySelectorAll('input[type=checkbox]');
   const inputLabel = tableRow.querySelectorAll('label');
   inputCheckbox[0].setAttribute('id', `checkbox-table-`+item.id);
@@ -627,6 +689,17 @@ function createTableRow (el, parent, item) {
       });
     }
   } 
+
+ tableRow.addEventListener('dblclick', function() {
+    const guest_id = this.getAttribute('id');
+    guestsList.forEach((guest) => {
+      if (guest_id === guest.id) {
+        $('#input-guest-name').val(guest.guests_name);
+        $('#guest-phone-input').val(guest.phone_number);
+      }
+    });
+    addModal.show();
+  });
 }
 
 function deleteGuests(couponText) {
@@ -637,12 +710,12 @@ function deleteGuests(couponText) {
       if(data) {
         if(!selectMultiple) {
           const id = '#'+$('#id-guest-to-delete').val();
-          $(id).html('');
+          $(id).remove();
         } else {
           $('#guests-table-container tbody tr').each(function() {
             let rowsToDelete = $(this).find('input[type=checkbox]:checked').length;
             if(rowsToDelete) {
-              $(this).html('');
+              $(this).remove();
             }
           });
         }
