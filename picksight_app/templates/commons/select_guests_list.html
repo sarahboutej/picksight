@@ -34,7 +34,7 @@
                 <p class="pointer-none text-sm rtl:mr-4 text-[#8A8A8A]">{% translate 'Drag and drop a CSV or Excel file Or CLICK to choose from file'%}</p>
                     <input type="file" id="uploadTable" accept=".xlsx, .xls, .csv" class="hidden"  />
                 </div>
-                <footer>
+                <footer class="file-upload-footer">
                 <div class="list-files">
                   <!--   template   -->
                 </div>
@@ -43,6 +43,7 @@
         </div> 
         <div class="flex ltr:space-x-4">
             <button
+            disabled
             id="uploadFile"
             type="button"
             class="rtl:mr-4 uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-lg px-5 py-4 text-center transition transform">
@@ -63,6 +64,7 @@
             <div id="lastNameContainer" class="flex flex-col items-center space-y-3 w-1/2">
               <span class="text-sm text-[#8A8A8A]">{% translate 'Did you choose only the first name and want the full name?'%}</span>
               <button
+              disabled
               id="lastNameSelect"
               type="button"
               class="importar uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-base px-5 py-4 text-center transition transform">
@@ -71,12 +73,14 @@
             <div id="phoneContainer" class="flex flex-col items-center space-y-3 w-1/2">
               <span class="text-sm text-[#8A8A8A]">{% translate 'Did you choose the full name?'%}</span>
               <button
+              disabled
               id="phoneNumberSelect"
               type="button"
               class="rtl:mr-4 uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-base px-5 py-4 text-center transition transform">
               {% translate 'Continue to select Phone number'%} </button>
             </div>
             <button
+            disabled
             id="finishButton"
             type="button"
             class="hidden justify-center w-1/2 rtl:mr-4 uppercase w-full text-white bg-[#FFB4C6] hover:bg-[#FFB4C695] focus:outline-none font-medium rounded-lg text-base px-5 py-4 text-center transition transform">
@@ -91,19 +95,22 @@
 <script>
 
  const sl = document.querySelector.bind(document);
+  let files = "";
+  let lastName = false;
+  let guestPhone = false;
 
- let App = {};
- App.init = function() {
-
-   let files = "";
    //Init
    function handleFileSelect(files) {
      let template = ""
      if (files && files.name) {
-       template = `<div class="file flex justify-center flex-col file--0">
-        <div class="name"><span>${files.name}</span></div>
-        <div class="flex w-full items-center justify-center"><div class="progress w-2/3 ltr:mr-4 rtl:ml-4 bg-gradient-to-r from-[#e91e639c] to-[#d8e8f8] active"></div>
-        <div class="done">
+       template = `<div class="file flex justify-center flex-col">
+        <div class="name flex justify-center items-center space-x-3">
+          <span>${files.name}</span>
+          <button type="button" id="delete-btn-file" class="hidden"><img src="{% static 'images/delete.png' %}" class="w-5" /></button>
+        </div>
+        <div class="flex w-full items-center justify-center">
+          <div id="file-progress-bar" class="progress w-2/3 ltr:mr-4 rtl:ml-4 bg-gradient-to-r from-[#e91e639c] to-[#d8e8f8] active"></div>
+        <div id="upload-file-check-icon" class="done">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 1000 1000">
         <g><path id="path" d="M500,10C229.4,10,10,229.4,10,500c0,270.6,219.4,490,490,490c270.6,0,490-219.4,490-490C990,229.4,770.6,10,500,10z M500,967.7C241.7,967.7,32.3,758.3,32.3,500C32.3,241.7,241.7,32.3,500,32.3c258.3,0,467.7,209.4,467.7,467.7C967.7,758.3,758.3,967.7,500,967.7z M748.4,325L448,623.1L301.6,477.9c-4.4-4.3-11.4-4.3-15.8,0c-4.4,4.3-4.4,11.3,0,15.6l151.2,150c0.5,1.3,1.4,2.6,2.5,3.7c4.4,4.3,11.4,4.3,15.8,0l308.9-306.5c4.4-4.3,4.4-11.3,0-15.6C759.8,320.7,752.7,320.7,748.4,325z"</g>
         </svg>
@@ -112,19 +119,28 @@
      }
 
      $("#drop").addClass("hidden");
-     $(".upload-files footer").addClass("hasFiles");
+     $("footer.file-upload-footer").addClass("hasFiles");
      $(".importar").addClass("active");
 
      setTimeout(() => {
        $(".list-files").html(template);
+       $("#delete-btn-file").click(function() {
+          $("footer.file-upload-footer").removeClass("hasFiles");
+          $("#drop").removeClass("hidden");
+          $("#uploadTable").val('');
+        });
      }, 200);
 
+
      if (template !== "") {
-       setTimeout(() => {
-         sl(".file--0").querySelector(".progress").classList.remove("active");
-         sl(".file--0").querySelector(".done").classList.add("anim");
-       }, 1000);
-     }
+      setTimeout(() => {
+          $('#file-progress-bar').removeClass("active");
+          $('#upload-file-check-icon').addClass("anim");
+          $("#delete-btn-file").removeClass('hidden');
+          $('#uploadFile').prop('disabled', false);
+      }, 2000);
+    }
+     
    }
 
    function convertExcelFileToHtmlTable() {
@@ -152,9 +168,9 @@
            table_output += '<tr class="border-b border-gray-200">';
            for (var cell = 0; cell < sheet_data[row].length; cell++) {
              if (row == 0) {
-               table_output += '<th class="py-3 px-3 cursor-pointer table-head-value" data-cell="' + cell + '" data-name="' + sheet_data[0][cell] + '">' + sheet_data[row][cell] + '</th>';
+               table_output += '<th class="py-3 px-3 cursor-pointer table-head-value ltr:text-left rtl:text-right" data-cell="' + cell + '" data-name="' + sheet_data[0][cell] + '">' + sheet_data[row][cell] + '</th>';
              } else {
-               table_output += '<td class="py-3 px-3" data-cell="' + cell + '" data-name="' + sheet_data[0][cell] + '">' + sheet_data[row][cell] + '</td>';
+               table_output += '<td class="py-3 px-3 cursor-pointer table-head-value ltr:text-left rtl:text-right" data-cell="' + cell + '" data-name="' + sheet_data[0][cell] + '">' + sheet_data[row][cell] + '</td>';
              }
            }
            table_output += '</tr>';
@@ -191,14 +207,14 @@
            var table_output = '<table id="guests-table" class="w-full text-sm text-left text-gray-5000">';
            table_output += '<tr class="border-b border-gray-200">';
            for (var rowHead = 0; rowHead < headData.length; rowHead++) {
-             table_output += '<th class="py-3 px-3 cursor-pointer table-head-value" data-cell="' + rowHead + '" data-name="' + headData[rowHead] + '">' + headData[rowHead] + '</th>';
+             table_output += '<th class="py-3 px-3 cursor-pointer table-head-value ltr:text-left rtl:text-right" data-cell="' + rowHead + '" data-name="' + headData[rowHead] + '">' + headData[rowHead] + '</th>';
            }
            table_output += '</tr>';
 
            for (var row = 0; row < tableRows.length; row++) {
              table_output += '<tr class="border-b border-gray-200">';
              for (var cell = 0; cell < tableRows[row].length; cell++) {
-               table_output += '<td class="py-3 px-3" data-cell="' + cell + '" data-name="' + headData[cell] + '">' + tableRows[row][cell] + '</td>';
+               table_output += '<td class="py-3 px-3 cursor-pointer table-head-value ltr:text-left rtl:text-right" data-cell="' + cell + '" data-name="' + headData[cell] + '">' + tableRows[row][cell] + '</td>';
              }
              table_output += '</tr>';
            }
@@ -225,45 +241,48 @@
      var selectedColumnName;
      var guestsArray = [];
      const date = new Date();
-     let lastName = false;
-     let guestPhone = false;
      let currentDate = `Sent ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`;
      if (element.length !== 0) {
        for (var i = 0; i < element.length; i++) {
-         element[i].addEventListener('click', function() {
-           selectedElement = this.getAttribute('data-cell');
-           selectedColumnName = this.getAttribute('data-name');
-           $('#column-name-choosen').text(selectedColumnName);
-           $('#footer-message').removeClass('hidden');
-           $('#guests-table tr').each(function() {
-             $(this).find('td, th').each(function() {
-               if ($(this).hasClass("bg-[#FF6D90]")) {
-                 $(this).removeClass("bg-[#FF6D90]");
-               }
-             })
-           })
-           $('#guests-table tr').each(function() {
-             $(this).find(`[data-cell='${selectedElement}']`).each(function() {
-               $(this).addClass("bg-[#FF6D90]");
-             })
-           })
-           if (lastName === true) {
-             $('#column-name-choosen').text(selectedColumnName);
-             $('#column-name').text('Last Name');
-             $("#lastNameSelect").addClass('hidden');
-             $("#lastNameContainer").addClass('hidden');
-             $("#phoneContainer").removeClass('w-1/2').addClass('w-full');
-             
-           }
-           if (guestPhone === true) {
-             $('#column-name-choosen').text(selectedColumnName);
-             $('#column-name').text('Phone Number');
-             $("#phoneNumberSelect").addClass('hidden');
-             $("#phoneContainer").addClass('hidden');
-             $("#finishButton").removeClass('hidden').addClass('flex');
-             $("#table-btn").removeClass('space-x-3');
-           }
-         });
+          element[i].addEventListener('click', function() {
+            if (this.classList.contains('bg-[#545454]') === false) {
+              selectedElement = this.getAttribute('data-cell');
+              selectedColumnName = this.getAttribute('data-name');
+              $('#column-name-choosen').text(selectedColumnName);
+              $('#footer-message').removeClass('hidden');
+              $('#guests-table tr').each(function() {
+                $(this).find('td, th').each(function() {
+                  if ($(this).hasClass("bg-[#FF6D90]")) {
+                    $(this).removeClass("bg-[#FF6D90]");
+                  }
+                })
+              })
+              $('#guests-table tr').each(function() {
+                $(this).find(`[data-cell='${selectedElement}']`).each(function() {
+                  $(this).addClass("bg-[#FF6D90]");
+                  $("#lastNameSelect").prop('disabled',false);
+                  $("#phoneNumberSelect").prop('disabled',false);
+                  $("#finishButton").prop('disabled',false);
+                })
+              })
+              if (lastName === true) {
+                $('#column-name-choosen').text(selectedColumnName);
+                $('#column-name').text('Last Name');
+                $("#lastNameSelect").addClass('hidden');
+                $("#lastNameContainer").addClass('hidden');
+                $("#phoneContainer").removeClass('w-1/2').addClass('w-full');
+                
+              }
+              if (guestPhone === true) {
+                $('#column-name-choosen').text(selectedColumnName);
+                $('#column-name').text('Phone Number');
+                $("#phoneNumberSelect").addClass('hidden');
+                $("#phoneContainer").addClass('hidden');
+                $("#finishButton").removeClass('hidden').addClass('flex');
+                $("#table-btn").removeClass('space-x-3');
+              }
+            }
+          });
        }
      }
      $("#lastNameSelect").click(function() {
@@ -275,8 +294,6 @@
                $('#header-column-name').text('Last Name');
                $("#footer-message").addClass("hidden");
                lastName = true;
-             } else {
-               showSnackBar('Please select the column of the guest name before!');
              }
          })
        });
@@ -292,42 +309,46 @@
              $("#footer-message").addClass("hidden");
              lastName = true;
              guestPhone = true;
-           } else {
-              showSnackBar('Please select the column of the guest name before!');
-            }
+           }
          })
        });
 
      });
 
      $("#finishButton").click(function() {
-       $('#guests-table tr').each(function() {
-         let guestObject = {
-           "id": Math.floor(Math.random() * 100) + 1,
-           "guests_name": "",
-           "phone_number": "",
-           "status": "ok",
-           "status_message": currentDate
-         }
-         $(this).find('td').each(function() {
-           if ($(this).hasClass("bg-[#FF6D90]")) {
-             guestObject.phone_number = $(this).text();
-           }
-           if ($(this).hasClass("bg-[#545454]")) {
-             guestObject.guests_name += ' ' + $(this).text();
-           }
-         })
-         guestsArray.push(guestObject);
-         guestsList.push(guestObject);
-       });
+        $('#guests-table tr').each(function() {
+          let guestObject = {
+            "id": Math.floor(Math.random() * 100) + 1,
+            "guests_name": "",
+            "phone_number": "",
+            "status": "ok",
+            "status_message": currentDate
+          }
+          $(this).find('td').each(function() {
+            if ($(this).hasClass("bg-[#FF6D90]")) {
+              guestObject.phone_number = $(this).text();
+            }
+            if ($(this).hasClass("bg-[#545454]")) {
+              guestObject.guests_name += ' ' + $(this).text();
+            }
+          })
+          guestsArray.push(guestObject);
+          guestsList.push(guestObject);
+        });
 
        clearModal();
-       guestsArray.forEach((guest) => {
-         if (guest.guests_name && guest.phone_number.length) {
-           const div = cardTemplate.content.cloneNode(true);
-           createTableRow(div, container, guest);
-         }
-       });
+       $('#table-global-wrapper').addClass('after:w-full after:h-full after:absolute after:top-0 after:left-0 after:bg-[#ffffffcf] after:rounded-xl');
+       $('.refresh-guests-table').removeClass('hidden');
+       setTimeout(() => {
+          guestsArray.forEach((guest) => {
+            if (guest.guests_name && guest.phone_number.length) {
+              const div = cardTemplate.content.cloneNode(true);
+              createTableRow(div, container, guest);
+            }
+          });
+          $('#table-global-wrapper').removeClass('after:w-full');
+          $('.refresh-guests-table').addClass('hidden');
+        },2000);
         setTimeout(() => {
           $('#guests-table-container').createTablePagination({
             rowPerPage: 10,
@@ -336,7 +357,7 @@
             paginationStyle: 'borderless',
             transitionDuration: 800
           });
-        },2000);
+        },2100);
 
        setTimeout(() => {
           var selectAll = $('#checkbox-all-search'); 
@@ -367,23 +388,29 @@
      });
    }
 
-   function clearModal(text, status) {
+   function clearModal() {
      uploadModal.hide();
+     lastName = false;
+     guestPhone = false;
      $("#upload-form").removeClass("hidden");
      $("#table-btn").removeClass("flex");
      $("#table-btn").addClass("hidden");
      $("#modal-wrapper").removeClass("xl:max-w-7xl");
      $("#modal-wrapper").addClass("xl:max-w-3xl");
-     $(".upload-files footer").removeClass("hasFiles");
+     $("footer.file-upload-footer").removeClass("hasFiles");
      $("#drop").removeClass("hidden");
      $(".importar").removeClass("active");
      $("#phoneNumberSelect").removeClass('hidden');
      $("#lastNameSelect").removeClass('hidden');
-     $("#finishButton").addClass('hidden');
+     $("#finishButton").addClass('hidden').removeClass('flex');
+     $("#lastNameSelect").prop('disabled',true);
+     $("#phoneNumberSelect").prop('disabled',true);
      $("#uploadTable").val('');
      $('#table-data').html('');
      $("#header-message").addClass("hidden");
      $("#footer-message").addClass("hidden");
+     $("#header-column-name").text('Name');
+     $('#uploadFile').prop('disabled', true);
 
      $("#lastNameContainer").removeClass('hidden');
      $("#phoneContainer").removeClass('hidden', 'w-full').addClass('w-1/2');
@@ -418,7 +445,7 @@
      files = evt.dataTransfer.files[0];
      handleFileSelect(evt.dataTransfer.files[0]);
      sl("#drop").classList.add("hidden");
-     sl(".upload-files footer").classList.add("hasFiles");
+     sl("footer.file-upload-footer").classList.add("hasFiles");
      sl("#drop").classList.remove("active");
      evt.preventDefault();
    };
@@ -426,7 +453,7 @@
 
    sl(".importar").addEventListener("click", () => {
      sl(".list-files").innerHTML = "";
-     sl(".upload-files footer").classList.remove("hasFiles");
+     sl("footer.file-upload-footer").classList.remove("hasFiles");
      sl(".importar").classList.remove("active");
      setTimeout(() => {
        sl("#drop").classList.remove("hidden");
@@ -452,6 +479,8 @@
      }
    });
 
- }();
+  $("#add-multiple-guests").click(function () {
+    uploadModal.show();
+  });
 
 </script>

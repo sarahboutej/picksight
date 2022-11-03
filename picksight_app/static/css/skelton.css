@@ -110,7 +110,7 @@
   overflow: hidden;
   transition: width 0.5s ease;
 }
-.upload-files footer .list-files, .upload-images footer .list-files {
+.upload-files footer .list-files, .upload-images footer .list-image {
   margin: 0 auto;
   padding-left: 5px;
   text-align: center;
@@ -118,23 +118,23 @@
   overflow-y: auto;
   height: 100%;
 }
-.upload-files footer .list-files::-webkit-scrollbar-track, .upload-images footer .list-files::-webkit-scrollbar-track {
+.upload-files footer .list-files::-webkit-scrollbar-track, .upload-images footer .list-image::-webkit-scrollbar-track {
   background-color: rgba(211, 211, 211, 0.25);
 }
-.upload-files footer .list-files::-webkit-scrollbar, .upload-images footer .list-files::-webkit-scrollbar {
+.upload-files footer .list-files::-webkit-scrollbar, .upload-images footer .list-image::-webkit-scrollbar {
   width: 4px;
   background-color: rgba(211, 211, 211, 0.25);
 }
-.upload-files footer .list-files::-webkit-scrollbar-thumb, .upload-images footer .list-files::-webkit-scrollbar-thumb {
+.upload-files footer .list-files::-webkit-scrollbar-thumb, .upload-images footer .list-image::-webkit-scrollbar-thumb {
   background-color: rgba(77, 182, 172, 0.5);
 }
-.upload-files footer .list-files .file, .upload-images footer .list-files .file {
+.upload-files footer .list-files .file, .upload-images footer .list-image .file {
   height: 100%;
   opacity: 0;
   -webkit-animation: fade 0.1s ease both;
   animation: fade 0.1s ease both;
 }
-.upload-files footer .list-files .file .progress.active, .upload-images footer .list-files .file .progress.active {
+.upload-files footer .list-files .file .progress.active, .upload-images footer .list-image .file .progress.active {
   -webkit-animation: progress 30s linear;
   animation: progress 30s linear;
 }
@@ -150,7 +150,7 @@
   height: 120px;
 }
 
-.upload-files footer .list-files .file .done, .upload-images footer .list-files .file .done {
+.upload-files footer .list-files .file .done, .upload-images footer .list-image .file .done {
   cursor: pointer;
   width: 40px;
   height: 40px;
@@ -160,7 +160,7 @@
   transform: scale(0);
   position: relative;
 }
-.upload-files footer .list-files .file .done:before, .upload-images footer .list-files .file .done:before {
+.upload-files footer .list-files .file .done:before, .upload-images footer .list-image .file .done:before {
   content: "View";
   position: absolute;
   top: 0;
@@ -168,23 +168,23 @@
   font-size: 24px;
   opacity: 0;
 }
-.upload-files footer .list-files .file .done:hover:before, .upload-images footer .list-files .file .done:hover:before {
+.upload-files footer .list-files .file .done:hover:before, .upload-images footer .list-image .file .done:hover:before {
   transition: all 0.25s ease;
   top: -30px;
   opacity: 1;
 }
-.upload-files footer .list-files .file .done #path, .upload-images footer .list-files .file .done #path {
+.upload-files footer .list-files .file .done #path, .upload-images footer .list-image .file .done #path {
   stroke-dashoffset: 7387.5942382813;
   stroke-dasharray: 7387.5942382813 7387.5942382813;
   stroke: #fff;
   fill: transparent;
   stroke-width: 50px;
 }
-.upload-files footer .list-files .file .done.anim, .upload-images footer .list-files .file .done.anim {
+.upload-files footer .list-files .file .done.anim, .upload-images footer .list-image .file .done.anim {
   -webkit-animation: done1 0.5s ease forwards;
   animation: done1 0.5s ease forwards;
 }
-.upload-files footer .list-files .file .done.anim #path, .upload-images footer .list-files .file .done.anim #path {
+.upload-files footer .list-files .file .done.anim #path, .upload-images footer .list-image .file .done.anim #path {
   -webkit-animation: done2 2.5s 0.5s ease forwards;
   animation: done2 2.5s 0.5s ease forwards;
 }

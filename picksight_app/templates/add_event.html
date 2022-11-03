@@ -92,7 +92,7 @@
                     </button>
                   </div>
                   <footer class="image-upload-footer">
-                  <div class="list-files list-image">
+                  <div class="list-image">
                     <!--   template   -->
                   </div>
                   </footer>
@@ -324,14 +324,14 @@
   new WOW().init();
   
   /*********************************Upload Image****************************************/
-  let files = "";
+  let imageFile = "";
 
-  function handleImageSelect(files) {
-     let template = ""
-     if (files && files.name) {
-       template = `<div id="progress-container" class="file flex justify-center flex-col file--0">
+  function handleImageSelect(imageFile) {
+     let templateImage = ""
+     if (imageFile && imageFile.name) {
+      templateImage = `<div id="progress-container" class="file flex justify-center flex-col">
         <div class="name flex justify-center items-center space-x-3">
-          <span>${files.name}</span>
+          <span>${imageFile.name}</span>
           <button type="button" id="delete-img" class="hidden"><img src="{% static 'images/delete.png' %}" class="w-5" /></button>
           <button type="button" id="upload-img" class="hidden"><img src="{% static 'images/upload.png' %}" class="w-5" /></button>
           </div>
@@ -349,7 +349,7 @@
      $("footer.image-upload-footer").addClass("hasFiles");
 
      setTimeout(() => {
-       $(".list-image").html(template);
+       $(".list-image").html(templateImage);
        $("#delete-img").click(function() {
           $("footer.image-upload-footer").removeClass("hasFiles");
           $("#drop-image").removeClass("hidden");
@@ -357,8 +357,8 @@
           $("#upload-image-file").val('');
         });
      }, 200);
-
-     if (template !== "") {
+ 
+     if (templateImage !== "") {
        setTimeout(() => {
         $('#progress-bar').removeClass("active");
         $('#upload-check-icon').addClass("anim");
@@ -387,7 +387,7 @@
           reader.readAsDataURL(files);
         })
        }, 2000);
-     }
+     }  
    }
 
    sl("#drop-image").ondragleave = evt => {
@@ -400,7 +400,7 @@
    };
 
    sl("#drop-image").ondrop = evt => {
-     files = evt.dataTransfer.files[0];
+    imageFile = evt.dataTransfer.files[0];
      handleImageSelect(evt.dataTransfer.files[0]);
      $("#drop-image").addClass("hidden");
      $("footer.image-upload-footer").addClass("hasFiles");
@@ -414,10 +414,9 @@
   });
 
   sl("#upload-image-file").addEventListener("change", function(event) {
-    files = event.target.files[0];
+    imageFile = event.target.files[0];
     handleImageSelect(event.target.files[0]);
   });
-
 
 
   /*************************************************************************/
@@ -443,6 +442,7 @@
   const cardTemplate = document.getElementById("row-template");
   const targetEl = document.getElementById('add-guests');
   const addModal = new Modal(targetEl);
+
 
   const uploadGuests = document.getElementById('add-guests-list');
   const uploadModal = new Modal(uploadGuests);
@@ -522,7 +522,7 @@ $("#add-guest-btn").click(function () {
   if(guest_name && $.isNumeric(guest_phone))  {
     guest.guests_name = guest_name; 
   } else {
-    clearModal();
+    clearAddModal();
     showSnackBar('Oops. Something went wrong when adding new guest!')
   }
 });
@@ -531,20 +531,16 @@ $("#add-single-guest").click(function () {
   addModal.show();
 });
 
-$("#add-multiple-guests").click(function () {
-  uploadModal.show();
+$("#guest-close-btn").click(function () {
+  clearAddModal();
 });
 
 $("#guest-close-btn").click(function () {
-  clearModal();
-});
-
-$("#guest-close-btn").click(function () {
-  clearModal();
+  clearAddModal();
 });
 
 window.addEventListener('modal-closed', function() {
-  clearModal();
+  clearAddModal();
 })
 
 $('#delete-selected').click(function() {
@@ -736,7 +732,7 @@ function showSnackBar(text, status) {
   }, 2000);
 };
 
-function clearModal(text, status) {
+function clearAddModal() {
   addModal.hide();
   $("#input-guest-name").val("");
   $("#guest-phone-input").val("");
