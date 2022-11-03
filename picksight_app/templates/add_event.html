@@ -112,7 +112,8 @@
           </div>
         </div>
       </div>
-      <div class="bg-white p-8 rounded-xl">
+      <div id="table-global-wrapper" class="relative bg-white p-8 rounded-xl">
+        <img src="{% static 'images/refresh.svg' %}" class="refresh-guests-table w-16 absolute left-0 right-0 top-0 bottom-0 m-auto z-50 hidden" />
         <div class="overflow-x-auto relative sm:rounded-lg">
           <div class="flex xl:flex-row flex-col justify-between xl:items-center xl:space-y-0 space-y-6 pb-8 bg-white">
             <div class="flex md:flex-row flex-col items-center md:space-x-3 md:space-y-0 space-y-4">
@@ -134,7 +135,7 @@
             <div>
               <div class="flex justify-center ltr:space-x-3">
                 <button id="add-multiple-guests" class="py-2 px-6 text-sm text-white text-center bg-[#FFB4C6] rounded-lg border border-[#FFB4C6] hover:bg-transparent hover:text-[#FFB4C6] transition duration-300">{% translate 'Upload CSV/Excel'%}</button>
-                <button class="rtl:mr-3 bg-transparent text-sm border border border-[#FFB4C6] text-[#FFB4C6] rounded-lg py-2 px-6">{% translate 'Delete All'%}</button>   
+                <button disabled id="delete-selected" class="rtl:mr-3 bg-transparent text-sm border border border-[#FFB4C6] text-[#FFB4C6] rounded-lg py-2 px-6">{% translate 'Delete selected'%}</button>   
               </div>
             </div>
           </div>
@@ -166,7 +167,7 @@
                   <tr class="bg-white border-b hover:bg-gray-50">
                     <td id="check-box-td" class="py-3 px-2 w-4">
                         <div class="flex items-center">
-                            <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90] focus:ring-2">
+                            <input id="checkbox-table-search-1" type="checkbox" class="table-row-checkbox w-4 h-4 text-[#FF6D90] bg-gray-100 rounded border-gray-300 focus:ring-[#FF6D90] focus:ring-2">
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                         </div>
                     </td>
@@ -187,6 +188,7 @@
                 </template>
               </tbody>
           </table>
+          <span class="guest-list-info text-[#727272] text-sm block text-center p-6 hidden">{% translate 'Guests list is empty!'%}</span>
         </div>
       </div>
     </div>
@@ -321,7 +323,7 @@
 <script>
   new WOW().init();
   
-  /*************************************************************************/
+  /*********************************Upload Image****************************************/
   let files = "";
 
   function handleImageSelect(files) {
@@ -422,6 +424,8 @@
 
   var guestsList = [];
 
+  let selectMultiple = false;
+
   $(document).ready(function () {
     window.deleteModal = new Modal(document.getElementById('delete-guest'), {});
   });
@@ -462,7 +466,7 @@
     });
   }
 
-/********************************Guests list **************************/
+/******************************** Guests list **************************/
 
 for (let i = 0; i < 3; i++) {
   container.append(cardTemplate.content.cloneNode(true));
@@ -534,11 +538,60 @@ $("#guest-close-btn").click(function () {
   clearModal();
 });
 
+$('#delete-selected').click(function() {
+  window.deleteModal.show();
+  selectMultiple = true;
+});
 
+$('#delete-guest-btn').click(function() {
+  $('#table-global-wrapper').addClass('after:w-full after:h-full after:absolute after:top-0 after:left-0 after:bg-[#ffffffcf] after:rounded-xl');
+  $('.refresh-guests-table').removeClass('hidden');
+  setTimeout(() => {
+      deleteGuests();
+      $('#table-global-wrapper').removeClass('after:w-full');
+      $('.refresh-guests-table').addClass('hidden');
+      $('#checkbox-all-search').prop("checked", false);
+  },2000);
+  window.deleteModal.hide();
+});
+
+setTimeout(() => {
+  var selectAll = $('#checkbox-all-search'); 
+  var $table = $('#guests-table-container');
+  var tdCheckbox = $table.find('.table-row-checkbox');
+  var tdCheckboxChecked = $table.find('tbody tr input[type=checkbox]:checked').length;
+
+  selectAll.on('click', function () {
+    tdCheckbox.prop("checked", this.checked);
+    if(this.checked) {
+      $('#delete-selected').prop('disabled', false);
+    }
+    if(!this.checked && tdCheckboxChecked === 0) {
+      $('#delete-selected').prop('disabled', true);
+    }
+  });
+
+  tdCheckbox.on('change', function(e){
+    tdCheckboxChecked = $table.find('tbody tr input[type=checkbox]:checked').length;
+    selectAll.prop('checked', (tdCheckboxChecked === tdCheckbox.length));
+    if(tdCheckboxChecked > 0) {
+      $('#delete-selected').prop('disabled', false);
+    } else {
+      $('#delete-selected').prop('disabled', true);
+    }
+  })
+},2000);
+
+
+/*******************************************************************/
 
 function createTableRow (el, parent, item) {
   const tableRow = el.getElementById("check-box-td").parentElement;
   tableRow.setAttribute('id', item.id);
+  const inputCheckbox = tableRow.querySelectorAll('input[type=checkbox]');
+  const inputLabel = tableRow.querySelectorAll('label');
+  inputCheckbox[0].setAttribute('id', `checkbox-table-`+item.id);
+  inputLabel[0].setAttribute('for', `checkbox-table-`+item.id);
   if (item.status === "error") {
     el.getElementById("guest-name").innerHTML = `<img class="w-4 h-4" src="{% static 'images/warning.svg' %}" /> <span class="rtl:mr-2">` + item.guests_name + `</span>`;
   } else {
@@ -559,12 +612,6 @@ function createTableRow (el, parent, item) {
     window.deleteModal.show();
   });
 
-  $('#delete-guest-btn').click(function() {
-    const id = '#'+$('#id-guest-to-delete').val();
-    $(id).addClass('hidden');
-    window.deleteModal.hide();
-  });
-
  const editBtn = document.querySelectorAll('.edit-btn');
   if (editBtn.length !== 0) {
     for (let i = 0; i < editBtn.length; i++) {
@@ -581,6 +628,32 @@ function createTableRow (el, parent, item) {
     }
   } 
 }
+
+function deleteGuests(couponText) {
+  $.ajax({
+    url: 'http://127.0.0.1:8000/static/data/guests.json', 
+    type:"DELETE",
+    success: function(data) {
+      if(data) {
+        if(!selectMultiple) {
+          const id = '#'+$('#id-guest-to-delete').val();
+          $(id).html('');
+        } else {
+          $('#guests-table-container tbody tr').each(function() {
+            let rowsToDelete = $(this).find('input[type=checkbox]:checked').length;
+            if(rowsToDelete) {
+              $(this).html('');
+            }
+          });
+        }
+        selectMultiple = false;
+      }
+    },
+    error:function(){
+      console.warn("Error when sending message to the server");
+    },
+  });
+};
 
 function showSnackBar(text, status) {
   $("#snackbar").text( text );
