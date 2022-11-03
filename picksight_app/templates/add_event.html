@@ -212,7 +212,7 @@
         <span class="sr-only">Close modal</span>
       </button>
       <div class="py-6 px-6 lg:px-8">
-        <p class="flex flex-col items-center uppercase font-bold text-[#FFB4C6] text-5xl mb-8">
+        <p id="edit-add-guest-title" class="flex flex-col items-center uppercase font-bold text-[#FFB4C6] text-5xl mb-8">
           {% translate 'Add Guest'%}
         </p>
         <form class="space-y-6" action="#">
@@ -528,6 +528,7 @@ $("#add-guest-btn").click(function () {
 });
 
 $("#add-single-guest").click(function () {
+  $('#edit-add-guest-title').text(`{% translate 'Add Guest'%}`)
   addModal.show();
 });
 
@@ -681,6 +682,7 @@ function createTableRow (el, parent, item) {
             $('#guest-phone-input').val(guest.phone_number);
           }
         });
+        $('#edit-add-guest-title').text(`{% translate 'Edit Guest'%}`);
         addModal.show();
       });
     }
