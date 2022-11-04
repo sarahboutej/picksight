@@ -47,8 +47,12 @@
         var $totalRow = $table.find('tr').length - 1;
         var $totalPage = Math.ceil($totalRow / $rowPerPage);
         var $tableIndex = $table.index();
-
-
+        window.addEventListener('table-updated', function() {
+            $totalRow = $table.find('tr').length - 1;
+            $totalPage = Math.ceil($totalRow / $rowPerPage);
+          displayPage();
+          rearrangePagination();
+        });
 
         if ($rowPerPage > $totalRow) {
             console.log('check your data, your row per page is bigger then total row');

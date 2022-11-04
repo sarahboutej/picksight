@@ -572,13 +572,13 @@ $('#delete-guest-btn').click(function() {
   if(isEmptyTable) {
     $('.guest-list-info').removeClass('hidden');
   }
-  $('#guests-table-container').createTablePagination({
+ /*  $('#guests-table-container').createTablePagination({
     rowPerPage: 10,
     paginationColor: '#FFB4C6',
     fontColor: '#8A8A8A',
     paginationStyle: 'borderless',
     transitionDuration: 800
-  });
+  }); */
   },2050);
   window.deleteModal.hide();
 });
@@ -663,7 +663,10 @@ function createTableRow (el, parent, item) {
     ` <button id=`+item.id+` class="edit-btn"><img src="{% static 'images/edit_guests.svg' %}" /></button>
     <button id=`+item.id+` class="delete-btn rtl:mr-2" ><img src="{% static 'images/delete_guests.svg' %}" /></button>`;
   parent.append(el);
-  var guest_id_to_delete="";
+
+/*****************************************************************/
+
+  setTimeout( function() {
 
   $('.delete-btn').click(function() {
     guest_id_to_delete = this.getAttribute('id');
@@ -671,10 +674,10 @@ function createTableRow (el, parent, item) {
     window.deleteModal.show();
   });
 
- const editBtn = document.querySelectorAll('.edit-btn');
+  const editBtn = document.querySelectorAll('.edit-btn');
   if (editBtn.length !== 0) {
     for (let i = 0; i < editBtn.length; i++) {
-       editBtn[i].addEventListener('click', function() {
+      editBtn[i].addEventListener('click', function() {
         const guest_id = this.getAttribute('id');
         guestsList.forEach((guest) => {
           if (guest_id === guest.id) {
@@ -688,17 +691,22 @@ function createTableRow (el, parent, item) {
     }
   } 
 
- tableRow.addEventListener('dblclick', function() {
-    const guest_id = this.getAttribute('id');
-    guestsList.forEach((guest) => {
-      if (guest_id === guest.id) {
-        $('#input-guest-name').val(guest.guests_name);
-        $('#guest-phone-input').val(guest.phone_number);
-      }
+  tableRow.addEventListener('dblclick', function() {
+      const guest_id = this.getAttribute('id');
+      guestsList.forEach((guest) => {
+        if (guest_id === guest.id) {
+          $('#input-guest-name').val(guest.guests_name);
+          $('#guest-phone-input').val(guest.phone_number);
+        }
+      });
+      addModal.show();
     });
-    addModal.show();
-  });
+
+  },2000);
 }
+
+
+/*****************************************************************/
 
 function deleteGuests(couponText) {
   $.ajax({
@@ -717,6 +725,7 @@ function deleteGuests(couponText) {
             }
           });
         }
+        window.dispatchEvent(new CustomEvent('table-updated'));
         selectMultiple = false;
       }
     },
