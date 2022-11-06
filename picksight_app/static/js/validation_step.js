@@ -6,7 +6,7 @@ function validateMessageStep() {
   var message = $('#message_select').find(":selected").text();
   if (selectedVal != 'default') {
     $.ajax({
-      url:"http://127.0.0.1:8000/static/data/validation.json",
+      url:"http://127.0.0.1:8000/static/data/.json",
       type:"POST",
       data:{
         message: message,

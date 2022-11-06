@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
   <link rel="stylesheet" href="{% static 'css/skelton.css' %}">
   <link rel="stylesheet" href="{% static 'css/star-rate.css' %}">
+  <link rel="stylesheet" href="{% static 'css/masonry.css' %}">
   <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
   <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
   <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
@@ -201,8 +202,10 @@
                 <h3 class="text-xl font-bold text-[#FF5A82]">{% translate 'Enter Your Gallery'%}</h3>
               </div>
             </div>
-            <div class="flex flex-col bg-white shadow-lg rounded-xl p-3 space-y-6 items-center">
-              <h3 class="text-2xl font-bold text-[#FF5A82]">{% translate 'How are you satisfy with us?'%}</h3>
+            <div class="flex flex-col bg-white shadow-lg rounded-xl p-3 items-center min-h-[160px]">
+              <div id="refresh-rating" class="mt-3"></div>
+              <h3 id="rate-title" class="text-2xl font-bold text-[#FF5A82] mb-6">{% translate 'How are you satisfy with us?'%}</h3>
+              <h3 id="rate-subtitle" class="text-xl font-bold text-[#FF5A82] hidden mb-3">{% translate 'We will appreciate if you tell us a bit more'%}</h3>
               <div id="stars_rating">
                 <div class="stars">
                   <div class="star">★</div>
@@ -212,6 +215,10 @@
                   <div class="star">★</div>
                 </div>
               </div>
+              <div id="feedback-input" class="relative w-2/3 hidden">
+                <input type="search" id="feedback-text" class="block p-4 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-[#F47E80] focus:border-[#F47E80]" placeholder="{% translate 'Share us with your feedback'%}" required>
+                <button id="submit-feedback" type="button" class="text-white absolute ltr:right-2.5 rtl:left-2.5 bottom-2.5 bg-[#FFB4C6] hover:bg-[#F47E80] focus:ring-0 focus:outline-none focus:ring-0 font-medium rounded-lg text-sm px-4 py-2 ">{% translate 'Send'%}</button>
+            </div>
             </div>
           </div>
         </div>
@@ -220,9 +227,9 @@
 
     </div>
   </section>
+  <div id="snackbar" class="">{% translate 'Thank you, We appreciate your feedback!'%}</div>
   <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
   <script src="{% static '/js/chart.js' %}" type="text/javascript"></script>
-  <script src="{% static '/js/star-rate.js' %}" type="text/javascript"></script>
   <script>
 
    let barChartLabel = [];
@@ -328,6 +335,113 @@
       document.getElementById('myBarChart'),
       configBarChart
     );
+
+    /******************Stars Rate***********************/
+
+  let _rating = 0;
+  const setRating = num => {
+    _rating = num;
+  };
+
+  let avg = 3.2;
+  let count = 5.0;
+
+  const rounded = (f, n = 2) => {
+    let i = 0;
+    if (n > 0) {
+      i = Math.round(f * Math.pow(10, n));
+      return i / Math.pow(10, n);
+    }
+    return f;
+  };
+
+  const stars = document.querySelectorAll('.star');
+
+  $('.star').on('click', function (e) {
+    stars.forEach((star, i) => {
+      if (star === e.currentTarget) {
+        setRating(i + 1);
+        if ($('.star.rated').length) {
+          $('.star.rated').removeClass('rated');
+        }
+        e.currentTarget.classList.add('rated');
+        $('.stars').addClass('rated');
+      }
+    });
+    $('#rate-title').addClass('hidden');
+    $('#stars_rating').addClass('hidden');
+    $('#refresh-rating').html(`<img src="{% static 'images/refresh.svg' %}" class="w-24" />`);
+    setTimeout(() => {
+      sendRateRequest();
+    },2000);
+  });
+
+  function sendRateRequest() {
+    $.ajax({
+      url:"http://127.0.0.1:8000/static/data/dashboard.json",
+      type:"POST",
+      data:{
+        message: _rating,
+      },
+      success:function(response) {
+        $('#refresh-rating').html('');
+        $('#rate-title').text(`{% translate 'Thank you!'%}`);
+        $('#rate-title').removeClass('hidden');
+        $('#rate-title').removeClass('mb-6');
+        $('#rate-subtitle').removeClass('hidden');
+        $('#feedback-input').removeClass('hidden');
+      },
+      error:function(){
+        console.warn("Error when sending message to the server");
+      },
+    });
+  }
+
+  function sendFeedbackRequest(feedbackText) {
+    $.ajax({
+      url:"http://127.0.0.1:8000/static/data/dashboard.json",
+      type:"POST",
+      data:{
+        message: feedbackText,
+      },
+      success:function(response) {
+        $('#refresh-rating').html('');
+        $('#rate-title').text(`{% translate 'How are you satisfy with us?'%}`);
+        $('#rate-title').removeClass('hidden');
+        $('#rate-title').addClass('mb-6');
+        $('#stars_rating').removeClass('hidden');
+        $('#rate-subtitle').addClass('hidden');
+        $('#feedback-input').addClass('hidden');
+        showSnackBar();
+      },
+      error:function(){
+        console.warn("Error when sending message to the server");
+      },
+    });
+  }
+
+  $('#submit-feedback').click(function (e) {
+    $('#rate-title, #rate-subtitle').addClass('hidden');
+    $('#stars_rating').addClass('hidden');
+    $('#feedback-input').addClass('hidden')
+    $('#refresh-rating').html(`<img src="{% static 'images/refresh.svg' %}" class="w-24" />`);
+    const feedbackText = $('#feedback-text').val();
+    setTimeout(() => {
+      sendFeedbackRequest(feedbackText);
+    },2000);
+  });
+
+  $('#clear').click(function () {
+    setRating(0);
+    $('.rated').removeClass('rated');
+  });
+
+  function showSnackBar() {;
+  $("#snackbar").addClass( "show" );
+  setTimeout(function(){ 
+    $("#snackbar").removeClass( "show" );
+  }, 2000);
+};
   </script>
 </body>
 </html>
