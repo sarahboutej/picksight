@@ -37,7 +37,26 @@
 }
 
 .skeleton-text__body {
-  width: 75%;
+  width: 55%;
+  height: 4rem;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.skeleton-pie-chart{
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.skeleton-preview-img {
+  width: 220px;
+  height: 220px;
+  margin: auto;
+  border-radius: 8px;
+  margin-top: 2rem;
 }
 
 .skeleton-img {

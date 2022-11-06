@@ -26,5 +26,6 @@ urlpatterns = [
   path('admin/', admin.site.urls),
   path('events/', views.events),
   path('add-event/', views.addEvent),
-  path('edit-event/<int:id>/', views.editEvent)
+  path('edit-event/<int:id>/', views.editEvent),
+  path('dashboard/', views.dashboard)
 ]

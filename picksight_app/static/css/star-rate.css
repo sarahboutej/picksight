@@ -1,0 +1,124 @@
+#stars_rating .stars {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  max-width: 360px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: -8px;
+}
+#stars_rating .stars .star {
+  position: relative;
+  color: #ccf;
+  font-size: 48px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+#stars_rating .stars .star:after {
+  content: "★";
+  position: absolute;
+  transform: translateX(-100%);
+  top: 0px;
+  font-size: 48px;
+}
+@media (min-width: 768px) {
+  #stars_rating .stars .star {
+    padding: 0 7px;
+    font-size: 64px;
+  }
+  #stars_rating .stars .star:after {
+    font-size: 64px;
+  }
+}
+@media (max-width: 479px) {
+  #stars_rating .stars .star {
+    padding: 0 3px;
+    font-size: 36px;
+  }
+  #stars_rating .stars .star:after {
+    font-size: 36px;
+  }
+}
+#stars_rating .stars .star.rated {
+  color: royalblue;
+}
+#stars_rating .stars .star.rated:before {
+  color: darkblue;
+  content: "★";
+  position: absolute;
+  left: -1.5px;
+  top: -13px;
+  font-size: 64px;
+}
+@media (min-width: 768px) {
+  #stars_rating .stars .star.rated:before {
+    left: 0px;
+    top: -14.5px;
+    font-size: 80px;
+  }
+}
+@media (max-width: 479px) {
+  #stars_rating .stars .star.rated:before {
+    left: -2px;
+    top: -10px;
+    font-size: 48px;
+  }
+}
+#stars_rating .stars:hover .star {
+  color: #ff6d7d;
+}
+#stars_rating .stars:hover .star:hover ~ * {
+  color: #ccf;
+}
+#stars_rating .stars.rated .star:before {
+  color: #ff197f;
+  content: "★";
+  position: absolute;
+  left: -1.5px;
+  top: -13px;
+  font-size: 64px;
+}
+@media (min-width: 768px) {
+  #stars_rating .stars.rated .star:before {
+    left: 0px;
+    top: -14.5px;
+    font-size: 80px;
+  }
+}
+@media (max-width: 479px) {
+  #stars_rating .stars.rated .star:before {
+    left: -2px;
+    top: -10px;
+    font-size: 48px;
+  }
+}
+#stars_rating .stars.rated .star:after {
+  color: #ff6d7d;
+}
+#stars_rating .stars.rated .star.rated ~ *:before {
+  display: none;
+}
+#stars_rating .stars.rated .star.rated ~ *:after {
+  color: #ccf;
+}
+#stars_rating .stars.rated:hover .star {
+  color: #ff6d7d;
+}
+#stars_rating .stars.rated:hover .star:after {
+  color: #ff6d7d;
+}
+#stars_rating .stars.rated:hover .star:hover ~ * {
+  color: #ccf;
+}
+#stars_rating .stars.rated:hover .star:hover ~ *:after {
+  color: #ccf;
+}
+#stars_rating .rates span.avg:before {
+  content: "Average: ";
+}
+@media (max-width: 479px) {
+  #stars_rating .rates span.avg:before {
+    content: "Avg: ";
+  }
+}

@@ -1,0 +1,311 @@
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+<!DOCTYPE html>
+<html lang="en" dir="{% translate 'ltr' %}">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{% translate 'Picksight Add NEw Event Page' %}</title>
+
+  <link rel="stylesheet" href="{% static 'css/flowbite.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+  <link rel="stylesheet" href="{% static 'css/skelton.css' %}">
+  <link rel="stylesheet" href="{% static 'css/star-rate.css' %}">
+  <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static '/js/tailwind.js' %}" type="text/javascript"></script>
+  <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
+
+</head>
+
+<body class="bg-[#FFF4F7]">
+  {% include "commons/dashboard_header.html" with pageName="dashboard" type=type %}
+
+  <section class="flex min-h-screen justify-center pt-24 pb-36">
+    <div class="container w-9/12">
+      <!--**********Skelton start*************-->
+    <div id="skeleton-container" >
+      <div class="space-y-8">
+        <div class="grid grid-cols-12 grid-rows-2 gap-8">
+          <div class="box row-start-1 row-end-2 col-start-1 col-end-8">
+            <div class="grid grid-cols-3 grid-rows-1 gap-8">
+              <div class="bg-white shadow-lg rounded-xl p-3">
+                <p class="skeleton skeleton-text"></p>
+                <p class="skeleton skeleton-text-span"></p>
+                <p class="skeleton skeleton-text__body"></p>
+              </div>
+              <div class="bg-white shadow-lg rounded-xl p-3">
+                <p class="skeleton skeleton-text"></p>
+                <p class="skeleton skeleton-text-span"></p>
+                <p class="skeleton skeleton-text__body"></p>
+              </div>
+              <div class="bg-white shadow-lg rounded-xl p-3">
+                <p class="skeleton skeleton-text"></p>
+                <p class="skeleton skeleton-text-span"></p>
+                <p class="skeleton skeleton-text__body"></p>
+              </div>
+            </div>
+          </div>
+          <div class="box row-start-2 row-end-2 col-start-1 col-end-8 bg-white shadow-lg rounded-xl p-3">
+            <p class="skeleton skeleton-text"></p>
+            <p class="skeleton skeleton-text-span"></p>
+            <p class="skeleton skeleton-text__body"></p>
+          </div>
+          <div class="box row-start-1 row-end-3 col-start-8 p-6 col-end-12 bg-white shadow-lg rounded-xl p-3">
+            <p class="skeleton skeleton-text"></p>
+            <p class="skeleton skeleton-text-span"></p>
+            <div class="skeleton skeleton-preview-img"></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 grid-rows-2 gap-8">
+          <div class="box row-start-1 row-end-3 col-start-1 col-end-5 bg-white rounded-xl shadow-lg p-3">
+            <p class="skeleton skeleton-text"></p>
+            <p class="skeleton skeleton-text-span"></p>
+            <div class="skeleton skeleton-pie-chart"></div>
+          </div>
+          <div class="box row-start-1 row-end-1 col-start-5 col-end-12">
+            <div class="grid grid-cols-3 grid-rows-1 gap-8">
+              <div class="bg-white shadow-lg rounded-xl p-3">
+                <p class="skeleton skeleton-text"></p>
+                <p class="skeleton skeleton-text-span"></p>
+                <p class="skeleton skeleton-text__body"></p>
+              </div>
+              <div class="bg-white shadow-lg rounded-xl p-3">
+                <p class="skeleton skeleton-text"></p>
+                <p class="skeleton skeleton-text-span"></p>
+                <p class="skeleton skeleton-text__body"></p>
+              </div>
+              <div class="bg-white shadow-lg rounded-xl p-3">
+                <p class="skeleton skeleton-text"></p>
+                <p class="skeleton skeleton-text-span"></p>
+                <p class="skeleton skeleton-text__body"></p>
+              </div>
+            </div>
+          </div>
+          <div class="box row-start-2 row-end-3 col-start-5 col-end-12 bg-white shadow-lg rounded-xl p-3">
+            <p class="skeleton skeleton-text"></p>
+            <p class="skeleton skeleton-text-span"></p>
+            <p class="skeleton skeleton-text__body"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--**********Skelton End*************-->
+    <div id="dashboard-statistic" class="hidden">
+      <div class="flex flex-col space-y-8">
+        <div class="flex flex-row space-x-8">
+          <div class="w-4/6 flex flex-col space-y-8">
+            <div class="flex space-x-8">
+              <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
+                <div class="flex flex-col space-y-6">
+                  <div>
+                    <h4 class="font-bold text-base">{% translate 'Guests sent media'%}</h4>
+                    <span class="text-xs text-[#9D9C9C]">{% translate 'How many guests sent media files'%}</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span id="media-recieved" class="font-bold text-[#FF5A82] text-5xl">100</span>
+                    <span class="text-lg text-[#05B516] font-bold">43%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
+                <div class="flex flex-col space-y-6">
+                  <div>
+                    <h4 class="font-bold text-base">{% translate 'Media received'%}</h4>
+                    <span class="text-xs text-[#9D9C9C]">{% translate 'How many photos&videos receiced'%}</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span id="guests-sent-media" class="font-bold text-[#FF5A82] text-5xl">470</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
+                <div class="flex flex-col space-y-6">
+                  <div>
+                    <h4 class="font-bold text-base">{% translate 'Total guests'%}</h4>
+                    <span class="text-xs text-[#9D9C9C]">{% translate 'How many guests in your list'%}</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span id="total-guests" class="font-bold text-[#FF5A82] text-5xl">234</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-3">
+              <div>
+                <h4 class="font-bold text-base">{% translate 'Top senders'%}</h4>
+                <span class="text-xs text-[#9D9C9C]">{% translate 'Who are your top media senders'%}</span>
+                <div class="h-[300px]">
+                  <canvas id="myBarChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-2/6 flex flex-col space-y-6 bg-white shadow-lg rounded-xl p-3">
+            <p class="block text-sm font-medium text-gray-900">{% translate 'Preview'%}</p>
+            <div class="flex flex-col lg:py-0 py-6 items-center justify-center h-full rounded-xl bg-[url({% static '/images/messgae_bg.jpg' %})] bg-no-repeat bg-cover">
+              <div class="flex flex-col space-y-9 w-[80%] bg-white p-6 my-6 rounded-xl">
+                <img src="{% static 'images/hero_img.svg' %}" class="rounded-xl" id="event-image-dashboard">
+                <p class="text-sm">
+                  {% translate 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged'%}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-row space-x-8">
+          <div class="w-2/6 flex flex-col space-y-6 bg-white shadow-lg rounded-xl p-3">
+            <div>
+              <h4 class="font-bold text-base">Message sending statistics</h4>
+              <span class="text-xs text-[#9D9C9C]">Some statistics about the messages</span>
+            </div>
+            <div class="h-[270px]">
+              <canvas id="myPieChart"></canvas>
+            </div>
+          </div>
+          <div class="w-4/6 flex flex-col space-y-8">
+            <div class="flex space-x-8">
+              <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl space-y-6 p-3">
+                <div>
+                  <h4 class="font-bold text-base">{% translate 'Gallery visits'%}</h4>
+                  <span class="text-xs text-[#9D9C9C]">{% translate 'How many visits in your gallery'%}</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span id="gallery-visit-stats" class="font-bold text-[#FF5A82] text-5xl">1,123</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-center flex-1 bg-white shadow-lg rounded-xl  space-y-6 p-3">
+                <div class="flex space-x-1 h-24">
+                  <a class="self-end" href="">
+                    <img src="{% static 'images/twitter.svg' %}">
+                  </a>
+                  <a href="">
+                    <img src="{% static 'images/twitter.svg' %}">
+                  </a>
+                  <a href="">
+                    <img src="{% static 'images/twitter.svg' %}">
+                  </a>
+                  <a class="self-end" href="">
+                    <img src="{% static 'images/twitter.svg' %}">
+                  </a>
+                </div>
+                <h3 class="text-xl font-bold text-[#FF5A82]">{% translate 'Share Your Gallery'%}</h3>
+              </div>
+              <div class="flex flex-col flex-1 items-center space-y-6 bg-white shadow-lg rounded-xl p-3">
+                <div class="h-24">
+                  <img src="{% static 'images/dashbord-gallery.svg' %}">
+                </div>
+                <h3 class="text-xl font-bold text-[#FF5A82]">{% translate 'Enter Your Gallery'%}</h3>
+              </div>
+            </div>
+            <div class="flex flex-col bg-white shadow-lg rounded-xl p-3 space-y-6 items-center">
+              <h3 class="text-2xl font-bold text-[#FF5A82]">{% translate 'How are you satisfy with us?'%}</h3>
+              <div id="stars_rating">
+                <div class="stars">
+                  <div class="star">★</div>
+                  <div class="star">★</div>
+                  <div class="star">★</div>
+                  <div class="star">★</div>
+                  <div class="star">★</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+  <script src="{% static '/js/flowbite.js' %}" type="text/javascript"></script>
+  <script src="{% static '/js/chart.js' %}" type="text/javascript"></script>
+  <script src="{% static '/js/star-rate.js' %}" type="text/javascript"></script>
+  <script>
+
+    function getdashboardStatistic() {
+      fetch("http://127.0.0.1:8000/static/data/dashboard.json", {
+        method: "GET",
+        headers: {"access-Control-Allow-Origin": "*"}
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        $('#skeleton-container').addClass('hidden');
+        $('#dashboard-statistic').removeClass('hidden');
+      });
+    }
+
+    setTimeout(function() {
+      getdashboardStatistic();
+    },2000);
+
+    const configPieChart = {
+      type: 'pie',
+      data: {
+        labels: [
+          'Red',
+          'Blue',
+          'Yellow'
+        ],
+        datasets: [{
+          label: 'Top sender',
+          data: [300, 50, 100],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+          ],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      }
+    };
+
+    const configBarChart = {
+      type: 'bar',
+      data: {
+        labels: ['aaa','bbb','ccc','ddd','eee','aaa','bbb'],
+        datasets: [{
+          label: 'Top sender',
+          data: [65, 59, 80, 81, 56, 55, 40],
+          backgroundColor: [
+            'rgb(244, 126, 128)'
+          ],
+          borderColor: [
+            'rgb(244, 126, 128)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        },
+        yAxis: {
+            display: false,
+        },
+        xAxis: {
+            display: false,
+        }
+      }
+    },
+    };
+    const myPieChart = new Chart(
+      document.getElementById('myPieChart'),
+      configPieChart
+    );
+    const myBarChart = new Chart(
+      document.getElementById('myBarChart'),
+      configBarChart
+    );
+  </script>
+</body>
+</html>

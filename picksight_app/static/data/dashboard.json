@@ -1,0 +1,35 @@
+[
+  {     
+    "media_recieved": "480",
+    "guests_sent_media": "100",
+    "total_guests": "247",
+    "top_sender": [
+      {
+        "sender_neme": "Matan",
+        "total_media": "70"
+      },
+      {
+        "sender_neme": "Smith",
+        "total_media": "60"
+      },
+      {
+        "sender_neme": "Matan",
+        "total_media": "50"
+      },
+      {
+        "sender_neme": "Smith",
+        "total_media": "30"
+      },
+      {
+        "sender_neme": "Matan",
+        "total_media": "20"
+      }
+    ],
+    "gallery_visit_stats": "1.253",
+    "message_stats": {
+      "message_sent": "5",
+      "message_recieved": "7",
+      "message_read":"88"
+    }
+  }
+]

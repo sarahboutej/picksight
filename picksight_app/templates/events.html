@@ -126,10 +126,16 @@
             div.getElementById("message-btn").textContent = `{% blocktrans %}Go to Gallery {% endblocktrans %}`
             div.getElementById("image-btn").innerHTML = ` <img src="/static/images/edit.svg" />`;
             div.getElementById("image-btn").href = `/edit-event/`+event.id;
+            div.getElementById("message-btn").addEventListener("click", function() {
+              window.location.pathname = "/gallery/"
+            });
           } else {
             div.getElementById("message-btn").classList.add('bg-[#F26B6D]', 'border-[#F26B6D]', 'hover:text-[#F26B6D]');
-            div.getElementById("message-btn").textContent = `{% blocktrans %}Dashboard {% endblocktrans %}`
+            div.getElementById("message-btn").textContent = `{% blocktrans %}Dashboard {% endblocktrans %}`;
             div.getElementById("image-btn").innerHTML = ` <img src="/static/images/gellery.png" />`;
+            div.getElementById("message-btn").addEventListener("click", function() {
+              window.location.pathname = "/dashboard/"
+            });
           }
           div.getElementById("message-date").innerHTML = `
           <span>{% blocktrans %}Date:  {% endblocktrans %}</span> 
