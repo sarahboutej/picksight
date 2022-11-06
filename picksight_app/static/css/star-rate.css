@@ -21,6 +21,7 @@
   transform: translateX(-100%);
   top: 0px;
   font-size: 48px;
+  left: 48px;
 }
 @media (min-width: 768px) {
   #stars_rating .stars .star {
@@ -29,6 +30,7 @@
   }
   #stars_rating .stars .star:after {
     font-size: 64px;
+    left: 64px;
   }
 }
 @media (max-width: 479px) {
@@ -38,6 +40,7 @@
   }
   #stars_rating .stars .star:after {
     font-size: 36px;
+    left: 36px;
   }
 }
 #stars_rating .stars .star.rated {

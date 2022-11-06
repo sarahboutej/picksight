@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>{% translate 'Picksight Add NEw Event Page' %}</title>
+  <title>{% translate 'Dashboard Page' %}</title>
 
   <link rel="stylesheet" href="{% static 'css/flowbite.css' %}">
   <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
@@ -97,9 +97,9 @@
     <!--**********Skelton End*************-->
     <div id="dashboard-statistic" class="hidden">
       <div class="flex flex-col space-y-8">
-        <div class="flex flex-row space-x-8">
-          <div class="w-4/6 flex flex-col space-y-8">
-            <div class="flex space-x-8">
+        <div class="flex xl:flex-row flex-col xl:space-y-0 space-y-8 ltr:xl:space-x-8">
+          <div class="xl:w-4/6 w-full flex flex-col space-y-8">
+            <div class="flex md:flex-row flex-col ltr:md:space-x-8 md:space-y-0 space-y-8">
               <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
                 <div class="flex flex-col space-y-6">
                   <div>
@@ -112,7 +112,7 @@
                   </div>
                 </div>
               </div>
-              <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
+              <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
                 <div class="flex flex-col space-y-6">
                   <div>
                     <h4 class="font-bold text-base">{% translate 'Media received'%}</h4>
@@ -123,7 +123,7 @@
                   </div>
                 </div>
               </div>
-              <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
+              <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
                 <div class="flex flex-col space-y-6">
                   <div>
                     <h4 class="font-bold text-base">{% translate 'Total guests'%}</h4>
@@ -145,7 +145,7 @@
               </div>
             </div>
           </div>
-          <div class="w-2/6 flex flex-col space-y-6 bg-white shadow-lg rounded-xl p-3">
+          <div class="xl:w-2/6 w-full flex flex-col space-y-6 bg-white shadow-lg rounded-xl p-3 rtl:xl:mr-8">
             <p class="block text-sm font-medium text-gray-900">{% translate 'Preview'%}</p>
             <div class="flex flex-col lg:py-0 py-6 items-center justify-center h-full rounded-xl bg-[url({% static '/images/messgae_bg.jpg' %})] bg-no-repeat bg-cover">
               <div class="flex flex-col space-y-9 w-[80%] bg-white p-6 my-6 rounded-xl">
@@ -157,8 +157,8 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-row space-x-8">
-          <div class="w-2/6 flex flex-col space-y-6 bg-white shadow-lg rounded-xl p-3">
+        <div class="flex xl:flex-row flex-col xl:space-y-0 space-y-8 ltr:xl:space-x-8">
+          <div class="xl:w-2/6 w-full flex flex-col space-y-6 bg-white shadow-lg rounded-xl p-3">
             <div>
               <h4 class="font-bold text-base">Message sending statistics</h4>
               <span class="text-xs text-[#9D9C9C]">Some statistics about the messages</span>
@@ -167,8 +167,8 @@
               <canvas id="myPieChart"></canvas>
             </div>
           </div>
-          <div class="w-4/6 flex flex-col space-y-8">
-            <div class="flex space-x-8">
+          <div class="xl:w-4/6 w-full flex flex-col space-y-8 rtl:xl:mr-8">
+            <div class="flex md:flex-row flex-col ltr:md:space-x-8 md:space-y-0 space-y-8">
               <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl space-y-6 p-3">
                 <div>
                   <h4 class="font-bold text-base">{% translate 'Gallery visits'%}</h4>
@@ -178,7 +178,7 @@
                   <span id="gallery-visit-stats" class="font-bold text-[#FF5A82] text-5xl">1,123</span>
                 </div>
               </div>
-              <div class="flex flex-col items-center flex-1 bg-white shadow-lg rounded-xl  space-y-6 p-3">
+              <div class="flex flex-col items-center flex-1 bg-white shadow-lg rounded-xl space-y-6 p-3 rtl:md:mr-8">
                 <div class="flex space-x-1 h-24">
                   <a href="https://twitter.com" target="_blank" class="self-end" href="">
                     <img src="{% static 'images/twitter.svg' %}">
@@ -193,13 +193,13 @@
                     <img src="{% static 'images/whatsapp-color.svg' %}">
                   </a>
                 </div>
-                <h3 class="text-xl font-bold text-[#FF5A82]">{% translate 'Share Your Gallery'%}</h3>
+                <h3 class="text-xl font-bold text-[#FF5A82] text-center">{% translate 'Share Your Gallery'%}</h3>
               </div>
-              <div class="flex flex-col flex-1 items-center space-y-6 bg-white shadow-lg rounded-xl p-3">
+              <div class="flex flex-col flex-1 items-center space-y-6 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
                 <div class="h-24">
                   <img src="{% static 'images/dashbord-gallery.svg' %}">
                 </div>
-                <a href="/gallery/" class="text-xl font-bold text-[#FF5A82]">{% translate 'Enter Your Gallery'%}</a>
+                <a href="/gallery/" class="text-xl font-bold text-[#FF5A82] text-center">{% translate 'Enter Your Gallery'%}</a>
               </div>
             </div>
             <div class="flex flex-col bg-white shadow-lg rounded-xl p-3 items-center min-h-[160px]">
@@ -215,7 +215,7 @@
                   <div class="star">★</div>
                 </div>
               </div>
-              <div id="feedback-input" class="relative w-2/3 hidden">
+              <div id="feedback-input" class="relative md:w-2/3 w-full hidden">
                 <input type="search" id="feedback-text" class="block p-4 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-[#F47E80] focus:border-[#F47E80]" placeholder="{% translate 'Share us with your feedback'%}" required>
                 <button id="submit-feedback" type="button" class="text-white absolute ltr:right-2.5 rtl:left-2.5 bottom-2.5 bg-[#FFB4C6] hover:bg-[#F47E80] focus:ring-0 focus:outline-none focus:ring-0 font-medium rounded-lg text-sm px-4 py-2 ">{% translate 'Send'%}</button>
             </div>
