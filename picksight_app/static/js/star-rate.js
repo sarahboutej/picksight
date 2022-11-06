@@ -18,7 +18,7 @@
     return f;
   };
 
-  const getAvg = () => {
+/*   const getAvg = () => {
     if (avg + _rating) {
       if (_rating === 0) return 1.0 * avg;
       if (avg === 0) return 1.0 * _rating;
@@ -31,16 +31,16 @@
       return _rating * 1.0;
     }
     return "(unrated)";
-  };
+  }; */
 
-  const updateDOM = () => {
-    document.querySelector('span.avg').innerHTML = getAvg();
+ /*  const updateDOM = () => {
+    //document.querySelector('span.avg').innerHTML = getAvg();
     document.querySelector('span.rate').innerHTML = getRate();
-  };
+  }; */
 
-  $(function () {// onload
+/*   $(function () {// onload
     updateDOM();
-  });
+  }); */
 
   const stars = document.querySelectorAll('.star');
 

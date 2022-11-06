@@ -5,31 +5,48 @@
     "total_guests": "247",
     "top_sender": [
       {
-        "sender_neme": "Matan",
+        "sender_name": "Matan",
         "total_media": "70"
       },
       {
-        "sender_neme": "Smith",
+        "sender_name": "Smith",
         "total_media": "60"
       },
       {
-        "sender_neme": "Matan",
+        "sender_name": "Matan",
         "total_media": "50"
       },
       {
-        "sender_neme": "Smith",
+        "sender_name": "Smith",
         "total_media": "30"
       },
       {
-        "sender_neme": "Matan",
+        "sender_name": "Matan",
         "total_media": "20"
+      },
+      {
+        "sender_name": "Smith",
+        "total_media": "60"
+      },
+      {
+        "sender_name": "Matan",
+        "total_media": "50"
       }
     ],
-    "gallery_visit_stats": "1.253",
-    "message_stats": {
-      "message_sent": "5",
-      "message_recieved": "7",
-      "message_read":"88"
-    }
+    "gallery_visit_stats": "1.250",
+    "message_stats": [
+      {
+        "label": "Message Sent",
+        "value": "5"
+      },
+      {
+        "label": "Message Recieved",
+        "value": "7"
+      },
+      {
+        "label": "Message Read",
+        "value": "88"
+      }
+    ]
   }
 ]

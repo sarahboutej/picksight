@@ -106,7 +106,7 @@
                     <span class="text-xs text-[#9D9C9C]">{% translate 'How many guests sent media files'%}</span>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span id="media-recieved" class="font-bold text-[#FF5A82] text-5xl">100</span>
+                    <span id="guests-sent-media" class="font-bold text-[#FF5A82] text-5xl"></span>
                     <span class="text-lg text-[#05B516] font-bold">43%</span>
                   </div>
                 </div>
@@ -118,7 +118,7 @@
                     <span class="text-xs text-[#9D9C9C]">{% translate 'How many photos&videos receiced'%}</span>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span id="guests-sent-media" class="font-bold text-[#FF5A82] text-5xl">470</span>
+                    <span id="media-recieved" class="font-bold text-[#FF5A82] text-5xl"></span>
                   </div>
                 </div>
               </div>
@@ -129,7 +129,7 @@
                     <span class="text-xs text-[#9D9C9C]">{% translate 'How many guests in your list'%}</span>
                   </div>
                   <div class="flex flex-col items-center">
-                    <span id="total-guests" class="font-bold text-[#FF5A82] text-5xl">234</span>
+                    <span id="total-guests" class="font-bold text-[#FF5A82] text-5xl"></span>
                   </div>
                 </div>
               </div>
@@ -225,37 +225,58 @@
   <script src="{% static '/js/star-rate.js' %}" type="text/javascript"></script>
   <script>
 
-    function getdashboardStatistic() {
-      fetch("http://127.0.0.1:8000/static/data/dashboard.json", {
-        method: "GET",
-        headers: {"access-Control-Allow-Origin": "*"}
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        $('#skeleton-container').addClass('hidden');
-        $('#dashboard-statistic').removeClass('hidden');
-      });
-    }
+   let barChartLabel = [];
+   let barChartData = [];
+   let pieChartLabel = [];
+   let pieChartData = [];
 
+   function getdashboardStatistic() {
+      fetch("http://127.0.0.1:8000/static/data/dashboard.json", {
+          method: "GET",
+          headers: {"access-Control-Allow-Origin": "*"}
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data) {
+            getChartsInformation(data[0].top_sender, data[0].message_stats);
+          }
+          $('#skeleton-container').addClass('hidden');
+          $('#dashboard-statistic').removeClass('hidden');
+          $('#guests-sent-media').text(data[0].guests_sent_media);
+          $('#media-recieved').text(data[0].media_recieved);
+          $('#total-guests').text(data[0].total_guests);
+          $('#gallery-visit-stats').text(data[0].gallery_visit_stats);
+        });
+    }
+    
     setTimeout(function() {
       getdashboardStatistic();
     },2000);
 
+    function getChartsInformation(barArray, pieArray) {
+      barArray.forEach(item => {
+        if(item && item.sender_name)
+          barChartLabel.push(item.sender_name);
+          barChartData.push(item.total_media);
+      });
+      pieArray.forEach(item => {
+        if(item && item.label)
+          pieChartLabel.push(item.label);
+          pieChartData.push(item.value);
+      });
+    }
+
     const configPieChart = {
       type: 'pie',
       data: {
-        labels: [
-          'Red',
-          'Blue',
-          'Yellow'
-        ],
+        labels: pieChartLabel,
         datasets: [{
-          label: 'Top sender',
-          data: [300, 50, 100],
+          label: 'Messages Statistics',
+          data: pieChartData,
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(206, 54, 76)',
+            'rgb(244, 126, 128)',
+            'rgb(53, 188, 199)'
           ],
           hoverOffset: 4
         }]
@@ -266,13 +287,14 @@
       }
     };
 
+    
     const configBarChart = {
       type: 'bar',
       data: {
-        labels: ['aaa','bbb','ccc','ddd','eee','aaa','bbb'],
+        labels: barChartLabel,
         datasets: [{
           label: 'Top sender',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: barChartData,
           backgroundColor: [
             'rgb(244, 126, 128)'
           ],
