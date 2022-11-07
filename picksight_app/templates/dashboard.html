@@ -28,56 +28,32 @@
   <section class="flex min-h-screen justify-center pt-24 pb-36">
     <div class="container w-9/12">
       <!--**********Skelton start*************-->
-    <div id="skeleton-container" >
-      <div class="space-y-8">
-        <div class="grid grid-cols-12 grid-rows-2 gap-8">
-          <div class="box row-start-1 row-end-2 col-start-1 col-end-8">
-            <div class="grid grid-cols-3 grid-rows-1 gap-8">
-              <div class="bg-white shadow-lg rounded-xl p-3">
-                <p class="skeleton skeleton-text"></p>
-                <p class="skeleton skeleton-text-span"></p>
-                <p class="skeleton skeleton-text__body"></p>
-              </div>
-              <div class="bg-white shadow-lg rounded-xl p-3">
-                <p class="skeleton skeleton-text"></p>
-                <p class="skeleton skeleton-text-span"></p>
-                <p class="skeleton skeleton-text__body"></p>
-              </div>
-              <div class="bg-white shadow-lg rounded-xl p-3">
-                <p class="skeleton skeleton-text"></p>
-                <p class="skeleton skeleton-text-span"></p>
-                <p class="skeleton skeleton-text__body"></p>
-              </div>
-            </div>
-          </div>
-          <div class="box row-start-2 row-end-2 col-start-1 col-end-8 bg-white shadow-lg rounded-xl p-3">
-            <p class="skeleton skeleton-text"></p>
-            <p class="skeleton skeleton-text-span"></p>
-            <p class="skeleton skeleton-text__body"></p>
-          </div>
-          <div class="box row-start-1 row-end-3 col-start-8 p-6 col-end-12 bg-white shadow-lg rounded-xl p-3">
-            <p class="skeleton skeleton-text"></p>
-            <p class="skeleton skeleton-text-span"></p>
-            <div class="skeleton skeleton-preview-img"></div>
-          </div>
-        </div>
-        <div class="grid grid-cols-12 grid-rows-2 gap-8">
-          <div class="box row-start-1 row-end-3 col-start-1 col-end-5 bg-white rounded-xl shadow-lg p-3">
-            <p class="skeleton skeleton-text"></p>
-            <p class="skeleton skeleton-text-span"></p>
-            <div class="skeleton skeleton-pie-chart"></div>
-          </div>
-          <div class="box row-start-1 row-end-1 col-start-5 col-end-12">
-            <div class="grid grid-cols-3 grid-rows-1 gap-8">
-              <div class="bg-white shadow-lg rounded-xl p-3">
-                <p class="skeleton skeleton-text"></p>
-                <p class="skeleton skeleton-text-span"></p>
-                <p class="skeleton skeleton-text__body"></p>
-              </div>
-              <div class="bg-white shadow-lg rounded-xl p-3">
-                <p class="skeleton skeleton-text"></p>
-                <p class="skeleton skeleton-text-span"></p>
-                <p class="skeleton skeleton-text__body"></p>
+      <div id="skeleton-container">
+        <div class="flex flex-col space-y-8">
+          <div class="flex xl:flex-row flex-col xl:space-y-0 space-y-8 ltr:xl:space-x-8">
+            <div class="xl:w-4/6 w-full flex flex-col space-y-8">
+              <div class="flex md:flex-row flex-col ltr:md:space-x-8 md:space-y-0 space-y-8">
+                <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
+                  <div class="flex flex-col">
+                    <p class="skeleton skeleton-text"></p>
+                    <p class="skeleton skeleton-text-span"></p>
+                    <p class="skeleton skeleton-text__body"></p>
+                  </div>
+                </div>
+                <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
+                  <div class="flex flex-col">
+                    <p class="skeleton skeleton-text"></p>
+                    <p class="skeleton skeleton-text-span"></p>
+                    <p class="skeleton skeleton-text__body"></p>
+                  </div>
+                </div>
+                <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
+                  <div class="flex flex-col">
+                    <p class="skeleton skeleton-text"></p>
+                    <p class="skeleton skeleton-text-span"></p>
+                    <p class="skeleton skeleton-text__body"></p>
+                  </div>
+                </div>
               </div>
               <div class="bg-white shadow-lg rounded-xl p-3">
                 <p class="skeleton skeleton-text"></p>
@@ -85,15 +61,52 @@
                 <p class="skeleton skeleton-text__body"></p>
               </div>
             </div>
+            <div class="xl:w-2/6 w-full flex flex-col space-y-6 bg-white shadow-lg rounded-xl p-3 rtl:xl:mr-8">
+              <p class="skeleton skeleton-text"></p>
+              <p class="skeleton skeleton-text-span"></p>
+              <div class="skeleton skeleton-preview-img"></div>
+            </div>
           </div>
-          <div class="box row-start-2 row-end-3 col-start-5 col-end-12 bg-white shadow-lg rounded-xl p-3">
-            <p class="skeleton skeleton-text"></p>
-            <p class="skeleton skeleton-text-span"></p>
-            <p class="skeleton skeleton-text__body"></p>
+          <div class="flex xl:flex-row flex-col xl:space-y-0 space-y-8 ltr:xl:space-x-8">
+            <div class="xl:w-2/6 w-full flex flex-col space-y-6 bg-white shadow-lg rounded-xl p-3">
+              <p class="skeleton skeleton-text"></p>
+              <p class="skeleton skeleton-text-span"></p>
+              <div class="skeleton skeleton-pie-chart"></div>
+            </div>
+            <div class="xl:w-4/6 w-full flex flex-col space-y-8 rtl:xl:mr-8">
+              <div class="flex md:flex-row flex-col ltr:md:space-x-8 md:space-y-0 space-y-8">
+                <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
+                  <div class="flex flex-col">
+                    <p class="skeleton skeleton-text"></p>
+                    <p class="skeleton skeleton-text-span"></p>
+                    <p class="skeleton skeleton-text__body"></p>
+                  </div>
+                </div>
+                <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
+                  <div class="flex flex-col">
+                    <p class="skeleton skeleton-text"></p>
+                    <p class="skeleton skeleton-text-span"></p>
+                    <p class="skeleton skeleton-text__body"></p>
+                  </div>
+                </div>
+                <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
+                  <div class="flex flex-col">
+                    <p class="skeleton skeleton-text"></p>
+                    <p class="skeleton skeleton-text-span"></p>
+                    <p class="skeleton skeleton-text__body"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white shadow-lg rounded-xl p-3">
+                <p class="skeleton skeleton-text"></p>
+                <p class="skeleton skeleton-text-span"></p>
+                <p class="skeleton skeleton-text__body"></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+  
     <!--**********Skelton End*************-->
     <div id="dashboard-statistic" class="hidden">
       <div class="flex flex-col space-y-8">
@@ -101,10 +114,10 @@
           <div class="xl:w-4/6 w-full flex flex-col space-y-8">
             <div class="flex md:flex-row flex-col ltr:md:space-x-8 md:space-y-0 space-y-8">
               <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3">
-                <div class="flex flex-col space-y-6">
+                <div class="flex flex-col">
                   <div>
                     <h4 class="font-bold text-base">{% translate 'Guests sent media'%}</h4>
-                    <span class="text-xs text-[#9D9C9C]">{% translate 'How many guests sent media files'%}</span>
+                    <span class="text-xs text-[#9D9C9C] block min-h-[50px]">{% translate 'How many guests sent media files'%}</span>
                   </div>
                   <div class="flex flex-col items-center">
                     <span id="guests-sent-media" class="font-bold text-[#FF5A82] text-5xl"></span>
@@ -113,10 +126,10 @@
                 </div>
               </div>
               <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
-                <div class="flex flex-col space-y-6">
+                <div class="flex flex-col">
                   <div>
                     <h4 class="font-bold text-base">{% translate 'Media received'%}</h4>
-                    <span class="text-xs text-[#9D9C9C]">{% translate 'How many photos&videos receiced'%}</span>
+                    <span class="text-xs text-[#9D9C9C] block min-h-[50px]">{% translate 'How many photos&videos receiced'%}</span>
                   </div>
                   <div class="flex flex-col items-center">
                     <span id="media-recieved" class="font-bold text-[#FF5A82] text-5xl"></span>
@@ -124,10 +137,10 @@
                 </div>
               </div>
               <div class="flex flex-col flex-1 bg-white shadow-lg rounded-xl p-3 rtl:md:mr-8">
-                <div class="flex flex-col space-y-6">
+                <div class="flex flex-col">
                   <div>
                     <h4 class="font-bold text-base">{% translate 'Total guests'%}</h4>
-                    <span class="text-xs text-[#9D9C9C]">{% translate 'How many guests in your list'%}</span>
+                    <span class="text-xs text-[#9D9C9C] block min-h-[50px]">{% translate 'How many guests in your list'%}</span>
                   </div>
                   <div class="flex flex-col items-center">
                     <span id="total-guests" class="font-bold text-[#FF5A82] text-5xl"></span>
@@ -322,7 +335,7 @@
             display: false,
         },
         xAxis: {
-            display: false,
+            display: true,
         }
       }
     },
